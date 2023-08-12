@@ -99,20 +99,53 @@
     <Compile Include="Model\TheLoai.cs">
       <DependentUpon>QLTV_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TrangThai_PhieuMuon.cs">
+      <DependentUpon>QLTV_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\VaiTro.cs">
       <DependentUpon>QLTV_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DocGias\DocGiaService.cs" />
+    <Compile Include="Services\DocGias\DTO\DocGiaCreateInput.cs" />
+    <Compile Include="Services\DocGias\DTO\DocGiaFilterInput.cs" />
+    <Compile Include="Services\DocGias\DTO\DocGia_DTO.cs" />
+    <Compile Include="Services\DocGias\IDocGiaService.cs" />
     <Compile Include="Services\NhanViens\DTO\NhanVienCreateInput.cs" />
     <Compile Include="Services\NhanViens\DTO\NhanVienFilterInput.cs" />
     <Compile Include="Services\NhanViens\DTO\NhanVien_DTO.cs" />
     <Compile Include="Services\NhanViens\INhanVienService.cs" />
     <Compile Include="Services\NhanViens\NhanVienService.cs" />
+    <Compile Include="Services\NhaPhanPhois\DTO\NhaPhanPhoiCreateInput.cs" />
+    <Compile Include="Services\NhaPhanPhois\DTO\NhaPhanPhoiFilterInput.cs" />
+    <Compile Include="Services\NhaPhanPhois\DTO\NhaPhanPhoi_DTO.cs" />
+    <Compile Include="Services\NhaPhanPhois\INhaPhanPhoiService.cs" />
+    <Compile Include="Services\NhaPhanPhois\NhaPhanPhoiService.cs" />
+    <Compile Include="Services\PhieuMuons\DTO\PhieuMuonCreateOrUpdateInput.cs" />
+    <Compile Include="Services\PhieuMuons\DTO\PhieuMuonFilterInput.cs" />
+    <Compile Include="Services\PhieuMuons\DTO\PhieuMuon_DTO.cs" />
+    <Compile Include="Services\PhieuMuons\IPhieuMuonService.cs" />
+    <Compile Include="Services\PhieuMuons\PhieuMuonService.cs" />
+    <Compile Include="Services\PhieuMuon_Sachs\IPhieuMuon_SachService.cs" />
+    <Compile Include="Services\PhieuMuon_Sachs\DTO\PhieuMuon_SachCreateInput.cs" />
+    <Compile Include="Services\PhieuMuon_Sachs\DTO\PhieuMuon_SachFilterInput.cs" />
+    <Compile Include="Services\PhieuMuon_Sachs\DTO\PhieuMuon_Sach_DTO.cs" />
+    <Compile Include="Services\PhieuMuon_Sachs\PhieuMuon_SachService.cs" />
     <Compile Include="Services\Sachs\DTO\SachCreateInput.cs" />
     <Compile Include="Services\Sachs\DTO\SachFilterInput.cs" />
     <Compile Include="Services\Sachs\ISachService.cs" />
     <Compile Include="Services\Sachs\SachService.cs" />
     <Compile Include="Services\Sachs\DTO\Sach_DTO.cs" />
+    <Compile Include="Services\TacGias\DTO\TacGiaCreateInput.cs" />
+    <Compile Include="Services\TacGias\DTO\TacGiaFilterInput.cs" />
+    <Compile Include="Services\TacGias\DTO\TacGia_DTO.cs" />
+    <Compile Include="Services\TacGias\ITacGiaService.cs" />
+    <Compile Include="Services\TacGias\TacGiaService.cs" />
+    <Compile Include="Services\TheLoais\DTO\TheLoaiCreateInput.cs" />
+    <Compile Include="Services\TheLoais\DTO\TheLoaiFilterInput.cs" />
+    <Compile Include="Services\TheLoais\DTO\TheLoai_DTO.cs" />
+    <Compile Include="Services\TheLoais\ITheLoaiService.cs" />
+    <Compile Include="Services\TheLoais\TheLoaiService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model\QLTV_Model.edmx">

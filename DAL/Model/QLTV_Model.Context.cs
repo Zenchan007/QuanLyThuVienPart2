@@ -36,5 +36,6 @@ namespace DAL.Model
         public virtual DbSet<TacGia> TacGias { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<VaiTro> VaiTroes { get; set; }
+        public virtual DbSet<TrangThai_PhieuMuon> TrangThai_PhieuMuon { get; set; }
     }
 }

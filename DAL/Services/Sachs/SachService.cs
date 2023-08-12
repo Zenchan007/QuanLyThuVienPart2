@@ -29,14 +29,9 @@ namespace DAL.Services.Sachs.DTO
                     var lower = input.TenSach.Trim().ToLower();
                     query = query.Where(p => p.TenSach.ToLower().Contains(lower));
                 }
-                if (!string.IsNullOrEmpty(input.TenSach))
+                if (input.listTheLoai?.Any() == true)
                 {
-                    var lower = input.TenSach.Trim().ToLower();
-                    query = query.Where(p => p.TenSach.ToLower().Contains(lower));
-                }
-                if (input.listIdTheLoai?.Any() == true)
-                {
-                    query = query.Where(p => input.listIdTheLoai.All(rl => p.TheLoais.Any(tl => tl.ID == rl)));
+                    query = query.Where(p => input.listTheLoai.All(x => p.TheLoais.Contains(x)));
                 }
                 if (input.namBatDau > 0)
                 {
@@ -48,13 +43,13 @@ namespace DAL.Services.Sachs.DTO
                     var endDate = new DateTime(input.namKetThuc, 12, 31);
                     query = query.Where(p => p.NgayXB <= endDate);
                 }
-                if (input.TacGiaId.HasValue)
+                if (!string.IsNullOrEmpty(input.TenTacGia))
                 {
-                    query = query.Where(p => p.ID_TacGia == input.TacGiaId.Value);
+                    query = query.Where(p => p.TacGia.TenTacGia == input.TenTacGia);
                 }
-                if (!string.IsNullOrEmpty(input.NhaPhanPhoiId))
+                if (!string.IsNullOrEmpty(input.TenNhaPhanPhoi))
                 {
-                    query = query.Where(p => p.ID_NhaPhanPhoi == input.NhaPhanPhoiId);
+                    query = query.Where(p => p.NhaPhanPhoi.TenNhaPhanPhoi == input.TenNhaPhanPhoi);
                 }
             }
             return query;

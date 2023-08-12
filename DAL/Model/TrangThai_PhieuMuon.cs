@@ -12,26 +12,18 @@ namespace DAL.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class PhieuMuon
+    public partial class TrangThai_PhieuMuon
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PhieuMuon()
+        public TrangThai_PhieuMuon()
         {
-            this.PhieuMuon_Sach = new HashSet<PhieuMuon_Sach>();
+            this.PhieuMuons = new HashSet<PhieuMuon>();
         }
     
         public int ID { get; set; }
-        public int ID_DocGia { get; set; }
-        public Nullable<System.DateTime> NgayMuon { get; set; }
-        public Nullable<System.DateTime> NgayHenTra { get; set; }
-        public int ID_NhanVien { get; set; }
-        public string TenPhieuMuon { get; set; }
-        public int ID_TrangThai { get; set; }
+        public string TenTrangThai { get; set; }
     
-        public virtual DocGia DocGia { get; set; }
-        public virtual NhanVien NhanVien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhieuMuon_Sach> PhieuMuon_Sach { get; set; }
-        public virtual TrangThai_PhieuMuon TrangThai_PhieuMuon { get; set; }
+        public virtual ICollection<PhieuMuon> PhieuMuons { get; set; }
     }
 }

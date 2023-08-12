@@ -81,7 +81,7 @@ namespace GUI
             sach_Filter.TenTacGia = txtTenTacGia.Text;
             sach_Filter.TenSach = txtTenSach.Text;
             sach_Filter.TenNhaPhanPhoi = txtTenNhaPhanPhoi.Text;
-            sach_Filter.TheLoai = txtTenTheLoai.Text;
+            //sach_Filter. = txtTenTheLoai.Text;
             showDuLieuSach().ContinueWith(x =>
             {
                 if (x.IsFaulted)
@@ -161,6 +161,7 @@ namespace GUI
             };
             return await isachService.Paging(pageInput);
         }
+        
         public async Task<bool> xoaSachTheoId(int Id)
         {
             var xoaSachTheoId = await isachService.DeleteSachById(Id);

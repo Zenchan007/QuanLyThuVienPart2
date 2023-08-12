@@ -17,7 +17,6 @@ namespace DAL.Model
         public int ID_PhieuMuon { get; set; }
         public int ID_Sach { get; set; }
         public int SoLuong { get; set; }
-    
         public virtual PhieuMuon PhieuMuon { get; set; }
         public virtual Sach Sach { get; set; }
     }

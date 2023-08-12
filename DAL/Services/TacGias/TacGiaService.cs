@@ -1,7 +1,6 @@
 ﻿using DAL.Common;
 using DAL.Model;
-using DAL.Services.NhanVien.DTO;
-using DAL.Services.Sachs.DTO;
+using DAL.Services.TacGias.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,55 +8,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Services.NhanVien
+namespace DAL.Services.TacGias
 {
-    public class NhanVienService : INhanVienService
+    public class TacGiaService : ITacGiaService
     {
-        public readonly QuanLyThuVienEntities  _db ;
-        public NhanVienService()
+        public readonly QuanLyThuVienEntities _db;
+        public TacGiaService()
         {
             _db = new QuanLyThuVienEntities();
         }
 
         #region Crud
-        public async Task<int> CreateNhanVien(NhanVienCreateInput input)
+        public async Task<int> CreateTacGia(TacGiaCreateInput input)
         {
-            var entity = await MapperCreateInputToEntity(input, new Model.NhanVien());
-            _db.NhanViens.Add(entity);
+            var entity = await MapperCreateInputToEntity(input, new Model.TacGia());
+            _db.TacGias.Add(entity);
             return _db.SaveChanges();
         }
 
-        public async Task<bool> UpdateNhanVien(int NhanVienId, NhanVienCreateInput input)
+        public async Task<bool> UpdateTacGia(int TacGiaId, TacGiaCreateInput input)
         {
-            var entity = await GetById(NhanVienId);
+            var entity = await GetById(TacGiaId);
             entity = await MapperCreateInputToEntity(input, entity);
             await _db.SaveChangesAsync();
             return true;
         }
-        public async Task<bool> DeleteNhanVienById(int NhanvienId)
+        public async Task<bool> DeleteTacGiaById(int TacGiaId)
         {
-            var entity = await GetById(NhanvienId);
-            if(entity != null)
+            var entity = await GetById(TacGiaId);
+            if (entity != null)
             {
-                _db.NhanViens.Remove(entity);
-                 await _db.SaveChangesAsync();
+                _db.TacGias.Remove(entity);
+                await _db.SaveChangesAsync();
                 return true;
             }
             return false;
         }
-        public async Task<Model.NhanVien> GetById(int id)
+        public async Task<Model.TacGia> GetById(int id)
         {
             return await QueryFilter().FirstOrDefaultAsync(p => p.ID == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
         }
 
-        public async Task<NhanVien_DTO> GetByIdDto(int id)
+        public async Task<TacGia_DTO> GetByIdDto(int id)
         {
             return await QueryFilterDto().FirstOrDefaultAsync(p => p.Id == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
         }
 
         #endregion
 
-        public async Task<PageResultDTO<NhanVien_DTO>> Paging(PagingInput<NhanVienFilterInput> input = null)
+        public async Task<PageResultDTO<TacGia_DTO>> Paging(PagingInput<TacGiaFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
             var totalCount = await filtered.CountAsync();
@@ -71,47 +70,50 @@ namespace DAL.Services.NhanVien
                 filtered = filtered.Take(input.MaxResultCount);
             }
             var listData = await filtered.ToListAsync();
-            return new PageResultDTO<NhanVien_DTO>(totalCount, listData);
+            return new PageResultDTO<TacGia_DTO>(totalCount, listData);
         }
 
-        public IQueryable<Model.NhanVien> QueryFilter(NhanVienFilterInput input = null)
+        public IQueryable<Model.TacGia> QueryFilter(TacGiaFilterInput input = null)
         {
-                var query = _db.NhanViens.AsQueryable();
+            var query = _db.TacGias.AsQueryable();
             if (input != null)
             {
-                if (!string.IsNullOrEmpty(input.TenNhanVien))
+                if (!string.IsNullOrEmpty(input.TenTacGia))
                 {
-                    var lower = input.TenNhanVien.Trim().ToLower();
-                    query = query.Where(p => p.TenNhanVien.ToLower().Contains(lower));
-                    
+                    var lower = input.TenTacGia.Trim().ToLower();
+                    query = query.Where(p => p.TenTacGia.ToLower().Contains(lower));
+
                 }
                 if (!string.IsNullOrEmpty(input.DiaChi))
                 {
                     var lower = input.DiaChi.Trim().ToLower();
                     query = query.Where(p => p.DiaChi.ToLower().Contains(lower));
                 }
-                if(input.TenVaiTro != null && input != null)
+                if (input.NamSinh.HasValue)
                 {
-                    query = query.Where(p => p.VaiTro.TenRole == input.TenVaiTro);
+                    var namSinhYear = input.NamSinh.Value;
+                    query = query.Where(p => p.NamSinh != null && p.NamSinh.Value.Year == namSinhYear);
+                }
+
+                if (input.NamMat.HasValue)
+                {
+                    var namMatYear = input.NamMat.Value;
+                    query = query.Where(p => p.NamMat != null && p.NamMat.Value.Year == namMatYear);
                 }
             }
             return query;
         }
 
-        public IQueryable<NhanVien_DTO> QueryFilterDto(NhanVienFilterInput input = null)
+        public IQueryable<TacGia_DTO> QueryFilterDto(TacGiaFilterInput input = null)
         {
             try
             {
                 var query = from q in QueryFilter(input)
-                            select new NhanVien_DTO
+                            select new TacGia_DTO
                             {
-                                TenNhanVien = q.TenNhanVien,
+                                TenTacGia = q.TenTacGia,
                                 DiaChi = q.DiaChi,
                                 SoDienThoai = q.SoDienThoai,
-                                CCCD = q.CCCD,
-                                TaiKhoan = q.TaiKhoan,
-                                MatKhau = q.MatKhau,
-                                VaiTro = q.VaiTro.ID,
                                 Id = q.ID
                             };
                 return query;
@@ -121,17 +123,18 @@ namespace DAL.Services.NhanVien
                 throw new Exception("Lỗi chỗ QueryFilter DTO");
             }
         }
-        private async Task<Model.NhanVien> MapperCreateInputToEntity(NhanVienCreateInput input, Model.NhanVien entity)
+        private async Task<Model.TacGia> MapperCreateInputToEntity(TacGiaCreateInput input, Model.TacGia entity)
         {
             await Task.Run(() =>
             {
-                entity.TenNhanVien = input.TenNhanVien;
+                entity.TenTacGia = input.TenTacGia;
                 entity.DiaChi = input.DiaChi;
-                entity.CCCD = input.CCCD;
                 entity.SoDienThoai = input.SoDienThoai;
-                entity.TaiKhoan = input.TaiKhoan;
-                entity.MatKhau = input.MatKhau;
-                entity.VaiTro.ID = input.VaiTro;
+                entity.NamSinh = input.NamSinh;
+                entity.NamMat = input.NamMat;
+                entity.AnhTacGia = input.AnhTacGia;
+                entity.MoTaThem = input.MoTa;
+
             });
             return entity;
         }

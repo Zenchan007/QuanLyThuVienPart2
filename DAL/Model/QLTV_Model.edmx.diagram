@@ -8,10 +8,10 @@
         <EntityTypeShape EntityType="QuanLyThuVienModel.DocGia" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyThuVienModel.NhanVien" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyThuVienModel.NhaPhanPhoi" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.PhieuMuon" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.PhieuMuon_Sach" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.PhieuMuon" Width="1.5" PointX="6.875" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.PhieuMuon_Sach" Width="1.5" PointX="4.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyThuVienModel.Sach" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.SachYeuCau" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.SachYeuCau" Width="1.5" PointX="9.125" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyThuVienModel.sysdiagram" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyThuVienModel.TacGia" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyThuVienModel.TheLoai" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
@@ -24,6 +24,8 @@
         <AssociationConnector Association="QuanLyThuVienModel.FK_PhieuMuon_Sach_Sach" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyThuVienModel.FK_Sach_TacGia" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyThuVienModel.TheLoai_Sach" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.TrangThai_PhieuMuon" Width="1.5" PointX="9.25" PointY="6.5" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK_PhieuMuon_TrangThai_PhieuMuon" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
