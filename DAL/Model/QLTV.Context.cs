@@ -29,13 +29,13 @@ namespace DAL.Model
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<NhaPhanPhoi> NhaPhanPhois { get; set; }
         public virtual DbSet<PhieuMuon> PhieuMuons { get; set; }
-        public virtual DbSet<PhieuMuon_Sach> PhieuMuon_Sach { get; set; }
+        public virtual DbSet<PhieuMuon_Sachs> PhieuMuon_Sachs { get; set; }
         public virtual DbSet<Sach> Saches { get; set; }
         public virtual DbSet<SachYeuCau> SachYeuCaus { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TacGia> TacGias { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
-        public virtual DbSet<VaiTro> VaiTroes { get; set; }
         public virtual DbSet<TrangThai_PhieuMuon> TrangThai_PhieuMuon { get; set; }
+        public virtual DbSet<VaiTro> VaiTroes { get; set; }
     }
 }

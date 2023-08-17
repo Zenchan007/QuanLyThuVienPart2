@@ -2,6 +2,7 @@
 using DAL.Common;
 using DAL.Model;
 using DAL.Services.Sachs.DTO;
+using GUI.Form_PhieuMuon;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -143,6 +144,11 @@ namespace GUI
             }
         }
 
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            var phieuMuon_Tao = new PhieuMuon_CRUD();
+            phieuMuon_Tao.ShowDialog();
+        }
     }
 
     public class Sach_BLL
@@ -152,12 +158,20 @@ namespace GUI
         {
             this.isachService = sv;
         }
-        public async Task<PageResultDTO<Sach_DTO>> LayDanhSachSach(int pageNumber, int pageSize, SachFilterInput input = null)
+        public Sach_BLL()
         {
-            var pageInput = new PagingInput<SachFilterInput>(input)
+            isachService = new SachService();
+        }
+        public async Task<PageResultDTO<Sach_DTO>> LayDanhSachSach(int pageNumber = 0, int pageSize = 0, SachFilterInput input = null)
+        {
+            var pageInput = new PagingInput<SachFilterInput>(input);
+            if (pageNumber == 0 && pageSize == 0)
+            
+                pageInput.MaxResultCount = -1;           
+            else
             {
-                SkipCount = pageSize * pageNumber,
-                MaxResultCount = pageSize,
+                pageInput.SkipCount = pageSize * pageNumber;
+                pageInput.MaxResultCount = pageSize;
             };
             return await isachService.Paging(pageInput);
         }

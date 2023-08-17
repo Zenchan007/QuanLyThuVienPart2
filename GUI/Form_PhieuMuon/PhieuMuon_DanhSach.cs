@@ -19,7 +19,7 @@ namespace GUI.Form_PhieuMuon
         int pageSize = 10;
         int totalCount = 0;
         int maxPage;
-        PhieuMuon_BLL PhieuMuon_BLL = new PhieuMuon_BLL(new PhieuMuonService());
+        PhieuMuon_BLL PhieuMuon_BLL = new PhieuMuon_BLL();
         PhieuMuonFilterInput PhieuMuon_Filter = new PhieuMuonFilterInput();
         public PhieuMuon_DanhSach()
         {
@@ -84,9 +84,9 @@ namespace GUI.Form_PhieuMuon
     public class PhieuMuon_BLL
     {
         private IPhieuMuonService iPhieuMuonService;
-        public PhieuMuon_BLL(IPhieuMuonService sv)
+        public PhieuMuon_BLL()
         {
-            iPhieuMuonService = sv;
+            iPhieuMuonService = new PhieuMuonService();
         }
         public async Task<PageResultDTO<PhieuMuon_DTO>> LayDanhSachPhieuMuon(int pageNumber, int pageSize, PhieuMuonFilterInput input = null)
         {
@@ -97,10 +97,17 @@ namespace GUI.Form_PhieuMuon
             };
             return await iPhieuMuonService.Paging(pageInput);
         }
-        public async Task<bool> xoaPhieuMuonById(int Id)
+        public async Task<bool> xoaPhieuMuonById(string Id)
         {
             var xoaNVTheoId = await iPhieuMuonService.DeletePhieuMuonById(Id);
             return xoaNVTheoId;
         }
+        public async Task<string> themPhieuMuon(PhieuMuonCreateInput input)
+        {
+            var themPm = await iPhieuMuonService.CreatePhieuMuon(input);
+            return themPm;
+        }
     }
+
 }
+

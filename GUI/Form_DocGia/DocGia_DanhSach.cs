@@ -1,6 +1,7 @@
 ﻿using DAL.Common;
 using DAL.Services.DocGias;
 using DAL.Services.DocGias.DTO;
+using DAL.Services.TacGias;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace GUI.Form_DocGia
         int pageSize = 10;
         int totalCount = 0;
         int maxPage;
+        IDocGiaService _iDocGiaService = new DocGiaService();
         DocGia_BLL DocGia_BLL = new DocGia_BLL(new DocGiaService());
         DocGiaFilterInput DocGia_Filter = new DocGiaFilterInput();
         public DocGia_DanhSach()
@@ -26,9 +28,10 @@ namespace GUI.Form_DocGia
             InitializeComponent();
         }
 
-        private void DocGia_DanhSach_Load(object sender, EventArgs e)
+        private  void DocGia_DanhSach_Load(object sender, EventArgs e)
         {
-            showDuLieuNV().ContinueWith(x =>
+             setTextSuggest();
+            showDuLieuDocGia().ContinueWith(x =>
             {
                 if (x.IsFaulted)
                 {
@@ -37,9 +40,37 @@ namespace GUI.Form_DocGia
             });
         }
 
-        private async Task showDuLieuNV()
+        private void setTextSuggest()
         {
-            var pageResultDTO = await DocGia_BLL.LayDanhSachNV(pageNumber, pageSize, DocGia_Filter);
+            #region thêm tên
+            txtTenDocGia.Items.Clear();
+            var listTenDocGia = _iDocGiaService.QueryFilter().Select(x => x.TenDocGia).ToList();
+            foreach (var item in listTenDocGia)
+                txtTenDocGia.Items.Add(item); txtTenDocGia.Items.Clear();
+            #endregion
+            #region thêm địa chỉ
+            txtDiaChi.Items.Clear();
+            var listDiaChiDocGia = _iDocGiaService.QueryFilter().Select(x => x.DiaChi).ToList();
+            foreach (var item in listDiaChiDocGia)
+                txtDiaChi.Items.Add(item ?? "Không xác định"); 
+            #endregion
+            #region thêm số điện thoại
+            txtSoDienThoai.Items.Clear();
+            var listSoDienThoaiDocGia = _iDocGiaService.QueryFilter().Select(x => x.SoDienThoai).ToList();
+            foreach (var item in listSoDienThoaiDocGia)
+                txtSoDienThoai.Items.Add(item ?? "Không xác định");
+            #endregion
+            #region thêm cccd
+            txtCCCD.Items.Clear();
+            var listCCCD = _iDocGiaService.QueryFilter().Select(x => x.CCCD).ToList();
+            foreach (var item in listCCCD)
+                txtCCCD.Items.Add(item ?? "Không xác định"); 
+            #endregion
+        }
+
+        private async Task showDuLieuDocGia()
+        {
+            var pageResultDTO = await DocGia_BLL.LayDuLieuDocGia(pageNumber, pageSize, DocGia_Filter);
             var listDocGia = pageResultDTO.Items.ToList();
             totalCount = pageResultDTO.TotalCount;
             maxPage = (int)Math.Ceiling(totalCount / (float)pageSize);
@@ -78,6 +109,35 @@ namespace GUI.Form_DocGia
             }
             txtTrang.Text = (pageNumber + 1).ToString() + "/" + maxPage.ToString();
         }
+
+        private async void btnTim_Click(object sender, EventArgs e)
+        {
+           DocGia_Filter.TenDocGia = txtTenDocGia.Text;
+           DocGia_Filter.DiaChi = txtDiaChi.Text;
+           DocGia_Filter.SoDienThoai = txtSoDienThoai.Text;
+           DocGia_Filter.CCCD = txtCCCD.Text;
+           await showDuLieuDocGia();
+        }
+
+        private void btnTrangDau_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTruoc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSau_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTrangCuoi_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     public class DocGia_BLL
     {
@@ -86,7 +146,7 @@ namespace GUI.Form_DocGia
         {
             iDocGiaService = sv;
         }
-        public async Task<PageResultDTO<DocGia_DTO>> LayDanhSachNV(int pageNumber, int pageSize, DocGiaFilterInput input = null)
+        public async Task<PageResultDTO<DocGia_DTO>> LayDuLieuDocGia(int pageNumber, int pageSize, DocGiaFilterInput input = null)
         {
             var pageInput = new PagingInput<DocGiaFilterInput>(input)
             {

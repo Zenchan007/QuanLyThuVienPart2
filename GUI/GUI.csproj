@@ -78,11 +78,11 @@
     <Compile Include="Form_NhaPhanPhoi\NhaPhanPhoi_DanhSach.Designer.cs">
       <DependentUpon>NhaPhanPhoi_DanhSach.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_PhieuMuon\CRUD_PhieuMuon.cs">
+    <Compile Include="Form_PhieuMuon\PhieuMuon_CRUD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_PhieuMuon\CRUD_PhieuMuon.Designer.cs">
-      <DependentUpon>CRUD_PhieuMuon.cs</DependentUpon>
+    <Compile Include="Form_PhieuMuon\PhieuMuon_CRUD.Designer.cs">
+      <DependentUpon>PhieuMuon_CRUD.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_PhieuMuon\PhieuMuon_DanhSach.cs">
       <SubType>Form</SubType>
@@ -122,8 +122,8 @@
     <EmbeddedResource Include="Form_NhaPhanPhoi\NhaPhanPhoi_DanhSach.resx">
       <DependentUpon>NhaPhanPhoi_DanhSach.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_PhieuMuon\CRUD_PhieuMuon.resx">
-      <DependentUpon>CRUD_PhieuMuon.cs</DependentUpon>
+    <EmbeddedResource Include="Form_PhieuMuon\PhieuMuon_CRUD.resx">
+      <DependentUpon>PhieuMuon_CRUD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_PhieuMuon\PhieuMuon_DanhSach.resx">
       <DependentUpon>PhieuMuon_DanhSach.cs</DependentUpon>
@@ -167,6 +167,10 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{8a5b66fd-2327-4863-a358-bec598296382}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tuann\Downloads\DataGridViewNumericUpDown\DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.csproj">
+      <Project>{82b50731-be90-433f-bb6e-9b509c5f3b7c}</Project>
+      <Name>DataGridViewNumericUpDownElements</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

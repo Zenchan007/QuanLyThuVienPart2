@@ -32,6 +32,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTim = new FontAwesome.Sharp.IconButton();
+            this.txtCCCD = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDiaChi = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtSoDienThoai = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTenDocGia = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnTrangDau = new FontAwesome.Sharp.IconButton();
@@ -48,6 +57,7 @@
             this.ChiTiet = new System.Windows.Forms.DataGridViewButtonColumn();
             this.SoSachDangMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Xoa = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDocGia)).BeginInit();
@@ -55,11 +65,128 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnTim);
+            this.panel1.Controls.Add(this.txtCCCD);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.txtDiaChi);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.txtSoDienThoai);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtTenDocGia);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1469, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // btnTim
+            // 
+            this.btnTim.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnTim.IconColor = System.Drawing.Color.Black;
+            this.btnTim.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnTim.Location = new System.Drawing.Point(1270, 48);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(75, 23);
+            this.btnTim.TabIndex = 9;
+            this.btnTim.Text = "Tìm";
+            this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
+            // 
+            // txtCCCD
+            // 
+            this.txtCCCD.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCCCD.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtCCCD.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.txtCCCD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.txtCCCD.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCCCD.FormattingEnabled = true;
+            this.txtCCCD.Location = new System.Drawing.Point(915, 40);
+            this.txtCCCD.Name = "txtCCCD";
+            this.txtCCCD.Size = new System.Drawing.Size(121, 27);
+            this.txtCCCD.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(842, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 19);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "CCCD";
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtDiaChi.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtDiaChi.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.txtDiaChi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.txtDiaChi.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.FormattingEnabled = true;
+            this.txtDiaChi.Location = new System.Drawing.Point(667, 40);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(121, 27);
+            this.txtDiaChi.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(600, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 19);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Địa Chỉ";
+            // 
+            // txtSoDienThoai
+            // 
+            this.txtSoDienThoai.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtSoDienThoai.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtSoDienThoai.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.txtSoDienThoai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.txtSoDienThoai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoDienThoai.FormattingEnabled = true;
+            this.txtSoDienThoai.Location = new System.Drawing.Point(420, 40);
+            this.txtSoDienThoai.Name = "txtSoDienThoai";
+            this.txtSoDienThoai.Size = new System.Drawing.Size(121, 27);
+            this.txtSoDienThoai.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(308, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 19);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Số Điện Thoại";
+            // 
+            // txtTenDocGia
+            // 
+            this.txtTenDocGia.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtTenDocGia.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtTenDocGia.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.txtTenDocGia.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenDocGia.FormattingEnabled = true;
+            this.txtTenDocGia.Location = new System.Drawing.Point(150, 40);
+            this.txtTenDocGia.Name = "txtTenDocGia";
+            this.txtTenDocGia.Size = new System.Drawing.Size(121, 27);
+            this.txtTenDocGia.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(49, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 19);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Tên Độc Giả";
             // 
             // groupBox1
             // 
@@ -114,6 +241,7 @@
             this.btnTrangDau.Size = new System.Drawing.Size(106, 58);
             this.btnTrangDau.TabIndex = 0;
             this.btnTrangDau.UseVisualStyleBackColor = true;
+            this.btnTrangDau.Click += new System.EventHandler(this.btnTrangDau_Click);
             // 
             // btnTruoc
             // 
@@ -127,6 +255,7 @@
             this.btnTruoc.Size = new System.Drawing.Size(106, 58);
             this.btnTruoc.TabIndex = 1;
             this.btnTruoc.UseVisualStyleBackColor = true;
+            this.btnTruoc.Click += new System.EventHandler(this.btnTruoc_Click);
             // 
             // btnSau
             // 
@@ -140,6 +269,7 @@
             this.btnSau.Size = new System.Drawing.Size(106, 58);
             this.btnSau.TabIndex = 2;
             this.btnSau.UseVisualStyleBackColor = true;
+            this.btnSau.Click += new System.EventHandler(this.btnSau_Click);
             // 
             // btnTrangCuoi
             // 
@@ -153,6 +283,7 @@
             this.btnTrangCuoi.Size = new System.Drawing.Size(106, 58);
             this.btnTrangCuoi.TabIndex = 3;
             this.btnTrangCuoi.UseVisualStyleBackColor = true;
+            this.btnTrangCuoi.Click += new System.EventHandler(this.btnTrangCuoi_Click);
             // 
             // txtTrang
             // 
@@ -281,6 +412,8 @@
             this.Name = "DocGia_DanhSach";
             this.Text = "DanhSach_DocGia";
             this.Load += new System.EventHandler(this.DocGia_DanhSach_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -308,5 +441,14 @@
         private System.Windows.Forms.DataGridViewButtonColumn ChiTiet;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoSachDangMuon;
         private System.Windows.Forms.DataGridViewButtonColumn Xoa;
+        private System.Windows.Forms.ComboBox txtCCCD;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox txtDiaChi;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox txtSoDienThoai;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox txtTenDocGia;
+        private System.Windows.Forms.Label label1;
+        private FontAwesome.Sharp.IconButton btnTim;
     }
 }

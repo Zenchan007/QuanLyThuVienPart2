@@ -84,12 +84,7 @@ namespace DAL.Services.TheLoais
                     query = query.Where(p => p.TenTheLoai.ToLower().Contains(lower));
 
                 }
-                if (!string.IsNullOrEmpty(input.Id))
-                {
-                    var lower = input.Id.Trim().ToLower();
-                    query = query.Where(p => p.ID.ToLower().Contains(lower));
-
-                }
+                
             }
             return query;
         }
@@ -122,14 +117,11 @@ namespace DAL.Services.TheLoais
             return entity;
         }
 
-
-        Task<TheLoai> ITheLoaiService.GetById(string id)
+        public async Task<List<string>> getAllTheLoai(TheLoaiFilterInput input = null)
         {
-            throw new NotImplementedException();
+            var listNameTheLoai = await QueryFilterDto(input).Select(tl => tl.TenTheLoai).ToListAsync();
+            return listNameTheLoai ?? throw new Exception("Không lấy ra được list thể loại!!");
         }
 
-        
-
-       
     }
 }

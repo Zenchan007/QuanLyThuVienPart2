@@ -8,13 +8,16 @@ using System.Threading.Tasks;
 
 namespace DAL.Services.PhieuMuons.DTO
 {
-    public class PhieuMuonCreateOrUpdateInput
+    public class PhieuMuonCreateInput
     {      
-        public int NhanVienId { get; internal set; }
-        public int DocGiaId { get; internal set; }
+        public string PhieuMuonId { set; get; }
+        public string TenPhieuMuon { set; get; }
+        public int NhanVienId { get;  set; }
+        public int DocGiaId { get;  set; }
         public DateTime NgayMuon { set; get; }
         public DateTime NgayTra { set; get; }
         public string GhiChu { get; set; }
+        public int TrangThaiId { get; set; }
         public List<PhieuMuon_SachCreateInput> ListSachMuon { set; get; }
     }
     

@@ -1,15 +1,10 @@
-﻿using GUI.Form_DocGia;
-using GUI.Form_NhaPhanPhoi;
-using GUI.Form_PhieuMuon;
-using GUI.Form_TacGia;
-using GUI.Form_TheLoai;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GUI
+namespace CusComponent
 {
     internal static class Program
     {
@@ -21,7 +16,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DocGia_DanhSach());
+            Application.Run(new Form1());
         }
     }
 }

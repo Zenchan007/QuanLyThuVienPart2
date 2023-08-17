@@ -17,7 +17,8 @@ namespace DAL.Services.TacGias
         Task<TacGia_DTO> GetByIdDto(int id);
         Task<PageResultDTO<TacGia_DTO>> Paging(PagingInput<TacGiaFilterInput> input = null);
         Task<int> CreateTacGia(TacGiaCreateInput input);
-        Task<bool> UpdateTacGia(int chapterId, TacGiaCreateInput input);
-        Task<bool> DeleteTacGiaById(int chapterId);
+        Task<bool> UpdateTacGia(int TacGiaId, TacGiaCreateInput input);
+        Task<bool> DeleteTacGiaById(int TacGiaId);
+        Task<List<string>> getAllNameTacGia(TacGiaFilterInput input = null);
     }
 }

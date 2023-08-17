@@ -1,6 +1,7 @@
 ﻿using DAL.Common;
 using DAL.Model;
 using DAL.Services.DocGias.DTO;
+using DAL.Services.NhanVien.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -73,7 +74,6 @@ namespace DAL.Services.DocGias
             var listData = await filtered.ToListAsync();
             return new PageResultDTO<DocGia_DTO>(totalCount, listData);
         }
-
         public IQueryable<Model.DocGia> QueryFilter(DocGiaFilterInput input = null)
         {
             var query = _db.DocGias.AsQueryable();
@@ -85,6 +85,11 @@ namespace DAL.Services.DocGias
                     query = query.Where(p => p.TenDocGia.ToLower().Contains(lower));
 
                 }
+                if (!string.IsNullOrEmpty(input.CCCD))
+                {
+                    var lower = input.CCCD.Trim().ToLower();
+                    query = query.Where(p => p.CCCD.ToLower().Contains(lower));
+                }
                 if (!string.IsNullOrEmpty(input.DiaChi))
                 {
                     var lower = input.DiaChi.Trim().ToLower();
@@ -95,18 +100,10 @@ namespace DAL.Services.DocGias
                     var lower = input.SoDienThoai.Trim().ToLower();
                     query = query.Where(p => p.SoDienThoai.ToLower().Contains(lower));
                 }
-                if (!string.IsNullOrEmpty(input.CCCD))
-                {
-                    var lower = input.CCCD.Trim().ToLower();
-                    query = query.Where(p => p.CCCD.ToLower().Contains(lower));
-                }
-
+                
             }
-            var xxx = _db.PhieuMuons.AsQueryable();
-            
             return query;
         }
-
         public IQueryable<DocGia_DTO> QueryFilterDto(DocGiaFilterInput input = null)
         {
             try
@@ -138,5 +135,12 @@ namespace DAL.Services.DocGias
             });
             return entity;
         }
+        private async Task<List<string>> getAllNameDocGia(DocGiaFilterInput input = null)
+        {
+            var listNameDocGia = await QueryFilter(input).Select(s => s.TenDocGia).ToListAsync();
+            return listNameDocGia ?? throw new Exception("Không lấy ra được tên độc giả");
+        }
+
+
     }
 }

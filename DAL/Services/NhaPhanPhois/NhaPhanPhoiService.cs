@@ -89,6 +89,11 @@ namespace DAL.Services.NhaPhanPhois
                     var lower = input.DiaChi.Trim().ToLower();
                     query = query.Where(p => p.DiaChi.ToLower().Contains(lower));
                 }
+                if (!string.IsNullOrEmpty(input.SoDienThoai))
+                {
+                    var lower = input.SoDienThoai.Trim().ToLower();
+                    query = query.Where(p => p.SoDienThoai.ToLower().Contains(lower));
+                }
             }
             return query;
         }

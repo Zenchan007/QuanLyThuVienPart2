@@ -17,7 +17,7 @@ namespace DAL.Services.DocGias
         Task<DocGia_DTO> GetByIdDto(int id);
         Task<PageResultDTO<DocGia_DTO>> Paging(PagingInput<DocGiaFilterInput> input = null);
         Task<int> CreateDocGia(DocGiaCreateInput input);
-        Task<bool> UpdateDocGia(int chapterId, DocGiaCreateInput input);
-        Task<bool> DeleteDocGiaById(int chapterId);
+        Task<bool> UpdateDocGia(int DocGiaId, DocGiaCreateInput input);
+        Task<bool> DeleteDocGiaById(int DocGiaId);
     }
 }

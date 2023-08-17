@@ -84,7 +84,12 @@ namespace DAL.Services.Sachs.DTO
             }
         }
 
-        
+
+        public async Task<List<string>> getAllNameSach(SachFilterInput input = null)
+        {
+            var listNameSach = await QueryFilter(input).Select(s => s.TenSach).ToListAsync();
+            return listNameSach ?? throw new Exception("Không lấy ra được tên sách");
+        }
         public async Task<PageResultDTO<Sach_DTO>> Paging(PagingInput<SachFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
@@ -145,8 +150,10 @@ namespace DAL.Services.Sachs.DTO
             return true;
         }
 
+       
+
         #endregion
-        private async Task<Sach> MapperCreateInputToEntity(SachCreateInput input, Sach entity)
+        public async Task<Sach> MapperCreateInputToEntity(SachCreateInput input, Sach entity)
         {
             await Task.Run(() =>
             {

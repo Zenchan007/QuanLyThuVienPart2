@@ -9,30 +9,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Services.PhieuMuon_PhieuMuon_Sachs;
+using System.Data.Entity.Migrations;
 
 namespace DAL.Services.PhieuMuon_Sach_Sachs
 {
-    public class PhieuMuon_SachService : IPhieuMuon_SachService
+    public class PhieuMuon_SachsService : IPhieuMuon_SachsService
+
     {
+        #region Khai báo
         public readonly QuanLyThuVienEntities _db;
 
-        public PhieuMuon_SachService()
+        public PhieuMuon_SachsService()
         {
             _db = new QuanLyThuVienEntities();
         }
+        #endregion
 
-
-        public IQueryable<PhieuMuon_Sach> QueryFilter(PhieuMuon_SachFilterInput input = null)
+        #region Query and paging 
+        public IQueryable<Model.PhieuMuon_Sachs> QueryFilter(PhieuMuon_SachFilterInput input = null)
         {
-            var query = _db.PhieuMuon_Sach.AsQueryable();
-            if (!string.IsNullOrEmpty(input.TenPhieuMuon))
+            var query = _db.PhieuMuon_Sachs.AsQueryable();
+
+            if (!string.IsNullOrEmpty(input.PhieuMuonId))
             {
-                var lower = input.TenPhieuMuon.Trim().ToLower();
-                query = query.Where(p => p.PhieuMuon.TenPhieuMuon.ToLower().Contains(lower));
+                var lower = input.PhieuMuonId.Trim().ToLower();
+                query = query.Where(p => p.PhieuMuon.ID.ToLower().Contains(lower));
             }
-            if (input.PhieuMuonId != 0 && input.PhieuMuonId != null)
+
+            if (input.SachId != 0)
             {
-                query = query.Where(p => p.PhieuMuon.ID == input.PhieuMuonId);
+                query = query.Where(p => p.Sach.ID == input.SachId);
             }
             return query;
         }
@@ -45,6 +51,7 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
                             from ss in _db.Saches.Where(s => q.ID_Sach == s.ID).Include(d => d.TheLoais)
                             select new PhieuMuon_Sach_DTO
                             {
+                                PhieuMuonId = q.ID_PhieuMuon,
                                 TenPhieuMuon = q.PhieuMuon.TenPhieuMuon,
                                 TenSach = ss.TenSach,
                                 listTheLoai = ss.TheLoais.ToList(),
@@ -57,12 +64,10 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
                 throw new Exception("Lỗi ở chỗ queryDTO\n" + ex.Message);
             }
         }
-
         public async Task<PageResultDTO<PhieuMuon_Sach_DTO>> Paging(PagingInput<PhieuMuon_SachFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
             var totalCount = await filtered.CountAsync();
-            //   filtered = filtered.OrderByDescending(p => p.PhieuMuon_SachId);
             if (input.SkipCount > 0)
             {
                 filtered = filtered.Skip(input.SkipCount);
@@ -74,48 +79,48 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
             var listData = await filtered.ToListAsync();
             return new PageResultDTO<PhieuMuon_Sach_DTO>(totalCount, listData);
         }
-
-        #region crud
-        public async Task<PhieuMuon_Sach> GetById(int id)
-        {
-          //  return await QueryFilter().FirstOrDefaultAsync(p => p.ID == id) ?? throw new Exception($"Không tìm thấy Phiếu Mượn có id {id}.");
-        }
-
-        public async Task<PhieuMuon_Sach_DTO> GetByIdDto(int id)
-        {
-           // return await QueryFilterDto().FirstOrDefaultAsync(p => p.PhieuMuon_SachId == id) ?? throw new Exception($"Không tìm thấy sách id {id}.");
-        }
-        public async Task<int> CreatePhieuMuon_Sach(PhieuMuon_SachCreateInput input)
-        {
-            //var entity = await MapperCreateInputToEntity(input, new PhieuMuon_Sach());
-            //_db.PhieuMuon_Sachs.Add(entity);
-            //await _db.SaveChangesAsync();
-            //return entity.ID;
-        }
-
-        public async Task<bool> DeletePhieuMuon_SachById(int Id)
-        {
-            throw new Exception();
-            return false;
-        }
-
-        public async Task<bool> UpdatePhieuMuon_Sach(int Id, PhieuMuon_SachCreateInput input)
-        {
-            var entity = await GetById(Id);
-            entity = await MapperCreateInputToEntity(input, entity);
-            await _db.SaveChangesAsync();
-            return true;
-        }
-
         #endregion
-        private async Task<PhieuMuon_Sach> MapperCreateInputToEntity(PhieuMuon_SachCreateInput input, PhieuMuon_Sach entity)
+
+
+        private async Task<Model.PhieuMuon_Sachs> MapperCreateInputToEntity(PhieuMuon_SachCreateInput input, Model.PhieuMuon_Sachs entity)
         {
             await Task.Run(() =>
             {
-                throw new Exception();
-
+                entity.ID_Sach = input.SachId;
+                entity.SoLuong = input.SoLuong;
+                entity.ID_PhieuMuon = input.PhieuMuonId;
             });
             return entity;
         }
+        #region crud
+        public async Task<int> CreatePhieuMuon_Sach(PhieuMuon_SachCreateInput input)
+        {
+            var entity = await MapperCreateInputToEntity(input, new Model.PhieuMuon_Sachs());
+            _db.PhieuMuon_Sachs.Add(entity);
+            var sachToUpdate = await _db.Saches.FirstOrDefaultAsync(x => x.ID == entity.ID_Sach);
+            if (sachToUpdate != null)
+            {
+                sachToUpdate.SoLuong -= entity.SoLuong;
+            }
+            return await _db.SaveChangesAsync();
+        }
+
+
+        public async Task<int> UpdatePhieuMuon_Sach(PhieuMuon_SachFilterInput filter, PhieuMuon_SachCreateInput input)
+        {
+            var entity = await QueryFilter().FirstOrDefaultAsync(x => x.ID_Sach == filter.SachId && x.ID_PhieuMuon == filter.PhieuMuonId);
+            entity = await MapperCreateInputToEntity(input, entity);
+            return await _db.SaveChangesAsync();
+        }
+
+        async Task<int> IPhieuMuon_SachsService.DeletePhieuMuon_SachById(PhieuMuon_SachFilterInput filter)
+        {
+            var entity = await QueryFilter().FirstOrDefaultAsync(x => x.ID_Sach == filter.SachId && x.ID_PhieuMuon == filter.PhieuMuonId);
+            _db.PhieuMuon_Sachs.Remove(entity);
+            return await _db.SaveChangesAsync();
+        }
+        #endregion
+
+
     }
 }

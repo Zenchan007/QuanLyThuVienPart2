@@ -234,6 +234,7 @@
             this.btnThem.Size = new System.Drawing.Size(100, 55);
             this.btnThem.TabIndex = 7;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnTimKiem
             // 

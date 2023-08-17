@@ -55,57 +55,58 @@
     <Compile Include="Common\PageResultDTO.cs" />
     <Compile Include="Common\PagingInput.cs" />
     <Compile Include="Model\DocGia.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NhanVien.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NhaPhanPhoi.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\PhieuMuon.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\PhieuMuon_Sach.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+    <Compile Include="Model\PhieuMuon_Sachs.cs">
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\QLTV_Model.Context.cs">
+    <Compile Include="Model\QLTV.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QLTV_Model.Context.tt</DependentUpon>
+      <DependentUpon>QLTV.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\QLTV_Model.cs">
+    <Compile Include="Model\QLTV.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\QLTV_Model.Designer.cs">
+    <Compile Include="Model\QLTV.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QLTV_Model.edmx</DependentUpon>
+      <DependentUpon>QLTV.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Sach.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SachYeuCau.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TacGia.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TheLoai.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TrangThai_PhieuMuon.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\VaiTro.cs">
-      <DependentUpon>QLTV_Model.tt</DependentUpon>
+      <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLTVExceptions\PhieuMuon_SachException.cs" />
     <Compile Include="Services\DocGias\DocGiaService.cs" />
     <Compile Include="Services\DocGias\DTO\DocGiaCreateInput.cs" />
     <Compile Include="Services\DocGias\DTO\DocGiaFilterInput.cs" />
@@ -126,11 +127,11 @@
     <Compile Include="Services\PhieuMuons\DTO\PhieuMuon_DTO.cs" />
     <Compile Include="Services\PhieuMuons\IPhieuMuonService.cs" />
     <Compile Include="Services\PhieuMuons\PhieuMuonService.cs" />
-    <Compile Include="Services\PhieuMuon_Sachs\IPhieuMuon_SachService.cs" />
-    <Compile Include="Services\PhieuMuon_Sachs\DTO\PhieuMuon_SachCreateInput.cs" />
-    <Compile Include="Services\PhieuMuon_Sachs\DTO\PhieuMuon_SachFilterInput.cs" />
-    <Compile Include="Services\PhieuMuon_Sachs\DTO\PhieuMuon_Sach_DTO.cs" />
-    <Compile Include="Services\PhieuMuon_Sachs\PhieuMuon_SachService.cs" />
+    <Compile Include="Services\PhieuMuon_Sach\IPhieuMuon_SachsService.cs" />
+    <Compile Include="Services\PhieuMuon_Sach\DTO\PhieuMuon_SachCreateInput.cs" />
+    <Compile Include="Services\PhieuMuon_Sach\DTO\PhieuMuon_SachFilterInput.cs" />
+    <Compile Include="Services\PhieuMuon_Sach\DTO\PhieuMuon_Sach_DTO.cs" />
+    <Compile Include="Services\PhieuMuon_Sach\PhieuMuon_SachsService.cs" />
     <Compile Include="Services\Sachs\DTO\SachCreateInput.cs" />
     <Compile Include="Services\Sachs\DTO\SachFilterInput.cs" />
     <Compile Include="Services\Sachs\ISachService.cs" />
@@ -148,33 +149,31 @@
     <Compile Include="Services\TheLoais\TheLoaiService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model\QLTV_Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLTV_Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="Model\QLTV_Model.edmx.diagram">
-      <DependentUpon>QLTV_Model.edmx</DependentUpon>
+    <EntityDeploy Include="Model\QLTV.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLTV.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\QLTV.edmx.diagram">
+      <DependentUpon>QLTV.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model\QLTV_Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QLTV_Model.Context.cs</LastGenOutput>
-      <DependentUpon>QLTV_Model.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model\QLTV_Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLTV_Model.edmx</DependentUpon>
-      <LastGenOutput>QLTV_Model.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\QLTV.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLTV.edmx</DependentUpon>
+      <LastGenOutput>QLTV.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\QLTV.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLTV.edmx</DependentUpon>
+      <LastGenOutput>QLTV.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

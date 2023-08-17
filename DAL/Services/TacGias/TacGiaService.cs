@@ -1,5 +1,6 @@
 ﻿using DAL.Common;
 using DAL.Model;
+using DAL.Services.Sachs.DTO;
 using DAL.Services.TacGias.DTO;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,7 @@ namespace DAL.Services.TacGias
 
         #endregion
 
+       
         public async Task<PageResultDTO<TacGia_DTO>> Paging(PagingInput<TacGiaFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
@@ -137,6 +139,12 @@ namespace DAL.Services.TacGias
 
             });
             return entity;
+        }
+
+        public async Task<List<string>> getAllNameTacGia(TacGiaFilterInput input)
+        {
+            var listNameTacGia = await QueryFilter(input).Select(s => s.TenTacGia).ToListAsync();
+            return listNameTacGia ?? throw new Exception("Không lấy ra được tên tác giả");
         }
     }
 }

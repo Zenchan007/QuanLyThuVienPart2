@@ -9,15 +9,13 @@ using System.Threading.Tasks;
 
 namespace DAL.Services.PhieuMuon_PhieuMuon_Sachs
 {
-    public interface IPhieuMuon_SachService
+    public interface IPhieuMuon_SachsService
     {
-        IQueryable<PhieuMuon_Sach> QueryFilter(PhieuMuon_SachFilterInput input = null);
+        IQueryable<Model.PhieuMuon_Sachs> QueryFilter(PhieuMuon_SachFilterInput input = null);
         IQueryable<PhieuMuon_Sach_DTO> QueryFilterDto(PhieuMuon_SachFilterInput input = null);
-        Task<PhieuMuon_Sach> GetById(int id);
-        Task<PhieuMuon_Sach_DTO> GetByIdDto(int id);
         Task<PageResultDTO<PhieuMuon_Sach_DTO>> Paging(PagingInput<PhieuMuon_SachFilterInput> input = null);
         Task<int> CreatePhieuMuon_Sach(PhieuMuon_SachCreateInput input);
-        Task<bool> UpdatePhieuMuon_Sach(int chapterId, PhieuMuon_SachCreateInput input);
-        Task<bool> DeletePhieuMuon_SachById(int chapterId);
+        Task<int> UpdatePhieuMuon_Sach(PhieuMuon_SachFilterInput filter, PhieuMuon_SachCreateInput input);
+        Task<int> DeletePhieuMuon_SachById(PhieuMuon_SachFilterInput filter);
     }
 }

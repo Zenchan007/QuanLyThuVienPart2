@@ -8,6 +8,7 @@ namespace DAL.Services.PhieuMuons.DTO
 {
     public class PhieuMuonFilterInput
     {
+        public string PhieuMuonId { set; get; }
         public string TenPhieuMuon { set; get; }
         public string TenNhanVien { set; get; }
         public string TenDocGia { set; get; }

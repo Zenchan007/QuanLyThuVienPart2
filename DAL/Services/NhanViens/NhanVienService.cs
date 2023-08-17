@@ -2,6 +2,7 @@
 using DAL.Model;
 using DAL.Services.NhanVien.DTO;
 using DAL.Services.Sachs.DTO;
+using DAL.Services.TacGias.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -49,14 +50,11 @@ namespace DAL.Services.NhanVien
         {
             return await QueryFilter().FirstOrDefaultAsync(p => p.ID == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
         }
-
         public async Task<NhanVien_DTO> GetByIdDto(int id)
         {
             return await QueryFilterDto().FirstOrDefaultAsync(p => p.Id == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
         }
-
         #endregion
-
         public async Task<PageResultDTO<NhanVien_DTO>> Paging(PagingInput<NhanVienFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
@@ -73,31 +71,29 @@ namespace DAL.Services.NhanVien
             var listData = await filtered.ToListAsync();
             return new PageResultDTO<NhanVien_DTO>(totalCount, listData);
         }
-
         public IQueryable<Model.NhanVien> QueryFilter(NhanVienFilterInput input = null)
         {
-                var query = _db.NhanViens.AsQueryable();
+            var query = _db.NhanViens.AsQueryable();
             if (input != null)
             {
                 if (!string.IsNullOrEmpty(input.TenNhanVien))
                 {
                     var lower = input.TenNhanVien.Trim().ToLower();
                     query = query.Where(p => p.TenNhanVien.ToLower().Contains(lower));
-                    
+
                 }
                 if (!string.IsNullOrEmpty(input.DiaChi))
                 {
                     var lower = input.DiaChi.Trim().ToLower();
                     query = query.Where(p => p.DiaChi.ToLower().Contains(lower));
                 }
-                if(input.TenVaiTro != null && input != null)
+                if (input.TenVaiTro != null && input != null)
                 {
                     query = query.Where(p => p.VaiTro.TenRole == input.TenVaiTro);
                 }
             }
             return query;
         }
-
         public IQueryable<NhanVien_DTO> QueryFilterDto(NhanVienFilterInput input = null)
         {
             try
@@ -134,6 +130,11 @@ namespace DAL.Services.NhanVien
                 entity.VaiTro.ID = input.VaiTro;
             });
             return entity;
+        }
+        private async Task<List<string>> getAllNameNhanVien(NhanVienFilterInput input = null)
+        {
+            var listNameNhanVien = await QueryFilter(input).Select(s => s.TenNhanVien).ToListAsync();
+            return listNameNhanVien ?? throw new Exception("Không lấy ra được tên nhân viên");
         }
     }
 }

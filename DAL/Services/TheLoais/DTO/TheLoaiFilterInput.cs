@@ -8,7 +8,6 @@ namespace DAL.Services.TheLoais.DTO
 {
     public class TheLoaiFilterInput
     {
-        public string Id;
         public string TenTheLoai;
     }
 }
