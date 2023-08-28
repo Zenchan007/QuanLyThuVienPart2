@@ -28,6 +28,10 @@ namespace DAL.Model
         public string MatKhau { get; set; }
         public Nullable<int> ID_Role { get; set; }
         public string CCCD { get; set; }
+        public Nullable<System.DateTime> NgaySinh { get; set; }
+        public Nullable<System.DateTime> NgayVaoLam { get; set; }
+        public string GioiTinh { get; set; }
+        public byte[] AnhDaiDien { get; set; }
     
         public virtual VaiTro VaiTro { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -3,6 +3,7 @@ using DAL.Common;
 using DAL.Model;
 using DAL.Services.Sachs.DTO;
 using GUI.Form_PhieuMuon;
+using GUI.Form_Sach;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,28 +30,37 @@ namespace GUI
         {
             InitializeComponent();
         }
-        private async void Sach_DanhSach_Load(object sender, EventArgs e)
+       
+       
+        public async void Sach_DanhSach_Load(object sender, EventArgs e)
         {
             await showDuLieuSach();
         }
+        
         private async Task showDuLieuSach()
         {
-            var pageResultDTO = await sach_BLL.LayDanhSachSach(pageNumber, pageSize, sach_Filter);
-            var listSach = pageResultDTO.Items.ToList();
-            totalCount = pageResultDTO.TotalCount;
-            maxPage = (int) Math.Ceiling(totalCount / (float)pageSize);
-            dtgSach.Rows.Clear();
-            foreach (var sach in listSach)
+            try
             {
-                int rowIndex = dtgSach.Rows.Add();
-                dtgSach.Rows[rowIndex].Cells["ID"].Value = sach.SachId;
-                dtgSach.Rows[rowIndex].Cells["TenSach"].Value = sach.TenSach;
-                dtgSach.Rows[rowIndex].Cells["TenTacGia"].Value = sach.TenTacGia != null ? sach.TenTacGia : "Không xác định";
-                dtgSach.Rows[rowIndex].Cells["TenTheLoai"].Value = sach.TenTheLoai;
-                dtgSach.Rows[rowIndex].Cells["NhaPhanPhoi"].Value = sach.TenNhaPhanPhoi;
-                dtgSach.Rows[rowIndex].Cells["NamXB"].Value = sach.NgayXb.ToString("dd/MM/yyyy");
-                dtgSach.Rows[rowIndex].Cells["SoLuong"].Value = sach.SoLuong;
-                dtgSach.Rows[rowIndex].Cells["DonGia"].Value = sach.DonGia;
+                var pageResultDTO = await sach_BLL.LayDanhSachSach(pageNumber, pageSize, sach_Filter);
+                var listSach = pageResultDTO.Items.ToList();
+                totalCount = pageResultDTO.TotalCount;
+                maxPage = (int)Math.Ceiling(totalCount / (float)pageSize);
+                dtgSach.Rows.Clear();
+                foreach (var sach in listSach)
+                {
+                    int rowIndex = dtgSach.Rows.Add();
+                    dtgSach.Rows[rowIndex].Cells["ID"].Value = sach.SachId;
+                    dtgSach.Rows[rowIndex].Cells["TenSach"].Value = sach.TenSach;
+                    dtgSach.Rows[rowIndex].Cells["TenTacGia"].Value = sach.TenTacGia != null ? sach.TenTacGia : string.Empty;
+                    dtgSach.Rows[rowIndex].Cells["TenTheLoai"].Value = sach.TenTheLoai;
+                    dtgSach.Rows[rowIndex].Cells["NhaPhanPhoi"].Value = sach.TenNhaPhanPhoi;
+                    dtgSach.Rows[rowIndex].Cells["NamXB"].Value = sach.NgayXb.ToString("dd/MM/yyyy");
+                    dtgSach.Rows[rowIndex].Cells["SoLuong"].Value = sach.SoLuong;
+                    dtgSach.Rows[rowIndex].Cells["DonGia"].Value = sach.DonGia;
+                }
+            }
+            catch (Exception ex) {
+                throw new Exception(ex.Message);
             }
             if (pageNumber <= 0)
             {
@@ -76,21 +86,8 @@ namespace GUI
                 btnSau.Enabled = true;
             }
             txtTrang.Text = (pageNumber + 1).ToString() + "/" + maxPage.ToString();
-        }
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            sach_Filter.TenTacGia = txtTenTacGia.Text;
-            sach_Filter.TenSach = txtTenSach.Text;
-            sach_Filter.TenNhaPhanPhoi = txtTenNhaPhanPhoi.Text;
-            //sach_Filter. = txtTenTheLoai.Text;
-            showDuLieuSach().ContinueWith(x =>
-            {
-                if (x.IsFaulted)
-                {
-                    MessageBox.Show("Lỗi chỗ tìm kiếm");
-                }
-            });
-        }
+        } // Show Dữ liệu 
+        
         #region button Điều hướng
 
         private void btnTrangDau_Click(object sender, EventArgs e)
@@ -117,6 +114,7 @@ namespace GUI
             showDuLieuSach().ContinueWith(x => { if (x.IsFaulted) { MessageBox.Show("Lỗi chỗ đến trang cuối"); } });
         }
         #endregion
+        #region xử lý cell content click
         private async void dtgSach_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -125,7 +123,7 @@ namespace GUI
                 if (e.ColumnIndex == dtgSach.Columns["Xoa"].Index && e.RowIndex >= 0)
                 {
 
-                    DialogResult result = MessageBox.Show("Bạn có muốn tiếp tục?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("Bạn có muốn xóa cuốn sách này khỏi cơ sở dữ liệu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
@@ -140,16 +138,50 @@ namespace GUI
                         Console.WriteLine("Bạn đã chọn 'Không'");
                     }
                 }
-                
+                if (e.ColumnIndex == dtgSach.Columns["ChiTiet"].Index && e.RowIndex >= 0)
+                {
+                    var sachCrud = new SachCreateOrUpdate(Int32.Parse(MaSach));
+                    sachCrud.FormClosed += childFormClose;
+                    sachCrud.Show(this);
+                }
+
             }
         }
+        #endregion
 
+        #region button sukien
+        //Button Tìm kiếm
+    
+        //Button Thêm
         private void btnThem_Click(object sender, EventArgs e)
         {
-            var phieuMuon_Tao = new PhieuMuon_CRUD();
-            phieuMuon_Tao.ShowDialog();
+            var sachCrud = new SachCreateOrUpdate();
+            sachCrud.FormClosed += childFormClose;
+            sachCrud.Show(this);
+           
         }
-    }
+
+        private void childFormClose(object sender, FormClosedEventArgs e)
+        {
+            Sach_DanhSach_Load(null, null);
+        }
+        #endregion
+
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            sach_Filter.TenTacGia = txtTenTacGia.Text;
+            sach_Filter.TenSach = txtTenSach.Text;
+            sach_Filter.TenNhaPhanPhoi = txtTenNhaPhanPhoi.Text;
+            
+            showDuLieuSach().ContinueWith(x =>
+            {
+                if (x.IsFaulted)
+                {
+                    MessageBox.Show("Lỗi chỗ tìm kiếm");
+                }
+            });
+        }
+        }
 
     public class Sach_BLL
     {

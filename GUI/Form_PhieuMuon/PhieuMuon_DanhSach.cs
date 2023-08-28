@@ -52,8 +52,8 @@ namespace GUI.Form_PhieuMuon
                 dtgPhieuMuon.Rows[rowIndex].Cells["TenDocGia"].Value = pm.TenDocGia;
                 dtgPhieuMuon.Rows[rowIndex].Cells["TenNhanVien"].Value = pm.TenNhanVien;
                 dtgPhieuMuon.Rows[rowIndex].Cells["TrangThai"].Value = pm.TenTrangThai;
-                dtgPhieuMuon.Rows[rowIndex].Cells["NgayMuon"].Value = pm.NgayMuon != DateTime.MinValue ? pm.NgayMuon.ToString("dd/MM/yyyy") : "Không xác định";
-                dtgPhieuMuon.Rows[rowIndex].Cells["NgayHenTra"].Value = pm.NgayTra != DateTime.MinValue ? pm    .NgayTra.ToString("dd/MM/yyyy") : "Không xác định";
+                dtgPhieuMuon.Rows[rowIndex].Cells["NgayMuon"].Value = pm.NgayMuon != DateTime.MinValue ? pm.NgayMuon.ToString("dd/MM/yyyy") : "string.Empty";
+                dtgPhieuMuon.Rows[rowIndex].Cells["NgayHenTra"].Value = pm.NgayTra != DateTime.MinValue ? pm    .NgayTra.ToString("dd/MM/yyyy") : "string.Empty";
             }
             if (pageNumber <= 0)
             {

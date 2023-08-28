@@ -8,6 +8,7 @@ namespace DAL.Services.NhaPhanPhois.DTO
 {
     public class NhaPhanPhoiFilterInput
     {
+        public string MaNhaPhanPhoi;
         public string TenNhaPhanPhoi;
         public string SoDienThoai;
         public string DiaChi;

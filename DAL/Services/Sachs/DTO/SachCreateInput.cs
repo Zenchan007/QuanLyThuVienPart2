@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace DAL.Services.Sachs.DTO
 {
@@ -14,8 +15,7 @@ namespace DAL.Services.Sachs.DTO
         public string MoTa { get; set; }
         public int SoLuong { get; set; }
         public float DonGia { get; set; }
-        public List<int> listIdTheLoai { get; set; }
-        public HashSet<TheLoai> TheLoais { set; get; }
+        public List<string>ListTenTheLoai { get; set; }
         public int TacGiaId { get; set; }
         public string NhaPhanPhoiId { get; set; }
         public byte[] AnhSach { get; set; }

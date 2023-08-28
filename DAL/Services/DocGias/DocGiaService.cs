@@ -74,6 +74,7 @@ namespace DAL.Services.DocGias
             var listData = await filtered.ToListAsync();
             return new PageResultDTO<DocGia_DTO>(totalCount, listData);
         }
+        #region query
         public IQueryable<Model.DocGia> QueryFilter(DocGiaFilterInput input = null)
         {
             var query = _db.DocGias.AsQueryable();
@@ -83,7 +84,6 @@ namespace DAL.Services.DocGias
                 {
                     var lower = input.TenDocGia.Trim().ToLower();
                     query = query.Where(p => p.TenDocGia.ToLower().Contains(lower));
-
                 }
                 if (!string.IsNullOrEmpty(input.CCCD))
                 {
@@ -100,7 +100,6 @@ namespace DAL.Services.DocGias
                     var lower = input.SoDienThoai.Trim().ToLower();
                     query = query.Where(p => p.SoDienThoai.ToLower().Contains(lower));
                 }
-                
             }
             return query;
         }
@@ -124,6 +123,7 @@ namespace DAL.Services.DocGias
                 throw new Exception("Lỗi chỗ QueryFilter DTO");
             }
         }
+        #endregion
         private async Task<Model.DocGia> MapperCreateInputToEntity(DocGiaCreateInput input, Model.DocGia entity)
         {
             await Task.Run(() =>
@@ -132,15 +132,9 @@ namespace DAL.Services.DocGias
                 entity.DiaChi = input.DiaChi;
                 entity.CCCD = input.CCCD;
                 entity.SoDienThoai = input.SoDienThoai;
+                entity.AnhSinhVien = input.AnhDocGia;
             });
             return entity;
         }
-        private async Task<List<string>> getAllNameDocGia(DocGiaFilterInput input = null)
-        {
-            var listNameDocGia = await QueryFilter(input).Select(s => s.TenDocGia).ToListAsync();
-            return listNameDocGia ?? throw new Exception("Không lấy ra được tên độc giả");
-        }
-
-
     }
 }

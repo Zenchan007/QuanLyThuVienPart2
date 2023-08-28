@@ -13,5 +13,6 @@ namespace DAL.Services.DocGias.DTO
 
         public string SoDienThoai { set; get; }
         public string CCCD { get; set; }
+        public byte[] AnhDocGia { set; get; }
     }
 }

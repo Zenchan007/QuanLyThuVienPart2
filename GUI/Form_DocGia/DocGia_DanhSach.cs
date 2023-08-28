@@ -2,6 +2,7 @@
 using DAL.Services.DocGias;
 using DAL.Services.DocGias.DTO;
 using DAL.Services.TacGias;
+using GUI.Form_Sach;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,9 +29,9 @@ namespace GUI.Form_DocGia
             InitializeComponent();
         }
 
-        private  void DocGia_DanhSach_Load(object sender, EventArgs e)
+        public  void DocGia_DanhSach_Load(object sender, EventArgs e)
         {
-             setTextSuggest();
+            setTextSuggest();
             showDuLieuDocGia().ContinueWith(x =>
             {
                 if (x.IsFaulted)
@@ -42,30 +43,30 @@ namespace GUI.Form_DocGia
 
         private void setTextSuggest()
         {
-            #region thêm tên
-            txtTenDocGia.Items.Clear();
-            var listTenDocGia = _iDocGiaService.QueryFilter().Select(x => x.TenDocGia).ToList();
-            foreach (var item in listTenDocGia)
-                txtTenDocGia.Items.Add(item); txtTenDocGia.Items.Clear();
-            #endregion
-            #region thêm địa chỉ
-            txtDiaChi.Items.Clear();
-            var listDiaChiDocGia = _iDocGiaService.QueryFilter().Select(x => x.DiaChi).ToList();
-            foreach (var item in listDiaChiDocGia)
-                txtDiaChi.Items.Add(item ?? "Không xác định"); 
-            #endregion
-            #region thêm số điện thoại
-            txtSoDienThoai.Items.Clear();
-            var listSoDienThoaiDocGia = _iDocGiaService.QueryFilter().Select(x => x.SoDienThoai).ToList();
-            foreach (var item in listSoDienThoaiDocGia)
-                txtSoDienThoai.Items.Add(item ?? "Không xác định");
-            #endregion
-            #region thêm cccd
-            txtCCCD.Items.Clear();
-            var listCCCD = _iDocGiaService.QueryFilter().Select(x => x.CCCD).ToList();
-            foreach (var item in listCCCD)
-                txtCCCD.Items.Add(item ?? "Không xác định"); 
-            #endregion
+            //#region thêm tên
+            //txtTenDocGia.Items.Clear();
+            //var listTenDocGia = _iDocGiaService.QueryFilter().Select(x => x.TenDocGia).ToList();
+            //foreach (var item in listTenDocGia)
+            //    txtTenDocGia.Items.Add(item); 
+            //#endregion
+            //#region thêm địa chỉ
+            //txtDiaChi.Items.Clear();
+            //var listDiaChiDocGia = _iDocGiaService.QueryFilter().Select(x => x.DiaChi).ToList();
+            //foreach (var item in listDiaChiDocGia)
+            //    txtDiaChi.Items.Add(item ?? string.Empty); 
+            //#endregion
+            //#region thêm số điện thoại
+            //txtSoDienThoai.Items.Clear();
+            //var listSoDienThoaiDocGia = _iDocGiaService.QueryFilter().Select(x => x.SoDienThoai).ToList();
+            //foreach (var item in listSoDienThoaiDocGia)
+            //    txtSoDienThoai.Items.Add(item ?? string.Empty);
+            //#endregion
+            //#region thêm cccd
+            //txtCCCD.Items.Clear();
+            //var listCCCD = _iDocGiaService.QueryFilter().Select(x => x.CCCD).ToList();
+            //foreach (var item in listCCCD)
+            //    txtCCCD.Items.Add(item ?? string.Empty); 
+            //#endregion
         }
 
         private async Task showDuLieuDocGia()
@@ -80,9 +81,9 @@ namespace GUI.Form_DocGia
                 int rowIndex = dtgDocGia.Rows.Add();
                 dtgDocGia.Rows[rowIndex].Cells["ID"].Value = nv.Id;
                 dtgDocGia.Rows[rowIndex].Cells["TenDocGia"].Value = nv.TenDocGia;
-                dtgDocGia.Rows[rowIndex].Cells["DiaChi"].Value = nv.DiaChi != null ? nv.DiaChi : "Không xác định";
-                dtgDocGia.Rows[rowIndex].Cells["SoDienThoai"].Value = nv.SoDienThoai != null ? nv.SoDienThoai : "Không xác định";
-                dtgDocGia.Rows[rowIndex].Cells["CCCD"].Value = nv.CCCD != null ? nv.CCCD : "Không xác định";
+                dtgDocGia.Rows[rowIndex].Cells["DiaChi"].Value = nv.DiaChi != null ? nv.DiaChi : string.Empty;
+                dtgDocGia.Rows[rowIndex].Cells["SoDienThoai"].Value = nv.SoDienThoai != null ? nv.SoDienThoai : string.Empty;
+                dtgDocGia.Rows[rowIndex].Cells["CCCD"].Value = nv.CCCD != null ? nv.CCCD : string.Empty;
             }
             if (pageNumber <= 0)
             {
@@ -119,24 +120,72 @@ namespace GUI.Form_DocGia
            await showDuLieuDocGia();
         }
 
+        #region button Điều hướng
+
         private void btnTrangDau_Click(object sender, EventArgs e)
         {
-
+            pageNumber = 1;
+            showDuLieuDocGia().ContinueWith(x => { if (x.IsFaulted) { MessageBox.Show("Lỗi chỗ trở về trang đầu tiên"); } });
         }
 
         private void btnTruoc_Click(object sender, EventArgs e)
         {
-
+            pageNumber--;
+            showDuLieuDocGia().ContinueWith(x => { if (x.IsFaulted) { MessageBox.Show("Lỗi chỗ trở về trước"); } });
         }
 
         private void btnSau_Click(object sender, EventArgs e)
         {
-
+            pageNumber++;
+            showDuLieuDocGia().ContinueWith(x => { if (x.IsFaulted) { MessageBox.Show("Lỗi chỗ next trang"); } });
         }
 
         private void btnTrangCuoi_Click(object sender, EventArgs e)
         {
+            pageNumber = maxPage - 1;
+            showDuLieuDocGia().ContinueWith(x => { if (x.IsFaulted) { MessageBox.Show("Lỗi chỗ đến trang cuối"); } });
+        }
 
+        #endregion
+
+      
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            var themDocGia = new DocGiaCreateOrUpdate();
+            themDocGia.Show(this);
+        }
+
+        private async void dtgDocGia_CellContentClickAsync(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string MaDocGia = dtgDocGia.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+                if (e.ColumnIndex == dtgDocGia.Columns["Xoa"].Index && e.RowIndex >= 0)
+                {
+
+                    DialogResult result = MessageBox.Show("Bạn có muốn xóa độc giả và toàn bộ thông tin của người này khỏi cơ sở dữ liệu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        var skXoa = await DocGia_BLL.xoaDocGiaById(Int32.Parse(MaDocGia));
+                        if (skXoa)
+                            await showDuLieuDocGia();
+                        else
+                            throw new Exception("Lỗi xóa độc Giả");
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        Console.WriteLine("Bạn đã chọn 'Không'");
+                    }
+                }
+                if (e.ColumnIndex == dtgDocGia.Columns["ChiTiet"].Index && e.RowIndex >= 0)
+                {
+                    var docGiaCapNhat = new DocGiaCreateOrUpdate(Int32.Parse(MaDocGia));
+                    docGiaCapNhat.Show(this);
+                }
+
+            }
         }
     }
     public class DocGia_BLL

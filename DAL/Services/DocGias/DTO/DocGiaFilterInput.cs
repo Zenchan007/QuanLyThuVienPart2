@@ -12,6 +12,5 @@ namespace DAL.Services.DocGias.DTO
         public string DiaChi { get; set; }
         public string SoDienThoai { get; set; }
         public string CCCD { get; set; }
-
     }
 }

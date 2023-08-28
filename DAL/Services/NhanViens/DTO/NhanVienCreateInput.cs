@@ -12,9 +12,13 @@ namespace DAL.Services.NhanVien.DTO
         public string TenNhanVien { get; set; }
         public string DiaChi { get; set; }
         public string SoDienThoai {set;get;}
-        public int VaiTro { get; set; }
+        public int VaiTroId { get; set; }
         public string TaiKhoan { set; get; }
         public string MatKhau { set; get; }
         public string CCCD { get; set; }
+        public string GioiTinh { set; get; }
+        public DateTime? NgaySinh { set; get; }
+        public DateTime? NgayVaoLam { set; get; }
+        public byte[] AnhNhanVien { set; get; }
     }
 }

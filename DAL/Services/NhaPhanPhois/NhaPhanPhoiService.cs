@@ -38,6 +38,12 @@ namespace DAL.Services.NhaPhanPhois
             var entity = await GetById(NhaPhanPhoiId);
             if (entity != null)
             {
+                var nhaPhanPhoiLienKet = _db.Saches.Where(s => s.ID_NhaPhanPhoi == NhaPhanPhoiId).ToList();
+                foreach (var s in nhaPhanPhoiLienKet)
+                {
+                    s.NhaPhanPhoi = null;
+                }
+                await _db.SaveChangesAsync();
                 _db.NhaPhanPhois.Remove(entity);
                 await _db.SaveChangesAsync();
                 return true;
@@ -73,6 +79,7 @@ namespace DAL.Services.NhaPhanPhois
             return new PageResultDTO<NhaPhanPhoi_DTO>(totalCount, listData);
         }
 
+        #region Query
         public IQueryable<Model.NhaPhanPhoi> QueryFilter(NhaPhanPhoiFilterInput input = null)
         {
             var query = _db.NhaPhanPhois.AsQueryable();
@@ -84,15 +91,16 @@ namespace DAL.Services.NhaPhanPhois
                     query = query.Where(p => p.TenNhaPhanPhoi.ToLower().Contains(lower));
 
                 }
+                if (!string.IsNullOrEmpty(input.MaNhaPhanPhoi))
+                {
+                    var lower = input.MaNhaPhanPhoi.Trim().ToLower();
+                    query = query.Where(p => p.ID.ToLower().Contains(lower));
+
+                }
                 if (!string.IsNullOrEmpty(input.DiaChi))
                 {
                     var lower = input.DiaChi.Trim().ToLower();
                     query = query.Where(p => p.DiaChi.ToLower().Contains(lower));
-                }
-                if (!string.IsNullOrEmpty(input.SoDienThoai))
-                {
-                    var lower = input.SoDienThoai.Trim().ToLower();
-                    query = query.Where(p => p.SoDienThoai.ToLower().Contains(lower));
                 }
             }
             return query;
@@ -108,7 +116,6 @@ namespace DAL.Services.NhaPhanPhois
                                 TenNhaPhanPhoi = q.TenNhaPhanPhoi,
                                 DiaChi = q.DiaChi,
                                 SoDienThoai = q.SoDienThoai,
-                              
                                 Id = q.ID
                             };
                 return query;
@@ -118,11 +125,12 @@ namespace DAL.Services.NhaPhanPhois
                 throw new Exception("Lỗi chỗ QueryFilter DTO");
             }
         }
+        #endregion
         private async Task<Model.NhaPhanPhoi> MapperCreateInputToEntity(NhaPhanPhoiCreateInput input, Model.NhaPhanPhoi entity)
         {
             await Task.Run(() =>
             {
-                entity.ID = input.Id;
+                entity.ID = input.NhaPhanPhoiId;
                 entity.TenNhaPhanPhoi = input.TenNhaPhanPhoi;
                 entity.DiaChi = input.DiaChi;
                 entity.SoDienThoai = input.SoDienThoai;

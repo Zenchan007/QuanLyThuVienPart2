@@ -82,7 +82,6 @@ namespace DAL.Services.TheLoais
                 {
                     var lower = input.TenTheLoai.Trim().ToLower();
                     query = query.Where(p => p.TenTheLoai.ToLower().Contains(lower));
-
                 }
                 
             }

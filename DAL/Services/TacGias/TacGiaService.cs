@@ -39,6 +39,12 @@ namespace DAL.Services.TacGias
             var entity = await GetById(TacGiaId);
             if (entity != null)
             {
+                var sachLienKet = _db.Saches.Where(s => s.ID_TacGia == TacGiaId).ToList();
+                foreach (var s in sachLienKet)
+                {
+                    s.TacGia = null;
+                }
+                await _db.SaveChangesAsync();
                 _db.TacGias.Remove(entity);
                 await _db.SaveChangesAsync();
                 return true;
@@ -116,7 +122,11 @@ namespace DAL.Services.TacGias
                                 TenTacGia = q.TenTacGia,
                                 DiaChi = q.DiaChi,
                                 SoDienThoai = q.SoDienThoai,
-                                Id = q.ID
+                                Id = q.ID,
+                                NamSinh = q.NamSinh,
+                                NamMat = q.NamMat,
+                                MoTa = q.MoTaThem,
+                                AnhTacGia = q.AnhTacGia                                
                             };
                 return query;
             }
@@ -136,7 +146,6 @@ namespace DAL.Services.TacGias
                 entity.NamMat = input.NamMat;
                 entity.AnhTacGia = input.AnhTacGia;
                 entity.MoTaThem = input.MoTa;
-
             });
             return entity;
         }

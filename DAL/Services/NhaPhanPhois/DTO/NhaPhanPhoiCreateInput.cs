@@ -8,7 +8,7 @@ namespace DAL.Services.NhaPhanPhois.DTO
 {
     public class NhaPhanPhoiCreateInput
     {
-        public string Id;
+        public string NhaPhanPhoiId;
         public string TenNhaPhanPhoi;
         public string SoDienThoai;
         public string DiaChi;

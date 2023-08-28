@@ -73,7 +73,7 @@ namespace GUI.Form_PhieuMuon
                 int rowIndex = dtgSach.Rows.Add();
                 dtgSach.Rows[rowIndex].Cells["ID"].Value = sach.SachId;
                 dtgSach.Rows[rowIndex].Cells["TenSach"].Value = sach.TenSach;
-                dtgSach.Rows[rowIndex].Cells["TenTacGia"].Value = sach.TenTacGia != null ? sach.TenTacGia : "Không xác định";
+                dtgSach.Rows[rowIndex].Cells["TenTacGia"].Value = sach.TenTacGia != null ? sach.TenTacGia : string.Empty;
                 dtgSach.Rows[rowIndex].Cells["TenTheLoai"].Value = sach.TenTheLoai;
                 dtgSach.Rows[rowIndex].Cells["NhaPhanPhoi"].Value = sach.TenNhaPhanPhoi;
                 dtgSach.Rows[rowIndex].Cells["NamXB"].Value = sach.NgayXb.ToString("dd/MM/yyyy");

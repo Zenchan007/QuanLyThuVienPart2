@@ -2,6 +2,8 @@
 using DAL.Services.NhanVien;
 using DAL.Services.NhanVien.DTO;
 using DAL.Services.Sachs.DTO;
+using GUI.Form_NhanVien;
+using GUI.Form_Sach;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +29,7 @@ namespace GUI
             InitializeComponent();
         }
 
-        private  void NhanVien_DanhSach_Load(object sender, EventArgs e)
+        public void NhanVien_DanhSach_Load(object sender, EventArgs e)
         {
             showDuLieuNV().ContinueWith(x =>
             {
@@ -50,12 +52,12 @@ namespace GUI
                 int rowIndex = dtgNhanVien.Rows.Add();
                 dtgNhanVien.Rows[rowIndex].Cells["ID"].Value = nv.Id;
                 dtgNhanVien.Rows[rowIndex].Cells["TenNhanVien"].Value = nv.TenNhanVien;
-                dtgNhanVien.Rows[rowIndex].Cells["DiaChi"].Value = nv.DiaChi != null ? nv.DiaChi : "Không xác định";
-                dtgNhanVien.Rows[rowIndex].Cells["SoDienThoai"].Value = nv.SoDienThoai != null ? nv.SoDienThoai : "Không xác định";
-                dtgNhanVien.Rows[rowIndex].Cells["CCCD"].Value = nv.CCCD != null ? nv.CCCD : "Không xác định";
+                dtgNhanVien.Rows[rowIndex].Cells["DiaChi"].Value = nv.DiaChi != null ? nv.DiaChi : string.Empty;
+                dtgNhanVien.Rows[rowIndex].Cells["SoDienThoai"].Value = nv.SoDienThoai != null ? nv.SoDienThoai : string.Empty;
+                dtgNhanVien.Rows[rowIndex].Cells["CCCD"].Value = nv.CCCD != null ? nv.CCCD : string.Empty;
                 dtgNhanVien.Rows[rowIndex].Cells["VaiTro"].Value = nv.VaiTro;
-                dtgNhanVien.Rows[rowIndex].Cells["TaiKhoan"].Value = nv.TaiKhoan != null ? nv.TaiKhoan : "Chưa có" ;
-                dtgNhanVien.Rows[rowIndex].Cells["MatKhau"].Value = nv.MatKhau != null ? nv.MatKhau : "Chưa có";
+                dtgNhanVien.Rows[rowIndex].Cells["TaiKhoan"].Value = nv.TaiKhoan != null ? nv.TaiKhoan : string.Empty ;
+                dtgNhanVien.Rows[rowIndex].Cells["MatKhau"].Value = nv.MatKhau != null ? nv.MatKhau : string.Empty;
             }
             if (pageNumber <= 0)
             {
@@ -82,8 +84,56 @@ namespace GUI
             }
             txtTrang.Text = (pageNumber + 1).ToString() + "/" + maxPage.ToString();
         }
-    }
 
+        private async void dtgNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string MaNhanVien = dtgNhanVien.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+                if (e.ColumnIndex == dtgNhanVien.Columns["Xoa"].Index && e.RowIndex >= 0)
+                {
+
+                    DialogResult result = MessageBox.Show("Bạn có muốn xóa tài khoản và toàn bộ thông tin của nhân viên này khỏi cơ sở dữ liệu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+
+                        var skXoa = await nhanVien_BLL.xoaNVTheoId(Int32.Parse(MaNhanVien));
+                        if (skXoa)
+                            MessageBox.Show("Xóa Thành Công");
+                        else
+                            throw new Exception("Lỗi xóa sách");
+                        await showDuLieuNV();
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        Console.WriteLine("Bạn đã chọn 'Không'");
+                    }
+                }
+                if (e.ColumnIndex == dtgNhanVien.Columns["ChiTiet"].Index && e.RowIndex >= 0)
+                {
+                    var nhanVienTT = new NhanVien_ThongTinTaiKhoan(Int32.Parse(MaNhanVien));
+                    nhanVienTT.Show(this);
+                }
+
+            }
+        }
+
+        private async void btnTim_Click(object sender, EventArgs e)
+        {
+            nhanVien_Filter.TenNhanVien = txtTenNhanVien.Text;
+            nhanVien_Filter.DiaChi = txtDiaChi.Text;
+            nhanVien_Filter.CCCD = txtCCCD.Text;
+            nhanVien_Filter.SoDienThoai = txtSoDienThoai.Text;
+            await showDuLieuNV();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            var themNhanVien = new NhanVien_ThongTinTaiKhoan();
+            themNhanVien.Show(this);
+        }
+    }
     public class NhanVien_BLL
     {
         private INhanVienService inhanVienService;

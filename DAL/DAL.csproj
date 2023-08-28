@@ -106,6 +106,11 @@
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="QLTVExceptions\PhieuMuon_SachException.cs" />
     <Compile Include="Services\DocGias\DocGiaService.cs" />
     <Compile Include="Services\DocGias\DTO\DocGiaCreateInput.cs" />
@@ -147,6 +152,9 @@
     <Compile Include="Services\TheLoais\DTO\TheLoai_DTO.cs" />
     <Compile Include="Services\TheLoais\ITheLoaiService.cs" />
     <Compile Include="Services\TheLoais\TheLoaiService.cs" />
+    <Compile Include="Services\VaiTros\IVaiTroService.cs" />
+    <Compile Include="Services\VaiTros\VaiTroDto\VaiTroFilterInput.cs" />
+    <Compile Include="Services\VaiTros\VaiTroService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
@@ -158,6 +166,10 @@
       <DependentUpon>QLTV.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

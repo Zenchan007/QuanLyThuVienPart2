@@ -10,25 +10,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GUI.Form_Sach;
 
 namespace GUI.Form_TacGia
 {
     public partial class TacGia_DanhSach : Form
     {
+        #region Khai báo 
         int pageNumber = 0;
         int pageSize = 10;
         int totalCount = 0;
         int maxPage;
         TacGia_BLL TacGia_BLL = new TacGia_BLL(new TacGiaService());
         TacGiaFilterInput TacGia_Filter = new TacGiaFilterInput();
+        #endregion
         public TacGia_DanhSach()
         {
             InitializeComponent();
         }
 
-        private void TacGia_DanhSach_Load(object sender, EventArgs e)
+        public void TacGia_DanhSach_Load(object sender, EventArgs e)
         {
-            showDuLieuNV().ContinueWith(x =>
+            showDuLieuTG().ContinueWith(x =>
             {
                 if (x.IsFaulted)
                 {
@@ -37,22 +40,23 @@ namespace GUI.Form_TacGia
             });
         }
 
-        private async Task showDuLieuNV()
+        private async Task showDuLieuTG()
         {
-            var pageResultDTO = await TacGia_BLL.LayDanhSachNV(pageNumber, pageSize, TacGia_Filter);
+            var pageResultDTO = await TacGia_BLL.LayDanhSachTG(pageNumber, pageSize, TacGia_Filter);
             var listTacGia = pageResultDTO.Items.ToList();
             totalCount = pageResultDTO.TotalCount;
             maxPage = (int)Math.Ceiling(totalCount / (float)pageSize);
             dtgTacGia.Rows.Clear();
-            foreach (var nv in listTacGia)
+            foreach (var tg in listTacGia)
             {
+                var test = tg;
                 int rowIndex = dtgTacGia.Rows.Add();
-                dtgTacGia.Rows[rowIndex].Cells["ID"].Value = nv.Id;
-                dtgTacGia.Rows[rowIndex].Cells["TenTacGia"].Value = nv.TenTacGia;
-                dtgTacGia.Rows[rowIndex].Cells["DiaChi"].Value = nv.DiaChi != null ? nv.DiaChi : "Không xác định";
-                dtgTacGia.Rows[rowIndex].Cells["SoDienThoai"].Value = nv.SoDienThoai != null ? nv.SoDienThoai : "Không xác định";
-                dtgTacGia.Rows[rowIndex].Cells["NamSinh"].Value = nv.NamSinh != DateTime.MinValue ? nv.NamSinh.ToString("dd/MM/yyyy") : "Không xác định";
-                dtgTacGia.Rows[rowIndex].Cells["NamMat"].Value = nv.NamMat != DateTime.MinValue ? nv.NamMat.ToString("dd/MM/yyyy") : "Không xác định";
+                dtgTacGia.Rows[rowIndex].Cells["ID"].Value = tg.Id;
+                dtgTacGia.Rows[rowIndex].Cells["TenTacGia"].Value = tg.TenTacGia;
+                dtgTacGia.Rows[rowIndex].Cells["DiaChi"].Value = tg.DiaChi != null ? tg.DiaChi : string.Empty;
+                dtgTacGia.Rows[rowIndex].Cells["SoDienThoai"].Value = tg.SoDienThoai != null ? tg.SoDienThoai : string.Empty;
+                dtgTacGia.Rows[rowIndex].Cells["NamSinh"].Value =   tg.NamSinh?.ToString("dd/MM/yyyy") ?? string.Empty;
+                dtgTacGia.Rows[rowIndex].Cells["NamMat"].Value = tg.NamMat?.ToString("dd/MM/yyyy") ?? string.Empty;
             }
             if (pageNumber <= 0)
             {
@@ -79,6 +83,80 @@ namespace GUI.Form_TacGia
             }
             txtTrang.Text = (pageNumber + 1).ToString() + "/" + maxPage.ToString();
         }
+
+        #region sự kiện
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            var tacGiaCrud = new TacGiaCreateOrUpdate();
+            tacGiaCrud.Show(this);
+            tacGiaCrud.Owner = this;
+        }
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+        #region cellcontentClick
+        private async void dtgTacGia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string MaTacGia = dtgTacGia.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+                if (e.ColumnIndex == dtgTacGia.Columns["Xoa"].Index && e.RowIndex >= 0)
+                {
+
+                    DialogResult result = MessageBox.Show("Bạn có muốn xóa tác giả này khỏi cơ sở dữ liệu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        var skXoa = await TacGia_BLL.xoaTacGiaById(Int32.Parse(MaTacGia));
+                        if (skXoa)
+                            await showDuLieuTG();
+                        else
+                            throw new Exception("Lỗi xóa tác giả");
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        Console.WriteLine("Bạn đã chọn 'Không'");
+                    }
+                }
+                if (e.ColumnIndex == dtgTacGia.Columns["ChiTiet"].Index && e.RowIndex >= 0)
+                {
+                    var tacGiaCrud = new TacGiaCreateOrUpdate(Int32.Parse(MaTacGia));
+                    tacGiaCrud.Show(this);
+                }
+
+            }
+        }
+        #endregion
+        #region button Điều hướng
+
+        private void btnTrangDau_Click(object sender, EventArgs e)
+        {
+            pageNumber = 1;
+            showDuLieuTG().ContinueWith(x => { if (x.IsFaulted) { MessageBox.Show("Lỗi chỗ trở về trang đầu tiên"); } });
+        }
+
+        private void btnTruoc_Click(object sender, EventArgs e)
+        {
+            pageNumber--;
+            showDuLieuTG().ContinueWith(x => { if (x.IsFaulted) { MessageBox.Show("Lỗi chỗ trở về trước"); } });
+        }
+
+        private void btnSau_Click(object sender, EventArgs e)
+        {
+            pageNumber++;
+            showDuLieuTG().ContinueWith(x => { if (x.IsFaulted) { MessageBox.Show("Lỗi chỗ next trang"); } });
+        }
+
+        private void btnTrangCuoi_Click(object sender, EventArgs e)
+        {
+            pageNumber = maxPage - 1;
+            showDuLieuTG().ContinueWith(x => { if (x.IsFaulted) { MessageBox.Show("Lỗi chỗ đến trang cuối"); } });
+        }
+        #endregion
+
+       
     }
     public class TacGia_BLL
     {
@@ -87,7 +165,7 @@ namespace GUI.Form_TacGia
         {
             iTacGiaService = sv;
         }
-        public async Task<PageResultDTO<TacGia_DTO>> LayDanhSachNV(int pageNumber, int pageSize, TacGiaFilterInput input = null)
+        public async Task<PageResultDTO<TacGia_DTO>> LayDanhSachTG(int pageNumber, int pageSize, TacGiaFilterInput input = null)
         {
             var pageInput = new PagingInput<TacGiaFilterInput>(input)
             {

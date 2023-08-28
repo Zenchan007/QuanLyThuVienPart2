@@ -86,6 +86,17 @@ namespace DAL.Services.NhanVien
                 {
                     var lower = input.DiaChi.Trim().ToLower();
                     query = query.Where(p => p.DiaChi.ToLower().Contains(lower));
+                    
+                }
+                if (!string.IsNullOrEmpty(input.SoDienThoai))
+                {
+                    var lower = input.SoDienThoai.Trim().ToLower();
+                    query = query.Where(p => p.SoDienThoai.ToLower().Contains(lower));
+                }
+                if (!string.IsNullOrEmpty(input.CCCD))
+                {
+                    var lower = input.CCCD.Trim().ToLower();
+                    query = query.Where(p => p.CCCD.ToLower().Contains(lower));
                 }
                 if (input.TenVaiTro != null && input != null)
                 {
@@ -108,7 +119,11 @@ namespace DAL.Services.NhanVien
                                 TaiKhoan = q.TaiKhoan,
                                 MatKhau = q.MatKhau,
                                 VaiTro = q.VaiTro.ID,
-                                Id = q.ID
+                                Id = q.ID,
+                                NgaySinh = q.NgaySinh,
+                                GioiTinh = q.GioiTinh,
+                                NgayVaoLam = q.NgayVaoLam,
+                                AnhNhanVien = q.AnhDaiDien
                             };
                 return query;
             }
@@ -127,8 +142,13 @@ namespace DAL.Services.NhanVien
                 entity.SoDienThoai = input.SoDienThoai;
                 entity.TaiKhoan = input.TaiKhoan;
                 entity.MatKhau = input.MatKhau;
-                entity.VaiTro.ID = input.VaiTro;
+                entity.ID_Role = input.VaiTroId;
+                entity.GioiTinh = input.GioiTinh;
+                entity.NgaySinh = input.NgaySinh;
+                entity.NgayVaoLam = input.NgayVaoLam;
+                entity.AnhDaiDien = input.AnhNhanVien;
             });
+
             return entity;
         }
         private async Task<List<string>> getAllNameNhanVien(NhanVienFilterInput input = null)

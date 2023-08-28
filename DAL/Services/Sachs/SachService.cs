@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,11 +46,13 @@ namespace DAL.Services.Sachs.DTO
                 }
                 if (!string.IsNullOrEmpty(input.TenTacGia))
                 {
-                    query = query.Where(p => p.TacGia.TenTacGia == input.TenTacGia);
+                    var lower = input.TenTacGia.Trim().ToLower();
+                    query = query.Where(p => p.TacGia.TenTacGia.ToLower().Contains(lower));
                 }
                 if (!string.IsNullOrEmpty(input.TenNhaPhanPhoi))
                 {
-                    query = query.Where(p => p.NhaPhanPhoi.TenNhaPhanPhoi == input.TenNhaPhanPhoi);
+                    var lower = input.TenSach.Trim().ToLower();
+                    query = query.Where(p => p.NhaPhanPhoi.TenNhaPhanPhoi.ToLower().Contains(lower));
                 }
             }
             return query;
@@ -72,8 +75,8 @@ namespace DAL.Services.Sachs.DTO
                                 NgayXb = q.NgayXB,
                                 AnhSach = q.AnhSach,
                                 MoTa = q.MoTa,
-                                TenTacGia = tgs != null ? tgs.TenTacGia : "Không xác định",
-                                TenNhaPhanPhoi = npps != null ? npps.TenNhaPhanPhoi : "Không xác định",
+                                TenTacGia = tgs != null ? tgs.TenTacGia : string.Empty,
+                                TenNhaPhanPhoi = npps != null ? npps.TenNhaPhanPhoi : string.Empty,
                                 TheLoais = q.TheLoais.ToList(),
                             };
                 return query;
@@ -159,13 +162,15 @@ namespace DAL.Services.Sachs.DTO
             {
                 entity.TenSach = input.TenSach;
                 entity.MoTa = input.MoTa;
-                entity.TheLoais = input.TheLoais;
+                
                 entity.DonGia = input.DonGia;
                 entity.SoLuong = input.SoLuong;
                 entity.ID_TacGia = input.TacGiaId;
                 entity.ID_NhaPhanPhoi = input.NhaPhanPhoiId;
                 entity.AnhSach = input.AnhSach;
                 entity.NgayXB = input.NgayXb;
+                var theLoais = _db.TheLoais.Where(t => input.ListTenTheLoai.Contains(t.TenTheLoai)).ToList();
+                entity.TheLoais = theLoais;
             });
             return entity;
         }
