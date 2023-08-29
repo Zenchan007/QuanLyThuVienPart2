@@ -2,13 +2,6 @@
 using DAL.Services.DocGias.DTO;
 using GUI.Form_Sach;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI.Form_DocGia
@@ -32,11 +25,11 @@ namespace GUI.Form_DocGia
             {
                 TenDocGia = txtTenDocGia.Text,
                 DiaChi = txtDiaChi.Text,
-                SoDienThoai = txtSoDienThoai.Text,  
-                CCCD  =txtCCCD.Text,
+                SoDienThoai = txtSoDienThoai.Text,
+                CCCD = txtCCCD.Text,
                 AnhDocGia = XuLyAnh.ImageToByteArray(ptbAnhDocGia.Image),
             };
-            if(ID_CapNhat != 0)
+            if (ID_CapNhat != 0)
             {
                 _iDocGiaService.UpdateDocGia(ID_CapNhat, docGiaMoi);
                 MessageBox.Show("Cập Nhật thành công độc giả");
@@ -51,12 +44,12 @@ namespace GUI.Form_DocGia
 
         private void btnDong_Click(object sender, EventArgs e)
         {
-            this.Close();   
+            this.Close();
         }
 
         private async void DocGiaCreateOrUpdate_Load(object sender, EventArgs e)
         {
-            if(ID_CapNhat != 0)
+            if (ID_CapNhat != 0)
             {
                 var docGiaCapNhat = await _iDocGiaService.GetById(ID_CapNhat);
                 txtTenDocGia.Text = docGiaCapNhat.TenDocGia;
@@ -65,12 +58,6 @@ namespace GUI.Form_DocGia
                 txtCCCD.Text = docGiaCapNhat.CCCD;
                 ptbAnhDocGia.Image = XuLyAnh.ByteArrayToImage(docGiaCapNhat.AnhSinhVien);
             }
-        }
-
-        private void DocGiaCreateOrUpdate_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (Owner != null)
-                ((DocGia_DanhSach)this.Owner).DocGia_DanhSach_Load(null, null);
         }
     }
 }

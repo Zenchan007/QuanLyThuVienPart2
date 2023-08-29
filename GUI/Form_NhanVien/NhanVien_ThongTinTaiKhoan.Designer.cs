@@ -657,7 +657,6 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "NhanVien_ThongTinTaiKhoan";
             this.Text = "NhanVien_ThongTinTaiKhoan";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NhanVien_ThongTinTaiKhoan_FormClosed);
             this.Load += new System.EventHandler(this.NhanVien_ThongTinTaiKhoan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);

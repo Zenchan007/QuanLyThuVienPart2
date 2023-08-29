@@ -16,6 +16,15 @@
           <Property Name="CCCD" Type="varchar" MaxLength="30" />
           <Property Name="AnhSinhVien" Type="image" />
         </EntityType>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PhieuMuon" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TienThu" Type="float" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="NhanVien">
           <Key>
             <PropertyRef Name="ID" />
@@ -54,6 +63,7 @@
           <Property Name="ID_NhanVien" Type="int" Nullable="false" />
           <Property Name="TenPhieuMuon" Type="nvarchar" MaxLength="50" />
           <Property Name="GhiChu" Type="nvarchar(max)" />
+          <Property Name="TienCoc" Type="float" />
         </EntityType>
         <EntityType Name="PhieuMuon_Sachs">
           <Key>
@@ -139,6 +149,18 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenRole" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_HoaDon_PhieuMuon">
+          <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhieuMuon">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="ID_PhieuMuon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NhanVien_VaiTro">
           <End Role="VaiTro" Type="Self.VaiTro" Multiplicity="0..1" />
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
@@ -261,6 +283,7 @@
         </Association>
         <EntityContainer Name="QuanLyThuVienModelStoreContainer">
           <EntitySet Name="DocGia" EntityType="Self.DocGia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhaPhanPhoi" EntityType="Self.NhaPhanPhoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuMuon" EntityType="Self.PhieuMuon" Schema="dbo" store:Type="Tables" />
@@ -273,6 +296,10 @@
           <EntitySet Name="TheLoai_Sach" EntityType="Self.TheLoai_Sach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrangThai_PhieuMuon" EntityType="Self.TrangThai_PhieuMuon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VaiTro" EntityType="Self.VaiTro" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HoaDon_PhieuMuon" Association="Self.FK_HoaDon_PhieuMuon">
+            <End Role="PhieuMuon" EntitySet="PhieuMuon" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
           <AssociationSet Name="FK_NhanVien_VaiTro" Association="Self.FK_NhanVien_VaiTro">
             <End Role="VaiTro" EntitySet="VaiTro" />
             <End Role="NhanVien" EntitySet="NhanVien" />
@@ -367,6 +394,11 @@
             <End Role="Sach" EntitySet="Saches" />
             <End Role="TheLoai" EntitySet="TheLoais" />
           </AssociationSet>
+          <EntitySet Name="HoaDons" EntityType="QuanLyThuVienModel.HoaDon" />
+          <AssociationSet Name="FK_HoaDon_PhieuMuon" Association="QuanLyThuVienModel.FK_HoaDon_PhieuMuon">
+            <End Role="PhieuMuon" EntitySet="PhieuMuons" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DocGia">
           <Key>
@@ -425,6 +457,8 @@
           <NavigationProperty Name="NhanVien" Relationship="QuanLyThuVienModel.FK_PhieuMuon_NhanVien" FromRole="PhieuMuon" ToRole="NhanVien" />
           <NavigationProperty Name="PhieuMuon_Sachs" Relationship="QuanLyThuVienModel.FK_PhieuMuon_Sachs_PhieuMuon" FromRole="PhieuMuon" ToRole="PhieuMuon_Sachs" />
           <NavigationProperty Name="TrangThai_PhieuMuon" Relationship="QuanLyThuVienModel.FK_PhieuMuon_TrangThai_PhieuMuon" FromRole="PhieuMuon" ToRole="TrangThai_PhieuMuon" />
+          <Property Name="TienCoc" Type="Double" />
+          <NavigationProperty Name="HoaDons" Relationship="QuanLyThuVienModel.FK_HoaDon_PhieuMuon" FromRole="PhieuMuon" ToRole="HoaDon" />
         </EntityType>
         <EntityType Name="PhieuMuon_Sachs">
           <Key>
@@ -612,6 +646,28 @@
           <End Type="QuanLyThuVienModel.Sach" Role="Sach" Multiplicity="*" />
           <End Type="QuanLyThuVienModel.TheLoai" Role="TheLoai" Multiplicity="*" />
         </Association>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PhieuMuon" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TienThu" Type="Double" />
+          <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PhieuMuon" Relationship="QuanLyThuVienModel.FK_HoaDon_PhieuMuon" FromRole="HoaDon" ToRole="PhieuMuon" />
+        </EntityType>
+        <Association Name="FK_HoaDon_PhieuMuon">
+          <End Type="QuanLyThuVienModel.PhieuMuon" Role="PhieuMuon" Multiplicity="1" />
+          <End Type="QuanLyThuVienModel.HoaDon" Role="HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhieuMuon">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="ID_PhieuMuon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -661,6 +717,7 @@
           <EntitySetMapping Name="PhieuMuons">
             <EntityTypeMapping TypeName="QuanLyThuVienModel.PhieuMuon">
               <MappingFragment StoreEntitySet="PhieuMuon">
+                <ScalarProperty Name="TienCoc" ColumnName="TienCoc" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="TenPhieuMuon" ColumnName="TenPhieuMuon" />
                 <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
@@ -763,6 +820,16 @@
               <ScalarProperty Name="ID" ColumnName="ID_Sach" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="HoaDons">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.HoaDon">
+              <MappingFragment StoreEntitySet="HoaDon">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="TienThu" ColumnName="TienThu" />
+                <ScalarProperty Name="ID_PhieuMuon" ColumnName="ID_PhieuMuon" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -57,7 +57,7 @@ namespace DAL.Services.NhaPhanPhois
 
         public async Task<NhaPhanPhoi_DTO> GetByIdDto(string id)
         {
-            return await QueryFilterDto().FirstOrDefaultAsync(p => p.Id == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
+            return await QueryFilterDto().FirstOrDefaultAsync(p => p.NhaPhanPhoiId == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
         }
 
         #endregion
@@ -66,7 +66,7 @@ namespace DAL.Services.NhaPhanPhois
         {
             var filtered = QueryFilterDto(input.Filter);
             var totalCount = await filtered.CountAsync();
-            filtered = filtered.OrderByDescending(p => p.Id);
+            filtered = filtered.OrderByDescending(p => p.NhaPhanPhoiId);
             if (input.SkipCount > 0)
             {
                 filtered = filtered.Skip(input.SkipCount);
@@ -116,7 +116,7 @@ namespace DAL.Services.NhaPhanPhois
                                 TenNhaPhanPhoi = q.TenNhaPhanPhoi,
                                 DiaChi = q.DiaChi,
                                 SoDienThoai = q.SoDienThoai,
-                                Id = q.ID
+                                NhaPhanPhoiId = q.ID
                             };
                 return query;
             }

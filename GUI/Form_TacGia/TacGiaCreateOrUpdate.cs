@@ -87,7 +87,7 @@ namespace GUI.Form_TacGia
                 if (ID_CapNhat != 0)
                 {
 
-                    var tacGiaCapNhat = await _iTacGiaService.QueryFilterDto().FirstOrDefaultAsync(x => x.Id == ID_CapNhat);
+                    var tacGiaCapNhat = await _iTacGiaService.QueryFilterDto().FirstOrDefaultAsync(x => x.TacGiaId == ID_CapNhat);
                     txtTenTacGia.Text = tacGiaCapNhat.TenTacGia.ToString();
                     txtDiaChi.Text = tacGiaCapNhat.DiaChi.ToString() ?? string.Empty;
                     txtSoDienThoai.Text = tacGiaCapNhat.SoDienThoai.ToString() ?? string.Empty;

@@ -8,9 +8,9 @@ namespace DAL.Services.NhaPhanPhois.DTO
 {
     public class NhaPhanPhoi_DTO
     {
-        public string Id;
-        public string TenNhaPhanPhoi;
-        public string SoDienThoai;
-        public string DiaChi;
+        public string NhaPhanPhoiId { set; get; }
+        public string TenNhaPhanPhoi { set; get; }
+        public string SoDienThoai { set; get; }
+        public string DiaChi { set; get; }
     }
 }

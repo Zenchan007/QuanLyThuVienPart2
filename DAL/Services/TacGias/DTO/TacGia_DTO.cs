@@ -8,7 +8,7 @@ namespace DAL.Services.TacGias.DTO
 {
     public class TacGia_DTO
     {
-        public int Id { get; set; }
+        public int TacGiaId { get; set; }
         public string TenTacGia { set; get; }
         public string SoDienThoai { set; get; }
         public string DiaChi { set; get; }

@@ -38,6 +38,10 @@ namespace DAL.Services.TheLoais
             var entity = await GetById(TheLoaiId);
             if (entity != null)
             {
+                foreach(var sach in entity.Saches.ToList())
+                {
+                    entity.Saches.Remove(sach);
+                }
                 _db.TheLoais.Remove(entity);
                 await _db.SaveChangesAsync();
                 return true;
@@ -51,7 +55,7 @@ namespace DAL.Services.TheLoais
 
         public async Task<TheLoai_DTO> GetByIdDto(string id)
         {
-            return await QueryFilterDto().FirstOrDefaultAsync(p => p.Id == id) ?? throw new Exception($"Không tìm thấy nhà phân phối có mã {id}.");
+            return await QueryFilterDto().FirstOrDefaultAsync(p => p.TheLoaiId == id) ?? throw new Exception($"Không tìm thấy nhà phân phối có mã {id}.");
         }
 
         #endregion
@@ -60,7 +64,7 @@ namespace DAL.Services.TheLoais
         {
             var filtered = QueryFilterDto(input.Filter);
             var totalCount = await filtered.CountAsync();
-            filtered = filtered.OrderByDescending(p => p.Id);
+            filtered = filtered.OrderByDescending(p => p.TheLoaiId);
             if (input.SkipCount > 0)
             {
                 filtered = filtered.Skip(input.SkipCount);
@@ -96,7 +100,9 @@ namespace DAL.Services.TheLoais
                             select new TheLoai_DTO
                             {
                                 TenTheLoai = q.TenTheLoai,
-                                Id = q.ID
+                                TheLoaiId = q.ID
+                                , MoTa = q.MoTaThem,
+                                SoSach = q.Saches.Count(),
                             };
                 return query;
             }

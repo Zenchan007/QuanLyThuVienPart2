@@ -57,6 +57,9 @@
     <Compile Include="Model\DocGia.cs">
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\HoaDon.cs">
+      <DependentUpon>QLTV.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\NhanVien.cs">
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>

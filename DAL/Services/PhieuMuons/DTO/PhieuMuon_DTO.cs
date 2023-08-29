@@ -16,10 +16,11 @@ namespace DAL.Services.PhieuMuons.DTO
         public string TenDocGia { set; get; }
         public int DocGiaId { set; get; }
         public DateTime NgayMuon { set; get; }
-        public DateTime NgayTra { set; get; }
+        public DateTime NgayHenTra { set; get; }
         public List<Model.PhieuMuon_Sachs> listSachMuon { get; set; }
         public int TrangThaiId { get; set; }
         public string TenTrangThai { set; get; }
         public string GhiChu { set; get; }
+
     }
 }

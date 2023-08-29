@@ -25,7 +25,7 @@ namespace GUI.Form_PhieuMuon
     public partial class PhieuMuon_CRUD : Form
     {
         #region Khai báo
-        Sach_BLL sach_BLL = new Sach_BLL();
+        
         SachFilterInput sachFilterInput;
         ISachService _iSachService = new SachService();
         ITacGiaService _iTacGiaService = new TacGiaService();
@@ -34,6 +34,7 @@ namespace GUI.Form_PhieuMuon
         IDocGiaService docGiaService = new DocGiaService();
         INhanVienService nhanVienService = new NhanVienService();
         List<PhieuMuon_SachCreateInput> listSachMuon = new List<PhieuMuon_SachCreateInput>();
+        private string iD_PhieuMuonCapNhat;
         #endregion
         public PhieuMuon_CRUD()
         {
@@ -42,6 +43,10 @@ namespace GUI.Form_PhieuMuon
 
         }
 
+        public PhieuMuon_CRUD(string iD_PhieuMuonCapNhat)
+        {
+            this.iD_PhieuMuonCapNhat = iD_PhieuMuonCapNhat;
+        }
 
         private async void PhieuMuon_CRUD_Load(object sender, EventArgs e)
         {
@@ -64,22 +69,22 @@ namespace GUI.Form_PhieuMuon
 
         private async Task showDuLieuSach()
         {
-            var pageResultDTO = await sach_BLL.LayDanhSachSach(0, 0, sachFilterInput);
-            var listSach = pageResultDTO.Items.ToList();
+          //  var pageResultDTO = await sach_BLL.LayDanhSachSach(0, 0, sachFilterInput);
+           // var listSach = pageResultDTO.Items.ToList();
 
-            dtgSach.Rows.Clear();
-            foreach (var sach in listSach)
-            {
-                int rowIndex = dtgSach.Rows.Add();
-                dtgSach.Rows[rowIndex].Cells["ID"].Value = sach.SachId;
-                dtgSach.Rows[rowIndex].Cells["TenSach"].Value = sach.TenSach;
-                dtgSach.Rows[rowIndex].Cells["TenTacGia"].Value = sach.TenTacGia != null ? sach.TenTacGia : string.Empty;
-                dtgSach.Rows[rowIndex].Cells["TenTheLoai"].Value = sach.TenTheLoai;
-                dtgSach.Rows[rowIndex].Cells["NhaPhanPhoi"].Value = sach.TenNhaPhanPhoi;
-                dtgSach.Rows[rowIndex].Cells["NamXB"].Value = sach.NgayXb.ToString("dd/MM/yyyy");
-                dtgSach.Rows[rowIndex].Cells["SoLuong"].Value = sach.SoLuong;
-                dtgSach.Rows[rowIndex].Cells["DonGia"].Value = sach.DonGia;
-            }
+            //dtgSach.Rows.Clear();
+            //foreach (var sach in listSach)
+            //{
+            //    int rowIndex = dtgSach.Rows.Add();
+            //    dtgSach.Rows[rowIndex].Cells["ID"].Value = sach.SachId;
+            //    dtgSach.Rows[rowIndex].Cells["TenSach"].Value = sach.TenSach;
+            //    dtgSach.Rows[rowIndex].Cells["TenTacGia"].Value = sach.TenTacGia != null ? sach.TenTacGia : string.Empty;
+            //    dtgSach.Rows[rowIndex].Cells["TenTheLoai"].Value = sach.TenTheLoai;
+            //    dtgSach.Rows[rowIndex].Cells["NhaPhanPhoi"].Value = sach.TenNhaPhanPhoi;
+            //    dtgSach.Rows[rowIndex].Cells["NamXB"].Value = sach.NgayXb.ToString("dd/MM/yyyy");
+            //    dtgSach.Rows[rowIndex].Cells["SoLuong"].Value = sach.SoLuong;
+            //    dtgSach.Rows[rowIndex].Cells["DonGia"].Value = sach.DonGia;
+            //}
         }
 
         #region xử lý các button

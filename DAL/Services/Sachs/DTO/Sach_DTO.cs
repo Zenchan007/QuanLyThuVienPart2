@@ -11,14 +11,14 @@ namespace DAL.Services.Sachs.DTO
     {
         public int SachId { set; get; }
         public string TenSach { get; set; }
-        public int? TacGiaId { get; set; }
+        
         public string TenTacGia { set; get; }
         public string NhaPhanPhoiId { set; get; }
         public string TenNhaPhanPhoi { set; get; }
         public DateTime NgayXb { get; set; }
         public string MoTa { get; set; }
         public int SoLuong { get; set; }
-        public float DonGia { get; set; }
+        public double DonGia { get; set; }
         public byte[] AnhSach { get; set; }
         public List<TheLoai> TheLoais { get; set; }
         public string TenTheLoai => TheLoais?.Any() != true ? null : TheLoais.Select(p => p.TenTheLoai).Aggregate((a, b) => a + ", " + b);

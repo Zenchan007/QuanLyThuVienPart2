@@ -40,6 +40,10 @@ namespace DAL.Services.NhanVien
             var entity = await GetById(NhanvienId);
             if(entity != null)
             {
+                foreach(var phieuMuon in entity.PhieuMuons.ToList())
+                {
+                    entity.PhieuMuons.Remove(phieuMuon);
+                }
                 _db.NhanViens.Remove(entity);
                  await _db.SaveChangesAsync();
                 return true;
@@ -52,14 +56,14 @@ namespace DAL.Services.NhanVien
         }
         public async Task<NhanVien_DTO> GetByIdDto(int id)
         {
-            return await QueryFilterDto().FirstOrDefaultAsync(p => p.Id == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
+            return await QueryFilterDto().FirstOrDefaultAsync(p => p.NhanVienId == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
         }
         #endregion
         public async Task<PageResultDTO<NhanVien_DTO>> Paging(PagingInput<NhanVienFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
             var totalCount = await filtered.CountAsync();
-            filtered = filtered.OrderByDescending(p => p.Id);
+            filtered = filtered.OrderByDescending(p => p.NhanVienId);
             if (input.SkipCount > 0)
             {
                 filtered = filtered.Skip(input.SkipCount);
@@ -119,11 +123,12 @@ namespace DAL.Services.NhanVien
                                 TaiKhoan = q.TaiKhoan,
                                 MatKhau = q.MatKhau,
                                 VaiTro = q.VaiTro.ID,
-                                Id = q.ID,
+                                NhanVienId = q.ID,
                                 NgaySinh = q.NgaySinh,
                                 GioiTinh = q.GioiTinh,
                                 NgayVaoLam = q.NgayVaoLam,
-                                AnhNhanVien = q.AnhDaiDien
+                                AnhNhanVien = q.AnhDaiDien,
+                                TenVaiTro = q.VaiTro.TenRole
                             };
                 return query;
             }

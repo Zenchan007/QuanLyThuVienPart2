@@ -313,7 +313,6 @@
             this.MinimumSize = new System.Drawing.Size(548, 474);
             this.Name = "DocGiaCreateOrUpdate";
             this.Text = "DocGiaCreateOrUpdate";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DocGiaCreateOrUpdate_FormClosed);
             this.Load += new System.EventHandler(this.DocGiaCreateOrUpdate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);

@@ -3,50 +3,51 @@ using GUI.Form_DocGia;
 using GUI.Form_NhanVien;
 using GUI.Form_NhaPhanPhoi;
 using GUI.Form_PhieuMuon;
+using GUI.Form_Sach;
 using GUI.Form_TacGia;
 using GUI.Form_TheLoai;
 using GUI.Login;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
 {
     public partial class MainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        public int RoleId = Login_form.Role_Id;
+        public int RoleId = 1;
         public int ID_Login = Login_form.User_Id;
+        
         public MainForm()
         {
             
             InitializeComponent();
         }
 
-        private Form activeForm = null;
-        public void showChildForm(Form childForm) 
+        UserControl currentControl;
+        public void showUserControl(UserControl control) 
         {
-            if (activeForm != null)
+            if (currentControl == null)
             {
-                activeForm.Close();
+                currentControl = control;
+                control.Dock = DockStyle.Fill;
+                Container.Controls.Add(control);
+                control.BringToFront();
             }
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            Container.Controls.Add(childForm);
-            Container.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
+            else if (currentControl != control)
+            {
+                currentControl.Hide(); // Ẩn user control hiện tại
+                Container.Controls.Remove(currentControl); // Loại bỏ user control hiện tại khỏi Container
+                currentControl.Dispose(); // Giải phóng tài nguyên của user control hiện tại
+
+                currentControl = control;
+                control.Dock = DockStyle.Fill;
+                Container.Controls.Add(control);
+                control.BringToFront();
+            }
         }
         private void btnSach_Click(object sender, EventArgs e)
         {
-            
+        
         }
 
         
@@ -72,42 +73,45 @@ namespace GUI
         }
         private void btnKhoSach_Click(object sender, EventArgs e)
         {
-            showChildForm(new Sach_DanhSach());
+            
+            showUserControl(new Sach_DanhSach2());
         }
+
+       
 
         private void btnTacGia_Click(object sender, EventArgs e)
         {
-            showChildForm(new TacGia_DanhSach());
+            showUserControl(new TacGia_DanhSach2());
         }
 
         private void btnTheLoai_Click(object sender, EventArgs e)
         {
-            showChildForm(new TheLoai_DanhSach());
+            showUserControl(new TheLoai_DanhSach2());
         }
 
         private void btnNhaPhanPhoi_Click(object sender, EventArgs e)
         {
-            showChildForm(new NhaPhanPhoi_DanhSach());
+            showUserControl(new NhaPhanPhoi_DanhSach2());
         }
 
         private void btnDocGia_Click(object sender, EventArgs e)
         {
-            showChildForm(new DocGia_DanhSach());
+            showUserControl(new DocGia_DanhSach2());
         }
 
         private void btnPhieuMuon_Click(object sender, EventArgs e)
         {
-            showChildForm(new PhieuMuon_DanhSach());
+            showUserControl(new PhieuMuon_DanhSach2());
         }
 
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
-            showChildForm(new NhanVien_DanhSach());
+            showUserControl(new NhanVien_DanhSach2());
         }
 
         private void btnUser_Click(object sender, EventArgs e)
         {
-            showChildForm(new NhanVien_ThongTinTaiKhoan(1));
+            //showChildForm(new NhanVien_ThongTinTaiKhoan(1));
         }
         private void btnDangXuat_Click(object sender, EventArgs e)
         {

@@ -8,8 +8,10 @@ namespace DAL.Services.TheLoais.DTO
 {
     public class TheLoai_DTO
     {
-        public string Id;
-        public string TenTheLoai;
-        public string MoTa;
+        public string TheLoaiId { set; get; }
+        public string TenTheLoai { set; get; }
+
+        public string MoTa { set; get; }
+        public int SoSach { set; get; }
     }
 }

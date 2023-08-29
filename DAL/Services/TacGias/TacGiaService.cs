@@ -58,7 +58,7 @@ namespace DAL.Services.TacGias
 
         public async Task<TacGia_DTO> GetByIdDto(int id)
         {
-            return await QueryFilterDto().FirstOrDefaultAsync(p => p.Id == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
+            return await QueryFilterDto().FirstOrDefaultAsync(p => p.TacGiaId == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
         }
 
         #endregion
@@ -68,7 +68,7 @@ namespace DAL.Services.TacGias
         {
             var filtered = QueryFilterDto(input.Filter);
             var totalCount = await filtered.CountAsync();
-            filtered = filtered.OrderByDescending(p => p.Id);
+            filtered = filtered.OrderByDescending(p => p.TacGiaId);
             if (input.SkipCount > 0)
             {
                 filtered = filtered.Skip(input.SkipCount);
@@ -122,7 +122,7 @@ namespace DAL.Services.TacGias
                                 TenTacGia = q.TenTacGia,
                                 DiaChi = q.DiaChi,
                                 SoDienThoai = q.SoDienThoai,
-                                Id = q.ID,
+                                TacGiaId = q.ID,
                                 NamSinh = q.NamSinh,
                                 NamMat = q.NamMat,
                                 MoTa = q.MoTaThem,

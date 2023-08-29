@@ -8,11 +8,12 @@ namespace DAL.Services.NhanVien.DTO
 {
     public class NhanVien_DTO
     {
-        public int Id;
+        public int NhanVienId { get; set; }
         public string TenNhanVien { get; set; }
         public string DiaChi { get; set; }
         public string SoDienThoai { set; get; }
         public int VaiTro { get; set; }
+        public string TenVaiTro { set; get; }
         public string TaiKhoan { set; get; }
         public string MatKhau { set; get; }
         public string CCCD { get; set; }

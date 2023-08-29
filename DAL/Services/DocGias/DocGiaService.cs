@@ -53,7 +53,7 @@ namespace DAL.Services.DocGias
 
         public async Task<DocGia_DTO> GetByIdDto(int id)
         {
-            return await QueryFilterDto().FirstOrDefaultAsync(p => p.Id == id) ?? throw new Exception($"Không tìm thấy độc giả có id {id}.");
+            return await QueryFilterDto().FirstOrDefaultAsync(p => p.DocGiaId == id) ?? throw new Exception($"Không tìm thấy độc giả có id {id}.");
         }
 
         #endregion
@@ -62,7 +62,7 @@ namespace DAL.Services.DocGias
         {
             var filtered = QueryFilterDto(input.Filter);
             var totalCount = await filtered.CountAsync();
-            filtered = filtered.OrderByDescending(p => p.Id);
+            filtered = filtered.OrderByDescending(p => p.DocGiaId);
             if (input.SkipCount > 0)
             {
                 filtered = filtered.Skip(input.SkipCount);
@@ -78,33 +78,34 @@ namespace DAL.Services.DocGias
         public IQueryable<Model.DocGia> QueryFilter(DocGiaFilterInput input = null)
         {
             var query = _db.DocGias.AsQueryable();
-            if (input != null)
-            {
-                if (!string.IsNullOrEmpty(input.TenDocGia))
-                {
-                    var lower = input.TenDocGia.Trim().ToLower();
-                    query = query.Where(p => p.TenDocGia.ToLower().Contains(lower));
-                }
-                if (!string.IsNullOrEmpty(input.CCCD))
-                {
-                    var lower = input.CCCD.Trim().ToLower();
-                    query = query.Where(p => p.CCCD.ToLower().Contains(lower));
-                }
-                if (!string.IsNullOrEmpty(input.DiaChi))
-                {
-                    var lower = input.DiaChi.Trim().ToLower();
-                    query = query.Where(p => p.DiaChi.ToLower().Contains(lower));
-                }
-                if (!string.IsNullOrEmpty(input.SoDienThoai))
-                {
-                    var lower = input.SoDienThoai.Trim().ToLower();
-                    query = query.Where(p => p.SoDienThoai.ToLower().Contains(lower));
-                }
-            }
+            //if (input != null)
+            //{
+            //    if (!string.IsNullOrEmpty(input.TenDocGia))
+            //    {
+            //        var lower = input.TenDocGia.Trim().ToLower();
+            //        query = query.Where(p => p.TenDocGia.ToLower().Contains(lower));
+            //    }
+            //    if (!string.IsNullOrEmpty(input.CCCD))
+            //    {
+            //        var lower = input.CCCD.Trim().ToLower();
+            //        query = query.Where(p => p.CCCD.ToLower().Contains(lower));
+            //    }
+            //    if (!string.IsNullOrEmpty(input.DiaChi))
+            //    {
+            //        var lower = input.DiaChi.Trim().ToLower();
+            //        query = query.Where(p => p.DiaChi.ToLower().Contains(lower));
+            //    }
+            //    if (!string.IsNullOrEmpty(input.SoDienThoai))
+            //    {
+            //        var lower = input.SoDienThoai.Trim().ToLower();
+            //        query = query.Where(p => p.SoDienThoai.ToLower().Contains(lower));
+            //    }
+            //}
             return query;
         }
         public IQueryable<DocGia_DTO> QueryFilterDto(DocGiaFilterInput input = null)
         {
+            
             try
             {
                 var query = from q in QueryFilter(input)
@@ -114,8 +115,9 @@ namespace DAL.Services.DocGias
                                 DiaChi = q.DiaChi,
                                 SoDienThoai = q.SoDienThoai,
                                 CCCD = q.CCCD,
-                                Id = q.ID
+                                DocGiaId = q.ID
                             };
+                var test = query.Select(x => x.DocGiaId).ToList();
                 return query;
             }
             catch

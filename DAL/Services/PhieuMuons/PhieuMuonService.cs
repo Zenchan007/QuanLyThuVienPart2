@@ -95,7 +95,7 @@ namespace DAL.Services.PhieuMuons
                                 TrangThaiId = q.TrangThai_PhieuMuon.ID,
                                 listSachMuon = q.PhieuMuon_Sachs.ToList(),
                                 NgayMuon = q.NgayMuon ?? DateTime.MinValue,
-                                NgayTra = q.NgayHenTra ?? DateTime.MinValue,
+                                NgayHenTra = q.NgayHenTra ?? DateTime.MinValue,
                             };
                 return query;
             }

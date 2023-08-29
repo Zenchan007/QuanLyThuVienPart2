@@ -8,7 +8,7 @@ namespace DAL.Services.DocGias.DTO
 {
     public class DocGia_DTO
     {
-        public int Id;
+        public int DocGiaId { get; set; }
         public string TenDocGia { get; set; }
         public string DiaChi { get; set; }
         public byte?[] AnhDocGia { set; get; }

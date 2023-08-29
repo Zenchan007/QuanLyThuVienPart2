@@ -136,11 +136,13 @@ namespace DAL.Services.Sachs.DTO
                 foreach(var theLoai in entity.TheLoais.ToList())
                 {
                     entity.TheLoais.Remove(theLoai);
-
-                    _db.Saches.Remove(entity);
-                    await _db.SaveChangesAsync();
-                    return true;
                 }
+                foreach(var phieuMuonSach in entity.PhieuMuon_Sachs.ToList())
+                {
+                    entity.PhieuMuon_Sachs.Remove(phieuMuonSach);
+                }
+                _db.Saches.Remove(entity);
+                await _db.SaveChangesAsync();
             }
             return false;
         }
@@ -153,8 +155,6 @@ namespace DAL.Services.Sachs.DTO
             return true;
         }
 
-       
-
         #endregion
         public async Task<Sach> MapperCreateInputToEntity(SachCreateInput input, Sach entity)
         {
@@ -162,7 +162,6 @@ namespace DAL.Services.Sachs.DTO
             {
                 entity.TenSach = input.TenSach;
                 entity.MoTa = input.MoTa;
-                
                 entity.DonGia = input.DonGia;
                 entity.SoLuong = input.SoLuong;
                 entity.ID_TacGia = input.TacGiaId;

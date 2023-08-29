@@ -142,10 +142,6 @@ namespace GUI.Form_NhanVien
             }
         }
 
-        private void NhanVien_ThongTinTaiKhoan_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (Owner != null)
-                ((NhanVien_DanhSach)this.Owner).NhanVien_DanhSach_Load(null, null);
-        }
+      
     }
 }

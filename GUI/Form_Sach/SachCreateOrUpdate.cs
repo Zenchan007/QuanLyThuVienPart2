@@ -60,16 +60,16 @@ namespace GUI.Form_Sach
         {
             var listTheLoai = _iTheLoaiService.QueryFilterDto().Select(x => x.TenTheLoai).ToList();
             cbbTheLoai.Properties.DataSource = listTheLoai;
-            var listNhaPhanPhoi = _iNhaPhanPhoiService.QueryFilterDto().Select(x => x.Id).ToList();
+            var listNhaPhanPhoi = _iNhaPhanPhoiService.QueryFilterDto().Select(x => x.NhaPhanPhoiId).ToList();
             txtMaNhaPhanPhoi.Properties.Items.AddRange(listNhaPhanPhoi);
-            var listTacGia = _iTacGiaService.QueryFilterDto().Select(x => x.Id).ToList();
+            var listTacGia = _iTacGiaService.QueryFilterDto().Select(x => x.TacGiaId).ToList();
             txtMaTacGia.Properties.Items.AddRange(listTacGia);
 
         }
 
    
 
-        private async void txtMaNhaPhanPhoi_TextChanged(object sender, EventArgs e)
+        private  void txtMaNhaPhanPhoi_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtMaNhaPhanPhoi.Text))
             {
