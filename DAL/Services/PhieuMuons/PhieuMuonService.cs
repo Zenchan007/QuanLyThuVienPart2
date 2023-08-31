@@ -62,6 +62,7 @@ namespace DAL.Services.PhieuMuons
             return query;
         }
 
+        
         public IQueryable<PhieuMuon_DTO> QueryFilterDto(PhieuMuonFilterInput input = null)
         {
             try
@@ -77,8 +78,9 @@ namespace DAL.Services.PhieuMuons
                                 TenTrangThai = q.TrangThai_PhieuMuon.TenTrangThai,
                                 TrangThaiId = q.TrangThai_PhieuMuon.ID,
                                 ListSachMuon = q.PhieuMuon_Sachs.ToList(),
-                                NgayMuon = q.NgayMuon ?? DateTime.MinValue,
-                                NgayHenTra = q.NgayHenTra ?? DateTime.MinValue,
+                                NgayMuon = q.NgayMuon,
+                                NgayHenTra = q.NgayHenTra ,
+                                NgayTra = q.NgayTra ,
                                 TienCoc = q.TienCoc ?? 0,
                                 GhiChu = q.GhiChu
                             };
@@ -145,7 +147,35 @@ namespace DAL.Services.PhieuMuons
             _db.SaveChanges();
             return false;
         }
-
+        public async Task<bool> UpdateTraSach (int Id, DateTime NgayTra)
+        {
+            var entity = await QueryFilter().FirstOrDefaultAsync(x => x.ID == Id);
+            entity.NgayTra = NgayTra;
+            if(NgayTra > entity.NgayHenTra)
+            {
+                entity.ID_TrangThai = 2;
+            }
+            else
+            {
+                entity.ID_TrangThai = 3;
+            }
+            foreach (var item in entity.PhieuMuon_Sachs)
+            {
+                item.ID_PhieuMuon = entity.ID;
+                var sachThayDoi = await _db.Saches.FirstOrDefaultAsync(x => item.ID_Sach == x.ID);
+                sachThayDoi.SoLuong += item.SoLuong;
+       
+            }
+            await _db.SaveChangesAsync();
+            return true;
+        }
+        public async Task<bool> UpdateTraSach(int Id)
+        {
+            var entity = await QueryFilter().FirstOrDefaultAsync(x => x.ID == Id);
+            entity.ID_TrangThai = 3;
+            await _db.SaveChangesAsync();
+            return true;
+        }
         public async Task<bool> UpdatePhieuMuon(int Id, PhieuMuonCreateInput input)
         {
             var entity = await QueryFilter().FirstOrDefaultAsync(x => x.ID == Id);
@@ -154,7 +184,11 @@ namespace DAL.Services.PhieuMuons
             return true;
         }
         
-
+        public async Task<bool> UpdatePhieuMuon()
+        {
+            await _db.SaveChangesAsync();
+            return true;
+        }
 
         
 

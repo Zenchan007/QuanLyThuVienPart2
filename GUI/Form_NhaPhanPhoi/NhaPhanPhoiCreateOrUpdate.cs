@@ -28,33 +28,49 @@ namespace GUI.Form_NhaPhanPhoi
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            var nhaPhanPhoiMoi = new NhaPhanPhoiCreateInput
+            try
             {
-                NhaPhanPhoiId = txtMaNhaPhanPhoi.Text,
-                TenNhaPhanPhoi = txtTenNhaPhanPhoi.Text,
-                SoDienThoai = txtSoDienThoai.Text,
-                DiaChi = txtDiaChi.Text,
-            };
-            if(!string.IsNullOrEmpty(ID_CapNhat))
-            {
-                txtMaNhaPhanPhoi.Enabled = false;
-               
-                _iNhaPhanPhoiService.UpdateNhaPhanPhoi(ID_CapNhat, nhaPhanPhoiMoi);
-                MessageBox.Show("Cập Nhật Thành Công Nhà Phân Phối");
-                this.Close();
-            }
-            else
-            {
-                if(_iNhaPhanPhoiService.QueryFilter().Any(x => x.ID == nhaPhanPhoiMoi.NhaPhanPhoiId))
+               if(string.IsNullOrEmpty(errLoi.GetError(txtMaNhaPhanPhoi)) && string.IsNullOrEmpty(errLoi.GetError(txtTenNhaPhanPhoi)))
                 {
-                    MessageBox.Show("Mã Nhà Phân Phối Đã Được Dùng. Vui Lòng Chọn Mã Khác");
+                    var nhaPhanPhoiMoi = new NhaPhanPhoiCreateInput
+                    {
+                        NhaPhanPhoiId = txtMaNhaPhanPhoi.Text,
+                        TenNhaPhanPhoi = txtTenNhaPhanPhoi.Text,
+                        SoDienThoai = txtSoDienThoai.Text,
+                        DiaChi = txtDiaChi.Text,
+                    };
+                    if (!string.IsNullOrEmpty(ID_CapNhat))
+                    {
+                        txtMaNhaPhanPhoi.Enabled = false;
+
+                        _iNhaPhanPhoiService.UpdateNhaPhanPhoi(ID_CapNhat, nhaPhanPhoiMoi);
+                        MessageBox.Show("Cập Nhật Thành Công Nhà Phân Phối");
+                        this.Close();
+                    }
+                    else
+                    {
+                        if (_iNhaPhanPhoiService.QueryFilter().Any(x => x.ID == nhaPhanPhoiMoi.NhaPhanPhoiId))
+                        {
+                            MessageBox.Show("Mã Nhà Phân Phối Đã Được Dùng. Vui Lòng Chọn Mã Khác");
+                        }
+                        else
+                        {
+                            _iNhaPhanPhoiService.CreateNhaPhanPhoi(nhaPhanPhoiMoi);
+                            MessageBox.Show("Thêm Mới Thành Công Nhà Phân Phối Vào Trong CSDL");
+                            this.Close();
+                        }
+                    }
                 }
                 else
                 {
-                    _iNhaPhanPhoiService.CreateNhaPhanPhoi(nhaPhanPhoiMoi);
-                    MessageBox.Show("Thêm Mới Thành Công Nhà Phân Phối Vào Trong CSDL");
-                    this.Close();
-                }  
+                    throw new Exception("Vui Lòng Điền Đúng, Đầy Đủ Thông Tin");
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);    
+            }finally {
+                this.Close();
             }
             
         }
@@ -66,6 +82,8 @@ namespace GUI.Form_NhaPhanPhoi
 
         private async void NhaPhanPhoiCreateOrUpdate_Load(object sender, EventArgs e)
         {
+            txtMaNhaPhanPhoi_Validating(null, null);
+            txtTenNhaPhanPhoi_Validating(null, null);
             if (!string.IsNullOrEmpty(ID_CapNhat))
             {
                 var nhaPhanPhoiCapNhat = await _iNhaPhanPhoiService.GetById(ID_CapNhat);
@@ -74,6 +92,24 @@ namespace GUI.Form_NhaPhanPhoi
                 txtDiaChi.Text = nhaPhanPhoiCapNhat.DiaChi ?? string.Empty;
                 txtSoDienThoai.Text = nhaPhanPhoiCapNhat.SoDienThoai ?? string.Empty;
             }
+        }
+
+        private void txtMaNhaPhanPhoi_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMaNhaPhanPhoi.Text))
+            {
+                errLoi.SetError(txtMaNhaPhanPhoi, "Vui Lòng Điền Mã Nhà Phân Phối");
+            }
+            else errLoi.ClearErrors();
+        }
+
+        private void txtTenNhaPhanPhoi_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenNhaPhanPhoi.Text))
+            {
+                errLoi.SetError(txtTenNhaPhanPhoi, "Vui Lòng Điền Tên Nhà Phân Phối");
+            }
+            else errLoi.ClearErrors();
         }
     }
 }

@@ -4,6 +4,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
+using GUI.Form_PhieuMuon;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,6 +82,12 @@ namespace GUI.Form_Sach
                 MessageBox.Show("Đã Xóa");
                 showDuLieuSach();
             }
+        }
+
+        private void btnGhiMuon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var phieuMuonMoi = new PhieuMuonCreateOrUpdate2();
+            phieuMuonMoi.Show(this);
         }
     }
 }

@@ -4,10 +4,13 @@ using DAL.Services.TheLoais;
 using DAL.Services.TheLoais.DTO;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
+using GUI.Form_NhaPhanPhoi;
+using GUI.Form_Sach;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,13 +32,19 @@ namespace GUI.Form_TheLoai
 
         private void TheLoai_DanhSach2_Load(object sender, EventArgs e)
         {
-            showDuLieuTheLoai();
+            showDuLieuTheLoai().ContinueWith(x =>
+            {
+                if(x.IsFaulted || x.IsCanceled)
+                {
+                    MessageBox.Show("Lỗi how Dữ liệu Thể Loại");
+                }
+            });
         }
 
-        private void showDuLieuTheLoai()
+        private async Task showDuLieuTheLoai()
         {
-            var danhSach = theLoaiService.QueryFilterDto().ToList();
-             ListSach = sachService.QueryFilterDto().ToList();
+            var danhSach = await theLoaiService.QueryFilterDto().ToListAsync();
+            ListSach = sachService.QueryFilterDto().ToList();
             BindingList<TheLoai_DTO> listTheLoai = new BindingList<TheLoai_DTO>(danhSach);
             gridTheLoai.DataSource = listTheLoai;
             dtgTheLoai.OptionsBehavior.Editable = false;
@@ -45,12 +54,36 @@ namespace GUI.Form_TheLoai
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            var theLoaiMoi = new TheLoai_CreateOrUpdate();
+            theLoaiMoi.FormClosed += childFormClose;
+            theLoaiMoi.Show(this);
+        }
+
+        private void childFormClose(object sender, FormClosedEventArgs e)
+        {
+            TheLoai_DanhSach2_Load(null, null);
         }
 
         private void btnUpdate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            if (dtgTheLoai.FocusedRowHandle >= 0)
+            {
+                int selectedRowHandle = dtgTheLoai.FocusedRowHandle;
+                string ID_NhaPhanPhoiCapNhat = dtgTheLoai.GetRowCellDisplayText(selectedRowHandle, "TheLoaiId");
+                var theLoaiCapNhat = new TheLoai_CreateOrUpdate(ID_NhaPhanPhoiCapNhat);
+                theLoaiCapNhat.FormClosed += childFormClose;
+                theLoaiCapNhat.Show(this);
+            }
+            else
+            {
+                showDuLieuTheLoai().ContinueWith(x =>
+                {
+                    if (x.IsFaulted)
+                    {
+                        MessageBox.Show("Lỗi Show Nhà Phân Phối");
+                    }
+                });
+            }
         }
 
         private async void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -61,10 +94,11 @@ namespace GUI.Form_TheLoai
                 string idXoa = dtgTheLoai.GetRowCellDisplayText(selectedRowHandle, "TheLoaiId");
                 await theLoaiService.DeleteTheLoaiById(idXoa);
                 MessageBox.Show("Đã Xóa");
-                showDuLieuTheLoai();
+                await showDuLieuTheLoai();
             }
         }
 
+        #region DetailView
         private void dtgTheLoai_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
         {
             GridView view = sender as GridView;
@@ -93,7 +127,8 @@ namespace GUI.Form_TheLoai
 
         private void dtgTheLoai_MasterRowGetRelationDisplayCaption(object sender, MasterRowGetRelationNameEventArgs e)
         {
-            
+
         }
+        #endregion
     }
 }

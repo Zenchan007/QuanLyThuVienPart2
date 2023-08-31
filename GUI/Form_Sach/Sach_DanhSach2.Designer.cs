@@ -245,6 +245,7 @@
             this.btnGhiMuon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGhiMuon.ImageOptions.Image")));
             this.btnGhiMuon.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGhiMuon.ImageOptions.LargeImage")));
             this.btnGhiMuon.Name = "btnGhiMuon";
+            this.btnGhiMuon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGhiMuon_ItemClick);
             // 
             // barDockControlTop
             // 

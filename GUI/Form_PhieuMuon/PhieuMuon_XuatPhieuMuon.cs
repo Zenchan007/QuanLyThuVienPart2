@@ -10,6 +10,14 @@ namespace GUI.Form_PhieuMuon
 {
     public partial class PhieuMuon_XuatPhieuMuon : DevExpress.XtraReports.UI.XtraReport
     {
+        #region Bien
+        public string TenDocGia { set; get; }
+        public string DiaChi { set; get; }
+        public string NgayMuon { set; get; }
+        public string NgayHenTra { set; get; }
+        public string TenNhanVien { set; get; }
+        public string TienCoc { set; get; }
+        #endregion
         public PhieuMuon_XuatPhieuMuon()
         {
             InitializeComponent();
@@ -17,12 +25,16 @@ namespace GUI.Form_PhieuMuon
 
         BindingList<PhieuMuon_Sach_DTO> data;
 
-        private void lbNgayLapPhieuMuon_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-        }
-
+     
         private void PhieuMuon_XuatPhieuMuon_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
+            lbNgayTaoPhieu.Text = "Ngày Tạo:" + DateTime.Now.ToString("dd/MM/yyyy");
+            lblNhanVienGhi.Text = TenNhanVien;
+            lbTenDocGia.Text = TenDocGia;
+            lbDiaChi.Text = DiaChi;
+            lbNgayMuon.Text = NgayMuon;
+            lbNgayHenTra.Text = NgayHenTra;
+            cTienCoc.Text = TienCoc;
             data = (BindingList<PhieuMuon_Sach_DTO>)this.DataSource;
         }
 
@@ -30,10 +42,8 @@ namespace GUI.Form_PhieuMuon
         {
             foreach (XRTableRow row in duLieuSachMuon.Rows)
             {
-                PhieuMuon_Sach_DTO obj = data[row.Index]; // Sử dụng row.Index để lấy đối tượng từ danh sách
-
-                // Gán dữ liệu từ các trường của đối tượng vào các cột của XRTable
-                row.Cells[1].Text = obj.TenSachMuon; // Thay Field1 bằng tên thực tế của trường dữ liệu
+                PhieuMuon_Sach_DTO obj = data[row.Index]; 
+                row.Cells[1].Text = obj.TenSachMuon; 
                 row.Cells[2].Text = obj.TacGiaSachMuon;
                 row.Cells[3].Text = obj.SoLuongSachMuon.ToString();
                 row.Cells[4].Text = obj.DonGiaMuon.ToString();

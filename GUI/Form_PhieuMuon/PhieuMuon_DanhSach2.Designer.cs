@@ -52,13 +52,10 @@
             this.btnUpdate = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhieuPhat = new DevExpress.XtraBars.BarButtonItem();
-            this.bar2 = new DevExpress.XtraBars.Bar();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.cardView1 = new DevExpress.XtraGrid.Views.Card.CardView();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -66,7 +63,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPhieuMuon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPhieuMuon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -83,6 +79,7 @@
             this.gvDetail.GridControl = this.gridPhieuMuon;
             this.gvDetail.Name = "gvDetail";
             this.gvDetail.OptionsView.ShowGroupPanel = false;
+            this.gvDetail.ViewCaption = "Sách Mượn";
             // 
             // gridColumn1
             // 
@@ -125,18 +122,17 @@
             // gridPhieuMuon
             // 
             gridLevelNode1.LevelTemplate = this.gvDetail;
-            gridLevelNode1.RelationName = "Detail";
+            gridLevelNode1.RelationName = "Sách Mượn";
             this.gridPhieuMuon.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
             this.gridPhieuMuon.Location = new System.Drawing.Point(12, 12);
             this.gridPhieuMuon.MainView = this.dtgPhieuMuon;
             this.gridPhieuMuon.MenuManager = this.barManager1;
             this.gridPhieuMuon.Name = "gridPhieuMuon";
-            this.gridPhieuMuon.Size = new System.Drawing.Size(829, 494);
+            this.gridPhieuMuon.Size = new System.Drawing.Size(829, 535);
             this.gridPhieuMuon.TabIndex = 4;
             this.gridPhieuMuon.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgPhieuMuon,
-            this.cardView1,
             this.gvDetail});
             // 
             // dtgPhieuMuon
@@ -156,7 +152,7 @@
             this.dtgPhieuMuon.MasterRowEmpty += new DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventHandler(this.dtgPhieuMuon_MasterRowEmpty);
             this.dtgPhieuMuon.MasterRowGetChildList += new DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventHandler(this.dtgPhieuMuon_MasterRowGetChildList);
             this.dtgPhieuMuon.MasterRowGetRelationName += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.dtgPhieuMuon_MasterRowGetRelationName);
-            this.dtgPhieuMuon.MasterRowGetRelationDisplayCaption += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.dtgPhieuMuon_MasterRowGetRelationDisplayCaption);
+            
             this.dtgPhieuMuon.MasterRowGetRelationCount += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventHandler(this.dtgPhieuMuon_MasterRowGetRelationCount);
             // 
             // ID
@@ -236,9 +232,7 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1,
-            this.bar2,
-            this.bar3});
+            this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -249,9 +243,7 @@
             this.btnUpdate,
             this.btnXoa,
             this.btnPhieuPhat});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 4;
-            this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
             // 
@@ -301,73 +293,46 @@
             this.btnPhieuPhat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPhieuPhat.ImageOptions.LargeImage")));
             this.btnPhieuPhat.Name = "btnPhieuPhat";
             // 
-            // bar2
-            // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockRow = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
-            // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(853, 51);
+            this.barDockControlTop.Size = new System.Drawing.Size(853, 30);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 569);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 589);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(853, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(853, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 51);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 518);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 559);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(853, 51);
+            this.barDockControlRight.Location = new System.Drawing.Point(853, 30);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 518);
-            // 
-            // cardView1
-            // 
-            this.cardView1.GridControl = this.gridPhieuMuon;
-            this.cardView1.Name = "cardView1";
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 559);
             // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.gridPhieuMuon);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 51);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 30);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(853, 518);
+            this.layoutControl1.Size = new System.Drawing.Size(853, 559);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -378,7 +343,7 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(853, 518);
+            this.Root.Size = new System.Drawing.Size(853, 559);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -386,7 +351,7 @@
             this.layoutControlItem1.Control = this.gridPhieuMuon;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(833, 498);
+            this.layoutControlItem1.Size = new System.Drawing.Size(833, 539);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -406,7 +371,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPhieuMuon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPhieuMuon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
@@ -423,8 +387,6 @@
         private DevExpress.XtraBars.BarButtonItem btnThem;
         private DevExpress.XtraBars.BarButtonItem btnUpdate;
         private DevExpress.XtraBars.BarButtonItem btnXoa;
-        private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -447,7 +409,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Views.Card.CardView cardView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
     }
 }

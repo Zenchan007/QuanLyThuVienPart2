@@ -20,8 +20,8 @@ namespace GUI.Form_NhanVien
     {
         public int Role_Id = 1;
         int ID_CapNhat = 0;
-        INhanVienService _iNhanVienService = new NhanVienService();
-        IVaiTroService _iVaiTroService = new VaiTroService();
+        INhanVienService nhanVienSerVice = new NhanVienService();
+        IVaiTroService vaiTroService = new VaiTroService();
         public NhanVien_ThongTinTaiKhoan()
         {
             InitializeComponent();
@@ -33,78 +33,92 @@ namespace GUI.Form_NhanVien
         }
         private async void btnLuu_Click(object sender, EventArgs e)
         {
-            
-            NhanVienCreateInput nhanVien = new NhanVienCreateInput()
+            try
             {
-                TenNhanVien = txtTenNhanVien.Text,
-                CCCD = txtCCCD.Text,
-                DiaChi = txtDiaChi.Text,
-                AnhNhanVien = XuLyAnh.ImageToByteArray(ptbAnhNhanVien.Image),
-                GioiTinh = cbbGioiTinh.Text,
-                SoDienThoai = txtSoDienThoai.Text,
-                VaiTroId = _iVaiTroService.QueryFilter().Where(x => x.TenRole == txtVaiTro.Text).Select(x => x.ID).FirstOrDefault(),
-            };
-            if (!string.IsNullOrEmpty(dtpNgaySinh.Text))
-            {
-                nhanVien.NgaySinh = dtpNgaySinh.DateTime;
-            }
-            if (!string.IsNullOrEmpty(dtpNgayVaoLam.Text))
-            {
-                nhanVien.NgayVaoLam = dtpNgayVaoLam.DateTime;
-            }
-            var tenTaiKhoan = _iNhanVienService.QueryFilter().Any(x=> x.TaiKhoan == txtTenDangNhap.Text);
-            if(tenTaiKhoan && ID_CapNhat == 0)
-            {
-                MessageBox.Show("Tên đăng nhập này đã tồn tại, vui lòng chọn một tên đăng nhập mới");
-            }
-            else
-            {
-                nhanVien.TaiKhoan = txtTenDangNhap.Text;
-                if (ID_CapNhat == 0)
+                if (string.IsNullOrEmpty(errLoi.GetError(txtTenDangNhap)) && string.IsNullOrEmpty(errLoi.GetError(txtTenNhanVien)))
                 {
-
-                    nhanVien.MatKhau = txtMatKhauHienTai.Text;
-                    await _iNhanVienService.CreateNhanVien(nhanVien);
-                    MessageBox.Show("Thêm Thành Công Nhân Viên Vào Trong CSDL");
-                    this.Close();
-                }
-                else
-                {
-
-                    var nhanVienX = await _iNhanVienService.GetById(ID_CapNhat);
-                    if (string.IsNullOrEmpty(txtMatKhauHienTai.Text) && string.IsNullOrEmpty(txtMatKhauMoi.Text) && string.IsNullOrEmpty(txtXacNhanMatKhauMoi.Text))
+                    NhanVienCreateInput nhanVien = new NhanVienCreateInput()
                     {
-                        // Cập nhật thông tin thông thường
-                        nhanVien.MatKhau = nhanVienX.MatKhau;
-                        await _iNhanVienService.UpdateNhanVien(ID_CapNhat, nhanVien);
-                        MessageBox.Show("Cập nhật thành công thông tin nhân viên");
-                        this.Close();
+                        TenNhanVien = txtTenNhanVien.Text,
+                        CCCD = txtCCCD.Text,
+                        DiaChi = txtDiaChi.Text,
+                        AnhNhanVien = XuLyAnh.ImageToByteArray(ptbAnhNhanVien.Image),
+                        GioiTinh = cbbGioiTinh.Text,
+                        SoDienThoai = txtSoDienThoai.Text,
+                        VaiTroId = vaiTroService.QueryFilter().Where(x => x.TenRole == txtVaiTro.Text).Select(x => x.ID).FirstOrDefault(),
+                    };
+                    if (!string.IsNullOrEmpty(dtpNgaySinh.Text))
+                    {
+                        nhanVien.NgaySinh = dtpNgaySinh.DateTime;
+                    }
+                    if (!string.IsNullOrEmpty(dtpNgayVaoLam.Text))
+                    {
+                        nhanVien.NgayVaoLam = dtpNgayVaoLam.DateTime;
+                    }
+                    var tenTaiKhoan = nhanVienSerVice.QueryFilter().Any(x => x.TaiKhoan == txtTenDangNhap.Text);
+                    if (tenTaiKhoan && ID_CapNhat == 0)
+                    {
+                        MessageBox.Show("Tên đăng nhập này đã tồn tại, vui lòng chọn một tên đăng nhập mới");
                     }
                     else
                     {
-                        // Cập Nhật Thông Tin và Mật Khẩu
-                        if (txtMatKhauHienTai.Text == nhanVienX.MatKhau)
+                        nhanVien.TaiKhoan = txtTenDangNhap.Text;
+                        if (ID_CapNhat == 0)
                         {
-                            if (txtMatKhauMoi.Text == txtXacNhanMatKhauMoi.Text)
+
+                            nhanVien.MatKhau = txtMatKhauHienTai.Text;
+                            await nhanVienSerVice.CreateNhanVien(nhanVien);
+                            MessageBox.Show("Thêm Thành Công Nhân Viên Vào Trong CSDL");
+                            this.Close();
+                        }
+                        else
+                        {
+
+                            var nhanVienX = await nhanVienSerVice.GetById(ID_CapNhat);
+                            if (string.IsNullOrEmpty(txtMatKhauHienTai.Text) && string.IsNullOrEmpty(txtMatKhauMoi.Text) && string.IsNullOrEmpty(txtXacNhanMatKhauMoi.Text))
                             {
-                                nhanVien.MatKhau = txtMatKhauMoi.Text;
-                                await _iNhanVienService.UpdateNhanVien(ID_CapNhat, nhanVien);
+                                nhanVien.MatKhau = nhanVienX.MatKhau;
+                                await nhanVienSerVice.UpdateNhanVien(ID_CapNhat, nhanVien);
                                 MessageBox.Show("Cập nhật thành công thông tin nhân viên");
                                 this.Close();
                             }
                             else
                             {
-                                MessageBox.Show("Mật khẩu xác nhận không đúng! Vui lòng kiểm tra lại");
+                                if (txtMatKhauHienTai.Text == nhanVienX.MatKhau)
+                                {
+                                    if (txtMatKhauMoi.Text == txtXacNhanMatKhauMoi.Text)
+                                    {
+                                        nhanVien.MatKhau = txtMatKhauMoi.Text;
+                                        await nhanVienSerVice.UpdateNhanVien(ID_CapNhat, nhanVien);
+                                        MessageBox.Show("Cập nhật thành công thông tin nhân viên");
+                                        this.Close();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Mật khẩu xác nhận không đúng! Vui lòng kiểm tra lại");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Mật khẩu không đúng! Vui lòng kiểm tra lại");
+                                }
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Mật khẩu không đúng! Vui lòng kiểm tra lại");
                         }
                     }
                 }
+                else
+                {
+                    throw new Exception("Vui Lòng Điền Đúng Và Đầy Đủ Thông TIn");
+                }
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.Close();
+            }
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -114,11 +128,13 @@ namespace GUI.Form_NhanVien
 
         private async void NhanVien_ThongTinTaiKhoan_Load(object sender, EventArgs e)
         {
-
+            txtTenNhanVien_Validating(null, null);
+            txtTenDangNhap_Validating(null, null);
             Role_Id = Login_form.Role_Id;
             if(Role_Id != 1)
             {
                  controlVaiTro.HideToCustomization();
+                 txtTenDangNhap.Enabled = false;
             }
             if(ID_CapNhat == 0)
             {
@@ -128,7 +144,7 @@ namespace GUI.Form_NhanVien
             }
             else
             {
-                var nhanVien = await _iNhanVienService.GetById(ID_CapNhat);
+                var nhanVien = await nhanVienSerVice.GetById(ID_CapNhat);
                 txtTenNhanVien.Text = nhanVien.TenNhanVien;
                 dtpNgaySinh.Text = nhanVien?.NgaySinh.ToString() ?? string.Empty;
                 dtpNgayVaoLam.Text = nhanVien?.NgayVaoLam.ToString() ?? string.Empty;
@@ -142,6 +158,22 @@ namespace GUI.Form_NhanVien
             }
         }
 
-      
+        private void txtTenNhanVien_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenNhanVien.Text))
+            {
+                errLoi.SetError(txtTenDangNhap, "Vui lòng điền Tên Nhân Viên");
+            }
+            else errLoi.ClearErrors();
+        }
+
+        private void txtTenDangNhap_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenDangNhap.Text))
+            {
+                errLoi.SetError(txtTenDangNhap, "Vui lòng điền Tên Đăng Nhập");
+            }
+            else errLoi.ClearErrors();
+        }
     }
 }

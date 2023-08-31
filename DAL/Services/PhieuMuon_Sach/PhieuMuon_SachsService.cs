@@ -82,10 +82,13 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
         }
         public async Task<PhieuMuon_Sach_DTO> MapperModelToDTO(Model.PhieuMuon_Sachs input, PhieuMuon_Sach_DTO output)
         {
-            output.TenSachMuon = input.Sach.TenSach;
-            output.TacGiaSachMuon = input.Sach.TacGia.TenTacGia;
-            output.SoLuongSachMuon = input.SoLuong;
-            output.DonGiaMuon = output.SoLuongSachMuon * input.Sach.DonGia;
+            await Task.Run(() =>
+            {
+                output.TenSachMuon = input.Sach.TenSach;
+                output.TacGiaSachMuon = input.Sach.TacGia.TenTacGia;
+                output.SoLuongSachMuon = input.SoLuong;
+                output.DonGiaMuon = output.SoLuongSachMuon * input.Sach.DonGia;
+            });
             return output;
         }
         #region crud

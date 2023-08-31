@@ -16,10 +16,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Windows.Controls;
 using System.Windows.Forms;
 
@@ -35,7 +37,7 @@ namespace GUI.Form_PhieuMuon
         private ISachService sachService = new SachService();
         private IPhieuMuon_SachsService phieuMuon_SachsService = new PhieuMuon_SachsService();
         private IPhieuMuonService phieuMuonService = new PhieuMuonService();
-        PhieuMuon_DataSet dataset;
+        
         
         #endregion
         public PhieuMuonCreateOrUpdate2()
@@ -60,11 +62,14 @@ namespace GUI.Form_PhieuMuon
             phieuMuon_Sach_DTOs = new BindingList<PhieuMuon_Sach_DTO>();
             if (ID_CapNhat == 0)
             {
+                layoutTrangThai.HideToCustomization();
+                btnInHoaDon.Enabled = false;
+                btnInPhieuMuon.Enabled = false;
                 dtpNgayTra.Text = string.Empty;
                 layoutNgayTra.HideToCustomization();
                 txtThoiGianMuon.Text = string.Empty;
                 layoutThoiGianMuon.HideToCustomization();
-                
+                emptySpaceItem1.HideToCustomization();
             }
             else
             {
@@ -74,8 +79,20 @@ namespace GUI.Form_PhieuMuon
                 dtpNgayMuon.Text = phieuMuon.NgayMuon.ToString() ?? string.Empty;
                 dtpNgayHenTra.Text = phieuMuon.NgayHenTra.ToString() ?? string.Empty;
                 txtGhiChu.Text = phieuMuon.GhiChu.ToString() ?? string.Empty;
-           
                 txtTienCoc.Text = phieuMuon.TienCoc.ToString() ?? string.Empty;
+                dtpNgayTra.Text = phieuMuon.NgayTra.ToString() ?? string.Empty;
+                txtTrangThai.Text = phieuMuon.TenTrangThai;
+                var IdTrangThai = phieuMuon.TrangThaiId;
+                if (IdTrangThai == 2)
+                {
+                    txtTrangThai.ForeColor = Color.Red;
+                }
+                else if (IdTrangThai == 3)
+                {
+                    txtTrangThai.ForeColor = Color.Green;
+                    layoutThemSach.HideToCustomization();
+                    layoutSach.HideToCustomization();
+                }
                 foreach (var item in phieuMuon.ListSachMuon)
                 {
                     var sachMuonDto = new PhieuMuon_Sach_DTO
@@ -105,7 +122,7 @@ namespace GUI.Form_PhieuMuon
 
         private async Task showDuLieuSach()
         {
-            var danhSach = sachService.QueryFilterDto().ToList();
+            var danhSach = await  sachService.QueryFilterDto().ToListAsync();
             BindingList<Sach_DTO> listSach = new BindingList<Sach_DTO>(danhSach);
             gridSach.DataSource = listSach;
             dtgSach.OptionsBehavior.Editable = false;
@@ -115,38 +132,46 @@ namespace GUI.Form_PhieuMuon
 
         private async void btnLuu_Click(object sender, EventArgs e)
         {
-            var listSachMuon = await AddDuLieuListSachMuon();
+           
             try
             {
-                if (listSachMuon.Count > 0)
+               if(txtTrangThai.Text != "Đã Trả")
                 {
-                    var phieuMuonCreate = new PhieuMuonCreateInput
+                    var listSachMuon = await AddDuLieuListSachMuon();
+                    if (listSachMuon.Count > 0)
                     {
-                        DocGiaId = Int32.Parse(txtMaDocGia.Text),
-                        NhanVienId = Int32.Parse(txtMaNhanVien.Text),
-                        GhiChu = txtGhiChu.Text,
-                        NgayMuon = dtpNgayMuon.DateTime,
-                        NgayHenTra = dtpNgayHenTra.DateTime,
-                        TrangThaiId = 1,
-                        ListSachMuon = listSachMuon,
-                        TienCoc = Int32.Parse(txtTienCoc.Text)
-                    };
-                    if(ID_CapNhat == 0)
-                    {
-                        await phieuMuonService.CreatePhieuMuon(phieuMuonCreate);
-                        MessageBox.Show("Tạo thành công phiếu mượn");
-                        await showDuLieuSach();
+                        var phieuMuonCreate = new PhieuMuonCreateInput
+                        {
+                            DocGiaId = Int32.Parse(txtMaDocGia.Text),
+                            NhanVienId = Int32.Parse(txtMaNhanVien.Text),
+                            GhiChu = txtGhiChu.Text,
+                            NgayMuon = dtpNgayMuon.DateTime,
+                            NgayHenTra = dtpNgayHenTra.DateTime,
+                            TrangThaiId = 1,
+                            ListSachMuon = listSachMuon,
+                            TienCoc = Int32.Parse(txtTienCoc.Text)
+                        };
+                        if (ID_CapNhat == 0)
+                        {
+                            await phieuMuonService.CreatePhieuMuon(phieuMuonCreate);
+                            MessageBox.Show("Tạo thành công phiếu mượn");
+                            await showDuLieuSach();
+                        }
+                        else
+                        {
+                            await phieuMuonService.UpdatePhieuMuon(ID_CapNhat, phieuMuonCreate);
+                            MessageBox.Show("Update thành công phiếu mượn");
+                            await showDuLieuSach();
+                        }
                     }
                     else
                     {
-                        await phieuMuonService.UpdatePhieuMuon(ID_CapNhat, phieuMuonCreate);
-                        MessageBox.Show("Update thành công phiếu mượn");
-                        await showDuLieuSach();
+                        MessageBox.Show("Không có cuốn sách nào trong phiếu mượn! Lưu không thành công");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Không có cuốn sách nào trong phiếu mượn! Lưu không thành công");
+
                 }
             }
             catch (PhieuMuon_SachException ex)
@@ -240,21 +265,7 @@ namespace GUI.Form_PhieuMuon
             int focusedRowHandle = dtgPhieuMuon_Sach.FocusedRowHandle;
             dtgPhieuMuon_Sach.DeleteRow(focusedRowHandle);
         }
-        private void spSoLuong_ValueChanged(object sender, EventArgs e)
-        {
-            foreach (var rowHandle in dtgPhieuMuon_Sach.GetSelectedRows())
-            {
-                int ID = (int)dtgPhieuMuon_Sach.GetRowCellValue(rowHandle, "SachMuonId");
-                int soLuong = (int)dtgPhieuMuon_Sach.GetRowCellValue(rowHandle, "SoLuongSachMuon");
-                var sach = sachService.QueryFilter().FirstOrDefault(x => x.ID == ID);
-                if (sach != null)
-                {
-                    double donGiaMuon = soLuong * sach.DonGia;
-                    dtgPhieuMuon_Sach.SetRowCellValue(rowHandle, "DonGiaMuon", donGiaMuon);
-                    // Chưa xử lý được khi tăng giảm giá trị ở spinedit thì đơn giá thay đổi theo
-                }
-            }
-        }
+        
         private void dtgPhieuMuon_Sach_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             double TienCoc = 0;
@@ -278,9 +289,35 @@ namespace GUI.Form_PhieuMuon
                 listSM.Add(x);
             };
             xuat.DataSource = listSM;
-            
+            xuat.TenNhanVien = phieuMuon.TenNhanVien;
+            xuat.TenDocGia = phieuMuon.TenDocGia;
+            xuat.NgayMuon = phieuMuon.NgayMuon?.ToString("dd/MM/yyyy");
+            xuat.NgayHenTra = phieuMuon.NgayHenTra?.ToString("dd/MM/yyyy");
+            xuat.TienCoc = phieuMuon.TienCoc.ToString();
             ReportPrintTool tool = new ReportPrintTool(xuat);
             tool.ShowPreviewDialog();
+        }
+
+        private async void btnTraSach_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            dtpNgayMuon.Enabled = false;
+            dtpNgayHenTra.Enabled = false;
+            txtThoiGianMuon.Enabled = false;
+            if (string.IsNullOrEmpty(dtpNgayTra.Text))
+            {
+                dtpNgayTra.DateTime = DateTime.Now;
+            }
+            if(dtpNgayHenTra.DateTime < dtpNgayTra.DateTime)
+            {
+                TimeSpan difference = dtpNgayTra.DateTime - dtpNgayHenTra.DateTime;
+                int soNgayMuon = difference.Days;
+                txtThoiGianMuon.Text = soNgayMuon.ToString();
+                layoutThoiGianMuon.ShowInCustomizationForm = true;
+            }
+            var x = await phieuMuonService.UpdateTraSach(ID_CapNhat, dtpNgayTra.DateTime);
+            MessageBox.Show("Trả sách thành công");
+            layoutThemSach.HideToCustomization();
+            await showDuLieuSach();
         }
     }
 }

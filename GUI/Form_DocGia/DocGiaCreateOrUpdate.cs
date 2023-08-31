@@ -21,25 +21,42 @@ namespace GUI.Form_DocGia
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            var docGiaMoi = new DocGiaCreateInput
+            try
             {
-                TenDocGia = txtTenDocGia.Text,
-                DiaChi = txtDiaChi.Text,
-                SoDienThoai = txtSoDienThoai.Text,
-                CCCD = txtCCCD.Text,
-                AnhDocGia = XuLyAnh.ImageToByteArray(ptbAnhDocGia.Image),
-            };
-            if (ID_CapNhat != 0)
+                if (string.IsNullOrEmpty(errLoi.GetError(txtTenDocGia)) && string.IsNullOrEmpty(errLoi.GetError(txtDiaChi)))
+                {
+                    var docGiaMoi = new DocGiaCreateInput
+                    {
+                        TenDocGia = txtTenDocGia.Text,
+                        DiaChi = txtDiaChi.Text,
+                        SoDienThoai = txtSoDienThoai.Text,
+                        CCCD = txtCCCD.Text,
+                        AnhDocGia = XuLyAnh.ImageToByteArray(ptbAnhDocGia.Image),
+                    };
+                    if (ID_CapNhat != 0)
+                    {
+                        _iDocGiaService.UpdateDocGia(ID_CapNhat, docGiaMoi);
+                        MessageBox.Show("Cập Nhật thành công độc giả");
+                    }
+                    else
+                    {
+                        _iDocGiaService.CreateDocGia(docGiaMoi);
+                        MessageBox.Show("Đã Thêm Thành Công Độc Giả Mới Vào Trong CSDL");
+                    }
+                }
+                else
+                {
+                    throw new Exception("Vui Lòng Điền Đúng,Đủ Thông Tin");
+                }
+            }catch(Exception ex)
             {
-                _iDocGiaService.UpdateDocGia(ID_CapNhat, docGiaMoi);
-                MessageBox.Show("Cập Nhật thành công độc giả");
+                MessageBox.Show(ex.Message);
             }
-            else
+            finally
             {
-                _iDocGiaService.CreateDocGia(docGiaMoi);
-                MessageBox.Show("Đã Thêm Thành Công Độc Giả Mới Vào Trong CSDL");
+                this.Close();
             }
-            this.Close();
+        
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -49,6 +66,8 @@ namespace GUI.Form_DocGia
 
         private async void DocGiaCreateOrUpdate_Load(object sender, EventArgs e)
         {
+            txtDiaChi_Validating(null, null);
+            txtTenDocGia_Validating(null, null);
             if (ID_CapNhat != 0)
             {
                 var docGiaCapNhat = await _iDocGiaService.GetById(ID_CapNhat);
@@ -62,6 +81,18 @@ namespace GUI.Form_DocGia
             {
 
             }
+        }
+
+        private void txtTenDocGia_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenDocGia.Text)) errLoi.SetError(txtTenDocGia, "Vui Lòng Nhập Tên Độc Giả");
+            else errLoi.ClearErrors();
+        }
+
+        private void txtDiaChi_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDiaChi.Text)) errLoi.SetError(txtDiaChi, "Vui Lòng Nhập Địa Chỉ");
+            else errLoi.ClearErrors();
         }
     }
 }

@@ -16,8 +16,9 @@ namespace DAL.Services.PhieuMuons.DTO
         public int? NhanVienId { set; get; }
         public string TenDocGia { set; get; }
         public int DocGiaId { set; get; }
-        public DateTime NgayMuon { set; get; }
-        public DateTime NgayHenTra { set; get; }
+        public DateTime? NgayMuon { set; get; }
+        public DateTime? NgayHenTra { set; get; }
+        public DateTime? NgayTra { set; get; }
         public List<Model.PhieuMuon_Sachs> ListSachMuon { get; set; }
         public int TrangThaiId { get; set; }
         public string TenTrangThai { set; get; }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtSoDienThoai = new DevExpress.XtraEditors.TextEdit();
             this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
@@ -47,6 +48,7 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.errLoi = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoDienThoai.Properties)).BeginInit();
@@ -65,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errLoi)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -106,6 +109,7 @@
             this.txtDiaChi.Size = new System.Drawing.Size(329, 26);
             this.txtDiaChi.StyleController = this.layoutControl1;
             this.txtDiaChi.TabIndex = 9;
+            this.txtDiaChi.Validating += new System.ComponentModel.CancelEventHandler(this.txtDiaChi_Validating);
             // 
             // txtTenDocGia
             // 
@@ -117,6 +121,7 @@
             this.txtTenDocGia.Size = new System.Drawing.Size(329, 26);
             this.txtTenDocGia.StyleController = this.layoutControl1;
             this.txtTenDocGia.TabIndex = 8;
+            this.txtTenDocGia.Validating += new System.ComponentModel.CancelEventHandler(this.txtTenDocGia_Validating);
             // 
             // btnLuu
             // 
@@ -301,6 +306,10 @@
             this.emptySpaceItem2.Size = new System.Drawing.Size(562, 72);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // errLoi
+            // 
+            this.errLoi.ContainerControl = this;
+            // 
             // DocGiaCreateOrUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -332,6 +341,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errLoi)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -357,5 +367,6 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errLoi;
     }
 }

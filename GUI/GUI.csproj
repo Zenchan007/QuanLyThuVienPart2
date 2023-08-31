@@ -145,7 +145,6 @@
     <Compile Include="Form_NhaPhanPhoi\NhaPhanPhoi_DanhSach2.Designer.cs">
       <DependentUpon>NhaPhanPhoi_DanhSach2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_PhieuMuon\PhieuMuonCreate.cs" />
     <Compile Include="Form_PhieuMuon\PhieuMuonCreateOrUpdate2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,14 +156,6 @@
     </Compile>
     <Compile Include="Form_PhieuMuon\PhieuMuon_DanhSach2.Designer.cs">
       <DependentUpon>PhieuMuon_DanhSach2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_PhieuMuon\PhieuMuon_DataSet.cs">
-      <DependentUpon>PhieuMuon_DataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Form_PhieuMuon\PhieuMuon_DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PhieuMuon_DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Form_PhieuMuon\PhieuMuon_XuatPhieuMuon.cs">
       <SubType>Component</SubType>
@@ -195,6 +186,12 @@
     </Compile>
     <Compile Include="Form_TacGia\TacGia_DanhSach2.Designer.cs">
       <DependentUpon>TacGia_DanhSach2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_TheLoai\TheLoai_CreateOrUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_TheLoai\TheLoai_CreateOrUpdate.Designer.cs">
+      <DependentUpon>TheLoai_CreateOrUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_TheLoai\TheLoai_DanhSach2.cs">
       <SubType>UserControl</SubType>
@@ -258,6 +255,9 @@
     <EmbeddedResource Include="Form_TacGia\TacGia_DanhSach2.resx">
       <DependentUpon>TacGia_DanhSach2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_TheLoai\TheLoai_CreateOrUpdate.resx">
+      <DependentUpon>TheLoai_CreateOrUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_TheLoai\TheLoai_DanhSach2.resx">
       <DependentUpon>TheLoai_DanhSach2.cs</DependentUpon>
     </EmbeddedResource>
@@ -278,17 +278,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Form_PhieuMuon\PhieuMuon_DataSet.xsc">
-      <DependentUpon>PhieuMuon_DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Form_PhieuMuon\PhieuMuon_DataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PhieuMuon_DataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Form_PhieuMuon\PhieuMuon_DataSet.xss">
-      <DependentUpon>PhieuMuon_DataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

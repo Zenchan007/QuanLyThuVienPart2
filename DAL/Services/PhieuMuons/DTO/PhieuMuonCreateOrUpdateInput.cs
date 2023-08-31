@@ -10,8 +10,7 @@ namespace DAL.Services.PhieuMuons.DTO
 {
     public class PhieuMuonCreateInput
     {      
-        public string PhieuMuonId { set; get; }
-        public string TenPhieuMuon { set; get; }
+        
         public int NhanVienId { get;  set; }
         public int DocGiaId { get;  set; }
         public DateTime NgayMuon { set; get; }

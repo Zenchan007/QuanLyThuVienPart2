@@ -81,6 +81,16 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap library_logo_design_precious_astonishing_131 {
+            get {
+                object obj = ResourceManager.GetObject("library-logo-design-precious-astonishing-131", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage open2 {
@@ -96,6 +106,16 @@ namespace GUI.Properties {
         internal static System.Drawing.Bitmap tải_xuống {
             get {
                 object obj = ResourceManager.GetObject("tải xuống", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tải_xuống1 {
+            get {
+                object obj = ResourceManager.GetObject("tải xuống1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

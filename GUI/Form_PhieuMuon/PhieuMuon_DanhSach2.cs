@@ -124,7 +124,7 @@ namespace GUI.Form_PhieuMuon
 
         private void dtgPhieuMuon_MasterRowGetRelationName(object sender, MasterRowGetRelationNameEventArgs e)
         {
-            e.RelationName = "Detail";
+            e.RelationName = "Sách Mượn";
         }
         #endregion
         private void dtgPhieuMuon_MasterRowGetRelationDisplayCaption(object sender, MasterRowGetRelationNameEventArgs e)

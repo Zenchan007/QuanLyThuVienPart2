@@ -18,6 +18,9 @@ namespace DAL.Services.PhieuMuons
         Task<PageResultDTO<PhieuMuon_DTO>> Paging(PagingInput<PhieuMuonFilterInput> input = null);
         Task<int> CreatePhieuMuon(PhieuMuonCreateInput input);
         Task<bool> UpdatePhieuMuon(int PhieuMuonId, PhieuMuonCreateInput input);
+        Task<bool> UpdatePhieuMuon();
         Task<bool> DeletePhieuMuonById(int PhieuMuonId);
+        Task<bool> UpdateTraSach(int Id, DateTime NgayTra);
+        Task<bool> UpdateTraSach(int Id);
     }
 }
