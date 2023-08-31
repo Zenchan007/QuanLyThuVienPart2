@@ -58,6 +58,10 @@ namespace GUI.Form_DocGia
                 txtCCCD.Text = docGiaCapNhat.CCCD;
                 ptbAnhDocGia.Image = XuLyAnh.ByteArrayToImage(docGiaCapNhat.AnhSinhVien);
             }
+            else
+            {
+
+            }
         }
     }
 }

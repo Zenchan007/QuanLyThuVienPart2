@@ -77,7 +77,7 @@ namespace DAL.Services.Sachs.DTO
                                 MoTa = q.MoTa,
                                 TenTacGia = tgs != null ? tgs.TenTacGia : string.Empty,
                                 TenNhaPhanPhoi = npps != null ? npps.TenNhaPhanPhoi : string.Empty,
-                                TheLoais = q.TheLoais.ToList(),
+                                TheLoais = q.TheLoais.Select(x => x.ID).ToList(),
                             };
                 return query;
             }

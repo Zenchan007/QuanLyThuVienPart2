@@ -96,6 +96,7 @@
             this.SoLuong});
             this.dtgSach.GridControl = this.gridSach;
             this.dtgSach.Name = "dtgSach";
+            this.dtgSach.OptionsDetail.EnableMasterViewMode = false;
             // 
             // ID
             // 
@@ -201,7 +202,7 @@
             // 
             this.barBtn.BarName = "Tools";
             this.barBtn.DockCol = 0;
-            this.barBtn.DockRow = 1;
+            this.barBtn.DockRow = 0;
             this.barBtn.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.barBtn.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),

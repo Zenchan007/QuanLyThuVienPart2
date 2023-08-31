@@ -15,7 +15,7 @@ namespace DAL.Model
     public partial class HoaDon
     {
         public int ID { get; set; }
-        public string ID_PhieuMuon { get; set; }
+        public int ID_PhieuMuon { get; set; }
         public Nullable<double> TienThu { get; set; }
         public string GhiChu { get; set; }
     

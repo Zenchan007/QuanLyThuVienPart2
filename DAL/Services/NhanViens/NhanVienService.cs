@@ -42,7 +42,7 @@ namespace DAL.Services.NhanVien
             {
                 foreach(var phieuMuon in entity.PhieuMuons.ToList())
                 {
-                    entity.PhieuMuons.Remove(phieuMuon);
+                    phieuMuon.ID_NhanVien = null;
                 }
                 _db.NhanViens.Remove(entity);
                  await _db.SaveChangesAsync();

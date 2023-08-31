@@ -32,26 +32,8 @@ namespace DAL.Services.PhieuMuons
             var query = _db.PhieuMuons.AsQueryable();
             if (input != null)
             {
-                if (!string.IsNullOrEmpty(input.PhieuMuonId))
-                {
-                    var lower = input.PhieuMuonId.Trim().ToLower();
-                    query = query.Where(p => p.ID.ToLower().Contains(lower));
-                }
-                if (!string.IsNullOrEmpty(input.TenPhieuMuon))
-                {
-                    var lower = input.TenPhieuMuon.Trim().ToLower();
-                    query = query.Where(p => p.TenPhieuMuon.ToLower().Contains(lower));
-                }
-                if (!string.IsNullOrEmpty(input.TenDocGia))
-                {
-                    var lower = input.TenDocGia.Trim().ToLower();
-                    query = query.Where(p => p.TenPhieuMuon.ToLower().Contains(lower));
-                }
-                if (!string.IsNullOrEmpty(input.TenNhanVien))
-                {
-                    var lower = input.TenNhanVien.Trim().ToLower();
-                    query = query.Where(p => p.TenPhieuMuon.ToLower().Contains(lower));
-                }
+               
+              
                 if (input.TrangThaiId != 0 && input.TrangThaiId != null)
                 {
                     query = query.Where(p => p.ID_TrangThai == input.TrangThaiId);
@@ -88,15 +70,19 @@ namespace DAL.Services.PhieuMuons
                             select new PhieuMuon_DTO
                             {
                                 PhieuMuonId = q.ID,
-                                TenPhieuMuon = q.TenPhieuMuon,
+                                DocGiaId = q.ID_DocGia,
+                                NhanVienId = q.ID_NhanVien,
                                 TenNhanVien = q.NhanVien.TenNhanVien,
                                 TenDocGia = q.DocGia.TenDocGia,
                                 TenTrangThai = q.TrangThai_PhieuMuon.TenTrangThai,
                                 TrangThaiId = q.TrangThai_PhieuMuon.ID,
-                                listSachMuon = q.PhieuMuon_Sachs.ToList(),
+                                ListSachMuon = q.PhieuMuon_Sachs.ToList(),
                                 NgayMuon = q.NgayMuon ?? DateTime.MinValue,
                                 NgayHenTra = q.NgayHenTra ?? DateTime.MinValue,
+                                TienCoc = q.TienCoc ?? 0,
+                                GhiChu = q.GhiChu
                             };
+          
                 return query;
             }
             catch (Exception ex)
@@ -124,21 +110,22 @@ namespace DAL.Services.PhieuMuons
         #endregion
 
         #region crud
-        public async Task<PhieuMuon> GetById(string id)
+        public async Task<PhieuMuon> GetById(int id)
         {
             return await QueryFilter().FirstOrDefaultAsync(p => p.ID == id) ?? throw new Exception($"Không tìm thấy Phiếu Mượn có id {id}.");
         }
 
-        public async Task<PhieuMuon_DTO> GetByIdDto(string id)
+        public async Task<PhieuMuon_DTO> GetByIdDto(int id)
         {
             return await QueryFilterDto().FirstOrDefaultAsync(p => p.PhieuMuonId == id) ?? throw new Exception($"Không tìm thấy sách id {id}.");
         }
-        public async Task<string> CreatePhieuMuon(PhieuMuonCreateInput input)
+        public async Task<int> CreatePhieuMuon(PhieuMuonCreateInput input)
         { 
             var entity = await MapperCreateInputToEntity(input, new PhieuMuon());
-            //Check số lượng sách mượn trước
-            foreach(var item in entity.PhieuMuon_Sachs)
+            
+            foreach (var item in entity.PhieuMuon_Sachs)
             {
+                item.ID_PhieuMuon = entity.ID;
                 var sachThayDoi = await _db.Saches.FirstOrDefaultAsync(x => item.ID_Sach == x.ID);
                 if (item.SoLuong <= sachThayDoi.SoLuong)
                 {
@@ -151,32 +138,34 @@ namespace DAL.Services.PhieuMuons
             return entity.ID;
         }
 
-        public async Task<bool> DeletePhieuMuonById(string Id)
+        public async Task<bool> DeletePhieuMuonById(int Id)
         {
             var entity = await GetById(Id);
+            _db.PhieuMuons.Remove(entity);
+            _db.SaveChanges();
             return false;
         }
 
-        public async Task<bool> UpdatePhieuMuon(string Id, PhieuMuonCreateInput input)
+        public async Task<bool> UpdatePhieuMuon(int Id, PhieuMuonCreateInput input)
         {
             var entity = await QueryFilter().FirstOrDefaultAsync(x => x.ID == Id);
             entity = await MapperCreateInputToEntity(input, entity);
+            await _db.SaveChangesAsync();
             return true;
         }
+        
 
 
-
+        
 
         public async Task<PhieuMuon> MapperCreateInputToEntity(PhieuMuonCreateInput input, PhieuMuon entity)
         {
             await Task.Run(() =>
             {
-                entity.ID = input.PhieuMuonId;
-                entity.TenPhieuMuon = input.TenPhieuMuon;
                 entity.ID_NhanVien = input.NhanVienId;
                 entity.ID_DocGia = input.DocGiaId;
                 entity.NgayMuon = input.NgayMuon;
-                entity.NgayHenTra = input.NgayTra;
+                entity.NgayHenTra = input.NgayHenTra;
                 entity.GhiChu = input.GhiChu;
                 entity.ID_TrangThai = input.TrangThaiId;
                 entity.PhieuMuon_Sachs = new List<Model.PhieuMuon_Sachs>();
@@ -184,87 +173,17 @@ namespace DAL.Services.PhieuMuons
                 {
                     entity.PhieuMuon_Sachs.Add(new Model.PhieuMuon_Sachs
                     {
-                        ID_PhieuMuon = item.PhieuMuonId,
                         ID_Sach = item.SachId,
                         SoLuong = item.SoLuong
                     });
                 }
+                entity.TienCoc = input.TienCoc;
             });
             return entity;
         }
 
         #endregion
-        private async Task<bool> CheckValidCreateOrUpdate(PhieuMuonCreateInput input)
-        {
-            var listSachId = input.ListSachMuon.Select(p => p.SachId).ToList();
-            var listSachs = await _db.Saches.Where(p => listSachId.Contains(p.ID)).ToListAsync();
-
-            // Gộp số lượng sách theo sachid, trong trường hợp mượn 1 sách mà nhiều lần
-            var listSachMuon = input.ListSachMuon.GroupBy(p => p.SachId)
-                .Select(p => new PhieuMuon_SachCreateInput
-                {
-                    SachId = p.Key,
-                    SoLuong = p.Sum(a => a.SoLuong)
-                }).ToList();
-            // ktra xem tổng số lượng sách mượn có lớn hơn số sách trong kho hay ko
-            foreach (var sachMuon in listSachMuon)
-            {
-                var sach = listSachs.FirstOrDefault(p => p.ID == sachMuon.SachId);
-                if (sach == null)
-                {
-                    throw new Exception($"Khong tin thay sach id {sachMuon.SachId}");
-                }
-                if (sach.SoLuong > sachMuon.SoLuong)
-                {
-                    throw new Exception($"Sách {sach.TenSach}, số lượng sách mượn ({sachMuon.SoLuong}) không thể nhiều hơn số lượng sách hiện có ({sach.SoLuong})");
-                }
-            }
-            input.ListSachMuon = listSachMuon;
-            
-            return true;
-        }
-
-        //private async Task<int> CreateOrUpdate(PhieuMuonCreateOrUpdateInput input, int Id = 0)
-        //{
-        //    var entity = new PhieuMuon();
-        //    if (Id > 0)
-        //    {
-        //        entity = _db.PhieuMuons.FirstOrDefault(p => p.ID == Id);
-        //        if (entity == null)
-        //        {
-        //            throw new Exception($"Khong tin thay phieu muon co id {Id}");
-        //        }
-
-        //        // xoa ds sach muonj cux
-        //        var listSacMuon = await _db.PhieuMuon_Sach.Where(p => p.ID_Sach == entity.ID).ToListAsync();
-        //        if (listSacMuon?.Any() == true)
-        //        {
-        //            _db.PhieuMuon_Sach.RemoveRange(listSacMuon);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        _db.PhieuMuons.Add(entity);
-        //    }
-        //    // cap nhat du lieu
-        //    entity.ID_NhanVien = input.NhanVienId;
-        //    entity.ID_DocGia = input.DocGiaId;
-        //    entity.NgayMuon = input.NgayMuon;
-        //    entity.NgayHenTra = input.NgayTra;
-        //    entity.TenPhieuMuon = input.TenPhieuMuon;
-        //    entity.GhiChu = input.GhiChu;
-        //    // them ds muon mowis
-        //    var listSachMuon = input.ListSachMuon.Select(p => new PhieuMuon_Sach
-        //    {
-        //        ID_PhieuMuon = entity.ID,
-        //        ID_Sach = p.SachId,
-        //        SoLuong = p.SoLuong,
-        //    }).ToList();
-        //    entity.PhieuMuon_Sach = listSachMuon;
-
-        //    await _db.SaveChangesAsync();
-        //    return entity.ID;
-        //}
-
+        
+       
     }
 }

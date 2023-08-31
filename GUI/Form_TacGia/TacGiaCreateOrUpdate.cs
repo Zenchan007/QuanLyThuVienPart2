@@ -20,7 +20,7 @@ namespace GUI.Form_TacGia
 {
     public partial class TacGiaCreateOrUpdate : Form
     {
-        SimpleLabelItem labelErr;
+        
         public int ID_CapNhat = 0;
         ITacGiaService _iTacGiaService = new TacGiaService();
         public TacGiaCreateOrUpdate()
@@ -35,43 +35,49 @@ namespace GUI.Form_TacGia
         
         private async void btnLuu_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(labelErr?.Text))
-            {
-                TacGiaCreateInput tacGiaCreateInput = new TacGiaCreateInput();
-                tacGiaCreateInput.TenTacGia = txtTenTacGia.Text;
-                tacGiaCreateInput.DiaChi = txtDiaChi.Text;
-                tacGiaCreateInput.SoDienThoai = txtSoDienThoai.Text;
-                if (checkNgaySinh.Checked)
+            try {
+                if (string.IsNullOrEmpty(errLoi.GetError(txtTenTacGia)) && string.IsNullOrEmpty(errLoi.GetError(dtpNgaySinh)))
                 {
-                    tacGiaCreateInput.NamSinh = null;
+                    TacGiaCreateInput tacGiaCreateInput = new TacGiaCreateInput();
+                    tacGiaCreateInput.TenTacGia = txtTenTacGia.Text;
+                    tacGiaCreateInput.DiaChi = txtDiaChi.Text;
+                    tacGiaCreateInput.SoDienThoai = txtSoDienThoai.Text;
+                    if (checkNgaySinh.Checked)
+                    {
+                        tacGiaCreateInput.NamSinh = null;
+                    }
+                    else
+                    {
+                        tacGiaCreateInput.NamSinh = dtpNgaySinh.Text != string.Empty ? (DateTime?)dtpNgaySinh.DateTime : null;
+                    }
+                    if (checkNgayMat.Checked)
+                    {
+                        tacGiaCreateInput.NamMat = null;
+                    }
+                    else
+                    {
+                        tacGiaCreateInput.NamMat = dtpNgayMat.Text != string.Empty ? (DateTime?)dtpNgayMat.DateTime : null;
+                    }
+                    tacGiaCreateInput.AnhTacGia = XuLyAnh.ImageToByteArray(ptbAnhTacGia.Image);
+                    tacGiaCreateInput.MoTa = txtMoTa.Text;
+                    if (ID_CapNhat != 0)
+                    {
+                        await _iTacGiaService.UpdateTacGia(ID_CapNhat, tacGiaCreateInput);
+                        MessageBox.Show("Update Thành Công Tác Giả");
+                    }
+                    else
+                    {
+                        await _iTacGiaService.CreateTacGia(tacGiaCreateInput);
+                        MessageBox.Show("Thêm thành công Tác Giả");
+                    }
+                    this.Close();
                 }
                 else
                 {
-                    tacGiaCreateInput.NamSinh = dtpNgaySinh.Text != string.Empty ? (DateTime?)dtpNgaySinh.DateTime : null;
+                    MessageBox.Show("Vui lòng điền thông tin hợp lệ");
                 }
-                if (checkNgayMat.Checked)
-                {
-                    tacGiaCreateInput.NamMat = null;
-                }
-                else
-                {
-                    tacGiaCreateInput.NamMat = dtpNgayMat.Text != string.Empty ? (DateTime?)dtpNgayMat.DateTime : null;
-                }
-                tacGiaCreateInput.AnhTacGia = XuLyAnh.ImageToByteArray(ptbAnhTacGia.Image);
-                tacGiaCreateInput.MoTa = txtMoTa.Text;
-                if (ID_CapNhat != 0)
-                {
-                    await _iTacGiaService.UpdateTacGia(ID_CapNhat, tacGiaCreateInput);
-                    MessageBox.Show("Update Thành Công Tác Giả");
-                }
-                else
-                {
-                    await _iTacGiaService.CreateTacGia(tacGiaCreateInput);
-                    MessageBox.Show("Thêm thành công Tác Giả");
-                }
-                this.Close();
             }
-            else
+            catch
             {
                 MessageBox.Show("Vui lòng điền thông tin hợp lệ");
             }
@@ -124,80 +130,33 @@ namespace GUI.Form_TacGia
             
         }
 
-        private void TacGiaCreateOrUpdate_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //if (Owner != null)
-                //((TacGia_DanhSach)this.Owner).TacGia_DanhSach_Load(null, null);
-        }
-
-        
-        void SetError(LayoutControlItem item, string text)
-        {
-            if (item.Tag == null)
-            {
-                labelErr = new SimpleLabelItem() { Text = text };
-                labelErr.AppearanceItemCaption.ForeColor = Color.Red;
-                item.Tag = labelErr;
-                GrpThongTinSach.AddItem(labelErr);
-                labelErr.Move(item, DevExpress.XtraLayout.Utils.InsertType.Right);
-                labelErr.SizeConstraintsType = SizeConstraintsType.Custom;
-                labelErr.MaxSize = new Size(300, 20);
-            }
-        }
-
-        void RemoveError(LayoutControlItem item)
-        {
-            if (item.Tag != null)
-            {
-                SimpleLabelItem label = item.Tag as SimpleLabelItem;
-                GrpThongTinSach.Remove(label);
-            }
-        }
-
-
-       
-
         private void txtTenTacGia_Validating(object sender, CancelEventArgs e)
         {
-            TextEdit editor = sender as TextEdit;
-            LayoutControlItem item = layOutThongTinTacGia.GetItemByControl(editor);
-            if (editor.Text.Length <= 6)
-            {
-                SetError(item, "Tên quá ngắn!");
-            }
-            else
-            {
-                RemoveError(item);
-            }
-           
+            if (string.IsNullOrEmpty(txtTenTacGia.Text))
+                errLoi.SetError(txtTenTacGia, "Tên tác giả không được để trống");
+            else errLoi.ClearErrors();
         }
 
         private void dtpNgaySinh_Validating(object sender, CancelEventArgs e)
         {
-            DateEdit editor = sender as DateEdit;
-            LayoutControlItem item = layOutThongTinTacGia.GetItemByControl(editor);
-            if(!string.IsNullOrEmpty(editor.Text) && !string.IsNullOrEmpty(dtpNgayMat.Text))
+            if(!string.IsNullOrEmpty(dtpNgayMat.Text) && !string.IsNullOrEmpty(dtpNgaySinh.Text))
             {
-                if(editor.DateTime >= dtpNgayMat.DateTime)
+                if(dtpNgayMat.DateTime <= dtpNgaySinh.DateTime)
                 {
-                    SetError(item, "Ngày Sinh Đang Lớn Hơn Ngày Mất");
-                }else RemoveError(item);
+                    errLoi.SetError(dtpNgaySinh, "Ngày sinh không được nhỏ hơn hoặc bằng ngày mất");
+                }
             }
         }
 
         private void dtpNgayMat_Validating(object sender, CancelEventArgs e)
         {
-            DateEdit editor = sender as DateEdit;
-            LayoutControlItem item = layOutThongTinTacGia.GetItemByControl(editor);
-            if (!string.IsNullOrEmpty(editor.Text) && !string.IsNullOrEmpty(dtpNgaySinh.Text))
+            if (!string.IsNullOrEmpty(dtpNgayMat.Text) && !string.IsNullOrEmpty(dtpNgaySinh.Text))
             {
-                if (editor.DateTime<= dtpNgaySinh.DateTime)
+                if (dtpNgayMat.DateTime <= dtpNgaySinh.DateTime)
                 {
-                    SetError(item, "Ngày Mất Đang Nhỏ Hơn Ngày Sinh");
+                    errLoi.SetError(dtpNgaySinh, "Ngày sinh không được nhỏ hơn hoặc bằng ngày mất");
                 }
-                else RemoveError(item);
             }
         }
-
     }
 }

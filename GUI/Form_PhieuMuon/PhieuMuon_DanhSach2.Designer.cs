@@ -29,7 +29,23 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhieuMuon_DanhSach2));
+            this.gvDetail = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridPhieuMuon = new DevExpress.XtraGrid.GridControl();
+            this.dtgPhieuMuon = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenDocGia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenNhanVien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NgayMuon = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NgayHenTra = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoLuongMuon = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.IDTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -42,27 +58,180 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.cardView1 = new DevExpress.XtraGrid.Views.Card.CardView();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.gridPhieuMuon = new DevExpress.XtraGrid.GridControl();
-            this.dtgPhieuMuon = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TenDocGia = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TenNhanVien = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NgayMuon = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NgayHenTra = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SoLuongMuon = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.IDTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
-            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridPhieuMuon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPhieuMuon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // gvDetail
+            // 
+            this.gvDetail.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4});
+            this.gvDetail.GridControl = this.gridPhieuMuon;
+            this.gvDetail.Name = "gvDetail";
+            this.gvDetail.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "ID Phiếu Mượn";
+            this.gridColumn1.FieldName = "PhieuMuonId";
+            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Width = 94;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Tên Sách Mượn";
+            this.gridColumn2.FieldName = "TenSachMuon";
+            this.gridColumn2.MinWidth = 25;
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
+            this.gridColumn2.Width = 94;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Tác Giả Sách Mượn";
+            this.gridColumn3.FieldName = "TacGiaSachMuon";
+            this.gridColumn3.MinWidth = 25;
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 1;
+            this.gridColumn3.Width = 94;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Số Lượng Mượn";
+            this.gridColumn4.FieldName = "SoLuongSachMuon";
+            this.gridColumn4.MinWidth = 25;
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.Width = 94;
+            // 
+            // gridPhieuMuon
+            // 
+            gridLevelNode1.LevelTemplate = this.gvDetail;
+            gridLevelNode1.RelationName = "Detail";
+            this.gridPhieuMuon.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.gridPhieuMuon.Location = new System.Drawing.Point(12, 12);
+            this.gridPhieuMuon.MainView = this.dtgPhieuMuon;
+            this.gridPhieuMuon.MenuManager = this.barManager1;
+            this.gridPhieuMuon.Name = "gridPhieuMuon";
+            this.gridPhieuMuon.Size = new System.Drawing.Size(829, 494);
+            this.gridPhieuMuon.TabIndex = 4;
+            this.gridPhieuMuon.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.dtgPhieuMuon,
+            this.cardView1,
+            this.gvDetail});
+            // 
+            // dtgPhieuMuon
+            // 
+            this.dtgPhieuMuon.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.ID,
+            this.TenDocGia,
+            this.TenNhanVien,
+            this.NgayMuon,
+            this.NgayHenTra,
+            this.SoLuongMuon,
+            this.TrangThai,
+            this.IDTrangThai});
+            this.dtgPhieuMuon.GridControl = this.gridPhieuMuon;
+            this.dtgPhieuMuon.Name = "dtgPhieuMuon";
+            this.dtgPhieuMuon.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.dtgPhieuMuon_CustomDrawCell);
+            this.dtgPhieuMuon.MasterRowEmpty += new DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventHandler(this.dtgPhieuMuon_MasterRowEmpty);
+            this.dtgPhieuMuon.MasterRowGetChildList += new DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventHandler(this.dtgPhieuMuon_MasterRowGetChildList);
+            this.dtgPhieuMuon.MasterRowGetRelationName += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.dtgPhieuMuon_MasterRowGetRelationName);
+            this.dtgPhieuMuon.MasterRowGetRelationDisplayCaption += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.dtgPhieuMuon_MasterRowGetRelationDisplayCaption);
+            this.dtgPhieuMuon.MasterRowGetRelationCount += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventHandler(this.dtgPhieuMuon_MasterRowGetRelationCount);
+            // 
+            // ID
+            // 
+            this.ID.Caption = "ID Phiếu Mượn";
+            this.ID.FieldName = "PhieuMuonId";
+            this.ID.MinWidth = 25;
+            this.ID.Name = "ID";
+            this.ID.Width = 94;
+            // 
+            // TenDocGia
+            // 
+            this.TenDocGia.Caption = "Tên Độc Giả";
+            this.TenDocGia.FieldName = "TenDocGia";
+            this.TenDocGia.MinWidth = 25;
+            this.TenDocGia.Name = "TenDocGia";
+            this.TenDocGia.Visible = true;
+            this.TenDocGia.VisibleIndex = 1;
+            this.TenDocGia.Width = 94;
+            // 
+            // TenNhanVien
+            // 
+            this.TenNhanVien.Caption = "Tên Nhân Viên";
+            this.TenNhanVien.FieldName = "TenNhanVien";
+            this.TenNhanVien.MinWidth = 25;
+            this.TenNhanVien.Name = "TenNhanVien";
+            this.TenNhanVien.Visible = true;
+            this.TenNhanVien.VisibleIndex = 0;
+            this.TenNhanVien.Width = 94;
+            // 
+            // NgayMuon
+            // 
+            this.NgayMuon.Caption = "Ngày Mượn";
+            this.NgayMuon.FieldName = "NgayMuon";
+            this.NgayMuon.MinWidth = 25;
+            this.NgayMuon.Name = "NgayMuon";
+            this.NgayMuon.Visible = true;
+            this.NgayMuon.VisibleIndex = 2;
+            this.NgayMuon.Width = 94;
+            // 
+            // NgayHenTra
+            // 
+            this.NgayHenTra.Caption = "Ngày Hẹn Trả";
+            this.NgayHenTra.FieldName = "NgayHenTra";
+            this.NgayHenTra.MinWidth = 25;
+            this.NgayHenTra.Name = "NgayHenTra";
+            this.NgayHenTra.Visible = true;
+            this.NgayHenTra.VisibleIndex = 3;
+            this.NgayHenTra.Width = 94;
+            // 
+            // SoLuongMuon
+            // 
+            this.SoLuongMuon.Caption = "Số Lượng Sách Mượn";
+            this.SoLuongMuon.FieldName = "SoLuongMuon";
+            this.SoLuongMuon.MinWidth = 25;
+            this.SoLuongMuon.Name = "SoLuongMuon";
+            this.SoLuongMuon.Width = 94;
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.Caption = "Trạng Thái";
+            this.TrangThai.FieldName = "TenTrangThai";
+            this.TrangThai.MinWidth = 25;
+            this.TrangThai.Name = "TrangThai";
+            this.TrangThai.Visible = true;
+            this.TrangThai.VisibleIndex = 4;
+            this.TrangThai.Width = 94;
+            // 
+            // IDTrangThai
+            // 
+            this.IDTrangThai.Caption = "ID Trạng Thái";
+            this.IDTrangThai.FieldName = "TrangThaiId";
+            this.IDTrangThai.MinWidth = 25;
+            this.IDTrangThai.Name = "IDTrangThai";
+            this.IDTrangThai.Width = 94;
             // 
             // barManager1
             // 
@@ -186,6 +355,11 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 518);
             // 
+            // cardView1
+            // 
+            this.cardView1.GridControl = this.gridPhieuMuon;
+            this.cardView1.Name = "cardView1";
+            // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.gridPhieuMuon);
@@ -196,105 +370,6 @@
             this.layoutControl1.Size = new System.Drawing.Size(853, 518);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // gridPhieuMuon
-            // 
-            this.gridPhieuMuon.Location = new System.Drawing.Point(12, 12);
-            this.gridPhieuMuon.MainView = this.dtgPhieuMuon;
-            this.gridPhieuMuon.MenuManager = this.barManager1;
-            this.gridPhieuMuon.Name = "gridPhieuMuon";
-            this.gridPhieuMuon.Size = new System.Drawing.Size(829, 494);
-            this.gridPhieuMuon.TabIndex = 4;
-            this.gridPhieuMuon.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.dtgPhieuMuon});
-            // 
-            // dtgPhieuMuon
-            // 
-            this.dtgPhieuMuon.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.ID,
-            this.TenDocGia,
-            this.TenNhanVien,
-            this.NgayMuon,
-            this.NgayHenTra,
-            this.SoLuongMuon,
-            this.TrangThai,
-            this.IDTrangThai});
-            this.dtgPhieuMuon.GridControl = this.gridPhieuMuon;
-            this.dtgPhieuMuon.Name = "dtgPhieuMuon";
-            // 
-            // ID
-            // 
-            this.ID.Caption = "ID Phiếu Mượn";
-            this.ID.FieldName = "PhieuMuonId";
-            this.ID.MinWidth = 25;
-            this.ID.Name = "ID";
-            this.ID.Width = 94;
-            // 
-            // TenDocGia
-            // 
-            this.TenDocGia.Caption = "Tên Độc Giả";
-            this.TenDocGia.FieldName = "TenDocGia";
-            this.TenDocGia.MinWidth = 25;
-            this.TenDocGia.Name = "TenDocGia";
-            this.TenDocGia.Visible = true;
-            this.TenDocGia.VisibleIndex = 1;
-            this.TenDocGia.Width = 94;
-            // 
-            // TenNhanVien
-            // 
-            this.TenNhanVien.Caption = "Tên Nhân Viên";
-            this.TenNhanVien.FieldName = "TenNhanVien";
-            this.TenNhanVien.MinWidth = 25;
-            this.TenNhanVien.Name = "TenNhanVien";
-            this.TenNhanVien.Visible = true;
-            this.TenNhanVien.VisibleIndex = 0;
-            this.TenNhanVien.Width = 94;
-            // 
-            // NgayMuon
-            // 
-            this.NgayMuon.Caption = "Ngày Mượn";
-            this.NgayMuon.FieldName = "NgayMuon";
-            this.NgayMuon.MinWidth = 25;
-            this.NgayMuon.Name = "NgayMuon";
-            this.NgayMuon.Visible = true;
-            this.NgayMuon.VisibleIndex = 2;
-            this.NgayMuon.Width = 94;
-            // 
-            // NgayHenTra
-            // 
-            this.NgayHenTra.Caption = "Ngày Hẹn Trả";
-            this.NgayHenTra.FieldName = "NgayHenTra";
-            this.NgayHenTra.MinWidth = 25;
-            this.NgayHenTra.Name = "NgayHenTra";
-            this.NgayHenTra.Visible = true;
-            this.NgayHenTra.VisibleIndex = 3;
-            this.NgayHenTra.Width = 94;
-            // 
-            // SoLuongMuon
-            // 
-            this.SoLuongMuon.Caption = "Số Lượng Sách Mượn";
-            this.SoLuongMuon.FieldName = "SoLuongMuon";
-            this.SoLuongMuon.MinWidth = 25;
-            this.SoLuongMuon.Name = "SoLuongMuon";
-            this.SoLuongMuon.Width = 94;
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.Caption = "Trạng Thái";
-            this.TrangThai.FieldName = "TenTrangThai";
-            this.TrangThai.MinWidth = 25;
-            this.TrangThai.Name = "TrangThai";
-            this.TrangThai.Visible = true;
-            this.TrangThai.VisibleIndex = 4;
-            this.TrangThai.Width = 94;
-            // 
-            // IDTrangThai
-            // 
-            this.IDTrangThai.Caption = "ID Trạng Thái";
-            this.IDTrangThai.FieldName = "TrangThaiId";
-            this.IDTrangThai.MinWidth = 25;
-            this.IDTrangThai.Name = "IDTrangThai";
-            this.IDTrangThai.Width = 94;
             // 
             // Root
             // 
@@ -327,11 +402,13 @@
             this.Name = "PhieuMuon_DanhSach2";
             this.Size = new System.Drawing.Size(853, 589);
             this.Load += new System.EventHandler(this.PhieuMuon_DanhSach2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
-            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gvDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridPhieuMuon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPhieuMuon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
@@ -366,5 +443,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn TrangThai;
         private DevExpress.XtraBars.BarButtonItem btnPhieuPhat;
         private DevExpress.XtraGrid.Columns.GridColumn IDTrangThai;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvDetail;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Views.Card.CardView cardView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
     }
 }

@@ -29,17 +29,6 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
         public IQueryable<Model.PhieuMuon_Sachs> QueryFilter(PhieuMuon_SachFilterInput input = null)
         {
             var query = _db.PhieuMuon_Sachs.AsQueryable();
-
-            if (!string.IsNullOrEmpty(input.PhieuMuonId))
-            {
-                var lower = input.PhieuMuonId.Trim().ToLower();
-                query = query.Where(p => p.PhieuMuon.ID.ToLower().Contains(lower));
-            }
-
-            if (input.SachId != 0)
-            {
-                query = query.Where(p => p.Sach.ID == input.SachId);
-            }
             return query;
         }
 
@@ -48,14 +37,13 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
             try
             {
                 var query = from q in QueryFilter(input)
-                            from ss in _db.Saches.Where(s => q.ID_Sach == s.ID).Include(d => d.TheLoais)
                             select new PhieuMuon_Sach_DTO
                             {
+                                SachMuonId = q.ID_Sach,
                                 PhieuMuonId = q.ID_PhieuMuon,
-                                TenPhieuMuon = q.PhieuMuon.TenPhieuMuon,
-                                TenSach = ss.TenSach,
-                                listTheLoai = ss.TheLoais.ToList(),
-                                TacGia = ss.TacGia.TenTacGia
+                                TenSachMuon = q.Sach.TenSach,
+                                TacGiaSachMuon = q.Sach.TacGia.TenTacGia,
+                                SoLuongSachMuon = q.SoLuong
                             };
                 return query;
             }
@@ -92,6 +80,14 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
             });
             return entity;
         }
+        public async Task<PhieuMuon_Sach_DTO> MapperModelToDTO(Model.PhieuMuon_Sachs input, PhieuMuon_Sach_DTO output)
+        {
+            output.TenSachMuon = input.Sach.TenSach;
+            output.TacGiaSachMuon = input.Sach.TacGia.TenTacGia;
+            output.SoLuongSachMuon = input.SoLuong;
+            output.DonGiaMuon = output.SoLuongSachMuon * input.Sach.DonGia;
+            return output;
+        }
         #region crud
         public async Task<int> CreatePhieuMuon_Sach(PhieuMuon_SachCreateInput input)
         {
@@ -108,15 +104,12 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
 
         public async Task<int> UpdatePhieuMuon_Sach(PhieuMuon_SachFilterInput filter, PhieuMuon_SachCreateInput input)
         {
-            var entity = await QueryFilter().FirstOrDefaultAsync(x => x.ID_Sach == filter.SachId && x.ID_PhieuMuon == filter.PhieuMuonId);
-            entity = await MapperCreateInputToEntity(input, entity);
+           
             return await _db.SaveChangesAsync();
         }
 
         async Task<int> IPhieuMuon_SachsService.DeletePhieuMuon_SachById(PhieuMuon_SachFilterInput filter)
         {
-            var entity = await QueryFilter().FirstOrDefaultAsync(x => x.ID_Sach == filter.SachId && x.ID_PhieuMuon == filter.PhieuMuonId);
-            _db.PhieuMuon_Sachs.Remove(entity);
             return await _db.SaveChangesAsync();
         }
         #endregion

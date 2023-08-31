@@ -8,8 +8,11 @@ namespace DAL.Services.PhieuMuon_Sachs
 {
     public class PhieuMuon_SachCreateInput
     {
-       public string PhieuMuonId { set; get; }
-       public int SachId { set; get; }
-       public int SoLuong { set; get; }
+        public int PhieuMuonId { set; get; }
+        public int SachId { set; get; }
+        public int SoLuong { set; get; }
+
+        public double DonGiaMuon {set; get;}
+
     }
 }

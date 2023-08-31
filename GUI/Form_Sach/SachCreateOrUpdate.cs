@@ -87,42 +87,46 @@ namespace GUI.Form_Sach
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(errLoi.GetError(txtTenSach)) && string.IsNullOrEmpty(errLoi.GetError(cbbTheLoai)) && string.IsNullOrEmpty(errLoi.GetError(txtMaNhaPhanPhoi)) 
-                && string.IsNullOrEmpty(errLoi.GetError(txtMaTacGia)) && string.IsNullOrEmpty(errLoi.GetError(dtpNgayXB)) && string.IsNullOrEmpty(errLoi.GetError(txtDonGia)) && 
-                string.IsNullOrEmpty(errLoi.GetError(txtSoLuong)))
+            try
+            {
+                if (string.IsNullOrEmpty(errLoi.GetError(txtTenSach)) && string.IsNullOrEmpty(errLoi.GetError(cbbTheLoai)) && string.IsNullOrEmpty(errLoi.GetError(txtMaNhaPhanPhoi))
+                    && string.IsNullOrEmpty(errLoi.GetError(txtMaTacGia)) && string.IsNullOrEmpty(errLoi.GetError(dtpNgayXB)) && string.IsNullOrEmpty(errLoi.GetError(txtDonGia)) &&
+                    string.IsNullOrEmpty(errLoi.GetError(txtSoLuong)))
 
-            {
-                var sachCRUD = new SachCreateInput
                 {
-                    TenSach = txtTenSach.Text,
-                    TacGiaId = Int32.Parse(txtMaTacGia.Text),
-                    NhaPhanPhoiId = txtMaNhaPhanPhoi.Text,
-                    NgayXb = dtpNgayXB.DateTime,
-                    SoLuong = Int32.Parse(txtSoLuong.Text),
-                    DonGia = float.Parse(txtDonGia.Text),
-                    ListTenTheLoai = cbbTheLoai.Properties.Items
-                                                        .Where(item => item.CheckState == CheckState.Checked)
-                                                        .Select(item => item.Value.ToString())
-                                                        .ToList(),
-                    AnhSach = XuLyAnh.ImageToByteArray(ptbAnhSach.Image),
-                    MoTa = txtMoTa.Text
-                };
-                if (ID_CapNhat != 0)
-                {
-                    var sachCapNhat = _iSachService.UpdateSach(ID_CapNhat, sachCRUD);
-                    MessageBox.Show("Cập Nhật Thành Công Vào Trong CSDL");
+                    var sachCRUD = new SachCreateInput
+                    {
+                        TenSach = txtTenSach.Text,
+                        TacGiaId = Int32.Parse(txtMaTacGia.Text),
+                        NhaPhanPhoiId = txtMaNhaPhanPhoi.Text,
+                        NgayXb = dtpNgayXB.DateTime,
+                        SoLuong = Int32.Parse(txtSoLuong.Text),
+                        DonGia = float.Parse(txtDonGia.Text),
+                        ListTenTheLoai = cbbTheLoai.Properties.Items
+                                                            .Where(item => item.CheckState == CheckState.Checked)
+                                                            .Select(item => item.Value.ToString())
+                                                            .ToList(),
+                        AnhSach = XuLyAnh.ImageToByteArray(ptbAnhSach.Image),
+                        MoTa = txtMoTa.Text
+                    };
+                    if (ID_CapNhat != 0)
+                    {
+                        var sachCapNhat = _iSachService.UpdateSach(ID_CapNhat, sachCRUD);
+                        MessageBox.Show("Cập Nhật Thành Công Vào Trong CSDL");
+                    }
+                    else
+                    {
+                        var sachCapNhat = _iSachService.CreateSach(sachCRUD);
+                        MessageBox.Show("Thêm Thành Công Vào Trong CSDL");
+                    }
+                    this.Close();
                 }
-                else
-                {
-                    var sachCapNhat = _iSachService.CreateSach(sachCRUD);
-                    MessageBox.Show("Thêm Thành Công Vào Trong CSDL");
-                }
-                this.Close();
             }
-            else
+            catch
             {
-                MessageBox.Show("Vui Lòng Điền Đúng Định Dạng");
+                MessageBox.Show("Vui lòng điền đúng định dạng");
             }
+            
         }
 
         private void btnDong_Click(object sender, EventArgs e)

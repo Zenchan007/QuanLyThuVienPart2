@@ -14,7 +14,7 @@ namespace DAL.Model
     
     public partial class PhieuMuon_Sachs
     {
-        public string ID_PhieuMuon { get; set; }
+        public int ID_PhieuMuon { get; set; }
         public int ID_Sach { get; set; }
         public int SoLuong { get; set; }
     

@@ -29,7 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TheLoai_DanhSach2));
+            this.dtgSach = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridTheLoai = new DevExpress.XtraGrid.GridControl();
+            this.dtgTheLoai = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenTheLoai = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MoTa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoLuongSach = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -42,22 +54,140 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.gridTheLoai = new DevExpress.XtraGrid.GridControl();
-            this.dtgTheLoai = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TenTheLoai = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.MoTa = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SoLuongSach = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgSach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTheLoai)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgTheLoai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridTheLoai)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgTheLoai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dtgSach
+            // 
+            this.dtgSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4});
+            this.dtgSach.GridControl = this.gridTheLoai;
+            this.dtgSach.Name = "dtgSach";
+            this.dtgSach.OptionsDetail.SmartDetailExpand = false;
+            this.dtgSach.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Tên Sách";
+            this.gridColumn1.FieldName = "TenSach";
+            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 94;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Tên Tác Giả";
+            this.gridColumn2.FieldName = "TenTacGia";
+            this.gridColumn2.MinWidth = 25;
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 94;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Ngày Xuất Bản";
+            this.gridColumn3.FieldName = "NgayXb";
+            this.gridColumn3.MinWidth = 25;
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 94;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Số Lượng";
+            this.gridColumn4.FieldName = "SoLuong";
+            this.gridColumn4.MinWidth = 25;
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 94;
+            // 
+            // gridTheLoai
+            // 
+            gridLevelNode1.LevelTemplate = this.dtgSach;
+            gridLevelNode1.RelationName = "SachTheLoai";
+            this.gridTheLoai.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.gridTheLoai.Location = new System.Drawing.Point(12, 12);
+            this.gridTheLoai.MainView = this.dtgTheLoai;
+            this.gridTheLoai.MenuManager = this.barManager1;
+            this.gridTheLoai.Name = "gridTheLoai";
+            this.gridTheLoai.Size = new System.Drawing.Size(923, 515);
+            this.gridTheLoai.TabIndex = 4;
+            this.gridTheLoai.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.dtgTheLoai,
+            this.dtgSach});
+            // 
+            // dtgTheLoai
+            // 
+            this.dtgTheLoai.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.ID,
+            this.TenTheLoai,
+            this.MoTa,
+            this.SoLuongSach});
+            this.dtgTheLoai.GridControl = this.gridTheLoai;
+            this.dtgTheLoai.Name = "dtgTheLoai";
+            this.dtgTheLoai.MasterRowEmpty += new DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventHandler(this.dtgTheLoai_MasterRowEmpty);
+            this.dtgTheLoai.MasterRowGetChildList += new DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventHandler(this.dtgTheLoai_MasterRowGetChildList);
+            this.dtgTheLoai.MasterRowGetRelationName += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.dtgTheLoai_MasterRowGetRelationName);
+            this.dtgTheLoai.MasterRowGetRelationDisplayCaption += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.dtgTheLoai_MasterRowGetRelationDisplayCaption);
+            this.dtgTheLoai.MasterRowGetRelationCount += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventHandler(this.dtgTheLoai_MasterRowGetRelationCount);
+            // 
+            // ID
+            // 
+            this.ID.Caption = "ID Thể Loại";
+            this.ID.FieldName = "TheLoaiId";
+            this.ID.MinWidth = 25;
+            this.ID.Name = "ID";
+            this.ID.Visible = true;
+            this.ID.VisibleIndex = 0;
+            this.ID.Width = 94;
+            // 
+            // TenTheLoai
+            // 
+            this.TenTheLoai.Caption = "Tên Thể Loại";
+            this.TenTheLoai.FieldName = "TenTheLoai";
+            this.TenTheLoai.MinWidth = 25;
+            this.TenTheLoai.Name = "TenTheLoai";
+            this.TenTheLoai.Visible = true;
+            this.TenTheLoai.VisibleIndex = 1;
+            this.TenTheLoai.Width = 94;
+            // 
+            // MoTa
+            // 
+            this.MoTa.Caption = "Mô Tả Thể Loại";
+            this.MoTa.FieldName = "MoTa";
+            this.MoTa.MinWidth = 25;
+            this.MoTa.Name = "MoTa";
+            this.MoTa.Visible = true;
+            this.MoTa.VisibleIndex = 2;
+            this.MoTa.Width = 94;
+            // 
+            // SoLuongSach
+            // 
+            this.SoLuongSach.Caption = "Số Sách Thuộc Thể Loại Này";
+            this.SoLuongSach.FieldName = "SoSach";
+            this.SoLuongSach.MinWidth = 25;
+            this.SoLuongSach.Name = "SoLuongSach";
+            this.SoLuongSach.Visible = true;
+            this.SoLuongSach.VisibleIndex = 3;
+            this.SoLuongSach.Width = 94;
             // 
             // barManager1
             // 
@@ -182,67 +312,6 @@
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // gridTheLoai
-            // 
-            this.gridTheLoai.Location = new System.Drawing.Point(12, 12);
-            this.gridTheLoai.MainView = this.dtgTheLoai;
-            this.gridTheLoai.MenuManager = this.barManager1;
-            this.gridTheLoai.Name = "gridTheLoai";
-            this.gridTheLoai.Size = new System.Drawing.Size(923, 515);
-            this.gridTheLoai.TabIndex = 4;
-            this.gridTheLoai.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.dtgTheLoai});
-            // 
-            // dtgTheLoai
-            // 
-            this.dtgTheLoai.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.ID,
-            this.TenTheLoai,
-            this.MoTa,
-            this.SoLuongSach});
-            this.dtgTheLoai.GridControl = this.gridTheLoai;
-            this.dtgTheLoai.Name = "dtgTheLoai";
-            // 
-            // ID
-            // 
-            this.ID.Caption = "ID Thể Loại";
-            this.ID.FieldName = "TheLoaiId";
-            this.ID.MinWidth = 25;
-            this.ID.Name = "ID";
-            this.ID.Visible = true;
-            this.ID.VisibleIndex = 0;
-            this.ID.Width = 94;
-            // 
-            // TenTheLoai
-            // 
-            this.TenTheLoai.Caption = "Tên Thể Loại";
-            this.TenTheLoai.FieldName = "TenTheLoai";
-            this.TenTheLoai.MinWidth = 25;
-            this.TenTheLoai.Name = "TenTheLoai";
-            this.TenTheLoai.Visible = true;
-            this.TenTheLoai.VisibleIndex = 1;
-            this.TenTheLoai.Width = 94;
-            // 
-            // MoTa
-            // 
-            this.MoTa.Caption = "Mô Tả Thể Loại";
-            this.MoTa.FieldName = "MoTa";
-            this.MoTa.MinWidth = 25;
-            this.MoTa.Name = "MoTa";
-            this.MoTa.Visible = true;
-            this.MoTa.VisibleIndex = 2;
-            this.MoTa.Width = 94;
-            // 
-            // SoLuongSach
-            // 
-            this.SoLuongSach.Caption = "Số Sách Thuộc Thể Loại Này";
-            this.SoLuongSach.FieldName = "SoSach";
-            this.SoLuongSach.MinWidth = 25;
-            this.SoLuongSach.Name = "SoLuongSach";
-            this.SoLuongSach.Visible = true;
-            this.SoLuongSach.VisibleIndex = 3;
-            this.SoLuongSach.Width = 94;
-            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -274,11 +343,12 @@
             this.Name = "TheLoai_DanhSach2";
             this.Size = new System.Drawing.Size(947, 610);
             this.Load += new System.EventHandler(this.TheLoai_DanhSach2_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgSach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTheLoai)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgTheLoai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridTheLoai)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgTheLoai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
@@ -308,5 +378,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn TenTheLoai;
         private DevExpress.XtraGrid.Columns.GridColumn MoTa;
         private DevExpress.XtraGrid.Columns.GridColumn SoLuongSach;
+        private DevExpress.XtraGrid.Views.Grid.GridView dtgSach;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
     }
 }

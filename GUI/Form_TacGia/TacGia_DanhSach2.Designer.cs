@@ -44,12 +44,12 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridTacGia = new DevExpress.XtraGrid.GridControl();
             this.dtgTacGia = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenTacGia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoDienThoai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -203,6 +203,44 @@
             this.dtgTacGia.GridControl = this.gridTacGia;
             this.dtgTacGia.Name = "dtgTacGia";
             // 
+            // ID
+            // 
+            this.ID.Caption = "ID Tác Giả";
+            this.ID.FieldName = "TacGiaId";
+            this.ID.MinWidth = 25;
+            this.ID.Name = "ID";
+            this.ID.Width = 94;
+            // 
+            // TenTacGia
+            // 
+            this.TenTacGia.Caption = "Tên Tác Giả";
+            this.TenTacGia.FieldName = "TenTacGia";
+            this.TenTacGia.MinWidth = 25;
+            this.TenTacGia.Name = "TenTacGia";
+            this.TenTacGia.Visible = true;
+            this.TenTacGia.VisibleIndex = 0;
+            this.TenTacGia.Width = 94;
+            // 
+            // SoDienThoai
+            // 
+            this.SoDienThoai.Caption = "Số Điện Thoại";
+            this.SoDienThoai.FieldName = "SoDienThoai";
+            this.SoDienThoai.MinWidth = 25;
+            this.SoDienThoai.Name = "SoDienThoai";
+            this.SoDienThoai.Visible = true;
+            this.SoDienThoai.VisibleIndex = 1;
+            this.SoDienThoai.Width = 94;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.Caption = "Địa Chỉ";
+            this.DiaChi.FieldName = "DiaChi";
+            this.DiaChi.MinWidth = 25;
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Visible = true;
+            this.DiaChi.VisibleIndex = 2;
+            this.DiaChi.Width = 94;
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -221,46 +259,6 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(904, 588);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // ID
-            // 
-            this.ID.Caption = "ID Tác Giả";
-            this.ID.FieldName = "TacGiaId";
-            this.ID.MinWidth = 25;
-            this.ID.Name = "ID";
-            this.ID.Visible = true;
-            this.ID.VisibleIndex = 0;
-            this.ID.Width = 94;
-            // 
-            // TenTacGia
-            // 
-            this.TenTacGia.Caption = "Tên Tác Giả";
-            this.TenTacGia.FieldName = "TenTacGia";
-            this.TenTacGia.MinWidth = 25;
-            this.TenTacGia.Name = "TenTacGia";
-            this.TenTacGia.Visible = true;
-            this.TenTacGia.VisibleIndex = 1;
-            this.TenTacGia.Width = 94;
-            // 
-            // SoDienThoai
-            // 
-            this.SoDienThoai.Caption = "Số Điện Thoại";
-            this.SoDienThoai.FieldName = "SoDienThoai";
-            this.SoDienThoai.MinWidth = 25;
-            this.SoDienThoai.Name = "SoDienThoai";
-            this.SoDienThoai.Visible = true;
-            this.SoDienThoai.VisibleIndex = 2;
-            this.SoDienThoai.Width = 94;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.Caption = "Địa Chỉ";
-            this.DiaChi.FieldName = "DiaChi";
-            this.DiaChi.MinWidth = 25;
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Visible = true;
-            this.DiaChi.VisibleIndex = 3;
-            this.DiaChi.Width = 94;
             // 
             // TacGia_DanhSach2
             // 

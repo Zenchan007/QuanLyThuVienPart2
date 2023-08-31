@@ -37,10 +37,10 @@
             this.btnTacGia = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btnTheLoai = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btnNhaPhanPhoi = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.btnDocGia = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btnPhieuMuon = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btnBaoCao = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btnNhanVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.btnDocGia = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btnUser = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btnDangXuat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
@@ -68,9 +68,9 @@
             this.btnNhaPhanPhoi,
             this.btnPhieuMuon,
             this.btnBaoCao,
+            this.btnDocGia,
             this.btnNhanVien,
             this.btnUser,
-            this.btnDocGia,
             this.btnDangXuat});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Margin = new System.Windows.Forms.Padding(4);
@@ -177,23 +177,6 @@
             this.btnNhaPhanPhoi.Text = "Nhà Phân Phối";
             this.btnNhaPhanPhoi.Click += new System.EventHandler(this.btnNhaPhanPhoi_Click);
             // 
-            // btnDocGia
-            // 
-            this.btnDocGia.Appearance.Default.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDocGia.Appearance.Default.Options.UseFont = true;
-            this.btnDocGia.Appearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDocGia.Appearance.Disabled.Options.UseFont = true;
-            this.btnDocGia.Appearance.Hovered.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDocGia.Appearance.Hovered.Options.UseFont = true;
-            this.btnDocGia.Appearance.Normal.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDocGia.Appearance.Normal.Options.UseFont = true;
-            this.btnDocGia.Appearance.Pressed.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDocGia.Appearance.Pressed.Options.UseFont = true;
-            this.btnDocGia.Name = "btnDocGia";
-            this.btnDocGia.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.btnDocGia.Text = "Độc Giả";
-            this.btnDocGia.Click += new System.EventHandler(this.btnDocGia_Click);
-            // 
             // btnPhieuMuon
             // 
             this.btnPhieuMuon.Appearance.Default.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -243,6 +226,23 @@
             this.btnNhanVien.Name = "btnNhanVien";
             this.btnNhanVien.Text = "Nhân Viên";
             this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
+            // 
+            // btnDocGia
+            // 
+            this.btnDocGia.Appearance.Default.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDocGia.Appearance.Default.Options.UseFont = true;
+            this.btnDocGia.Appearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDocGia.Appearance.Disabled.Options.UseFont = true;
+            this.btnDocGia.Appearance.Hovered.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDocGia.Appearance.Hovered.Options.UseFont = true;
+            this.btnDocGia.Appearance.Normal.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDocGia.Appearance.Normal.Options.UseFont = true;
+            this.btnDocGia.Appearance.Pressed.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDocGia.Appearance.Pressed.Options.UseFont = true;
+            this.btnDocGia.Name = "btnDocGia";
+            this.btnDocGia.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.btnDocGia.Text = "Độc Giả";
+            this.btnDocGia.Click += new System.EventHandler(this.btnDocGia_Click);
             // 
             // btnUser
             // 

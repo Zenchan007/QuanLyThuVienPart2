@@ -20,8 +20,7 @@ namespace DAL.Services.Sachs.DTO
         public int SoLuong { get; set; }
         public double DonGia { get; set; }
         public byte[] AnhSach { get; set; }
-        public List<TheLoai> TheLoais { get; set; }
-        public string TenTheLoai => TheLoais?.Any() != true ? null : TheLoais.Select(p => p.TenTheLoai).Aggregate((a, b) => a + ", " + b);
+        public List<string> TheLoais { get; set; }
 
     }
 }

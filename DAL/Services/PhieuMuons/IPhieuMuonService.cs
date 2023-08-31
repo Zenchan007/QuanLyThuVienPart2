@@ -13,11 +13,11 @@ namespace DAL.Services.PhieuMuons
     {
         IQueryable<PhieuMuon> QueryFilter(PhieuMuonFilterInput input = null);
         IQueryable<PhieuMuon_DTO> QueryFilterDto(PhieuMuonFilterInput input = null);
-        Task<PhieuMuon> GetById(string id);
-        Task<PhieuMuon_DTO> GetByIdDto(string id);
+        Task<PhieuMuon> GetById(int id);
+        Task<PhieuMuon_DTO> GetByIdDto(int id);
         Task<PageResultDTO<PhieuMuon_DTO>> Paging(PagingInput<PhieuMuonFilterInput> input = null);
-        Task<string> CreatePhieuMuon(PhieuMuonCreateInput input);
-        Task<bool> UpdatePhieuMuon(string PhieuMuonId, PhieuMuonCreateInput input);
-        Task<bool> DeletePhieuMuonById(string PhieuMuonId);
+        Task<int> CreatePhieuMuon(PhieuMuonCreateInput input);
+        Task<bool> UpdatePhieuMuon(int PhieuMuonId, PhieuMuonCreateInput input);
+        Task<bool> DeletePhieuMuonById(int PhieuMuonId);
     }
 }

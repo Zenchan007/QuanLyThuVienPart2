@@ -40,6 +40,10 @@ namespace DAL.Services.DocGias
             var entity = await GetById(DocGiaId);
             if (entity != null)
             {
+                if (entity.PhieuMuons.ToList().Any())
+                {
+                    throw new Exception("Không thể xóa độc giả này vì độc giả vẫn đang mượn sách");
+                }
                 _db.DocGias.Remove(entity);
                 await _db.SaveChangesAsync();
                 return true;
@@ -78,29 +82,7 @@ namespace DAL.Services.DocGias
         public IQueryable<Model.DocGia> QueryFilter(DocGiaFilterInput input = null)
         {
             var query = _db.DocGias.AsQueryable();
-            //if (input != null)
-            //{
-            //    if (!string.IsNullOrEmpty(input.TenDocGia))
-            //    {
-            //        var lower = input.TenDocGia.Trim().ToLower();
-            //        query = query.Where(p => p.TenDocGia.ToLower().Contains(lower));
-            //    }
-            //    if (!string.IsNullOrEmpty(input.CCCD))
-            //    {
-            //        var lower = input.CCCD.Trim().ToLower();
-            //        query = query.Where(p => p.CCCD.ToLower().Contains(lower));
-            //    }
-            //    if (!string.IsNullOrEmpty(input.DiaChi))
-            //    {
-            //        var lower = input.DiaChi.Trim().ToLower();
-            //        query = query.Where(p => p.DiaChi.ToLower().Contains(lower));
-            //    }
-            //    if (!string.IsNullOrEmpty(input.SoDienThoai))
-            //    {
-            //        var lower = input.SoDienThoai.Trim().ToLower();
-            //        query = query.Where(p => p.SoDienThoai.ToLower().Contains(lower));
-            //    }
-            //}
+           
             return query;
         }
         public IQueryable<DocGia_DTO> QueryFilterDto(DocGiaFilterInput input = null)

@@ -40,13 +40,21 @@
     <Reference Include="CheckBoxComboBox">
       <HintPath>C:\Users\tuann\Downloads\CheckBoxComboBox\CheckBoxComboBox\bin\Debug\CheckBoxComboBox.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.151\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Charts.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Dashboard.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Images.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v21.2.Export, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v21.2.UI, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -55,10 +63,13 @@
     <Reference Include="DevExpress.XtraCharts.v21.2.UI, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v21.2.Wizard, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraNavBar.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v21.2.Extensions, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -134,23 +145,32 @@
     <Compile Include="Form_NhaPhanPhoi\NhaPhanPhoi_DanhSach2.Designer.cs">
       <DependentUpon>NhaPhanPhoi_DanhSach2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_PhieuMuon\PhieuMuonCreateOrUpDate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Form_PhieuMuon\PhieuMuonCreateOrUpDate.Designer.cs">
-      <DependentUpon>PhieuMuonCreateOrUpDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_PhieuMuon\PhieuMuon_CRUD.cs">
+    <Compile Include="Form_PhieuMuon\PhieuMuonCreate.cs" />
+    <Compile Include="Form_PhieuMuon\PhieuMuonCreateOrUpdate2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_PhieuMuon\PhieuMuon_CRUD.Designer.cs">
-      <DependentUpon>PhieuMuon_CRUD.cs</DependentUpon>
+    <Compile Include="Form_PhieuMuon\PhieuMuonCreateOrUpdate2.Designer.cs">
+      <DependentUpon>PhieuMuonCreateOrUpdate2.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_PhieuMuon\PhieuMuon_DanhSach2.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Form_PhieuMuon\PhieuMuon_DanhSach2.Designer.cs">
       <DependentUpon>PhieuMuon_DanhSach2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_PhieuMuon\PhieuMuon_DataSet.cs">
+      <DependentUpon>PhieuMuon_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form_PhieuMuon\PhieuMuon_DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhieuMuon_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form_PhieuMuon\PhieuMuon_XuatPhieuMuon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form_PhieuMuon\PhieuMuon_XuatPhieuMuon.Designer.cs">
+      <DependentUpon>PhieuMuon_XuatPhieuMuon.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Sach\SachCreateOrUpdate.cs">
       <SubType>Form</SubType>
@@ -217,14 +237,14 @@
     <EmbeddedResource Include="Form_NhaPhanPhoi\NhaPhanPhoi_DanhSach2.resx">
       <DependentUpon>NhaPhanPhoi_DanhSach2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_PhieuMuon\PhieuMuonCreateOrUpDate.resx">
-      <DependentUpon>PhieuMuonCreateOrUpDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_PhieuMuon\PhieuMuon_CRUD.resx">
-      <DependentUpon>PhieuMuon_CRUD.cs</DependentUpon>
+    <EmbeddedResource Include="Form_PhieuMuon\PhieuMuonCreateOrUpdate2.resx">
+      <DependentUpon>PhieuMuonCreateOrUpdate2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_PhieuMuon\PhieuMuon_DanhSach2.resx">
       <DependentUpon>PhieuMuon_DanhSach2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_PhieuMuon\PhieuMuon_XuatPhieuMuon.resx">
+      <DependentUpon>PhieuMuon_XuatPhieuMuon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Sach\SachCreateOrUpdate.resx">
       <DependentUpon>SachCreateOrUpdate.cs</DependentUpon>
@@ -258,6 +278,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Form_PhieuMuon\PhieuMuon_DataSet.xsc">
+      <DependentUpon>PhieuMuon_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Form_PhieuMuon\PhieuMuon_DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhieuMuon_DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Form_PhieuMuon\PhieuMuon_DataSet.xss">
+      <DependentUpon>PhieuMuon_DataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -277,17 +308,18 @@
       <Project>{8a5b66fd-2327-4863-a358-bec598296382}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\tuann\Downloads\DataGridViewNumericUpDown\DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.csproj">
-      <Project>{82b50731-be90-433f-bb6e-9b509c5f3b7c}</Project>
-      <Name>DataGridViewNumericUpDownElements</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\open2.svg" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\library-logo-design-precious-astonishing-13.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\eo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tải xuống.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
