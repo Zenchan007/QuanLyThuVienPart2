@@ -13,13 +13,14 @@ namespace DAL.Services.DocGias
 {
     public class DocGiaService : IDocGiaService
     {
+        #region Khai Báo
         public readonly QuanLyThuVienEntities _db;
         
         public DocGiaService()
         {
             _db = new QuanLyThuVienEntities();
         }
-
+        #endregion
         #region Crud
         public async Task<int> CreateDocGia(DocGiaCreateInput input)
         {
@@ -62,6 +63,7 @@ namespace DAL.Services.DocGias
 
         #endregion
 
+        #region query and paging
         public async Task<PageResultDTO<DocGia_DTO>> Paging(PagingInput<DocGiaFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
@@ -78,7 +80,7 @@ namespace DAL.Services.DocGias
             var listData = await filtered.ToListAsync();
             return new PageResultDTO<DocGia_DTO>(totalCount, listData);
         }
-        #region query
+
         public IQueryable<Model.DocGia> QueryFilter(DocGiaFilterInput input = null)
         {
             var query = _db.DocGias.AsQueryable();

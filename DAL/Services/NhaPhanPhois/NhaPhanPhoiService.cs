@@ -12,12 +12,13 @@ namespace DAL.Services.NhaPhanPhois
 {
     public class NhaPhanPhoiService : INhaPhanPhoiService
     {
+        #region Khai báo
         public readonly QuanLyThuVienEntities _db;
         public NhaPhanPhoiService()
         {
             _db = new QuanLyThuVienEntities();
         }
-
+        #endregion 
         #region Crud
         public async Task<int> CreateNhaPhanPhoi(NhaPhanPhoiCreateInput input)
         {
@@ -61,7 +62,7 @@ namespace DAL.Services.NhaPhanPhois
         }
 
         #endregion
-
+        #region query and paging
         public async Task<PageResultDTO<NhaPhanPhoi_DTO>> Paging(PagingInput<NhaPhanPhoiFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
@@ -79,7 +80,7 @@ namespace DAL.Services.NhaPhanPhois
             return new PageResultDTO<NhaPhanPhoi_DTO>(totalCount, listData);
         }
 
-        #region Query
+        
         public IQueryable<Model.NhaPhanPhoi> QueryFilter(NhaPhanPhoiFilterInput input = null)
         {
             var query = _db.NhaPhanPhois.AsQueryable();

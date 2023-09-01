@@ -14,12 +14,13 @@ namespace DAL.Services.NhanVien
 {
     public class NhanVienService : INhanVienService
     {
+        #region Khai báo
         public readonly QuanLyThuVienEntities  _db ;
         public NhanVienService()
         {
             _db = new QuanLyThuVienEntities();
         }
-
+        #endregion
         #region Crud
         public async Task<int> CreateNhanVien(NhanVienCreateInput input)
         {
@@ -59,6 +60,7 @@ namespace DAL.Services.NhanVien
             return await QueryFilterDto().FirstOrDefaultAsync(p => p.NhanVienId == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
         }
         #endregion
+        #region Query and Paging
         public async Task<PageResultDTO<NhanVien_DTO>> Paging(PagingInput<NhanVienFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
@@ -137,6 +139,7 @@ namespace DAL.Services.NhanVien
                 throw new Exception("Lỗi chỗ QueryFilter DTO");
             }
         }
+        #endregion
         private async Task<Model.NhanVien> MapperCreateInputToEntity(NhanVienCreateInput input, Model.NhanVien entity)
         {
             await Task.Run(() =>
@@ -155,11 +158,6 @@ namespace DAL.Services.NhanVien
             });
 
             return entity;
-        }
-        private async Task<List<string>> getAllNameNhanVien(NhanVienFilterInput input = null)
-        {
-            var listNameNhanVien = await QueryFilter(input).Select(s => s.TenNhanVien).ToListAsync();
-            return listNameNhanVien ?? throw new Exception("Không lấy ra được tên nhân viên");
         }
     }
 }

@@ -13,12 +13,13 @@ namespace DAL.Services.TacGias
 {
     public class TacGiaService : ITacGiaService
     {
+        #region Khai báo
         public readonly QuanLyThuVienEntities _db;
         public TacGiaService()
         {
             _db = new QuanLyThuVienEntities();
         }
-
+        #endregion
         #region Crud
         public async Task<int> CreateTacGia(TacGiaCreateInput input)
         {
@@ -63,7 +64,7 @@ namespace DAL.Services.TacGias
 
         #endregion
 
-       
+        #region Query and Paging
         public async Task<PageResultDTO<TacGia_DTO>> Paging(PagingInput<TacGiaFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
@@ -111,7 +112,6 @@ namespace DAL.Services.TacGias
             }
             return query;
         }
-
         public IQueryable<TacGia_DTO> QueryFilterDto(TacGiaFilterInput input = null)
         {
             try
@@ -135,6 +135,8 @@ namespace DAL.Services.TacGias
                 throw new Exception("Lỗi chỗ QueryFilter DTO");
             }
         }
+        #endregion
+
         private async Task<Model.TacGia> MapperCreateInputToEntity(TacGiaCreateInput input, Model.TacGia entity)
         {
             await Task.Run(() =>
@@ -150,10 +152,6 @@ namespace DAL.Services.TacGias
             return entity;
         }
 
-        public async Task<List<string>> getAllNameTacGia(TacGiaFilterInput input)
-        {
-            var listNameTacGia = await QueryFilter(input).Select(s => s.TenTacGia).ToListAsync();
-            return listNameTacGia ?? throw new Exception("Không lấy ra được tên tác giả");
-        }
+     
     }
 }

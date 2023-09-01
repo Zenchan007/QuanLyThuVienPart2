@@ -29,36 +29,21 @@ namespace DAL.Services.PhieuMuons
         #region QueryFilter and Paging
         public IQueryable<PhieuMuon> QueryFilter(PhieuMuonFilterInput input = null)
         {
-            var query = _db.PhieuMuons.AsQueryable();
-            if (input != null)
-            {
-               
-              
-                if (input.TrangThaiId != 0 && input.TrangThaiId != null)
+            { 
+                // Cập nhật trạng thái phiếu muộn
+                var today = DateTime.Today;
+                var listMuon = _db.PhieuMuons.Where(p => p.NgayHenTra < today && p.ID_TrangThai != 3).ToList();
+                if(listMuon?.Any() == true)
                 {
-                    query = query.Where(p => p.ID_TrangThai == input.TrangThaiId);
-                }
-                if (!string.IsNullOrEmpty(input.TenTrangThai))
-                {
-                    var lower = input.TenTrangThai.Trim().ToLower();
-                    query = query.Where(p => p.TrangThai_PhieuMuon.TenTrangThai.ToLower().Contains(lower));
-                }
-                if (input.NgayMuon1.HasValue || input.NgayMuon2.HasValue)
-                {
-                    if (input.NgayMuon1.HasValue && input.NgayMuon2.HasValue)
+                    foreach (var item in listMuon)
                     {
-                        query = query.Where(p => p.NgayMuon >= input.NgayMuon1.Value && p.NgayMuon <= input.NgayMuon2.Value);
+                        item.ID_TrangThai = 2;
                     }
-                    else if (input.NgayMuon1.HasValue)
-                    {
-                        query = query.Where(p => p.NgayMuon >= input.NgayMuon1.Value);
-                    }
-                    else if (input.NgayMuon2.HasValue)
-                    {
-                        query = query.Where(p => p.NgayMuon <= input.NgayMuon2.Value);
-                    }
+                    _db.SaveChanges();
                 }
             }
+            var query = _db.PhieuMuons.AsQueryable();
+           
             return query;
         }
 
@@ -75,8 +60,8 @@ namespace DAL.Services.PhieuMuons
                                 NhanVienId = q.ID_NhanVien,
                                 TenNhanVien = q.NhanVien.TenNhanVien,
                                 TenDocGia = q.DocGia.TenDocGia,
-                                TenTrangThai = q.TrangThai_PhieuMuon.TenTrangThai,
                                 TrangThaiId = q.TrangThai_PhieuMuon.ID,
+                                TenTrangThai = q.TrangThai_PhieuMuon.TenTrangThai,
                                 ListSachMuon = q.PhieuMuon_Sachs.ToList(),
                                 NgayMuon = q.NgayMuon,
                                 NgayHenTra = q.NgayHenTra ,
@@ -161,7 +146,7 @@ namespace DAL.Services.PhieuMuons
             }
             foreach (var item in entity.PhieuMuon_Sachs)
             {
-                item.ID_PhieuMuon = entity.ID;
+                
                 var sachThayDoi = await _db.Saches.FirstOrDefaultAsync(x => item.ID_Sach == x.ID);
                 sachThayDoi.SoLuong += item.SoLuong;
        
@@ -179,7 +164,23 @@ namespace DAL.Services.PhieuMuons
         public async Task<bool> UpdatePhieuMuon(int Id, PhieuMuonCreateInput input)
         {
             var entity = await QueryFilter().FirstOrDefaultAsync(x => x.ID == Id);
+            foreach(var item in entity.PhieuMuon_Sachs.ToList())
+            {
+                var sachThayDoi = await _db.Saches.FirstOrDefaultAsync(x => item.ID_Sach == x.ID);
+                sachThayDoi.SoLuong += item.SoLuong;
+                _db.PhieuMuon_Sachs.Remove(item);
+            }
             entity = await MapperCreateInputToEntity(input, entity);
+            foreach (var item in entity.PhieuMuon_Sachs)
+            {
+                item.ID_PhieuMuon = entity.ID;
+                var sachThayDoi = await _db.Saches.FirstOrDefaultAsync(x => item.ID_Sach == x.ID);
+                if (item.SoLuong <= sachThayDoi.SoLuong)
+                {
+                    sachThayDoi.SoLuong -= item.SoLuong;
+                }
+                else throw new PhieuMuon_SachException($"Cuốn '{sachThayDoi.TenSach}' không đủ số lượng yêu cầu! Không thể tạo phiếu mượn!");
+            }
             await _db.SaveChangesAsync();
             return true;
         }
@@ -190,8 +191,7 @@ namespace DAL.Services.PhieuMuons
             return true;
         }
 
-        
-
+        #endregion
         public async Task<PhieuMuon> MapperCreateInputToEntity(PhieuMuonCreateInput input, PhieuMuon entity)
         {
             await Task.Run(() =>
@@ -215,9 +215,5 @@ namespace DAL.Services.PhieuMuons
             });
             return entity;
         }
-
-        #endregion
-        
-       
     }
 }

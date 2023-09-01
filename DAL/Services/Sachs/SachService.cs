@@ -12,49 +12,19 @@ namespace DAL.Services.Sachs.DTO
 {
     public class SachService : ISachService
     {
+        #region Khai báo
         public readonly QuanLyThuVienEntities _db;
 
         public SachService()
         {
             _db = new QuanLyThuVienEntities();
         }
-
-
+        #endregion
+        #region Query and paging
         public IQueryable<Sach> QueryFilter(SachFilterInput input = null)
         {
             var query = _db.Saches.AsQueryable();
-            if (input != null)
-            {
-                if (!string.IsNullOrEmpty(input.TenSach))
-                {
-                    var lower = input.TenSach.Trim().ToLower();
-                    query = query.Where(p => p.TenSach.ToLower().Contains(lower));
-                }
-                if (input.listTheLoai?.Any() == true)
-                {
-                    query = query.Where(p => input.listTheLoai.All(x => p.TheLoais.Contains(x)));
-                }
-                if (input.namBatDau > 0)
-                {
-                    var startDate = new DateTime(input.namBatDau, 1, 1);
-                    query = query.Where(p => p.NgayXB >= startDate);
-                }
-                if (input.namKetThuc > 0)
-                {
-                    var endDate = new DateTime(input.namKetThuc, 12, 31);
-                    query = query.Where(p => p.NgayXB <= endDate);
-                }
-                if (!string.IsNullOrEmpty(input.TenTacGia))
-                {
-                    var lower = input.TenTacGia.Trim().ToLower();
-                    query = query.Where(p => p.TacGia.TenTacGia.ToLower().Contains(lower));
-                }
-                if (!string.IsNullOrEmpty(input.TenNhaPhanPhoi))
-                {
-                    var lower = input.TenSach.Trim().ToLower();
-                    query = query.Where(p => p.NhaPhanPhoi.TenNhaPhanPhoi.ToLower().Contains(lower));
-                }
-            }
+            
             return query;
         }
 
@@ -88,11 +58,7 @@ namespace DAL.Services.Sachs.DTO
         }
 
 
-        public async Task<List<string>> getAllNameSach(SachFilterInput input = null)
-        {
-            var listNameSach = await QueryFilter(input).Select(s => s.TenSach).ToListAsync();
-            return listNameSach ?? throw new Exception("Không lấy ra được tên sách");
-        }
+     
         public async Task<PageResultDTO<Sach_DTO>> Paging(PagingInput<SachFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
@@ -109,7 +75,7 @@ namespace DAL.Services.Sachs.DTO
             var listData = await filtered.ToListAsync();
             return new PageResultDTO<Sach_DTO>(totalCount, listData);
         }
-
+        #endregion
         #region crud
         public async Task<Sach> GetById(int id)
         {

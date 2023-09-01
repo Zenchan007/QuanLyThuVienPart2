@@ -12,12 +12,13 @@ namespace DAL.Services.TheLoais
 {
     public class TheLoaiService : ITheLoaiService
     {
+        #region Khai báo
         public readonly QuanLyThuVienEntities _db;
         public TheLoaiService()
         {
             _db = new QuanLyThuVienEntities();
         }
-
+        #endregion
         #region Crud
         public async Task<int> CreateTheLoai(TheLoaiCreateInput input)
         {
@@ -59,7 +60,7 @@ namespace DAL.Services.TheLoais
         }
 
         #endregion
-
+        #region query and paging
         public async Task<PageResultDTO<TheLoai_DTO>> Paging(PagingInput<TheLoaiFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
@@ -111,6 +112,7 @@ namespace DAL.Services.TheLoais
                 throw new Exception("Lỗi chỗ QueryFilter DTO");
             }
         }
+        #endregion
         private async Task<Model.TheLoai> MapperCreateInputToEntity(TheLoaiCreateInput input, Model.TheLoai entity)
         {
             await Task.Run(() =>
@@ -121,12 +123,5 @@ namespace DAL.Services.TheLoais
             });
             return entity;
         }
-
-        public async Task<List<string>> getAllTheLoai(TheLoaiFilterInput input = null)
-        {
-            var listNameTheLoai = await QueryFilterDto(input).Select(tl => tl.TenTheLoai).ToListAsync();
-            return listNameTheLoai ?? throw new Exception("Không lấy ra được list thể loại!!");
-        }
-
     }
 }

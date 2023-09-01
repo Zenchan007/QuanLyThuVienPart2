@@ -19,6 +19,6 @@ namespace DAL.Services.TacGias
         Task<int> CreateTacGia(TacGiaCreateInput input);
         Task<bool> UpdateTacGia(int TacGiaId, TacGiaCreateInput input);
         Task<bool> DeleteTacGiaById(int TacGiaId);
-        Task<List<string>> getAllNameTacGia(TacGiaFilterInput input = null);
+        
     }
 }

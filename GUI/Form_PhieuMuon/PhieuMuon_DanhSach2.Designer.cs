@@ -152,7 +152,6 @@
             this.dtgPhieuMuon.MasterRowEmpty += new DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventHandler(this.dtgPhieuMuon_MasterRowEmpty);
             this.dtgPhieuMuon.MasterRowGetChildList += new DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventHandler(this.dtgPhieuMuon_MasterRowGetChildList);
             this.dtgPhieuMuon.MasterRowGetRelationName += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.dtgPhieuMuon_MasterRowGetRelationName);
-            
             this.dtgPhieuMuon.MasterRowGetRelationCount += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventHandler(this.dtgPhieuMuon_MasterRowGetRelationCount);
             // 
             // ID
@@ -161,6 +160,8 @@
             this.ID.FieldName = "PhieuMuonId";
             this.ID.MinWidth = 25;
             this.ID.Name = "ID";
+            this.ID.Visible = true;
+            this.ID.VisibleIndex = 0;
             this.ID.Width = 94;
             // 
             // TenDocGia
@@ -170,7 +171,7 @@
             this.TenDocGia.MinWidth = 25;
             this.TenDocGia.Name = "TenDocGia";
             this.TenDocGia.Visible = true;
-            this.TenDocGia.VisibleIndex = 1;
+            this.TenDocGia.VisibleIndex = 2;
             this.TenDocGia.Width = 94;
             // 
             // TenNhanVien
@@ -180,27 +181,33 @@
             this.TenNhanVien.MinWidth = 25;
             this.TenNhanVien.Name = "TenNhanVien";
             this.TenNhanVien.Visible = true;
-            this.TenNhanVien.VisibleIndex = 0;
+            this.TenNhanVien.VisibleIndex = 1;
             this.TenNhanVien.Width = 94;
             // 
             // NgayMuon
             // 
             this.NgayMuon.Caption = "Ngày Mượn";
+            this.NgayMuon.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.NgayMuon.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.NgayMuon.FieldName = "NgayMuon";
             this.NgayMuon.MinWidth = 25;
             this.NgayMuon.Name = "NgayMuon";
+            this.NgayMuon.UnboundDataType = typeof(System.DateTime);
             this.NgayMuon.Visible = true;
-            this.NgayMuon.VisibleIndex = 2;
+            this.NgayMuon.VisibleIndex = 3;
             this.NgayMuon.Width = 94;
             // 
             // NgayHenTra
             // 
             this.NgayHenTra.Caption = "Ngày Hẹn Trả";
+            this.NgayHenTra.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.NgayHenTra.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.NgayHenTra.FieldName = "NgayHenTra";
             this.NgayHenTra.MinWidth = 25;
             this.NgayHenTra.Name = "NgayHenTra";
+            this.NgayHenTra.UnboundDataType = typeof(System.DateTime);
             this.NgayHenTra.Visible = true;
-            this.NgayHenTra.VisibleIndex = 3;
+            this.NgayHenTra.VisibleIndex = 4;
             this.NgayHenTra.Width = 94;
             // 
             // SoLuongMuon
@@ -218,7 +225,7 @@
             this.TrangThai.MinWidth = 25;
             this.TrangThai.Name = "TrangThai";
             this.TrangThai.Visible = true;
-            this.TrangThai.VisibleIndex = 4;
+            this.TrangThai.VisibleIndex = 5;
             this.TrangThai.Width = 94;
             // 
             // IDTrangThai
@@ -249,7 +256,7 @@
             // 
             this.bar1.BarName = "Tools";
             this.bar1.DockCol = 0;
-            this.bar1.DockRow = 1;
+            this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
