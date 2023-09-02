@@ -2,11 +2,13 @@
 using DevExpress.XtraEditors;
 using DevExpress.XtraNavBar;
 using DevExpress.XtraSplashScreen;
+using GUI.Form_BaoCao;
 using GUI.Form_DocGia;
 using GUI.Form_NhanVien;
 using GUI.Form_NhaPhanPhoi;
 using GUI.Form_PhieuMuon;
 using GUI.Form_Sach;
+using GUI.Form_SachYeuCau;
 using GUI.Form_TacGia;
 using GUI.Form_TheLoai;
 using GUI.Login;
@@ -67,7 +69,7 @@ namespace GUI
 
         private void btnSachYeuCau_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-
+            showUserControl(new SachYeuCauDanhSach());
         }
 
         private void btnTheLoai_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -103,7 +105,8 @@ namespace GUI
 
         private void btnBaoCao_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            //showUserControl(new ());
+            showUserControl(new BaoCaoBieuDo());
+            this.WindowState = FormWindowState.Maximized;
         }
         private string[] imageFiles;
         private int currentImageIndex = 0;

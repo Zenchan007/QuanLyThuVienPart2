@@ -58,9 +58,9 @@ namespace GUI.Form_PhieuMuon
         {
             ID_CapNhat = ID;
         }
-        
 
-        
+
+
 
         private async void PhieuMuonCreateOrUpdate2_Load(object sender, EventArgs e)
         {
@@ -74,7 +74,7 @@ namespace GUI.Form_PhieuMuon
             if (ID_CapNhat == 0)
             {
                 btnTraSach.Enabled = false;
-                
+
                 txtTenNhanVien.Text = nhanVienService.QueryFilter().FirstOrDefault(x => x.ID == ID_NhanVien).TenNhanVien;
                 txtTenDocGia.ReadOnly = true;
                 // Trong Trường Hợp Thêm Mới Phiếu Mượn 
@@ -92,7 +92,7 @@ namespace GUI.Form_PhieuMuon
             {
                 dtpNgayMuon.ReadOnly = true;
                 layoutDocGiaMoi.HideToCustomization();
-                
+
                 phieuMuon = phieuMuonService.QueryFilterDto().FirstOrDefault(x => x.PhieuMuonId == ID_CapNhat);
                 txtMaDocGia.Text = phieuMuon.DocGiaId.ToString() ?? string.Empty;
                 txtMaNhanVien.Text = phieuMuon.NhanVienId.ToString() ?? string.Empty;
@@ -103,22 +103,22 @@ namespace GUI.Form_PhieuMuon
                 dtpNgayTra.Text = phieuMuon.NgayTra.ToString() ?? string.Empty;
                 txtTrangThai.Text = phieuMuon.TenTrangThai;
                 txtMaDocGia.ReadOnly = true;
-                txtTenDocGia.ReadOnly=true;
+                txtTenDocGia.ReadOnly = true;
                 var IdTrangThai = phieuMuon.TrangThaiId;
                 var maNhanVienGhi = Int32.Parse(txtMaNhanVien.Text);
                 txtTenNhanVien.Text = nhanVienService.QueryFilter().FirstOrDefault(x => x.ID == maNhanVienGhi).TenNhanVien;
                 dtpThoiHan.Text = (dtpNgayHenTra.DateTime - dtpNgayMuon.DateTime).Days.ToString();
                 if (IdTrangThai == 1)
                 {
-                    
+
                     layoutThoiGianMuon.HideToCustomization();
-                }    
-                    
-                    
+                }
+
+
                 if (IdTrangThai == 2)
                 {
-                    
-                  
+
+
                     txtTrangThai.ForeColor = Color.Red;
                     TimeSpan difference = DateTime.Today - dtpNgayHenTra.DateTime;
                     int soNgayMuon = difference.Days;
@@ -133,7 +133,7 @@ namespace GUI.Form_PhieuMuon
                     dtpThoiHan.ReadOnly = true;
                     dtpNgayMuon.ReadOnly = true;
                     dtpNgayHenTra.ReadOnly = true;
-                    dtpNgayTra.ReadOnly = true ;
+                    dtpNgayTra.ReadOnly = true;
                     txtTrangThai.ForeColor = Color.Green;
                     layoutThemSach.HideToCustomization();
                     layoutSach.HideToCustomization();
@@ -153,7 +153,7 @@ namespace GUI.Form_PhieuMuon
                     sachMuonDto.TacGiaSachMuon = sachMuon.TacGia.TenTacGia;
                     sachMuonDto.TenSachMuon = sachMuon.TenSach;
                     phieuMuon_Sach_DTOs.Add(sachMuonDto);
-                }             
+                }
             }
             bsPhieuMuon_Dto.DataSource = phieuMuon_Sach_DTOs;
             gridPhieuMuon_Sach.DataSource = bsPhieuMuon_Dto;
@@ -170,7 +170,7 @@ namespace GUI.Form_PhieuMuon
             dtgSach.BestFitColumns();
         }
 
-        
+
         private async Task<List<PhieuMuon_SachCreateInput>> AddDuLieuListSachMuon()
         {
             List<PhieuMuon_SachCreateInput> list = new List<PhieuMuon_SachCreateInput>();
@@ -187,7 +187,7 @@ namespace GUI.Form_PhieuMuon
             return list;
         }
 
-      
+
 
         private void dtgPhieuMuon_Sach_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
@@ -310,7 +310,7 @@ namespace GUI.Form_PhieuMuon
                 {
                     var phieuMuonCreate = new PhieuMuonCreateInput
                     {
-                       
+
                         NhanVienId = Int32.Parse(txtMaNhanVien.Text),
                         GhiChu = txtGhiChu.Text,
                         NgayMuon = dtpNgayMuon.DateTime,
@@ -319,23 +319,23 @@ namespace GUI.Form_PhieuMuon
                         TienCoc = Int32.Parse(txtTienCoc.Text),
                         TrangThaiId = dtpNgayHenTra.DateTime.Date >= DateTime.Today ? 1 : 2,
                     };
-                    if(!checkDocGiaMoi.Checked)
+                    if (!checkDocGiaMoi.Checked)
                     {
                         if (string.IsNullOrEmpty(txtMaDocGia.Text))
                             throw new PhieuMuon_SachException("Vui lòng chọn mã độc giả");
                         phieuMuonCreate.DocGiaId = Int32.Parse(txtMaDocGia.Text);
-                        
+
                     }
                     else
                     {
                         if (string.IsNullOrEmpty(txtTenDocGia.Text))
                             throw new PhieuMuon_SachException("Vui lòng điền tên độc giả");
-                      phieuMuonCreate.DocGiaId = await docGiaService.CreateDocGia(new DAL.Services.DocGias.DTO.DocGiaCreateInput { TenDocGia = txtTenDocGia.Text });
+                        phieuMuonCreate.DocGiaId = await docGiaService.CreateDocGia(new DAL.Services.DocGias.DTO.DocGiaCreateInput { TenDocGia = txtTenDocGia.Text });
 
                     }
                     if (ID_CapNhat == 0)
                     {
-                        
+
                         await phieuMuonService.CreatePhieuMuon(phieuMuonCreate);
                         MessageBox.Show("Tạo thành công phiếu mượn");
                         await showDuLieuSach();
@@ -343,7 +343,7 @@ namespace GUI.Form_PhieuMuon
                     }
                     else
                     {
-                      
+
                         if (phieuMuon.TrangThaiId != 3)
                         {
                             await phieuMuonService.UpdatePhieuMuon(ID_CapNhat, phieuMuonCreate);
@@ -365,7 +365,7 @@ namespace GUI.Form_PhieuMuon
             }
             finally
             {
-               
+
             }
         }
         #endregion
@@ -443,6 +443,11 @@ namespace GUI.Form_PhieuMuon
                 }
                 else errLoi.ClearErrors();
             }
+        }
+
+        private void dtpNgayMuon_EditValueChanged(object sender, EventArgs e)
+        {
+            dtpNgayHenTra.DateTime = dtpNgayMuon.DateTime.AddDays((int)dtpThoiHan.Value);
         }
     }
 }

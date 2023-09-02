@@ -5,21 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ff796121d03b4bf3ae32d8936bbc89eb" Name="Diagram1">
-        <EntityTypeShape EntityType="QuanLyThuVienModel.DocGia" Width="1.5" PointX="3" PointY="9.375" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.HoaDon" Width="1.5" PointX="7.5" PointY="5.125" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.NhanVien" Width="1.5" PointX="3" PointY="1.5" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.NhaPhanPhoi" Width="1.5" PointX="3" PointY="16.125" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.PhieuMuon" Width="1.5" PointX="5.25" PointY="1.5" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.PhieuMuon_Sachs" Width="1.5" PointX="7.5" PointY="2.375" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.Sach" Width="1.5" PointX="5.25" PointY="13.625" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.SachYeuCau" Width="1.5" PointX="5.75" PointY="8.75" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.sysdiagram" Width="1.5" PointX="7.75" PointY="8.75" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.TacGia" Width="1.5" PointX="3" PointY="12.625" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.TheLoai" Width="1.5" PointX="7.5" PointY="14.5" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.TrangThai_PhieuMuon" Width="1.5" PointX="3" PointY="6" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.VaiTro" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.DocGia" Width="1.5" PointX="0.75" PointY="15" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.NhanVien" Width="1.5" PointX="0.75" PointY="10.625" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.NhaPhanPhoi" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.PhieuMuon" Width="1.5" PointX="3" PointY="13.375" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.PhieuMuon_Sachs" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.Sach" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.SachYeuCau" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.sysdiagram" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.TacGia" Width="1.5" PointX="0.75" PointY="6.875" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.TheLoai" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.TrangThai_PhieuMuon" Width="1.5" PointX="0.75" PointY="21.125" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.VaiTro" Width="1.5" PointX="1.5" PointY="18.625" />
         <AssociationConnector Association="QuanLyThuVienModel.FK_PhieuMuon_DocGia" />
-        <AssociationConnector Association="QuanLyThuVienModel.FK_HoaDon_PhieuMuon" />
         <AssociationConnector Association="QuanLyThuVienModel.FK_NhanVien_VaiTro" />
         <AssociationConnector Association="QuanLyThuVienModel.FK_PhieuMuon_NhanVien" />
         <AssociationConnector Association="QuanLyThuVienModel.FK_Sach_NhaPhanPhoi" />

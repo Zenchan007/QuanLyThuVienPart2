@@ -13,7 +13,7 @@ namespace DAL.Services.Sachs.DTO
         public int namBatDau { set; get; }
         public int namKetThuc { set; get; }
         public string TenTacGia { set; get; }
-        public  string TenNhaPhanPhoi { set; get; }
+        public string TenNhaPhanPhoi { set; get; }
         public List<TheLoai> listTheLoai { set; get; }
     }
 }

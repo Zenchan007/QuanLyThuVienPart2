@@ -61,6 +61,36 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("add_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("add_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_32x321 {
+            get {
+                object obj = ResourceManager.GetObject("add_32x321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage bo_address {
@@ -103,6 +133,16 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cancel_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("cancel_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cancel_32x32 {
             get {
                 object obj = ResourceManager.GetObject("cancel_32x32", resourceCulture);
@@ -116,6 +156,46 @@ namespace GUI.Properties {
         internal static System.Drawing.Bitmap cancel_32x321 {
             get {
                 object obj = ResourceManager.GetObject("cancel_32x321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cancel_32x322 {
+            get {
+                object obj = ResourceManager.GetObject("cancel_32x322", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cancel_32x323 {
+            get {
+                object obj = ResourceManager.GetObject("cancel_32x323", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap converttorange_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("converttorange_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap converttorange_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("converttorange_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

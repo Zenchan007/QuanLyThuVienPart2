@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,12 +55,12 @@ namespace DAL.Services.TacGias
         }
         public async Task<Model.TacGia> GetById(int id)
         {
-            return await QueryFilter().FirstOrDefaultAsync(p => p.ID == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
+            return await QueryFilter().FirstOrDefaultAsync(p => p.ID == id) ?? throw new Exception($"Không tìm thấy tác giả có id {id}.");
         }
 
         public async Task<TacGia_DTO> GetByIdDto(int id)
         {
-            return await QueryFilterDto().FirstOrDefaultAsync(p => p.TacGiaId == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
+            return await QueryFilterDto().FirstOrDefaultAsync(p => p.TacGiaId == id) ?? throw new Exception($"Không tìm thấy tác giả có id {id}.");
         }
 
         #endregion
@@ -126,7 +127,7 @@ namespace DAL.Services.TacGias
                                 NamSinh = q.NamSinh,
                                 NamMat = q.NamMat,
                                 MoTa = q.MoTaThem,
-                                AnhTacGia = q.AnhTacGia                                
+                                AnhTacGia = q.AnhTacGia
                             };
                 return query;
             }
@@ -151,7 +152,25 @@ namespace DAL.Services.TacGias
             });
             return entity;
         }
+        public string LayTacGiaYeuThich()
+        {
+            var test = _db.TacGias
+                .Join(
+                    _db.Saches,
+                    tg => tg.ID,
+                    s => s.ID_TacGia,
+                    (tg, s) => new { TacGia = tg, Sach = s })
+            .Join(
+                    _db.PhieuMuon_Sachs,
+                    ts => ts.Sach.ID,
+                    pms => pms.ID_Sach,
+                    (ts, pms) => new { TacGiaSach = ts.TacGia, SoLuongMuon = pms.SoLuong })
+                .GroupBy(x => new { x.TacGiaSach.ID, x.TacGiaSach.TenTacGia })
+                .OrderByDescending(x => x.Sum(s => s.SoLuongMuon))
+                .Select(x => x.Key.TenTacGia)
+                .FirstOrDefault();
+            return test;
+        }
 
-     
     }
 }

@@ -18,5 +18,6 @@ namespace DAL.Services.TheLoais
         Task<int> CreateTheLoai(TheLoaiCreateInput input);
         Task<bool> UpdateTheLoai(string TheLoaiid, TheLoaiCreateInput input);
         Task<bool> DeleteTheLoaiById(string TheLoaiId);
+        string TheLoaiMuonNhieuNhat();
     }
 }

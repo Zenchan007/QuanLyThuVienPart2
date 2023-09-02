@@ -15,7 +15,7 @@ namespace DAL.Services.Sachs.DTO
         public string MoTa { get; set; }
         public int SoLuong { get; set; }
         public float DonGia { get; set; }
-        public List<string>ListTenTheLoai { get; set; }
+        public List<string> ListTenTheLoai { get; set; }
         public int TacGiaId { get; set; }
         public string NhaPhanPhoiId { get; set; }
         public byte[] AnhSach { get; set; }

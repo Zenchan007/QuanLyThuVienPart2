@@ -40,7 +40,7 @@ namespace GUI.Form_Sach
             dtgSach.OptionsBehavior.Editable = false;
             dtgSach.OptionsView.ColumnAutoWidth = true;
             dtgSach.BestFitColumns();
-            
+
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -57,9 +57,9 @@ namespace GUI.Form_Sach
 
         private void btnUpdate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(dtgSach.FocusedRowHandle >= 0)
+            if (dtgSach.FocusedRowHandle >= 0)
             {
-                int  selectedRowHandle = dtgSach.FocusedRowHandle;
+                int selectedRowHandle = dtgSach.FocusedRowHandle;
                 string ID_SachCapNhat = dtgSach.GetRowCellDisplayText(selectedRowHandle, "SachId");
                 var sachCapNhat = new SachCreateOrUpdate(Int32.Parse(ID_SachCapNhat));
                 sachCapNhat.FormClosed += childFormClose;

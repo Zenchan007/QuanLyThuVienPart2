@@ -58,7 +58,7 @@ namespace DAL.Services.NhaPhanPhois
 
         public async Task<NhaPhanPhoi_DTO> GetByIdDto(string id)
         {
-            return await QueryFilterDto().FirstOrDefaultAsync(p => p.NhaPhanPhoiId == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
+            return await QueryFilterDto().FirstOrDefaultAsync(p => p.NhaPhanPhoiId == id) ?? throw new Exception($"Không tìm thấy nhà phân phối có id {id}.");
         }
 
         #endregion

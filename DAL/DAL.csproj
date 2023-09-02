@@ -57,9 +57,6 @@
     <Compile Include="Model\DocGia.cs">
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\HoaDon.cs">
-      <DependentUpon>QLTV.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\NhanVien.cs">
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
@@ -120,11 +117,6 @@
     <Compile Include="Services\DocGias\DTO\DocGiaFilterInput.cs" />
     <Compile Include="Services\DocGias\DTO\DocGia_DTO.cs" />
     <Compile Include="Services\DocGias\IDocGiaService.cs" />
-    <Compile Include="Services\HoaDons\DTO\HoaDonCreateInput.cs" />
-    <Compile Include="Services\HoaDons\DTO\HoaDonFilterInput.cs" />
-    <Compile Include="Services\HoaDons\DTO\HoaDon_DTO.cs" />
-    <Compile Include="Services\HoaDons\HoaDon_Service.cs" />
-    <Compile Include="Services\HoaDons\IHoaDon_Service.cs" />
     <Compile Include="Services\NhanViens\DTO\NhanVienCreateInput.cs" />
     <Compile Include="Services\NhanViens\DTO\NhanVienFilterInput.cs" />
     <Compile Include="Services\NhanViens\DTO\NhanVien_DTO.cs" />
@@ -150,6 +142,11 @@
     <Compile Include="Services\Sachs\ISachService.cs" />
     <Compile Include="Services\Sachs\SachService.cs" />
     <Compile Include="Services\Sachs\DTO\Sach_DTO.cs" />
+    <Compile Include="Services\SachYeuCaus\DTO\SachYeuCauCreateInput.cs" />
+    <Compile Include="Services\SachYeuCaus\DTO\SachYeuCauFilterInput.cs" />
+    <Compile Include="Services\SachYeuCaus\DTO\SachYeuCau_DTO.cs" />
+    <Compile Include="Services\SachYeuCaus\ISachYeuCauService.cs" />
+    <Compile Include="Services\SachYeuCaus\SachYeuCauService.cs" />
     <Compile Include="Services\TacGias\DTO\TacGiaCreateInput.cs" />
     <Compile Include="Services\TacGias\DTO\TacGiaFilterInput.cs" />
     <Compile Include="Services\TacGias\DTO\TacGia_DTO.cs" />

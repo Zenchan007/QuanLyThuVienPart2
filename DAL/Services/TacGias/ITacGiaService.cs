@@ -1,5 +1,6 @@
 ﻿using DAL.Common;
 using DAL.Model;
+using DAL.Services.DocGias.DTO;
 using DAL.Services.TacGias.DTO;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace DAL.Services.TacGias
         Task<int> CreateTacGia(TacGiaCreateInput input);
         Task<bool> UpdateTacGia(int TacGiaId, TacGiaCreateInput input);
         Task<bool> DeleteTacGiaById(int TacGiaId);
-        
+        string LayTacGiaYeuThich();
+
     }
 }

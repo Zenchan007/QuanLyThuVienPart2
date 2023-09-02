@@ -91,6 +91,28 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
             });
             return output;
         }
+        public Dictionary<int, int> GetNgayMuonVaSoLuong()
+        {
+            var query = from p in _db.PhieuMuons
+                        join pm in _db.PhieuMuon_Sachs on p.ID equals pm.ID_PhieuMuon
+                        where p.NgayMuon.HasValue // Đảm bảo có ngày cho mượn
+                        select new
+                        {
+                            NgayMuon = p.NgayMuon.Value,
+                            SoLuong = pm.SoLuong
+                        };
+
+            var monthlyData = query.GroupBy(
+                item => new { Month = item.NgayMuon.Month, Year = item.NgayMuon.Year },
+                (key, group) => new
+                {
+                    Thang = key.Month,
+                    TotalSoLuong = group.Sum(item => item.SoLuong)
+                })
+                .ToDictionary(item => item.Thang, item => item.TotalSoLuong);
+
+            return monthlyData;
+        }
         #region crud
         public async Task<int> CreatePhieuMuon_Sach(PhieuMuon_SachCreateInput input)
         {

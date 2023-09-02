@@ -26,7 +26,6 @@ namespace DAL.Model
         }
     
         public virtual DbSet<DocGia> DocGias { get; set; }
-        public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<NhaPhanPhoi> NhaPhanPhois { get; set; }
         public virtual DbSet<PhieuMuon> PhieuMuons { get; set; }

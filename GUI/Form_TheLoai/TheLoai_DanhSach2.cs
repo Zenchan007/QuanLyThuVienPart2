@@ -34,7 +34,7 @@ namespace GUI.Form_TheLoai
         {
             showDuLieuTheLoai().ContinueWith(x =>
             {
-                if(x.IsFaulted || x.IsCanceled)
+                if (x.IsFaulted || x.IsCanceled)
                 {
                     MessageBox.Show("Lỗi how Dữ liệu Thể Loại");
                 }

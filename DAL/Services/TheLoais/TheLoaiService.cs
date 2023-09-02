@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -122,6 +123,18 @@ namespace DAL.Services.TheLoais
                 entity.MoTaThem = input.MoTa;
             });
             return entity;
+        }
+        public string TheLoaiMuonNhieuNhat()
+        {
+            var test = _db.Saches
+                .Include(s => s.TheLoais)
+                .Include(s => s.PhieuMuon_Sachs)
+                .SelectMany(s => s.TheLoais.Select(tl => new { Sach = s, TheLoai = tl }))
+                .GroupBy(st => new { st.TheLoai.ID, st.TheLoai.TenTheLoai })
+                .OrderByDescending(g => g.Sum(st => st.Sach.PhieuMuon_Sachs.Sum(pms => pms.SoLuong)))
+                .Select(g => g.Key.TenTheLoai)
+                .FirstOrDefault();
+            return test;
         }
     }
 }

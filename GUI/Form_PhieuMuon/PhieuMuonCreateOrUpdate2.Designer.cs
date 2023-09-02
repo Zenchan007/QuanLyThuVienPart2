@@ -451,6 +451,7 @@
             this.dtpNgayMuon.Size = new System.Drawing.Size(388, 22);
             this.dtpNgayMuon.StyleController = this.layoutControl2;
             this.dtpNgayMuon.TabIndex = 10;
+            this.dtpNgayMuon.EditValueChanged += new System.EventHandler(this.dtpNgayMuon_EditValueChanged);
             this.dtpNgayMuon.Validated += new System.EventHandler(this.dtpNgayMuon_Validated);
             // 
             // txtMaNhanVien

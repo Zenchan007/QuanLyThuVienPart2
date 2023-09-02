@@ -23,6 +23,8 @@ namespace GUI.Form_Sach
         ITacGiaService _iTacGiaService = new TacGiaService();
         INhaPhanPhoiService _iNhaPhanPhoiService = new NhaPhanPhoiService();
         int ID_CapNhat = 0;
+        public string TenSachYC { set; get; }
+        public string TacGiaYC { set;get; }
         public SachCreateOrUpdate()
         {
             InitializeComponent();
@@ -32,6 +34,10 @@ namespace GUI.Form_Sach
         public SachCreateOrUpdate(int ID) : this()
         {
             this.ID_CapNhat = ID;
+        }
+        public SachCreateOrUpdate(string tenSachYC) : this()
+        {
+            txtTenSach.Text = tenSachYC;
         }
         private async void SachCreateOrUpdate_Load(object sender, EventArgs e)
         {
