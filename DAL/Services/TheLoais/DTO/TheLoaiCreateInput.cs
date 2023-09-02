@@ -8,7 +8,7 @@ namespace DAL.Services.TheLoais.DTO
 {
     public class TheLoaiCreateInput
     {
-        public string Id;
+        public string TheLoaiId;
         public string TenTheLoai;
         public string MoTa;
     }

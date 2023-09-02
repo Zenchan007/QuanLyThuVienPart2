@@ -79,6 +79,7 @@ namespace DAL.Services.NhanVien
         }
         public IQueryable<Model.NhanVien> QueryFilter(NhanVienFilterInput input = null)
         {
+            _db.SaveChanges();
             var query = _db.NhanViens.AsQueryable();
             if (input != null)
             {

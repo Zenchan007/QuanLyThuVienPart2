@@ -32,38 +32,38 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnDong = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
-            this.txtSoDienThoai = new DevExpress.XtraEditors.TextEdit();
-            this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
-            this.txtTenNhaPhanPhoi = new DevExpress.XtraEditors.TextEdit();
-            this.txtMaNhaPhanPhoi = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.errLoi = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.txtSoDienThoai = new DevExpress.XtraEditors.TextEdit();
+            this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
+            this.txtTenNhaPhanPhoi = new DevExpress.XtraEditors.TextEdit();
+            this.txtMaNhaPhanPhoi = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.errLoi = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoDienThoai.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenNhaPhanPhoi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaNhaPhanPhoi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errLoi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoDienThoai.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenNhaPhanPhoi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaNhaPhanPhoi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errLoi)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -110,48 +110,6 @@
             this.btnLuu.TabIndex = 8;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // txtSoDienThoai
-            // 
-            this.txtSoDienThoai.Location = new System.Drawing.Point(27, 253);
-            this.txtSoDienThoai.Name = "txtSoDienThoai";
-            this.txtSoDienThoai.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoDienThoai.Properties.Appearance.Options.UseFont = true;
-            this.txtSoDienThoai.Size = new System.Drawing.Size(528, 22);
-            this.txtSoDienThoai.StyleController = this.layoutControl1;
-            this.txtSoDienThoai.TabIndex = 7;
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Location = new System.Drawing.Point(27, 195);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
-            this.txtDiaChi.Size = new System.Drawing.Size(528, 22);
-            this.txtDiaChi.StyleController = this.layoutControl1;
-            this.txtDiaChi.TabIndex = 6;
-            // 
-            // txtTenNhaPhanPhoi
-            // 
-            this.txtTenNhaPhanPhoi.Location = new System.Drawing.Point(27, 137);
-            this.txtTenNhaPhanPhoi.Name = "txtTenNhaPhanPhoi";
-            this.txtTenNhaPhanPhoi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenNhaPhanPhoi.Properties.Appearance.Options.UseFont = true;
-            this.txtTenNhaPhanPhoi.Size = new System.Drawing.Size(528, 22);
-            this.txtTenNhaPhanPhoi.StyleController = this.layoutControl1;
-            this.txtTenNhaPhanPhoi.TabIndex = 5;
-            this.txtTenNhaPhanPhoi.Validating += new System.ComponentModel.CancelEventHandler(this.txtTenNhaPhanPhoi_Validating);
-            // 
-            // txtMaNhaPhanPhoi
-            // 
-            this.txtMaNhaPhanPhoi.Location = new System.Drawing.Point(27, 79);
-            this.txtMaNhaPhanPhoi.Name = "txtMaNhaPhanPhoi";
-            this.txtMaNhaPhanPhoi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaNhaPhanPhoi.Properties.Appearance.Options.UseFont = true;
-            this.txtMaNhaPhanPhoi.Size = new System.Drawing.Size(528, 22);
-            this.txtMaNhaPhanPhoi.StyleController = this.layoutControl1;
-            this.txtMaNhaPhanPhoi.TabIndex = 4;
-            this.txtMaNhaPhanPhoi.Validating += new System.ComponentModel.CancelEventHandler(this.txtMaNhaPhanPhoi_Validating);
             // 
             // Root
             // 
@@ -217,6 +175,52 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(562, 282);
             this.layoutControlGroup1.Text = "Thông Tin Nhà Phân Phối";
             // 
+            // errLoi
+            // 
+            this.errLoi.ContainerControl = this;
+            // 
+            // txtSoDienThoai
+            // 
+            this.txtSoDienThoai.Location = new System.Drawing.Point(27, 253);
+            this.txtSoDienThoai.Name = "txtSoDienThoai";
+            this.txtSoDienThoai.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoDienThoai.Properties.Appearance.Options.UseFont = true;
+            this.txtSoDienThoai.Size = new System.Drawing.Size(528, 22);
+            this.txtSoDienThoai.StyleController = this.layoutControl1;
+            this.txtSoDienThoai.TabIndex = 7;
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Location = new System.Drawing.Point(27, 195);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
+            this.txtDiaChi.Size = new System.Drawing.Size(528, 22);
+            this.txtDiaChi.StyleController = this.layoutControl1;
+            this.txtDiaChi.TabIndex = 6;
+            // 
+            // txtTenNhaPhanPhoi
+            // 
+            this.txtTenNhaPhanPhoi.Location = new System.Drawing.Point(27, 137);
+            this.txtTenNhaPhanPhoi.Name = "txtTenNhaPhanPhoi";
+            this.txtTenNhaPhanPhoi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenNhaPhanPhoi.Properties.Appearance.Options.UseFont = true;
+            this.txtTenNhaPhanPhoi.Size = new System.Drawing.Size(528, 22);
+            this.txtTenNhaPhanPhoi.StyleController = this.layoutControl1;
+            this.txtTenNhaPhanPhoi.TabIndex = 5;
+            this.txtTenNhaPhanPhoi.Validating += new System.ComponentModel.CancelEventHandler(this.txtTenNhaPhanPhoi_Validating);
+            // 
+            // txtMaNhaPhanPhoi
+            // 
+            this.txtMaNhaPhanPhoi.Location = new System.Drawing.Point(27, 79);
+            this.txtMaNhaPhanPhoi.Name = "txtMaNhaPhanPhoi";
+            this.txtMaNhaPhanPhoi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaNhaPhanPhoi.Properties.Appearance.Options.UseFont = true;
+            this.txtMaNhaPhanPhoi.Size = new System.Drawing.Size(528, 22);
+            this.txtMaNhaPhanPhoi.StyleController = this.layoutControl1;
+            this.txtMaNhaPhanPhoi.TabIndex = 4;
+            this.txtMaNhaPhanPhoi.Validating += new System.ComponentModel.CancelEventHandler(this.txtMaNhaPhanPhoi_Validating);
+            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -281,10 +285,6 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(127, 16);
             this.layoutControlItem4.TextToControlDistance = 10;
             // 
-            // errLoi
-            // 
-            this.errLoi.ContainerControl = this;
-            // 
             // NhaPhanPhoiCreateOrUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -294,25 +294,26 @@
             this.MaximumSize = new System.Drawing.Size(600, 600);
             this.MinimumSize = new System.Drawing.Size(600, 500);
             this.Name = "NhaPhanPhoiCreateOrUpdate";
-            this.Text = "NhaPhanPhoiCreateOrUpdate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Thông Tin Nhà Phân Phối";
             this.Load += new System.EventHandler(this.NhaPhanPhoiCreateOrUpdate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoDienThoai.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenNhaPhanPhoi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaNhaPhanPhoi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errLoi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoDienThoai.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenNhaPhanPhoi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaNhaPhanPhoi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errLoi)).EndInit();
             this.ResumeLayout(false);
 
         }

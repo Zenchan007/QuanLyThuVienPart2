@@ -1,68 +1,77 @@
-﻿using DAL.Services.NhanVien.DTO;
+﻿using DAL.Model;
+using DAL.Services.HoaDons.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL.Services.HoaDons
 {
-    public class HoaDon_Service
+    public class HoaDon_Service : IHoaDon_Service
     {
-        public IQueryable<Model.NhanVien> QueryFilter(NhanVienFilterInput input = null)
+        #region Khai báo
+        QuanLyThuVienEntities _db;
+        HoaDon_Service()
         {
-            var query = _db.NhanViens.AsQueryable();
-            if (input != null)
+            _db = new QuanLyThuVienEntities();
+        }
+        #endregion
+        #region crud
+        public async Task<int> CreateHoaDon(HoaDonCreateInput input)
+        {
+            var entity = await MapperCreateInputToEntity(input, new HoaDon());
+            _db.HoaDons.Add(entity);
+            return _db.SaveChanges();
+        }
+
+        public async Task<bool> UpdateHoaDon(int HoaDonId, HoaDonCreateInput input)
+        {
+            var entity = await GetById(HoaDonId);
+            entity = await MapperCreateInputToEntity(input, entity);
+            await _db.SaveChangesAsync();
+            return true;
+        }
+        public async Task<bool> DeleteHoaDonById(int HoaDonId)
+        {
+            var entity = await GetById(HoaDonId);
+            if (entity != null)
             {
-                if (!string.IsNullOrEmpty(input.TenNhanVien))
-                {
-                    var lower = input.TenNhanVien.Trim().ToLower();
-                    query = query.Where(p => p.TenNhanVien.ToLower().Contains(lower));
-
-                }
-                if (!string.IsNullOrEmpty(input.DiaChi))
-                {
-                    var lower = input.DiaChi.Trim().ToLower();
-                    query = query.Where(p => p.DiaChi.ToLower().Contains(lower));
-
-                }
-                if (!string.IsNullOrEmpty(input.SoDienThoai))
-                {
-                    var lower = input.SoDienThoai.Trim().ToLower();
-                    query = query.Where(p => p.SoDienThoai.ToLower().Contains(lower));
-                }
-                if (!string.IsNullOrEmpty(input.CCCD))
-                {
-                    var lower = input.CCCD.Trim().ToLower();
-                    query = query.Where(p => p.CCCD.ToLower().Contains(lower));
-                }
-                if (input.TenVaiTro != null && input != null)
-                {
-                    query = query.Where(p => p.VaiTro.TenRole == input.TenVaiTro);
-                }
+                _db.HoaDons.Remove(entity);
+                await _db.SaveChangesAsync();
+                return true;
             }
+            return false;
+        }
+        public async Task<Model.HoaDon> GetById(int id)
+        {
+            return await QueryFilter().FirstOrDefaultAsync(p => p.ID == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
+        }
+        public async Task<HoaDon_DTO> GetByIdDto(int id)
+        {
+            return await QueryFilterDto().FirstOrDefaultAsync(p => p.HoaDonId == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
+        }
+        #endregion
+        #region query
+        public IQueryable<Model.HoaDon> QueryFilter(HoaDonFilterInput input = null)
+        {
+            var query = _db.HoaDons.AsQueryable();
+           
             return query;
         }
-        public IQueryable<NhanVien_DTO> QueryFilterDto(NhanVienFilterInput input = null)
+        public IQueryable<HoaDon_DTO> QueryFilterDto(HoaDonFilterInput input = null)
         {
             try
             {
                 var query = from q in QueryFilter(input)
-                            select new NhanVien_DTO
+                            select new HoaDon_DTO
                             {
-                                TenNhanVien = q.TenNhanVien,
-                                DiaChi = q.DiaChi,
-                                SoDienThoai = q.SoDienThoai,
-                                CCCD = q.CCCD,
-                                TaiKhoan = q.TaiKhoan,
-                                MatKhau = q.MatKhau,
-                                VaiTro = q.VaiTro.ID,
-                                NhanVienId = q.ID,
-                                NgaySinh = q.NgaySinh,
-                                GioiTinh = q.GioiTinh,
-                                NgayVaoLam = q.NgayVaoLam,
-                                AnhNhanVien = q.AnhDaiDien,
-                                TenVaiTro = q.VaiTro.TenRole
+                                HoaDonId = q.ID,
+                                PhieuMuonId = q.ID_PhieuMuon,
+                                TienThu = q.TienThu ?? 0,
+                                GhiChu = q.GhiChu,
+                                NgayThu = q.NgayThu
                             };
                 return query;
             }
@@ -70,6 +79,18 @@ namespace DAL.Services.HoaDons
             {
                 throw new Exception("Lỗi chỗ QueryFilter DTO");
             }
+        }
+        #endregion
+        public async Task<HoaDon> MapperCreateInputToEntity(HoaDonCreateInput input, HoaDon entity)
+        {
+            await Task.Run(() =>
+            {
+                entity.ID_PhieuMuon = input.PhieuMuonId;
+                entity.GhiChu = input.GhiChu;
+                entity.TienThu = input.TienThu;
+                entity.NgayThu = input.NgayThu;  
+            });
+            return entity;
         }
     }
 }

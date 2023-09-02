@@ -36,7 +36,10 @@ namespace GUI.Form_TacGia
         private async void btnLuu_Click(object sender, EventArgs e)
         {
             try {
-                if (string.IsNullOrEmpty(errLoi.GetError(txtTenTacGia)) && string.IsNullOrEmpty(errLoi.GetError(dtpNgaySinh)))
+                if (string.IsNullOrEmpty(txtTenTacGia.Text)){
+                    throw new Exception("Vui lòng điền đủ thông tin");
+                }
+                    if (string.IsNullOrEmpty(errLoi.GetError(txtTenTacGia)) && string.IsNullOrEmpty(errLoi.GetError(dtpNgaySinh)))
                 {
                     TacGiaCreateInput tacGiaCreateInput = new TacGiaCreateInput();
                     tacGiaCreateInput.TenTacGia = txtTenTacGia.Text;
@@ -74,12 +77,12 @@ namespace GUI.Form_TacGia
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng điền thông tin hợp lệ");
+                    throw new Exception("Vui lòng điền đủ thông tin");
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Vui lòng điền thông tin hợp lệ");
+                MessageBox.Show(ex.Message);
             }
         }
 

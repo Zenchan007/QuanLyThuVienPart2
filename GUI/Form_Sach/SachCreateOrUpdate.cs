@@ -28,7 +28,7 @@ namespace GUI.Form_Sach
             InitializeComponent();
         }
 
-        
+
         public SachCreateOrUpdate(int ID) : this()
         {
             this.ID_CapNhat = ID;
@@ -67,9 +67,9 @@ namespace GUI.Form_Sach
 
         }
 
-   
 
-        private  void txtMaNhaPhanPhoi_TextChanged(object sender, EventArgs e)
+
+        private void txtMaNhaPhanPhoi_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtMaNhaPhanPhoi.Text))
             {
@@ -89,9 +89,16 @@ namespace GUI.Form_Sach
         {
             try
             {
+
+                if (string.IsNullOrEmpty(txtTenSach.Text) && string.IsNullOrEmpty(cbbTheLoai.Text) && string.IsNullOrEmpty(txtMaNhaPhanPhoi.Text)
+                    && string.IsNullOrEmpty(txtMaTacGia.Text) && string.IsNullOrEmpty(dtpNgayXB.Text) && string.IsNullOrEmpty(txtDonGia.Text) &&
+                    string.IsNullOrEmpty(txtSoLuong.Text))
+                {
+                    MessageBox.Show("Vui lòng điền đúng định dạng");
+                }
                 if (string.IsNullOrEmpty(errLoi.GetError(txtTenSach)) && string.IsNullOrEmpty(errLoi.GetError(cbbTheLoai)) && string.IsNullOrEmpty(errLoi.GetError(txtMaNhaPhanPhoi))
-                    && string.IsNullOrEmpty(errLoi.GetError(txtMaTacGia)) && string.IsNullOrEmpty(errLoi.GetError(dtpNgayXB)) && string.IsNullOrEmpty(errLoi.GetError(txtDonGia)) &&
-                    string.IsNullOrEmpty(errLoi.GetError(txtSoLuong)))
+                && string.IsNullOrEmpty(errLoi.GetError(txtMaTacGia)) && string.IsNullOrEmpty(errLoi.GetError(dtpNgayXB)) && string.IsNullOrEmpty(errLoi.GetError(txtDonGia)) &&
+                string.IsNullOrEmpty(errLoi.GetError(txtSoLuong)))
 
                 {
                     var sachCRUD = new SachCreateInput
@@ -126,7 +133,7 @@ namespace GUI.Form_Sach
             {
                 MessageBox.Show("Vui lòng điền đúng định dạng");
             }
-            
+
         }
 
         private void btnDong_Click(object sender, EventArgs e)

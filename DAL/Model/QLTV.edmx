@@ -24,6 +24,7 @@
           <Property Name="ID_PhieuMuon" Type="int" Nullable="false" />
           <Property Name="TienThu" Type="float" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayThu" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -421,6 +422,7 @@
           <Property Name="TienThu" Type="Double" />
           <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PhieuMuon" Relationship="QuanLyThuVienModel.FK_HoaDon_PhieuMuon" FromRole="HoaDon" ToRole="PhieuMuon" />
+          <Property Name="NgayThu" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -689,6 +691,7 @@
           <EntitySetMapping Name="HoaDons">
             <EntityTypeMapping TypeName="QuanLyThuVienModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
+                <ScalarProperty Name="NgayThu" ColumnName="NgayThu" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="TienThu" ColumnName="TienThu" />
                 <ScalarProperty Name="ID_PhieuMuon" ColumnName="ID_PhieuMuon" />

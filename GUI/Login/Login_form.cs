@@ -38,9 +38,9 @@ namespace GUI.Login
                         Properties.Settings.Default.Save();
                         Role_Id = TaiKhoan.ID_Role ?? 0;
                         User_Id = TaiKhoan.ID;
-                        var MainForm = new MainForm();
+                        var MainForm = new MForm();
                         MainForm.Show(this);
-                        Hide();
+                        this.Hide();
                     }
                     else
                     {

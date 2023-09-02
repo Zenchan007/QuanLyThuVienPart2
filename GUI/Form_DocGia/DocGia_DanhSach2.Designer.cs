@@ -77,7 +77,7 @@
             // 
             this.bar1.BarName = "Tools";
             this.bar1.DockCol = 0;
-            this.bar1.DockRow = 1;
+            this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
@@ -184,7 +184,7 @@
             this.ID.MinWidth = 25;
             this.ID.Name = "ID";
             this.ID.Visible = true;
-            this.ID.VisibleIndex = 4;
+            this.ID.VisibleIndex = 0;
             this.ID.Width = 94;
             // 
             // TenDocGia
@@ -194,7 +194,7 @@
             this.TenDocGia.MinWidth = 25;
             this.TenDocGia.Name = "TenDocGia";
             this.TenDocGia.Visible = true;
-            this.TenDocGia.VisibleIndex = 0;
+            this.TenDocGia.VisibleIndex = 1;
             this.TenDocGia.Width = 94;
             // 
             // CCCD
@@ -204,7 +204,7 @@
             this.CCCD.MinWidth = 25;
             this.CCCD.Name = "CCCD";
             this.CCCD.Visible = true;
-            this.CCCD.VisibleIndex = 3;
+            this.CCCD.VisibleIndex = 4;
             this.CCCD.Width = 94;
             // 
             // DiaChi
@@ -214,7 +214,7 @@
             this.DiaChi.MinWidth = 25;
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Visible = true;
-            this.DiaChi.VisibleIndex = 1;
+            this.DiaChi.VisibleIndex = 2;
             this.DiaChi.Width = 94;
             // 
             // SoDienThoai
@@ -224,7 +224,7 @@
             this.SoDienThoai.MinWidth = 25;
             this.SoDienThoai.Name = "SoDienThoai";
             this.SoDienThoai.Visible = true;
-            this.SoDienThoai.VisibleIndex = 2;
+            this.SoDienThoai.VisibleIndex = 3;
             this.SoDienThoai.Width = 94;
             // 
             // Root

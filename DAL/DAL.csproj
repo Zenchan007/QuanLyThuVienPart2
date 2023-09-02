@@ -120,6 +120,11 @@
     <Compile Include="Services\DocGias\DTO\DocGiaFilterInput.cs" />
     <Compile Include="Services\DocGias\DTO\DocGia_DTO.cs" />
     <Compile Include="Services\DocGias\IDocGiaService.cs" />
+    <Compile Include="Services\HoaDons\DTO\HoaDonCreateInput.cs" />
+    <Compile Include="Services\HoaDons\DTO\HoaDonFilterInput.cs" />
+    <Compile Include="Services\HoaDons\DTO\HoaDon_DTO.cs" />
+    <Compile Include="Services\HoaDons\HoaDon_Service.cs" />
+    <Compile Include="Services\HoaDons\IHoaDon_Service.cs" />
     <Compile Include="Services\NhanViens\DTO\NhanVienCreateInput.cs" />
     <Compile Include="Services\NhanViens\DTO\NhanVienFilterInput.cs" />
     <Compile Include="Services\NhanViens\DTO\NhanVien_DTO.cs" />

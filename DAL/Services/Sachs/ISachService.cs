@@ -18,5 +18,6 @@ namespace DAL.Services.Sachs.DTO
         Task<int> CreateSach(SachCreateInput input);
         Task<bool> UpdateSach(int SachId, SachCreateInput input);
         Task<bool> DeleteSachById(int SachId);
+        Task<int> SachTrongKho();
     }
 }

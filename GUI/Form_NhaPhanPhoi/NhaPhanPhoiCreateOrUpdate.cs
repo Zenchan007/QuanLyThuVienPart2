@@ -21,7 +21,7 @@ namespace GUI.Form_NhaPhanPhoi
             InitializeComponent();
         }
         string ID_CapNhat;
-        public NhaPhanPhoiCreateOrUpdate( string ID) : this()
+        public NhaPhanPhoiCreateOrUpdate(string ID) : this()
         {
             this.ID_CapNhat = ID;
         }
@@ -30,7 +30,12 @@ namespace GUI.Form_NhaPhanPhoi
         {
             try
             {
-               if(string.IsNullOrEmpty(errLoi.GetError(txtMaNhaPhanPhoi)) && string.IsNullOrEmpty(errLoi.GetError(txtTenNhaPhanPhoi)))
+                if (string.IsNullOrEmpty(txtMaNhaPhanPhoi.Text) && string.IsNullOrEmpty(txtTenNhaPhanPhoi.Text))
+                {
+                    throw new Exception("Vui Lòng Điền Đúng, Đầy Đủ Thông Tin");
+                    throw new Exception("Vui Lòng Điền Đúng, Đầy Đủ Thông Tin");
+                }
+                if (string.IsNullOrEmpty(errLoi.GetError(txtMaNhaPhanPhoi)) && string.IsNullOrEmpty(errLoi.GetError(txtTenNhaPhanPhoi)))
                 {
                     var nhaPhanPhoiMoi = new NhaPhanPhoiCreateInput
                     {
@@ -41,7 +46,7 @@ namespace GUI.Form_NhaPhanPhoi
                     };
                     if (!string.IsNullOrEmpty(ID_CapNhat))
                     {
-                        txtMaNhaPhanPhoi.Enabled = false;
+                        txtMaNhaPhanPhoi.ReadOnly = true;
 
                         _iNhaPhanPhoiService.UpdateNhaPhanPhoi(ID_CapNhat, nhaPhanPhoiMoi);
                         MessageBox.Show("Cập Nhật Thành Công Nhà Phân Phối");
@@ -60,19 +65,22 @@ namespace GUI.Form_NhaPhanPhoi
                             this.Close();
                         }
                     }
+                    
                 }
                 else
                 {
                     throw new Exception("Vui Lòng Điền Đúng, Đầy Đủ Thông Tin");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);    
-            }finally {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
                 this.Close();
             }
-            
+
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -82,8 +90,7 @@ namespace GUI.Form_NhaPhanPhoi
 
         private async void NhaPhanPhoiCreateOrUpdate_Load(object sender, EventArgs e)
         {
-            txtMaNhaPhanPhoi_Validating(null, null);
-            txtTenNhaPhanPhoi_Validating(null, null);
+
             if (!string.IsNullOrEmpty(ID_CapNhat))
             {
                 var nhaPhanPhoiCapNhat = await _iNhaPhanPhoiService.GetById(ID_CapNhat);

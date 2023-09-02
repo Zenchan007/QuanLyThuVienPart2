@@ -117,7 +117,7 @@ namespace DAL.Services.TheLoais
         {
             await Task.Run(() =>
             {
-                entity.ID = input.Id;
+                entity.ID = input.TheLoaiId;
                 entity.TenTheLoai = input.TenTheLoai;
                 entity.MoTaThem = input.MoTa;
             });

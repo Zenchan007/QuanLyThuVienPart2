@@ -19,6 +19,11 @@ namespace DAL.Services.Sachs.DTO
         {
             _db = new QuanLyThuVienEntities();
         }
+
+        public async Task<int> SachTrongKho()
+        {
+            return await _db.Saches.SumAsync(x => x.SoLuong);
+        }
         #endregion
         #region Query and paging
         public IQueryable<Sach> QueryFilter(SachFilterInput input = null)
@@ -122,8 +127,10 @@ namespace DAL.Services.Sachs.DTO
         }
 
         #endregion
+       
         public async Task<Sach> MapperCreateInputToEntity(SachCreateInput input, Sach entity)
         {
+            
             await Task.Run(() =>
             {
                 entity.TenSach = input.TenSach;

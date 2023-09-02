@@ -5,9 +5,13 @@ using DAL.Services.PhieuMuon_Sachs;
 using DAL.Services.PhieuMuons.DTO;
 using DAL.Services.Sachs.DTO;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Text;
@@ -26,14 +30,26 @@ namespace DAL.Services.PhieuMuons
         }
         #endregion
 
+        public async Task<int> TongSachMuon()
+        {
+            var test = _db.PhieuMuons.Include(x => x.PhieuMuon_Sachs)
+                       .Where(x => x.ID_TrangThai == 1)
+                       .SelectMany(x => x.PhieuMuon_Sachs).
+                       Select(pm => pm.SoLuong);
+            var z = test.ToList();
+            Trace.TraceError(z.ToString());
+            return 0;
+        }
+
         #region QueryFilter and Paging
         public IQueryable<PhieuMuon> QueryFilter(PhieuMuonFilterInput input = null)
         {
-            { 
+            {
                 // Cập nhật trạng thái phiếu muộn
                 var today = DateTime.Today;
                 var listMuon = _db.PhieuMuons.Where(p => p.NgayHenTra < today && p.ID_TrangThai != 3).ToList();
-                if(listMuon?.Any() == true)
+
+                if (listMuon?.Any() == true)
                 {
                     foreach (var item in listMuon)
                     {
@@ -43,13 +59,14 @@ namespace DAL.Services.PhieuMuons
                 }
             }
             var query = _db.PhieuMuons.AsQueryable();
-           
+
             return query;
         }
 
-        
+
         public IQueryable<PhieuMuon_DTO> QueryFilterDto(PhieuMuonFilterInput input = null)
         {
+
             try
             {
                 var query = from q in QueryFilter(input).Include(p => p.PhieuMuon_Sachs)
@@ -64,12 +81,12 @@ namespace DAL.Services.PhieuMuons
                                 TenTrangThai = q.TrangThai_PhieuMuon.TenTrangThai,
                                 ListSachMuon = q.PhieuMuon_Sachs.ToList(),
                                 NgayMuon = q.NgayMuon,
-                                NgayHenTra = q.NgayHenTra ,
-                                NgayTra = q.NgayTra ,
+                                NgayHenTra = q.NgayHenTra,
+                                NgayTra = q.NgayTra,
                                 TienCoc = q.TienCoc ?? 0,
                                 GhiChu = q.GhiChu
                             };
-          
+
                 return query;
             }
             catch (Exception ex)
@@ -107,9 +124,9 @@ namespace DAL.Services.PhieuMuons
             return await QueryFilterDto().FirstOrDefaultAsync(p => p.PhieuMuonId == id) ?? throw new Exception($"Không tìm thấy sách id {id}.");
         }
         public async Task<int> CreatePhieuMuon(PhieuMuonCreateInput input)
-        { 
+        {
             var entity = await MapperCreateInputToEntity(input, new PhieuMuon());
-            
+
             foreach (var item in entity.PhieuMuon_Sachs)
             {
                 item.ID_PhieuMuon = entity.ID;
@@ -132,24 +149,15 @@ namespace DAL.Services.PhieuMuons
             _db.SaveChanges();
             return false;
         }
-        public async Task<bool> UpdateTraSach (int Id, DateTime NgayTra)
+        public async Task<bool> UpdateTraSach(int Id, DateTime NgayTra)
         {
             var entity = await QueryFilter().FirstOrDefaultAsync(x => x.ID == Id);
             entity.NgayTra = NgayTra;
-            if(NgayTra > entity.NgayHenTra)
-            {
-                entity.ID_TrangThai = 2;
-            }
-            else
-            {
-                entity.ID_TrangThai = 3;
-            }
+            entity.ID_TrangThai = 3;
             foreach (var item in entity.PhieuMuon_Sachs)
             {
-                
                 var sachThayDoi = await _db.Saches.FirstOrDefaultAsync(x => item.ID_Sach == x.ID);
                 sachThayDoi.SoLuong += item.SoLuong;
-       
             }
             await _db.SaveChangesAsync();
             return true;
@@ -164,7 +172,7 @@ namespace DAL.Services.PhieuMuons
         public async Task<bool> UpdatePhieuMuon(int Id, PhieuMuonCreateInput input)
         {
             var entity = await QueryFilter().FirstOrDefaultAsync(x => x.ID == Id);
-            foreach(var item in entity.PhieuMuon_Sachs.ToList())
+            foreach (var item in entity.PhieuMuon_Sachs.ToList())
             {
                 var sachThayDoi = await _db.Saches.FirstOrDefaultAsync(x => item.ID_Sach == x.ID);
                 sachThayDoi.SoLuong += item.SoLuong;
@@ -184,7 +192,7 @@ namespace DAL.Services.PhieuMuons
             await _db.SaveChangesAsync();
             return true;
         }
-        
+
         public async Task<bool> UpdatePhieuMuon()
         {
             await _db.SaveChangesAsync();

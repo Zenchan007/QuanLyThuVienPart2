@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Services.HoaDons
+namespace DAL.Services.HoaDons.DTO
 {
-    public interface IHoaDonService
+    public class HoaDonFilterInput
     {
     }
 }

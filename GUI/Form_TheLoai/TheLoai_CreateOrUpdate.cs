@@ -35,7 +35,9 @@ namespace GUI.Form_TheLoai
         {
             try
             {
-                if (!string.IsNullOrEmpty(errLoi.GetError(txtMaTheLoai)))
+                if (string.IsNullOrEmpty(txtMaTheLoai.Text) && string.IsNullOrEmpty(txtTenTheLoai.Text))
+                    throw new Exception("Vui Lòng Điền Đầy Đủ Thông Tin Theo Đúng Định Dạng");
+                    if (!string.IsNullOrEmpty(errLoi.GetError(txtMaTheLoai)) && !string.IsNullOrEmpty(errLoi.GetError(txtTenTheLoai)))
                 {
                     throw new Exception("Vui Lòng Điền Đầy Đủ Thông Tin Theo Đúng Định Dạng");
                 }
@@ -44,19 +46,30 @@ namespace GUI.Form_TheLoai
 
                     var theLoai = new TheLoaiCreateInput
                     {
-                        Id = txtMaTheLoai.Text,
+                        TheLoaiId = txtMaTheLoai.Text,
                         TenTheLoai = txtTenTheLoai.Text,
                         MoTa = txtMoTa.Text,
                     };
                     if (string.IsNullOrEmpty(ID_CapNhat))
                     {
-                        var theLoaiMoi = loaiService.CreateTheLoai(theLoai);
-                        MessageBox.Show("Thêm Mới Thể Loại Thành Công");
+                        
+                        if (loaiService.QueryFilter().Any(x => x.ID == theLoai.TheLoaiId))
+                        {
+                            MessageBox.Show("Mã Thể Loại Đã Được Dùng. Vui Lòng Chọn Mã Khác");
+                        }
+                        else
+                        {
+                            loaiService.CreateTheLoai(theLoai);
+                            MessageBox.Show("Thêm Mới Thành Công Thể Loại Vào Trong CSDL");
+                            this.Close();
+                        }
                     }
                     else
                     {
+                        txtMaTheLoai.ReadOnly = true;
                         var theLoaiCapNhat = loaiService.UpdateTheLoai(ID_CapNhat, theLoai);
                         MessageBox.Show("Cập Nhật Thể Loại Thành Công");
+                        this.Close();
                     }
                 }
             }
@@ -67,14 +80,12 @@ namespace GUI.Form_TheLoai
             }
             finally
             {
-                this.Close();
+                
             }
         }
 
         private void TheLoai_CreateOrUpdate_Load(object sender, EventArgs e)
         {
-            txtMaTheLoai_Validating(null, null);
-            txtTenTheLoai_Validating(null, null);
             if (!string.IsNullOrEmpty(ID_CapNhat))
             {
                 txtMaTheLoai.Enabled = false;
@@ -90,11 +101,14 @@ namespace GUI.Form_TheLoai
             if (string.IsNullOrEmpty(txtMaTheLoai.Text))
             {
                 errLoi.SetError(txtMaTheLoai, "Vui lòng điền Mã Thể Loại");
+                
+            }
+            else
+            {
                 var checkDB = loaiService.QueryFilter().Any(x => x.ID == txtMaTheLoai.Text);
                 if (checkDB) errLoi.SetError(txtMaTheLoai, "Mã Thể Loại Đã Được Sử Dụng");
                 else errLoi.ClearErrors();
             }
-            else errLoi.ClearErrors();
         }
 
         private void txtTenTheLoai_Validating(object sender, CancelEventArgs e)
@@ -102,11 +116,14 @@ namespace GUI.Form_TheLoai
             if (string.IsNullOrEmpty(txtTenTheLoai.Text))
             {
                 errLoi.SetError(txtMaTheLoai, "Vui lòng điền Tên Thể Loại");
+                
+            }
+            else
+            {
                 var checkDB = loaiService.QueryFilter().Any(x => x.TenTheLoai == txtTenTheLoai.Text);
                 if (checkDB) errLoi.SetError(txtMaTheLoai, "Tên Thể Loại Đã Được Sử Dụng");
                 else errLoi.ClearErrors();
             }
-            else errLoi.ClearErrors();
         }
     }
 }

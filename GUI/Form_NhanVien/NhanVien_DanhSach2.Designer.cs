@@ -80,7 +80,7 @@
             // 
             this.bar1.BarName = "Tools";
             this.bar1.DockCol = 0;
-            this.bar1.DockRow = 1;
+            this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
@@ -172,8 +172,8 @@
             // dtgNhanVien
             // 
             this.dtgNhanVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.TenNhanVien,
             this.ID,
+            this.TenNhanVien,
             this.DiaChi,
             this.SoDienThoai,
             this.CCCD,
@@ -200,7 +200,7 @@
             this.ID.MinWidth = 25;
             this.ID.Name = "ID";
             this.ID.Visible = true;
-            this.ID.VisibleIndex = 1;
+            this.ID.VisibleIndex = 0;
             this.ID.Width = 94;
             // 
             // DiaChi

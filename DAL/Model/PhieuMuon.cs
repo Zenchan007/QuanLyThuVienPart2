@@ -25,7 +25,7 @@ namespace DAL.Model
         public int ID_DocGia { get; set; }
         public Nullable<System.DateTime> NgayMuon { get; set; }
         public Nullable<System.DateTime> NgayHenTra { get; set; }
-        public int ID_TrangThai { set; get; }
+        public int ID_TrangThai { get; set; }
         public Nullable<int> ID_NhanVien { get; set; }
         public string GhiChu { get; set; }
         public Nullable<double> TienCoc { get; set; }

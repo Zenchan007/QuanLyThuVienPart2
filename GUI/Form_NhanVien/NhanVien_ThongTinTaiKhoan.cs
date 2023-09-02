@@ -35,6 +35,8 @@ namespace GUI.Form_NhanVien
         {
             try
             {
+                if (string.IsNullOrEmpty(txtTenDangNhap.Text) || string.IsNullOrEmpty(txtTenNhanVien.Text))
+                    throw new Exception("Vui lòng điền đầy đủ thông tin");
                 if (string.IsNullOrEmpty(errLoi.GetError(txtTenDangNhap)) && string.IsNullOrEmpty(errLoi.GetError(txtTenNhanVien)))
                 {
                     NhanVienCreateInput nhanVien = new NhanVienCreateInput()
@@ -55,28 +57,29 @@ namespace GUI.Form_NhanVien
                     {
                         nhanVien.NgayVaoLam = dtpNgayVaoLam.DateTime;
                     }
-                    var tenTaiKhoan = nhanVienSerVice.QueryFilter().Any(x => x.TaiKhoan == txtTenDangNhap.Text);
-                    if (tenTaiKhoan && ID_CapNhat == 0)
+                    var checkTonTaiTenDangNhap = nhanVienSerVice.QueryFilter().Any(x => x.TaiKhoan == txtTenDangNhap.Text);
+                    if (checkTonTaiTenDangNhap && ID_CapNhat == 0)
                     {
                         MessageBox.Show("Tên đăng nhập này đã tồn tại, vui lòng chọn một tên đăng nhập mới");
                     }
                     else
                     {
                         nhanVien.TaiKhoan = txtTenDangNhap.Text;
-                        if (ID_CapNhat == 0)
+                        if (ID_CapNhat == 0) //Thêm Mới Nhân Viên
                         {
-
+                            
                             nhanVien.MatKhau = txtMatKhauHienTai.Text;
                             await nhanVienSerVice.CreateNhanVien(nhanVien);
                             MessageBox.Show("Thêm Thành Công Nhân Viên Vào Trong CSDL");
                             this.Close();
                         }
-                        else
+                        else//Cập Nhật NhânViên
                         {
-
+                            
                             var nhanVienX = await nhanVienSerVice.GetById(ID_CapNhat);
                             if (string.IsNullOrEmpty(txtMatKhauHienTai.Text) && string.IsNullOrEmpty(txtMatKhauMoi.Text) && string.IsNullOrEmpty(txtXacNhanMatKhauMoi.Text))
                             {
+                                //Nhân Viên Cập Nhật Thông Tin không Cập Nhật Mật Khẩu
                                 nhanVien.MatKhau = nhanVienX.MatKhau;
                                 await nhanVienSerVice.UpdateNhanVien(ID_CapNhat, nhanVien);
                                 MessageBox.Show("Cập nhật thành công thông tin nhân viên");
@@ -84,8 +87,10 @@ namespace GUI.Form_NhanVien
                             }
                             else
                             {
+                                //Nhân Viên Cập Nhật Thông Tin Và Mật Khẩu
                                 if (txtMatKhauHienTai.Text == nhanVienX.MatKhau)
                                 {
+                                    
                                     if (txtMatKhauMoi.Text == txtXacNhanMatKhauMoi.Text)
                                     {
                                         nhanVien.MatKhau = txtMatKhauMoi.Text;
@@ -104,6 +109,7 @@ namespace GUI.Form_NhanVien
                                 }
                             }
                         }
+                       
                     }
                 }
                 else
@@ -128,13 +134,11 @@ namespace GUI.Form_NhanVien
 
         private async void NhanVien_ThongTinTaiKhoan_Load(object sender, EventArgs e)
         {
-            txtTenNhanVien_Validating(null, null);
-            txtTenDangNhap_Validating(null, null);
+            
             Role_Id = Login_form.Role_Id;
             if(Role_Id != 1)
             {
                  controlVaiTro.HideToCustomization();
-                 txtTenDangNhap.Enabled = false;
             }
             if(ID_CapNhat == 0)
             {
@@ -162,7 +166,7 @@ namespace GUI.Form_NhanVien
         {
             if (string.IsNullOrEmpty(txtTenNhanVien.Text))
             {
-                errLoi.SetError(txtTenDangNhap, "Vui lòng điền Tên Nhân Viên");
+                errLoi.SetError(txtTenNhanVien, "Vui lòng điền Tên Nhân Viên");
             }
             else errLoi.ClearErrors();
         }

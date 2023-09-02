@@ -1,4 +1,5 @@
-﻿using GUI.Form_DocGia;
+﻿using GUI.Form_BaoCao;
+using GUI.Form_DocGia;
 using GUI.Form_NhanVien;
 using GUI.Form_NhaPhanPhoi;
 using GUI.Form_PhieuMuon;
@@ -24,7 +25,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new MForm());
         }
     }
 }

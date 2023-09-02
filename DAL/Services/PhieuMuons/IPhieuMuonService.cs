@@ -22,5 +22,7 @@ namespace DAL.Services.PhieuMuons
         Task<bool> DeletePhieuMuonById(int PhieuMuonId);
         Task<bool> UpdateTraSach(int Id, DateTime NgayTra);
         Task<bool> UpdateTraSach(int Id);
+        Task<int> TongSachMuon();
+
     }
 }

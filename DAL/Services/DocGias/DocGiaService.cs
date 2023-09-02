@@ -26,7 +26,8 @@ namespace DAL.Services.DocGias
         {
             var entity = await MapperCreateInputToEntity(input, new Model.DocGia());
             _db.DocGias.Add(entity);
-            return _db.SaveChanges();
+            await  _db.SaveChangesAsync();
+            return entity.ID;
         }
 
         public async Task<bool> UpdateDocGia(int DocGiaId, DocGiaCreateInput input)

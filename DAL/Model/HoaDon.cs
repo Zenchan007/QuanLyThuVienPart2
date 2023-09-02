@@ -18,6 +18,7 @@ namespace DAL.Model
         public int ID_PhieuMuon { get; set; }
         public Nullable<double> TienThu { get; set; }
         public string GhiChu { get; set; }
+        public System.DateTime NgayThu { get; set; }
     
         public virtual PhieuMuon PhieuMuon { get; set; }
     }

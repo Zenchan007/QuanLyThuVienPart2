@@ -23,6 +23,9 @@ namespace GUI.Form_DocGia
         {
             try
             {
+                if (string.IsNullOrEmpty(txtTenDocGia.Text) && string.IsNullOrEmpty(txtDiaChi.Text)){
+                    throw new Exception("Vui lòng điền đúng đủ thông tin");
+                }
                 if (string.IsNullOrEmpty(errLoi.GetError(txtTenDocGia)) && string.IsNullOrEmpty(errLoi.GetError(txtDiaChi)))
                 {
                     var docGiaMoi = new DocGiaCreateInput
@@ -37,26 +40,29 @@ namespace GUI.Form_DocGia
                     {
                         _iDocGiaService.UpdateDocGia(ID_CapNhat, docGiaMoi);
                         MessageBox.Show("Cập Nhật thành công độc giả");
+                        
                     }
                     else
                     {
                         _iDocGiaService.CreateDocGia(docGiaMoi);
                         MessageBox.Show("Đã Thêm Thành Công Độc Giả Mới Vào Trong CSDL");
                     }
+                    this.Close();
                 }
                 else
                 {
                     throw new Exception("Vui Lòng Điền Đúng,Đủ Thông Tin");
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             finally
             {
-                this.Close();
+                
             }
-        
+
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -66,8 +72,6 @@ namespace GUI.Form_DocGia
 
         private async void DocGiaCreateOrUpdate_Load(object sender, EventArgs e)
         {
-            txtDiaChi_Validating(null, null);
-            txtTenDocGia_Validating(null, null);
             if (ID_CapNhat != 0)
             {
                 var docGiaCapNhat = await _iDocGiaService.GetById(ID_CapNhat);
