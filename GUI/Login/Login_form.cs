@@ -1,5 +1,6 @@
 ﻿using DAL.Services.NhanVien;
 using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,6 +34,11 @@ namespace GUI.Login
                 {
                     if (TaiKhoan.MatKhau == txtMatKhau.Text)
                     {
+                        SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, true);
+                        SplashScreenManager.Default.SetWaitFormCaption("Đang đăng nhập...");
+                        SplashScreenManager.Default.SetWaitFormDescription("Vui Lòng Chờ!");
+                        Thread.Sleep(1000);
+                        SplashScreenManager.CloseForm();
                         Properties.Settings.Default.TenDangNhap = txtTenDangNhap.Text;
                         Properties.Settings.Default.MatKhau = txtMatKhau.Text;
                         Properties.Settings.Default.Remember = checkRemember.Checked;

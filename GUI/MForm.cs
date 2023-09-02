@@ -1,6 +1,7 @@
 ﻿using DAL.Services.NhanVien;
 using DevExpress.XtraEditors;
 using DevExpress.XtraNavBar;
+using DevExpress.XtraSplashScreen;
 using GUI.Form_DocGia;
 using GUI.Form_NhanVien;
 using GUI.Form_NhaPhanPhoi;
@@ -17,6 +18,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,12 +26,11 @@ namespace GUI
 {
     public partial class MForm : DevExpress.XtraEditors.XtraForm
     {
-        public int RoleId = 1;
+        public int RoleId = Login_form.Role_Id;
         public int ID_Login = Login_form.User_Id;
         INhanVienService nhanVienService;
         UserControl currentControl;
-        private string[] imageFiles;
-        private int currentImageIndex = 0;
+
         public void showUserControl(UserControl control)
         {
             if (currentControl == null)
@@ -62,7 +63,7 @@ namespace GUI
             showUserControl(new Sach_DanhSach2());
         }
 
-       
+
 
         private void btnSachYeuCau_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
@@ -104,10 +105,11 @@ namespace GUI
         {
             //showUserControl(new ());
         }
-
+        private string[] imageFiles;
+        private int currentImageIndex = 0;
         private void MForm_Load(object sender, EventArgs e)
         {
-            nhanVienService= new NhanVienService();
+            nhanVienService = new NhanVienService();
             if (RoleId != 1)
             {
                 navNhanVien.Visible = false;
@@ -116,13 +118,27 @@ namespace GUI
             btnXinChao.Text = "Xin chào " + nhanVien?.TenNhanVien.ToString() ?? string.Empty;
             pcAvatar.Image = XuLyAnh.ByteArrayToImage(nhanVien?.AnhNhanVien);
             string imageDirectory = @"F:\ChuyenDe\QuanLyThuVien\GUI\Resources\AnhLoad";
-            imageFiles = Directory.GetFiles(imageDirectory, "*.jpg"); 
-            timerDoiAnh.Interval = 5000;
+            imageFiles = Directory.GetFiles(imageDirectory, "*.jpg", SearchOption.TopDirectoryOnly)
+                        .Concat(Directory.GetFiles(imageDirectory, "*.png", SearchOption.TopDirectoryOnly))
+                        .ToArray();
+            timerDoiAnh.Interval = 3000;
             timerDoiAnh.Start();
         }
 
-      
-       
+        private void timerDoiAnh_Tick(object sender, EventArgs e)
+        {
+            if (currentImageIndex < imageFiles.Length)
+            {
+                picMain.Image = new System.Drawing.Bitmap(imageFiles[currentImageIndex]);
+                currentImageIndex++;
+            }
+            else
+            {
+
+                currentImageIndex = 0;
+            }
+        }
+
 
 
         private void simpleButton4_Click(object sender, EventArgs e)
@@ -130,8 +146,8 @@ namespace GUI
             Application.Exit();
         }
 
-        
-        
+
+
 
         private void btnThongTinTaiKhoan_Click(object sender, EventArgs e)
         {
@@ -147,22 +163,17 @@ namespace GUI
         private void btnDangXuat_Click_1(object sender, EventArgs e)
         {
             if (Owner != null && !Owner.Disposing && !Owner.IsDisposed && !Owner.Visible)
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, true);
+                SplashScreenManager.Default.SetWaitFormCaption("Đang đăng xuất...");
+                SplashScreenManager.Default.SetWaitFormDescription("Chờ trong giây lát");
+                Thread.Sleep(5000);
                 Owner.Show();
+            }    
+            this.Dispose();
             this.Close();
         }
 
-        private void timerDoiAnh_Tick(object sender, EventArgs e)
-        {
-            if (currentImageIndex < imageFiles.Length)
-            {
-                picMain.Image = new System.Drawing.Bitmap(imageFiles[currentImageIndex]);
-                currentImageIndex++;
-            }
-            else
-            {
-                // Nếu đã hiển thị tất cả ảnh, quay lại ảnh đầu tiên
-                currentImageIndex = 0;
-            }
-        }
+
     }
 }

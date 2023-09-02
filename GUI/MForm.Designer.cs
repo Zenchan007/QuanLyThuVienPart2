@@ -48,7 +48,6 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Container = new DevExpress.XtraEditors.PanelControl();
-            this.picMain = new DevExpress.XtraEditors.PictureEdit();
             this.navBarControl = new DevExpress.XtraNavBar.NavBarControl();
             this.navSach = new DevExpress.XtraNavBar.NavBarGroup();
             this.btnKhoSach = new DevExpress.XtraNavBar.NavBarItem();
@@ -75,6 +74,7 @@
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.timerDoiAnh = new System.Windows.Forms.Timer(this.components);
+            this.picMain = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcAvatar.Properties)).BeginInit();
@@ -89,7 +89,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Container)).BeginInit();
             this.Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMain.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -98,6 +97,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMain.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -122,6 +122,7 @@
             this.pcAvatar.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pcAvatar.Properties.Appearance.Options.UseBackColor = true;
             this.pcAvatar.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pcAvatar.Properties.ReadOnly = true;
             this.pcAvatar.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pcAvatar.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pcAvatar.Size = new System.Drawing.Size(73, 61);
@@ -279,24 +280,13 @@
             // 
             // Container
             // 
+            this.Container.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.Container.Controls.Add(this.picMain);
             this.Container.Controls.Add(this.popupControlContainer1);
             this.Container.Location = new System.Drawing.Point(245, 77);
             this.Container.Name = "Container";
             this.Container.Size = new System.Drawing.Size(1134, 739);
             this.Container.TabIndex = 5;
-            // 
-            // picMain
-            // 
-            this.picMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picMain.EditValue = ((object)(resources.GetObject("picMain.EditValue")));
-            this.picMain.Location = new System.Drawing.Point(2, 2);
-            this.picMain.MenuManager = this.barManager1;
-            this.picMain.Name = "picMain";
-            this.picMain.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.picMain.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.picMain.Size = new System.Drawing.Size(1130, 735);
-            this.picMain.TabIndex = 2;
             // 
             // navBarControl
             // 
@@ -540,6 +530,21 @@
             this.timerDoiAnh.Interval = 1000;
             this.timerDoiAnh.Tick += new System.EventHandler(this.timerDoiAnh_Tick);
             // 
+            // picMain
+            // 
+            this.picMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picMain.EditValue = ((object)(resources.GetObject("picMain.EditValue")));
+            this.picMain.Location = new System.Drawing.Point(0, 0);
+            this.picMain.MenuManager = this.barManager1;
+            this.picMain.Name = "picMain";
+            this.picMain.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.picMain.Properties.Appearance.Options.UseBackColor = true;
+            this.picMain.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.picMain.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.picMain.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.picMain.Size = new System.Drawing.Size(1134, 739);
+            this.picMain.TabIndex = 2;
+            // 
             // MForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -550,9 +555,10 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.IconOptions.Image = global::GUI.Properties.Resources.library_logo_design_precious_astonishing_131;
             this.Name = "MForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MForm";
+            this.Text = "Màn Hình Chính";
             this.Load += new System.EventHandler(this.MForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -568,7 +574,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Container)).EndInit();
             this.Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picMain.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -577,6 +582,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMain.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

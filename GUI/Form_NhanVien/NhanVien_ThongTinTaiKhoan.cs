@@ -18,10 +18,12 @@ namespace GUI.Form_NhanVien
 {
     public partial class NhanVien_ThongTinTaiKhoan : Form
     {
-        public int Role_Id = 1;
+        #region Khai báo
+        public int Role_Id = Login_form.Role_Id;
         int ID_CapNhat = 0;
         INhanVienService nhanVienSerVice = new NhanVienService();
         IVaiTroService vaiTroService = new VaiTroService();
+        #endregion
         public NhanVien_ThongTinTaiKhoan()
         {
             InitializeComponent();
