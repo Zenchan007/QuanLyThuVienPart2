@@ -32,12 +32,11 @@ namespace DAL.Services.PhieuMuons
 
         public async Task<int> TongSachMuon()
         {
-            var test = _db.PhieuMuons.Include(x => x.PhieuMuon_Sachs)
+            var listSachMuon = _db.PhieuMuons.Include(x => x.PhieuMuon_Sachs)
                        .Where(x => x.ID_TrangThai == 1)
                        .SelectMany(x => x.PhieuMuon_Sachs).
                        Select(pm => pm.SoLuong);
-            var z = test.ToList();
-            Trace.TraceError(z.ToString());
+            var z = await listSachMuon.ToListAsync();
             return 0;
         }
 

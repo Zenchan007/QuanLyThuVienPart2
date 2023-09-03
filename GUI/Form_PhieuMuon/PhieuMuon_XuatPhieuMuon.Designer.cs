@@ -574,6 +574,7 @@
             this.PageWidth = 1100;
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.ID_PhieuMuon});
+            this.PrinterName = "PhieuMuonSach";
             this.Version = "21.2";
             ((System.ComponentModel.ISupportInitialize)(this.duLieuSachMuon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();

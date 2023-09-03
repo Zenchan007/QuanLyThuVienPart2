@@ -76,8 +76,14 @@ namespace GUI.Form_SachYeuCau
 
         private void btnNhapSach_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var sachNhap = new SachCreateOrUpdate();
-            sachNhap.Show(this);
+            if (dtgSachYeuCau.FocusedRowHandle >= 0)
+            {
+                int selectedRowHandle = dtgSachYeuCau.FocusedRowHandle;
+                string ID_Xoa = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "SachYeuCauId");
+                var tenSachNhap = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "TenSachYC");
+                var sachNhap = new SachCreateOrUpdate(tenSachNhap);
+                sachNhap.Show(this);      
+            }
         }
     }
 }

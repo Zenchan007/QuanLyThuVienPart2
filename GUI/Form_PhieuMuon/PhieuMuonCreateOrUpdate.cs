@@ -34,7 +34,7 @@ using System.Windows.Forms;
 
 namespace GUI.Form_PhieuMuon
 {
-    public partial class PhieuMuonCreateOrUpdate2 : DevExpress.XtraEditors.XtraForm
+    public partial class PhieuMuonCreateOrUpdate : DevExpress.XtraEditors.XtraForm
     {
 
         #region Biến
@@ -49,12 +49,12 @@ namespace GUI.Form_PhieuMuon
         private INhanVienService nhanVienService = new NhanVienService();
         PhieuMuon_DTO phieuMuon;
         #endregion
-        public PhieuMuonCreateOrUpdate2()
+        public PhieuMuonCreateOrUpdate()
         {
             InitializeComponent();
         }
 
-        public PhieuMuonCreateOrUpdate2(int ID) : this()
+        public PhieuMuonCreateOrUpdate(int ID) : this()
         {
             ID_CapNhat = ID;
         }
@@ -74,7 +74,6 @@ namespace GUI.Form_PhieuMuon
             if (ID_CapNhat == 0)
             {
                 btnTraSach.Enabled = false;
-
                 txtTenNhanVien.Text = nhanVienService.QueryFilter().FirstOrDefault(x => x.ID == ID_NhanVien).TenNhanVien;
                 txtTenDocGia.ReadOnly = true;
                 // Trong Trường Hợp Thêm Mới Phiếu Mượn 
@@ -92,7 +91,6 @@ namespace GUI.Form_PhieuMuon
             {
                 dtpNgayMuon.ReadOnly = true;
                 layoutDocGiaMoi.HideToCustomization();
-
                 phieuMuon = phieuMuonService.QueryFilterDto().FirstOrDefault(x => x.PhieuMuonId == ID_CapNhat);
                 txtMaDocGia.Text = phieuMuon.DocGiaId.ToString() ?? string.Empty;
                 txtMaNhanVien.Text = phieuMuon.NhanVienId.ToString() ?? string.Empty;
@@ -110,15 +108,10 @@ namespace GUI.Form_PhieuMuon
                 dtpThoiHan.Text = (dtpNgayHenTra.DateTime - dtpNgayMuon.DateTime).Days.ToString();
                 if (IdTrangThai == 1)
                 {
-
                     layoutThoiGianMuon.HideToCustomization();
                 }
-
-
                 if (IdTrangThai == 2)
                 {
-
-
                     txtTrangThai.ForeColor = Color.Red;
                     TimeSpan difference = DateTime.Today - dtpNgayHenTra.DateTime;
                     int soNgayMuon = difference.Days;
@@ -127,6 +120,7 @@ namespace GUI.Form_PhieuMuon
                 }
                 else if (IdTrangThai == 3)
                 {
+                    btnTraSach.Enabled = false;
                     layoutDocGiaMoi.HideToCustomization();
                     txtMaDocGia.ReadOnly = true;
                     txtTenDocGia.ReadOnly = true;
@@ -174,16 +168,19 @@ namespace GUI.Form_PhieuMuon
         private async Task<List<PhieuMuon_SachCreateInput>> AddDuLieuListSachMuon()
         {
             List<PhieuMuon_SachCreateInput> list = new List<PhieuMuon_SachCreateInput>();
-            foreach (var item in phieuMuon_Sach_DTOs)
+            await Task.Run(() =>
             {
-                var thongTinSachMuon = new PhieuMuon_SachCreateInput
+                foreach (var item in phieuMuon_Sach_DTOs)
                 {
-                    SachId = item.SachMuonId,
-                    SoLuong = item.SoLuongSachMuon,
-                    DonGiaMuon = item.DonGiaMuon,
-                };
-                list.Add(thongTinSachMuon);
-            }
+                    var thongTinSachMuon = new PhieuMuon_SachCreateInput
+                    {
+                        SachId = item.SachMuonId,
+                        SoLuong = item.SoLuongSachMuon,
+                        DonGiaMuon = item.DonGiaMuon,
+                    };
+                    list.Add(thongTinSachMuon);
+                }
+            });
             return list;
         }
 
@@ -205,15 +202,10 @@ namespace GUI.Form_PhieuMuon
         {
             this.Close();
         }
-        private async void btnInPhieuMuon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private  void btnInPhieuMuon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             PhieuMuon_XuatPhieuMuon xuat = new PhieuMuon_XuatPhieuMuon(ID_CapNhat);
             ReportPrintTool tool = new ReportPrintTool(xuat);
-            //tool.PrintingSystem.PageSettings.Margins.Left = 0;
-            //tool.PrintingSystem.PageSettings.Margins.Right = 1000;
-            //tool.PrintingSystem.PageSettings.Margins.Top = 0;
-            //tool.PrintingSystem.PageSettings.Margins.Bottom = 0;
-            tool.PrintingSystem.PageMargins.Bottom = 10;
             tool.ShowPreview();
         }
 
@@ -232,6 +224,7 @@ namespace GUI.Form_PhieuMuon
             txtTrangThai.ForeColor = Color.Green;
             var test = phieuMuon;
             MessageBox.Show("Trả sách thành công");
+            btnTraSach.Enabled = false;
             layoutThemSach.HideToCustomization();
             layoutThoiGianMuon.HideToCustomization();
             await showDuLieuSach();

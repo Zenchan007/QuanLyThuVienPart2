@@ -19,10 +19,10 @@ using System.Windows.Forms;
 
 namespace GUI.Form_Sach
 {
-    public partial class Sach_DanhSach2 : DevExpress.XtraEditors.XtraUserControl
+    public partial class Sach_DanhSach : DevExpress.XtraEditors.XtraUserControl
     {
         ISachService _isachService = new SachService();
-        public Sach_DanhSach2()
+        public Sach_DanhSach()
         {
             InitializeComponent();
         }
@@ -86,7 +86,7 @@ namespace GUI.Form_Sach
 
         private void btnGhiMuon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var phieuMuonMoi = new PhieuMuonCreateOrUpdate2();
+            var phieuMuonMoi = new PhieuMuonCreateOrUpdate();
             phieuMuonMoi.Show(this);
         }
     }

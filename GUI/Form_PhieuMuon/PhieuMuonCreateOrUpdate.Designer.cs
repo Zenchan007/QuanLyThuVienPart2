@@ -1,6 +1,6 @@
 ﻿namespace GUI.Form_PhieuMuon
 {
-    partial class PhieuMuonCreateOrUpdate2
+    partial class PhieuMuonCreateOrUpdate
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhieuMuonCreateOrUpdate2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhieuMuonCreateOrUpdate));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.dtpThoiHan = new DevExpress.XtraEditors.SpinEdit();

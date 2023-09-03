@@ -15,10 +15,10 @@ using System.Windows.Forms;
 
 namespace GUI.Form_DocGia
 {
-    public partial class DocGia_DanhSach2 : UserControl
+    public partial class DocGia_DanhSach : UserControl
     {
         IDocGiaService docGiaService = new DocGiaService();
-        public DocGia_DanhSach2()
+        public DocGia_DanhSach()
         {
             InitializeComponent();
         }

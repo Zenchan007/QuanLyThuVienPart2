@@ -17,10 +17,10 @@ using GUI.Form_NhanVien;
 
 namespace GUI.Form_NhaPhanPhoi
 {
-    public partial class NhaPhanPhoi_DanhSach2 : DevExpress.XtraEditors.XtraUserControl
+    public partial class NhaPhanPhoi_DanhSach : DevExpress.XtraEditors.XtraUserControl
     {
         INhaPhanPhoiService nhaPhanPhoiService = new NhaPhanPhoiService();
-        public NhaPhanPhoi_DanhSach2()
+        public NhaPhanPhoi_DanhSach()
         {
             InitializeComponent();
         }

@@ -48,7 +48,6 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Container = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.picMain = new DevExpress.XtraEditors.PictureEdit();
             this.navBarControl = new DevExpress.XtraNavBar.NavBarControl();
             this.navSach = new DevExpress.XtraNavBar.NavBarGroup();
@@ -216,7 +215,7 @@
             this.simpleButton4.StyleController = this.layoutControl2;
             this.simpleButton4.TabIndex = 7;
             this.simpleButton4.Text = "Thoát Chương Trình";
-            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            this.simpleButton4.Click += new System.EventHandler(this.ButtonExit_Click);
             // 
             // btnThongTinTaiKhoan
             // 
@@ -238,7 +237,7 @@
             this.btnDangXuat.StyleController = this.layoutControl2;
             this.btnDangXuat.TabIndex = 5;
             this.btnDangXuat.Text = "Đăng Xuất";
-            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click_1);
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // layoutControlGroup1
             // 
@@ -282,26 +281,12 @@
             // Container
             // 
             this.Container.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.Container.Controls.Add(this.labelControl1);
             this.Container.Controls.Add(this.picMain);
             this.Container.Controls.Add(this.popupControlContainer1);
             this.Container.Location = new System.Drawing.Point(245, 77);
             this.Container.Name = "Container";
             this.Container.Size = new System.Drawing.Size(1134, 739);
             this.Container.TabIndex = 5;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(417, 694);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(383, 32);
-            this.labelControl1.TabIndex = 3;
-            this.labelControl1.Text = "Phần Mềm Quản Lý Thư Viện";
             // 
             // picMain
             // 
@@ -588,7 +573,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Container)).EndInit();
             this.Container.ResumeLayout(false);
-            this.Container.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMain.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
@@ -650,6 +634,5 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private System.Windows.Forms.Timer timerDoiAnh;
         private DevExpress.XtraEditors.PictureEdit picMain;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

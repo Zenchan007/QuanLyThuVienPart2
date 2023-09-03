@@ -29,7 +29,6 @@ namespace GUI.Login
             SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, true);
             SplashScreenManager.Default.SetWaitFormCaption("Đang đăng nhập...");
             SplashScreenManager.Default.SetWaitFormDescription("Vui Lòng Chờ!");
-            //Thread.Sleep(1000);
             if (!errMatKhau.HasErrors && !errMatKhau.HasErrors)
             {
                 var TaiKhoan = _service.QueryFilter().FirstOrDefault(x => x.TaiKhoan == txtTenDangNhap.Text);

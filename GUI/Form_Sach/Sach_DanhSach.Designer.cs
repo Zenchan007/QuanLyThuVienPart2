@@ -1,6 +1,6 @@
 ﻿namespace GUI.Form_Sach
 {
-	partial class Sach_DanhSach2
+	partial class Sach_DanhSach
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sach_DanhSach2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sach_DanhSach));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridSach = new DevExpress.XtraGrid.GridControl();
             this.dtgSach = new DevExpress.XtraGrid.Views.Grid.GridView();

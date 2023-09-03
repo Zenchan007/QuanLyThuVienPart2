@@ -16,10 +16,10 @@ using System.Windows.Forms;
 
 namespace GUI.Form_NhanVien
 {
-    public partial class NhanVien_DanhSach2 : DevExpress.XtraEditors.XtraUserControl
+    public partial class NhanVien_DanhSach : DevExpress.XtraEditors.XtraUserControl
     {
         INhanVienService nhanVienService = new NhanVienService();
-        public NhanVien_DanhSach2()
+        public NhanVien_DanhSach()
         {
             InitializeComponent();
         }

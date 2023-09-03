@@ -51,7 +51,7 @@ namespace GUI.Form_PhieuMuon
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var phieuMuonMoi = new PhieuMuonCreateOrUpdate2();
+            var phieuMuonMoi = new PhieuMuonCreateOrUpdate();
             phieuMuonMoi.FormClosed += childFormClose;
             phieuMuonMoi.Show(this);
         }
@@ -67,7 +67,7 @@ namespace GUI.Form_PhieuMuon
             {
                 int selectedRowHandle = dtgPhieuMuon.FocusedRowHandle;
                 var ID_PhieuMuonCapNhat = dtgPhieuMuon.GetRowCellDisplayText(selectedRowHandle, "PhieuMuonId");
-                var phieuMuonCapNhat = new PhieuMuonCreateOrUpdate2(Int32.Parse(ID_PhieuMuonCapNhat));
+                var phieuMuonCapNhat = new PhieuMuonCreateOrUpdate(Int32.Parse(ID_PhieuMuonCapNhat));
                 phieuMuonCapNhat.FormClosed += childFormClose;
                 phieuMuonCapNhat.Show(this);
             }

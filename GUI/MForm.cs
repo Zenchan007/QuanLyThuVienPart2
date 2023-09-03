@@ -62,7 +62,7 @@ namespace GUI
         #region link button
         private void btnKhoSach_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            showUserControl(new Sach_DanhSach2());
+            showUserControl(new Sach_DanhSach());
         }
 
 
@@ -84,7 +84,7 @@ namespace GUI
 
         private void btnDocGia_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            showUserControl(new DocGia_DanhSach2());
+            showUserControl(new DocGia_DanhSach());
         }
 
         private void btnPhieuMuon_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -94,11 +94,11 @@ namespace GUI
 
         private void btnNhaPhanPhoi_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            showUserControl(new NhaPhanPhoi_DanhSach2());
+            showUserControl(new NhaPhanPhoi_DanhSach());
         }
         private void btnNhanVien_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            showUserControl(new NhanVien_DanhSach2());
+            showUserControl(new NhanVien_DanhSach());
         }
         #endregion
 
@@ -145,14 +145,10 @@ namespace GUI
 
 
 
-        private void simpleButton4_Click(object sender, EventArgs e)
+        private void ButtonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-
-
-
         private void btnThongTinTaiKhoan_Click(object sender, EventArgs e)
         {
             var thongTinCaNhan = new NhanVien_ThongTinTaiKhoan(ID_Login);
@@ -164,16 +160,22 @@ namespace GUI
         {
             MForm_Load(null, null);
         }
-        private void btnDangXuat_Click_1(object sender, EventArgs e)
+        private async void btnDangXuat_Click(object sender, EventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, true);
             SplashScreenManager.Default.SetWaitFormCaption("Đang đăng xuất...");
             SplashScreenManager.Default.SetWaitFormDescription("Chờ trong giây lát");
-            SplashScreenManager.CloseForm();
-            if (Owner != null && !Owner.Disposing && !Owner.IsDisposed && !Owner.Visible)
+            await Task.Run(() =>
             {
-                Owner.Show();
-            }    
+                if (Owner != null && !Owner.Disposing && !Owner.IsDisposed && !Owner.Visible)
+                {
+                    Owner.Invoke((Action)(() =>
+                    {
+                        Owner.Show();
+                    }));
+                }
+            });
+            SplashScreenManager.CloseForm();
             this.Dispose();
             this.Close();
         }

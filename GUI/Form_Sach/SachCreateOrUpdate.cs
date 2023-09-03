@@ -39,6 +39,12 @@ namespace GUI.Form_Sach
         {
             txtTenSach.Text = tenSachYC;
         }
+
+        public SachCreateOrUpdate(string tenSachYC, string tacGiaYc) : this(tenSachYC)
+        {
+            //txtTenTacGia.Text = tacGiaYc;
+        }
+
         private async void SachCreateOrUpdate_Load(object sender, EventArgs e)
         {
             loadDuLieuComboBox();

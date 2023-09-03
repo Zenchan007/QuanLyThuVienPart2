@@ -29,7 +29,7 @@
     <ProductName>QuanLyThuVien</ProductName>
     <PublisherName>A40474_NguyenVanTuan</PublisherName>
     <SuiteName>NguyenVanTuan</SuiteName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -65,7 +65,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>library-logo-design-precious-astonishing-13.ico</ApplicationIcon>
@@ -152,17 +152,17 @@
     <Compile Include="Form_DocGia\DocGiaCreateOrUpdate.Designer.cs">
       <DependentUpon>DocGiaCreateOrUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_DocGia\DocGia_DanhSach2.cs">
+    <Compile Include="Form_DocGia\DocGia_DanhSach.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Form_DocGia\DocGia_DanhSach2.Designer.cs">
-      <DependentUpon>DocGia_DanhSach2.cs</DependentUpon>
+    <Compile Include="Form_DocGia\DocGia_DanhSach.Designer.cs">
+      <DependentUpon>DocGia_DanhSach.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_NhanVien\NhanVien_DanhSach2.cs">
+    <Compile Include="Form_NhanVien\NhanVien_DanhSach.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Form_NhanVien\NhanVien_DanhSach2.Designer.cs">
-      <DependentUpon>NhanVien_DanhSach2.cs</DependentUpon>
+    <Compile Include="Form_NhanVien\NhanVien_DanhSach.Designer.cs">
+      <DependentUpon>NhanVien_DanhSach.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_NhanVien\NhanVien_ThongTinTaiKhoan.cs">
       <SubType>Form</SubType>
@@ -176,23 +176,23 @@
     <Compile Include="Form_NhaPhanPhoi\NhaPhanPhoiCreateOrUpdate.Designer.cs">
       <DependentUpon>NhaPhanPhoiCreateOrUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_NhaPhanPhoi\NhaPhanPhoi_DanhSach2.cs">
+    <Compile Include="Form_NhaPhanPhoi\NhaPhanPhoi_DanhSach.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Form_NhaPhanPhoi\NhaPhanPhoi_DanhSach2.Designer.cs">
-      <DependentUpon>NhaPhanPhoi_DanhSach2.cs</DependentUpon>
+    <Compile Include="Form_NhaPhanPhoi\NhaPhanPhoi_DanhSach.Designer.cs">
+      <DependentUpon>NhaPhanPhoi_DanhSach.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_PhieuMuon\PhieuMuonCreateOrUpdate2.cs">
+    <Compile Include="Form_PhieuMuon\PhieuMuonCreateOrUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_PhieuMuon\PhieuMuonCreateOrUpdate2.Designer.cs">
-      <DependentUpon>PhieuMuonCreateOrUpdate2.cs</DependentUpon>
+    <Compile Include="Form_PhieuMuon\PhieuMuonCreateOrUpdate.Designer.cs">
+      <DependentUpon>PhieuMuonCreateOrUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_PhieuMuon\PhieuMuon_DanhSach2.cs">
+    <Compile Include="Form_PhieuMuon\PhieuMuon_DanhSach.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Form_PhieuMuon\PhieuMuon_DanhSach2.Designer.cs">
-      <DependentUpon>PhieuMuon_DanhSach2.cs</DependentUpon>
+    <Compile Include="Form_PhieuMuon\PhieuMuon_DanhSach.Designer.cs">
+      <DependentUpon>PhieuMuon_DanhSach.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_PhieuMuon\PhieuMuon_XuatPhieuMuon.cs">
       <SubType>Component</SubType>
@@ -212,11 +212,11 @@
     <Compile Include="Form_Sach\SachCreateOrUpdate.Designer.cs">
       <DependentUpon>SachCreateOrUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Sach\Sach_DanhSach2.cs">
+    <Compile Include="Form_Sach\Sach_DanhSach.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Form_Sach\Sach_DanhSach2.Designer.cs">
-      <DependentUpon>Sach_DanhSach2.cs</DependentUpon>
+    <Compile Include="Form_Sach\Sach_DanhSach.Designer.cs">
+      <DependentUpon>Sach_DanhSach.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_TacGia\TacGiaCreateOrUpdate.cs">
       <SubType>Form</SubType>
@@ -268,11 +268,11 @@
     <EmbeddedResource Include="Form_DocGia\DocGiaCreateOrUpdate.resx">
       <DependentUpon>DocGiaCreateOrUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_DocGia\DocGia_DanhSach2.resx">
-      <DependentUpon>DocGia_DanhSach2.cs</DependentUpon>
+    <EmbeddedResource Include="Form_DocGia\DocGia_DanhSach.resx">
+      <DependentUpon>DocGia_DanhSach.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_NhanVien\NhanVien_DanhSach2.resx">
-      <DependentUpon>NhanVien_DanhSach2.cs</DependentUpon>
+    <EmbeddedResource Include="Form_NhanVien\NhanVien_DanhSach.resx">
+      <DependentUpon>NhanVien_DanhSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_NhanVien\NhanVien_ThongTinTaiKhoan.resx">
       <DependentUpon>NhanVien_ThongTinTaiKhoan.cs</DependentUpon>
@@ -280,14 +280,14 @@
     <EmbeddedResource Include="Form_NhaPhanPhoi\NhaPhanPhoiCreateOrUpdate.resx">
       <DependentUpon>NhaPhanPhoiCreateOrUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_NhaPhanPhoi\NhaPhanPhoi_DanhSach2.resx">
-      <DependentUpon>NhaPhanPhoi_DanhSach2.cs</DependentUpon>
+    <EmbeddedResource Include="Form_NhaPhanPhoi\NhaPhanPhoi_DanhSach.resx">
+      <DependentUpon>NhaPhanPhoi_DanhSach.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_PhieuMuon\PhieuMuonCreateOrUpdate2.resx">
-      <DependentUpon>PhieuMuonCreateOrUpdate2.cs</DependentUpon>
+    <EmbeddedResource Include="Form_PhieuMuon\PhieuMuonCreateOrUpdate.resx">
+      <DependentUpon>PhieuMuonCreateOrUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_PhieuMuon\PhieuMuon_DanhSach2.resx">
-      <DependentUpon>PhieuMuon_DanhSach2.cs</DependentUpon>
+    <EmbeddedResource Include="Form_PhieuMuon\PhieuMuon_DanhSach.resx">
+      <DependentUpon>PhieuMuon_DanhSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_PhieuMuon\PhieuMuon_XuatPhieuMuon.resx">
       <DependentUpon>PhieuMuon_XuatPhieuMuon.cs</DependentUpon>
@@ -298,8 +298,8 @@
     <EmbeddedResource Include="Form_Sach\SachCreateOrUpdate.resx">
       <DependentUpon>SachCreateOrUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Sach\Sach_DanhSach2.resx">
-      <DependentUpon>Sach_DanhSach2.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Sach\Sach_DanhSach.resx">
+      <DependentUpon>Sach_DanhSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_TacGia\TacGiaCreateOrUpdate.resx">
       <DependentUpon>TacGiaCreateOrUpdate.cs</DependentUpon>
