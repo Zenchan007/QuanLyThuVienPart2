@@ -26,19 +26,17 @@ namespace GUI.Login
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            
-            if(!errMatKhau.HasErrors && !errMatKhau.HasErrors)
+            SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, true);
+            SplashScreenManager.Default.SetWaitFormCaption("Đang đăng nhập...");
+            SplashScreenManager.Default.SetWaitFormDescription("Vui Lòng Chờ!");
+            //Thread.Sleep(1000);
+            if (!errMatKhau.HasErrors && !errMatKhau.HasErrors)
             {
                 var TaiKhoan = _service.QueryFilter().FirstOrDefault(x => x.TaiKhoan == txtTenDangNhap.Text);
                 if (TaiKhoan != null)
                 {
                     if (TaiKhoan.MatKhau == txtMatKhau.Text)
                     {
-                        SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, true);
-                        SplashScreenManager.Default.SetWaitFormCaption("Đang đăng nhập...");
-                        SplashScreenManager.Default.SetWaitFormDescription("Vui Lòng Chờ!");
-                        Thread.Sleep(1000);
-                        SplashScreenManager.CloseForm();
                         Properties.Settings.Default.TenDangNhap = txtTenDangNhap.Text;
                         Properties.Settings.Default.MatKhau = txtMatKhau.Text;
                         Properties.Settings.Default.Remember = checkRemember.Checked;
@@ -59,6 +57,7 @@ namespace GUI.Login
                     errTenDangNhap.SetError(txtTenDangNhap, "Tên Đăng Nhập Không Đúng. Vui lòng kiểm tra lại");
                 }
             }
+            SplashScreenManager.CloseForm();
         }
         private void txtTenDangNhap_Validating(object sender, CancelEventArgs e)
         {
@@ -95,5 +94,5 @@ namespace GUI.Login
             }
         }
     }
-   
+
 }

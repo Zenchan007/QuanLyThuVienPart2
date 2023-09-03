@@ -193,7 +193,7 @@
             // xrPictureBox2
             // 
             this.xrPictureBox2.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource(global::GUI.Properties.Resources.library_logo_design_precious_astonishing_13, true);
-            this.xrPictureBox2.LocationFloat = new DevExpress.Utils.PointFloat(502.5925F, 28.33333F);
+            this.xrPictureBox2.LocationFloat = new DevExpress.Utils.PointFloat(479.0739F, 10F);
             this.xrPictureBox2.Name = "xrPictureBox2";
             this.xrPictureBox2.SizeF = new System.Drawing.SizeF(105.0927F, 100.3334F);
             this.xrPictureBox2.Sizing = DevExpress.XtraPrinting.ImageSizeMode.ZoomImage;
@@ -381,7 +381,7 @@
             // xrLabel2
             // 
             this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(171.0186F, 67.33337F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(172.6851F, 77.33337F);
             this.xrLabel2.Multiline = true;
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -392,7 +392,7 @@
             // xrLabel1
             // 
             this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(171.0186F, 44.33334F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(172.6851F, 54.33334F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -403,7 +403,7 @@
             // xrPictureBox1
             // 
             this.xrPictureBox1.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource(global::GUI.Properties.Resources.tải_xuống, true);
-            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(71.01858F, 0F);
+            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(72.68511F, 10F);
             this.xrPictureBox1.Name = "xrPictureBox1";
             this.xrPictureBox1.SizeF = new System.Drawing.SizeF(100F, 100F);
             this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.ZoomImage;
@@ -569,7 +569,7 @@
             this.DataSource = this.efDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Landscape = true;
-            this.Margins = new System.Drawing.Printing.Margins(1, 418, 0, 0);
+            this.Margins = new System.Drawing.Printing.Margins(214, 160, 0, 0);
             this.PageHeight = 850;
             this.PageWidth = 1100;
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {

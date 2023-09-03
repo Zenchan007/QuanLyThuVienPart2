@@ -952,8 +952,7 @@
             // 
             // PhieuMuonCreateOrUpdate2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1233, 760);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);

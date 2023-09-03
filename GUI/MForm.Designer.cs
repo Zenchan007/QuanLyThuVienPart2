@@ -48,6 +48,8 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Container = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.picMain = new DevExpress.XtraEditors.PictureEdit();
             this.navBarControl = new DevExpress.XtraNavBar.NavBarControl();
             this.navSach = new DevExpress.XtraNavBar.NavBarGroup();
             this.btnKhoSach = new DevExpress.XtraNavBar.NavBarItem();
@@ -74,7 +76,6 @@
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.timerDoiAnh = new System.Windows.Forms.Timer(this.components);
-            this.picMain = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcAvatar.Properties)).BeginInit();
@@ -89,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Container)).BeginInit();
             this.Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMain.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -97,7 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMain.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -281,12 +282,41 @@
             // Container
             // 
             this.Container.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.Container.Controls.Add(this.labelControl1);
             this.Container.Controls.Add(this.picMain);
             this.Container.Controls.Add(this.popupControlContainer1);
             this.Container.Location = new System.Drawing.Point(245, 77);
             this.Container.Name = "Container";
             this.Container.Size = new System.Drawing.Size(1134, 739);
             this.Container.TabIndex = 5;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(417, 694);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(383, 32);
+            this.labelControl1.TabIndex = 3;
+            this.labelControl1.Text = "Phần Mềm Quản Lý Thư Viện";
+            // 
+            // picMain
+            // 
+            this.picMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picMain.EditValue = ((object)(resources.GetObject("picMain.EditValue")));
+            this.picMain.Location = new System.Drawing.Point(0, 0);
+            this.picMain.MenuManager = this.barManager1;
+            this.picMain.Name = "picMain";
+            this.picMain.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.picMain.Properties.Appearance.Options.UseBackColor = true;
+            this.picMain.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.picMain.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.picMain.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.picMain.Size = new System.Drawing.Size(1134, 739);
+            this.picMain.TabIndex = 2;
             // 
             // navBarControl
             // 
@@ -530,25 +560,9 @@
             this.timerDoiAnh.Interval = 1000;
             this.timerDoiAnh.Tick += new System.EventHandler(this.timerDoiAnh_Tick);
             // 
-            // picMain
-            // 
-            this.picMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picMain.EditValue = ((object)(resources.GetObject("picMain.EditValue")));
-            this.picMain.Location = new System.Drawing.Point(0, 0);
-            this.picMain.MenuManager = this.barManager1;
-            this.picMain.Name = "picMain";
-            this.picMain.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.picMain.Properties.Appearance.Options.UseBackColor = true;
-            this.picMain.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.picMain.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.picMain.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.picMain.Size = new System.Drawing.Size(1134, 739);
-            this.picMain.TabIndex = 2;
-            // 
             // MForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1391, 828);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -574,6 +588,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Container)).EndInit();
             this.Container.ResumeLayout(false);
+            this.Container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMain.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -582,7 +598,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMain.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -635,5 +650,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private System.Windows.Forms.Timer timerDoiAnh;
         private DevExpress.XtraEditors.PictureEdit picMain;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

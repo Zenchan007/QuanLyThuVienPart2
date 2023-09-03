@@ -209,10 +209,11 @@ namespace GUI.Form_PhieuMuon
         {
             PhieuMuon_XuatPhieuMuon xuat = new PhieuMuon_XuatPhieuMuon(ID_CapNhat);
             ReportPrintTool tool = new ReportPrintTool(xuat);
-            tool.PrintingSystem.PageSettings.Margins.Left = 1;
-            tool.PrintingSystem.PageSettings.Margins.Right = 0;
-            tool.PrintingSystem.PageSettings.Margins.Top = 0;
-            tool.PrintingSystem.PageSettings.Margins.Bottom = 0;
+            //tool.PrintingSystem.PageSettings.Margins.Left = 0;
+            //tool.PrintingSystem.PageSettings.Margins.Right = 1000;
+            //tool.PrintingSystem.PageSettings.Margins.Top = 0;
+            //tool.PrintingSystem.PageSettings.Margins.Bottom = 0;
+            tool.PrintingSystem.PageMargins.Bottom = 10;
             tool.ShowPreview();
         }
 

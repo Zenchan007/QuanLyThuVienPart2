@@ -133,6 +133,7 @@ namespace GUI
             if (currentImageIndex < imageFiles.Length)
             {
                 picMain.Image = new System.Drawing.Bitmap(imageFiles[currentImageIndex]);
+                picMain.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
                 currentImageIndex++;
             }
             else
@@ -165,12 +166,12 @@ namespace GUI
         }
         private void btnDangXuat_Click_1(object sender, EventArgs e)
         {
+            SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, true);
+            SplashScreenManager.Default.SetWaitFormCaption("Đang đăng xuất...");
+            SplashScreenManager.Default.SetWaitFormDescription("Chờ trong giây lát");
+            SplashScreenManager.CloseForm();
             if (Owner != null && !Owner.Disposing && !Owner.IsDisposed && !Owner.Visible)
             {
-                SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, true);
-                SplashScreenManager.Default.SetWaitFormCaption("Đang đăng xuất...");
-                SplashScreenManager.Default.SetWaitFormDescription("Chờ trong giây lát");
-                Thread.Sleep(5000);
                 Owner.Show();
             }    
             this.Dispose();
