@@ -20,12 +20,12 @@ using System.Windows.Forms;
 
 namespace GUI.Form_TheLoai
 {
-    public partial class TheLoai_DanhSach2 : DevExpress.XtraEditors.XtraUserControl
+    public partial class TheLoai_DanhSach : DevExpress.XtraEditors.XtraUserControl
     {
         ITheLoaiService theLoaiService = new TheLoaiService();
         ISachService sachService = new SachService();
         List<Sach_DTO> ListSach;
-        public TheLoai_DanhSach2()
+        public TheLoai_DanhSach()
         {
             InitializeComponent();
         }

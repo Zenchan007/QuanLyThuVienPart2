@@ -11,7 +11,8 @@ namespace DAL.Services.Sachs.DTO
     {
         public int SachId { set; get; }
         public string TenSach { get; set; }
-
+        public int TacGiaId { set; get; }
+       
         public string TenTacGia { set; get; }
         public string NhaPhanPhoiId { set; get; }
         public string TenNhaPhanPhoi { set; get; }

@@ -73,6 +73,7 @@ namespace DAL.Services.Sachs.DTO
                                 NgayXb = q.NgayXB,
                                 AnhSach = q.AnhSach,
                                 MoTa = q.MoTa,
+                                TacGiaId = (int)q.ID_TacGia,
                                 TenTacGia = tgs != null ? tgs.TenTacGia : string.Empty,
                                 TenNhaPhanPhoi = npps != null ? npps.TenNhaPhanPhoi : string.Empty,
                                 TheLoais = q.TheLoais.Select(x => x.ID).ToList(),

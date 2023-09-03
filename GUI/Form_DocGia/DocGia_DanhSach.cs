@@ -1,7 +1,11 @@
 ﻿using DAL.Services.DocGias;
 using DAL.Services.DocGias.DTO;
 using DAL.Services.NhanVien;
+using DAL.Services.PhieuMuons;
+using DAL.Services.PhieuMuons.DTO;
+using DAL.Services.Sachs.DTO;
 using DAL.Services.TheLoais.DTO;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +22,7 @@ namespace GUI.Form_DocGia
     public partial class DocGia_DanhSach : UserControl
     {
         IDocGiaService docGiaService = new DocGiaService();
+        IPhieuMuonService phieuMuonService = new PhieuMuonService();
         public DocGia_DanhSach()
         {
             InitializeComponent();
@@ -98,6 +103,36 @@ namespace GUI.Form_DocGia
                     }
                 });
             }
+        }
+
+        private  void dtgDocGia_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
+        {
+            var listPhieuMuonDocGia =  phieuMuonService.QueryFilterDto().ToList();
+            GridView view = sender as GridView;
+            DocGia_DTO phieuMuonDocGia = view.GetRow(e.RowHandle) as DocGia_DTO    ;
+            if (phieuMuonDocGia != null)
+                e.IsEmpty = !listPhieuMuonDocGia.Any(x => x.DocGiaId == phieuMuonDocGia.DocGiaId);
+        }
+        private  void dtgDocGia_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
+        {
+
+            var listPhieuMuonDocGia =  phieuMuonService.QueryFilterDto().ToList();
+            GridView view = sender as GridView;
+            DocGia_DTO phieuMuonDocGia = view.GetRow(e.RowHandle) as DocGia_DTO;
+            if (phieuMuonDocGia != null)
+                e.ChildList = listPhieuMuonDocGia.Where(x => x.DocGiaId == phieuMuonDocGia.DocGiaId).ToList();
+        }
+
+        private void dtgDocGia_MasterRowGetRelationCount(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventArgs e)
+        {
+            e.RelationCount = 1;
+        }
+
+       
+
+        private void dtgDocGia_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
+        {
+            e.RelationName = "PhieuMuonCuaDocGia";
         }
     }
 }

@@ -224,11 +224,11 @@
     <Compile Include="Form_TacGia\TacGiaCreateOrUpdate.Designer.cs">
       <DependentUpon>TacGiaCreateOrUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_TacGia\TacGia_DanhSach2.cs">
+    <Compile Include="Form_TacGia\TacGia_DanhSach.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Form_TacGia\TacGia_DanhSach2.Designer.cs">
-      <DependentUpon>TacGia_DanhSach2.cs</DependentUpon>
+    <Compile Include="Form_TacGia\TacGia_DanhSach.Designer.cs">
+      <DependentUpon>TacGia_DanhSach.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_TheLoai\TheLoai_CreateOrUpdate.cs">
       <SubType>Form</SubType>
@@ -236,11 +236,11 @@
     <Compile Include="Form_TheLoai\TheLoai_CreateOrUpdate.Designer.cs">
       <DependentUpon>TheLoai_CreateOrUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_TheLoai\TheLoai_DanhSach2.cs">
+    <Compile Include="Form_TheLoai\TheLoai_DanhSach.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Form_TheLoai\TheLoai_DanhSach2.Designer.cs">
-      <DependentUpon>TheLoai_DanhSach2.cs</DependentUpon>
+    <Compile Include="Form_TheLoai\TheLoai_DanhSach.Designer.cs">
+      <DependentUpon>TheLoai_DanhSach.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\Login_form.cs">
       <SubType>Form</SubType>
@@ -304,14 +304,14 @@
     <EmbeddedResource Include="Form_TacGia\TacGiaCreateOrUpdate.resx">
       <DependentUpon>TacGiaCreateOrUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_TacGia\TacGia_DanhSach2.resx">
-      <DependentUpon>TacGia_DanhSach2.cs</DependentUpon>
+    <EmbeddedResource Include="Form_TacGia\TacGia_DanhSach.resx">
+      <DependentUpon>TacGia_DanhSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_TheLoai\TheLoai_CreateOrUpdate.resx">
       <DependentUpon>TheLoai_CreateOrUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_TheLoai\TheLoai_DanhSach2.resx">
-      <DependentUpon>TheLoai_DanhSach2.cs</DependentUpon>
+    <EmbeddedResource Include="Form_TheLoai\TheLoai_DanhSach.resx">
+      <DependentUpon>TheLoai_DanhSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\Login_form.resx">
       <DependentUpon>Login_form.cs</DependentUpon>

@@ -74,12 +74,12 @@ namespace GUI
 
         private void btnTheLoai_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            showUserControl(new TheLoai_DanhSach2());
+            showUserControl(new TheLoai_DanhSach());
         }
 
         private void btnTacGia_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            showUserControl(new TacGia_DanhSach2());
+            showUserControl(new TacGia_DanhSach());
         }
 
         private void btnDocGia_LinkClicked(object sender, NavBarLinkEventArgs e)

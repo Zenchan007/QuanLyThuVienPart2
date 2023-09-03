@@ -64,7 +64,7 @@ namespace GUI.Form_PhieuMuon
 
         private async void PhieuMuonCreateOrUpdate2_Load(object sender, EventArgs e)
         {
-            var listMaDocGia = await docGiaService.QueryFilter().Select(x => x.ID).ToListAsync();
+            var listMaDocGia =  docGiaService.QueryFilter().Select(x => x.ID).ToList();
             txtMaDocGia.Properties.Items.AddRange(listMaDocGia);
             bsPhieuMuon_Dto = new BindingSource();
             phieuMuon_Sach_DTOs = new BindingList<PhieuMuon_Sach_DTO>();

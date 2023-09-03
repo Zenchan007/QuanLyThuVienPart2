@@ -14,16 +14,23 @@ using DAL.Services.TacGias;
 using System.Data.Entity;
 using DAL.Services.TacGias.DTO;
 using GUI.Form_NhaPhanPhoi;
+using DAL.Services.Sachs.DTO;
+using DAL.Services.DocGias.DTO;
+using DAL.Services.PhieuMuons;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace GUI.Form_TacGia
 {
-    public partial class TacGia_DanhSach2 : DevExpress.XtraEditors.XtraUserControl
+    public partial class TacGia_DanhSach : DevExpress.XtraEditors.XtraUserControl
     {
+        #region Khai Báo
         ITacGiaService tacGiaService = new TacGiaService();
-        public TacGia_DanhSach2()
+        ISachService sachService = new SachService();
+        public TacGia_DanhSach()
         {
             InitializeComponent();
         }
+        #endregion
 
         private void TacGia_DanhSach2_Load(object sender, EventArgs e)
         {
@@ -36,6 +43,7 @@ namespace GUI.Form_TacGia
             });
         }
 
+        #region Event
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var tacGiaMoi = new TacGiaCreateOrUpdate();
@@ -91,5 +99,35 @@ namespace GUI.Form_TacGia
             dtgTacGia.OptionsView.ColumnAutoWidth = true;
             dtgTacGia.BestFitColumns();
         }
+        #endregion
+        #region CusTom DetailView
+        private void dtgTacGia_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
+        {
+            var listPhieuMuonDocGia =  sachService.QueryFilterDto().ToList();
+            GridView view = sender as GridView;
+            TacGia_DTO tacGiaSach = view.GetRow(e.RowHandle) as TacGia_DTO;
+            if (tacGiaSach != null)
+                e.IsEmpty = !listPhieuMuonDocGia.Any(x => x.TacGiaId == tacGiaSach.TacGiaId);
+        }
+
+        private  void dtgTacGia_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
+        {
+            var listPhieuMuonDocGia =  sachService.QueryFilterDto().ToList();
+            GridView view = sender as GridView;
+            TacGia_DTO tacGiaSach = view.GetRow(e.RowHandle) as TacGia_DTO;
+            if (tacGiaSach != null)
+                e.ChildList = listPhieuMuonDocGia.Where(x => x.TacGiaId == tacGiaSach.TacGiaId).ToList();
+        }
+
+        private void dtgTacGia_MasterRowGetRelationCount(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventArgs e)
+        {
+            e.RelationCount = 0;
+        }
+
+        private void dtgTacGia_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
+        {
+            e.RelationName = "SachCuaTacGia";
+        }
+        #endregion
     }
 }
