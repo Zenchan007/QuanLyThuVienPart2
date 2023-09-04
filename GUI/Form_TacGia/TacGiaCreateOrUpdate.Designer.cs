@@ -366,18 +366,18 @@
             // 
             this.txt.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt.AppearanceItemCaption.Options.UseFont = true;
-            this.txt.AppearanceItemCaptionDisabled.Font = new System.Drawing.Font("Times New Roman", 10.2F);
+            this.txt.AppearanceItemCaptionDisabled.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt.AppearanceItemCaptionDisabled.Options.UseFont = true;
             this.txt.Control = this.txtTenTacGia;
             this.txt.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.txt.CustomizationFormText = "layoutControlItem2";
             this.txt.Location = new System.Drawing.Point(0, 0);
             this.txt.Name = "txt";
-            this.txt.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Times New Roman", 10.2F);
+            this.txt.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt.OptionsPrint.AppearanceItem.Options.UseFont = true;
-            this.txt.OptionsPrint.AppearanceItemControl.Font = new System.Drawing.Font("Times New Roman", 10.2F);
+            this.txt.OptionsPrint.AppearanceItemControl.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt.OptionsPrint.AppearanceItemControl.Options.UseFont = true;
-            this.txt.OptionsPrint.AppearanceItemText.Font = new System.Drawing.Font("Times New Roman", 10.2F);
+            this.txt.OptionsPrint.AppearanceItemText.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt.OptionsPrint.AppearanceItemText.Options.UseFont = true;
             this.txt.Size = new System.Drawing.Size(536, 28);
             this.txt.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 2, 0);

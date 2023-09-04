@@ -42,15 +42,15 @@ namespace GUI.Form_Sach
             txtTenSach.Text = tenSachYC;
         }
 
-        public SachCreateOrUpdate(string tenSachYC, string tacGiaYc) : this(tenSachYC)
+        public SachCreateOrUpdate(string tenSachYC, string tacGiaYc) : this()
         {
-            //txtTenTacGia.Text = tacGiaYc;
+            txtTenSach.Text = tenSachYC;
+            txtTenTacGia.Text = tacGiaYc;
         }
 
         private async void SachCreateOrUpdate_Load(object sender, EventArgs e)
         {
             loadDuLieuComboBox();
-
             if (ID_CapNhat != 0)
             {
                 var sachCapNhat = await sachService.GetById(ID_CapNhat);
@@ -103,16 +103,11 @@ namespace GUI.Form_Sach
         {
             try
             {
-
-                if (string.IsNullOrEmpty(txtTenSach.Text) 
-                     && string.IsNullOrEmpty(dtpNgayXB.Text) && string.IsNullOrEmpty(txtDonGia.Text) &&
-                    string.IsNullOrEmpty(txtSoLuong.Text))
+                if (string.IsNullOrEmpty(txtTenSach.Text))
                 {
-                    MessageBox.Show("Vui lòng điền đúng định dạng");
+                    MessageBox.Show("Vui lòng điền tên tác giả");
                 }
-                if (string.IsNullOrEmpty(errLoi.GetError(txtTenSach))  
-                 && string.IsNullOrEmpty(errLoi.GetError(dtpNgayXB)) && string.IsNullOrEmpty(errLoi.GetError(txtDonGia)) &&
-                string.IsNullOrEmpty(errLoi.GetError(txtSoLuong)))
+                if (string.IsNullOrEmpty(errLoi.GetError(txtTenSach)))
                 {
                     var sachCRUD = new SachCreateInput
                     {
@@ -187,14 +182,7 @@ namespace GUI.Form_Sach
             {
                 int maTacGia = Int32.Parse(txtMaTacGia.Text);
                 var TenTacGia = tacGiaService.QueryFilter().FirstOrDefault(x => x.ID == maTacGia);
-                if (TenTacGia != null)
-                {
-                    txtTenTacGia.Text = TenTacGia.TenTacGia;
-                }
-                else
-                {
-                    txtTenTacGia.Text = "Không tồn tại trong CSDL";
-                }
+                txtTenTacGia.Text = TenTacGia?.TenTacGia ?? string.Empty;
             }
         }
         #region Validate
@@ -204,38 +192,23 @@ namespace GUI.Form_Sach
                 errLoi.SetError(txtTenSach, "Tên sách không được để trống");
             else errLoi.ClearErrors();
         }
-
-      
-
-        private void txtTenTacGia_Validating(object sender, CancelEventArgs e)
-        {
-
-        }
-
         private void dtpNgayXB_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(dtpNgayXB.Text))
-                errLoi.SetError(dtpNgayXB, "Ngày Xuất Bản không được để trống");
-            else
-                errLoi.ClearErrors();
+                dtpNgayXB.DateTime = DateTime.Now;
         }
 
         private void txtSoLuong_Validating(object sender, CancelEventArgs e)
         {
-            if (txtSoLuong.Value < 0)
-                errLoi.SetError(txtSoLuong, "Số lượng không được nhỏ hơn 0");
-            else errLoi.ClearErrors();
+            if (txtSoLuong.Value <= 0)
+                txtSoLuong.Value = 0;
         }
-
         private void txtDonGia_Validating(object sender, CancelEventArgs e)
         {
             if (txtDonGia.Value < 0)
-                errLoi.SetError(txtDonGia, "Đơn giá không được nhỏ hơn 0");
-            else
-                errLoi.ClearErrors();
+                txtDonGia.Value = 0;
         }
         #endregion
-
         private void txtTenTacGia_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtTenTacGia.Text))

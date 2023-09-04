@@ -256,7 +256,6 @@
             this.txtTenTacGia.StyleController = this.layoutControl1;
             this.txtTenTacGia.TabIndex = 4;
             this.txtTenTacGia.TextChanged += new System.EventHandler(this.txtTenTacGia_TextChanged);
-            this.txtTenTacGia.Validating += new System.ComponentModel.CancelEventHandler(this.txtTenTacGia_Validating);
             // 
             // txtMaNhaPhanPhoi
             // 

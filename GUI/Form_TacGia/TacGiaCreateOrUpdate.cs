@@ -47,22 +47,6 @@ namespace GUI.Form_TacGia
                     tacGiaCreateInput.TenTacGia = txtTenTacGia.Text;
                     tacGiaCreateInput.DiaChi = txtDiaChi.Text;
                     tacGiaCreateInput.SoDienThoai = txtSoDienThoai.Text;
-                    //if (checkNgaySinh.Checked)
-                    //{
-                    //    tacGiaCreateInput.NamSinh = null;
-                    //}
-                    //else
-                    //{
-                    //    tacGiaCreateInput.NamSinh = dtpNgaySinh.Text != string.Empty ? (DateTime?)dtpNgaySinh.DateTime : null;
-                    //}
-                    //if (checkNgayMat.Checked)
-                    //{
-                    //    tacGiaCreateInput.NamMat = null;
-                    //}
-                    //else
-                    //{
-                    //    tacGiaCreateInput.NamMat = dtpNgayMat.Text != string.Empty ? (DateTime?)dtpNgayMat.DateTime : null;
-                    //}
                     tacGiaCreateInput.NamSinh = dtpNgaySinh.Text != string.Empty ? (DateTime?)dtpNgaySinh.DateTime : null;
                     tacGiaCreateInput.NamMat = dtpNgayMat.Text != string.Empty ? (DateTime?)dtpNgayMat.DateTime : null;
                     tacGiaCreateInput.AnhTacGia = XuLyAnh.ImageToByteArray(ptbAnhTacGia.Image);
@@ -110,26 +94,7 @@ namespace GUI.Form_TacGia
                 txtSoLuongSachTG.Text = tgCN.Saches.Count().ToString();
                 dtpNgaySinh.Text = tacGiaCapNhat.NamSinh.ToString();
                 dtpNgayMat.Text = tacGiaCapNhat.NamMat.ToString();
-                //if (tacGiaCapNhat.NamSinh != null)
-                //{
-                //    checkNgaySinh.Checked = false;
-                //    dtpNgaySinh.DateTime = (DateTime)tacGiaCapNhat.NamSinh;
-                //}
-                //else
-                //{
-                //    checkNgaySinh.Checked = true;
-                //    dtpNgaySinh.Text = string.Empty;
-                //}
-                //if (tacGiaCapNhat.NamMat != null)
-                //{
-                //    checkNgayMat.Checked = false;
-                //    dtpNgayMat.DateTime = (DateTime)tacGiaCapNhat.NamMat;
-                //}
-                //else
-                //{
-                //    checkNgayMat.Checked = true;
-                //    dtpNgayMat.Text = string.Empty;
-                //}
+           
             }
             else
             {

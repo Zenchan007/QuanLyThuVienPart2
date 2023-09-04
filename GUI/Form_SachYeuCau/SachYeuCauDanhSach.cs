@@ -1,4 +1,5 @@
 ﻿using DAL.Services.DocGias;
+using DAL.Services.Sachs.DTO;
 using DAL.Services.SachYeuCaus;
 using DAL.Services.SachYeuCaus.DTO;
 using DAL.Services.TacGias;
@@ -21,6 +22,7 @@ namespace GUI.Form_SachYeuCau
     public partial class SachYeuCauDanhSach : DevExpress.XtraEditors.XtraUserControl
     {
         ISachYeuCauService _sachYeuCauService = new SachYeuCauService();
+        ISachService sachService = new SachService();
         public SachYeuCauDanhSach()
         {
             InitializeComponent();
@@ -76,14 +78,31 @@ namespace GUI.Form_SachYeuCau
 
         private void btnNhapSach_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            SachCreateOrUpdate sachNhap;
             if (dtgSachYeuCau.FocusedRowHandle >= 0)
             {
                 int selectedRowHandle = dtgSachYeuCau.FocusedRowHandle;
-              
-                var tenSachNhap = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "TenSachYC");
-                var tenTacGia = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "TenTacGiaYC");
-                var sachNhap = new SachCreateOrUpdate(tenSachNhap, tenTacGia);
-                sachNhap.Show(this);      
+                var tenSachNhap = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "TenSachYC") ?? string.Empty;
+                var tenTacGia = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "TacGiaYC") ?? string.Empty ;
+                int Id = 0;
+                if(!string.IsNullOrEmpty(tenSachNhap) && !string.IsNullOrEmpty(tenTacGia))
+                {
+                     var z = sachService.QueryFilter().FirstOrDefault(x => x.TenSach.Equals(tenSachNhap) && x.TacGia.TenTacGia.Equals(tenTacGia));
+                    Id = z.ID;
+                }
+                
+                if(Id == 0 || Id == null)
+                {
+                    sachNhap = new SachCreateOrUpdate(tenSachNhap, tenTacGia);
+                    sachNhap.Show(this);
+                }
+                else
+                {
+                    sachNhap = new SachCreateOrUpdate(Id);
+                    sachNhap.Show(this);
+                }
+               
+                      
             }
         }
     }

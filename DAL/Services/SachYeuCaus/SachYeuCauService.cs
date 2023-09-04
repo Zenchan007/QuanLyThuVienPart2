@@ -107,7 +107,7 @@ namespace DAL.Services.SachYeuCaus
             await Task.Run(() =>
             {
                 entity.TenSach = input.TenSachYC;
-                entity.TenTacGia = input.TenSachYC;
+                entity.TenTacGia = input.TacGiaYC;
             });
             return entity;
         }
