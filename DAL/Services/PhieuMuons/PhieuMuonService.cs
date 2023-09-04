@@ -125,11 +125,10 @@ namespace DAL.Services.PhieuMuons
         public async Task<int> CreatePhieuMuon(PhieuMuonCreateInput input)
         {
             var entity = await MapperCreateInputToEntity(input, new PhieuMuon());
-
             foreach (var item in entity.PhieuMuon_Sachs)
             {
                 item.ID_PhieuMuon = entity.ID;
-                var sachThayDoi = await _db.Saches.FirstOrDefaultAsync(x => item.ID_Sach == x.ID);
+                var sachThayDoi =  _db.Saches.FirstOrDefault(x => item.ID_Sach == x.ID);
                 if (item.SoLuong <= sachThayDoi.SoLuong)
                 {
                     sachThayDoi.SoLuong -= item.SoLuong;
