@@ -113,15 +113,10 @@ namespace GUI.Form_Sach
                 if (string.IsNullOrEmpty(errLoi.GetError(txtTenSach))  
                  && string.IsNullOrEmpty(errLoi.GetError(dtpNgayXB)) && string.IsNullOrEmpty(errLoi.GetError(txtDonGia)) &&
                 string.IsNullOrEmpty(errLoi.GetError(txtSoLuong)))
-
                 {
-                    
-
-                    
                     var sachCRUD = new SachCreateInput
                     {
                         TenSach = txtTenSach.Text,
-                        
                         NgayXb = dtpNgayXB.DateTime,
                         SoLuong = Int32.Parse(txtSoLuong.Text),
                         DonGia = float.Parse(txtDonGia.Text),
@@ -132,19 +127,33 @@ namespace GUI.Form_Sach
                         AnhSach = XuLyAnh.ImageToByteArray(ptbAnhSach.Image),
                         MoTa = txtMoTa.Text
                     };
-                    if (!string.IsNullOrEmpty(txtMaTacGia.Text))
+                    if (string.IsNullOrEmpty(txtMaTacGia.Text))
                     {
-                        sachCRUD.TacGiaId =await tacGiaService.CreateTacGia(new TacGiaCreateInput
+                        if (!string.IsNullOrEmpty(txtTenTacGia.Text))
                         {
-                            TenTacGia = txtTenTacGia?.Text
-                        });
+                            sachCRUD.TacGiaId = await tacGiaService.CreateTacGia(new TacGiaCreateInput
+                            {
+                                TenTacGia = txtTenTacGia.Text
+                            });
+                        }
                     }
-                    if (!string.IsNullOrEmpty(txtMaNhaPhanPhoi.Text))
+                    else
                     {
-                        sachCRUD.NhaPhanPhoiId = await nhaPhanPhoiService.CreateNhaPhanPhoi(new NhaPhanPhoiCreateInput
+                        sachCRUD.TacGiaId = Int32.Parse(txtMaTacGia.Text);
+                    }
+                    if (string.IsNullOrEmpty(txtMaNhaPhanPhoi.Text))
+                    {
+                        if (!string.IsNullOrEmpty(txtTenNhaPhanPhoi.Text))
                         {
-                            TenNhaPhanPhoi = txtTenNhaPhanPhoi?.Text
-                        }); ;
+                            sachCRUD.NhaPhanPhoiId = await nhaPhanPhoiService.CreateNhaPhanPhoi(new NhaPhanPhoiCreateInput
+                            {
+                                TenNhaPhanPhoi = txtTenNhaPhanPhoi.Text
+                            });
+                        }
+                    }
+                    else
+                    {
+                        sachCRUD.NhaPhanPhoiId = txtMaNhaPhanPhoi.Text;
                     }
                     if (ID_CapNhat != 0)
                     {

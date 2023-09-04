@@ -325,11 +325,9 @@ namespace GUI.Form_PhieuMuon
                         if (string.IsNullOrEmpty(txtTenDocGia.Text))
                             throw new PhieuMuon_SachException("Vui lòng điền tên độc giả");
                         phieuMuonCreate.DocGiaId = await docGiaService.CreateDocGia(new DAL.Services.DocGias.DTO.DocGiaCreateInput { TenDocGia = txtTenDocGia.Text });
-
                     }
                     if (ID_CapNhat == 0)
                     {
-
                         await phieuMuonService.CreatePhieuMuon(phieuMuonCreate);
                         MessageBox.Show("Tạo thành công phiếu mượn");
                         await showDuLieuSach();

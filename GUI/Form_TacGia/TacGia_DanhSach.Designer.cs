@@ -161,6 +161,8 @@
             this.ID.FieldName = "TacGiaId";
             this.ID.MinWidth = 25;
             this.ID.Name = "ID";
+            this.ID.Visible = true;
+            this.ID.VisibleIndex = 0;
             this.ID.Width = 94;
             // 
             // TenTacGia
@@ -170,7 +172,7 @@
             this.TenTacGia.MinWidth = 25;
             this.TenTacGia.Name = "TenTacGia";
             this.TenTacGia.Visible = true;
-            this.TenTacGia.VisibleIndex = 0;
+            this.TenTacGia.VisibleIndex = 1;
             this.TenTacGia.Width = 94;
             // 
             // SoDienThoai
@@ -180,7 +182,7 @@
             this.SoDienThoai.MinWidth = 25;
             this.SoDienThoai.Name = "SoDienThoai";
             this.SoDienThoai.Visible = true;
-            this.SoDienThoai.VisibleIndex = 1;
+            this.SoDienThoai.VisibleIndex = 2;
             this.SoDienThoai.Width = 94;
             // 
             // DiaChi
@@ -190,7 +192,7 @@
             this.DiaChi.MinWidth = 25;
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Visible = true;
-            this.DiaChi.VisibleIndex = 2;
+            this.DiaChi.VisibleIndex = 3;
             this.DiaChi.Width = 94;
             // 
             // barManager1
