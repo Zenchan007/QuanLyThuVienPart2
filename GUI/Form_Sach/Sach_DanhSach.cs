@@ -140,6 +140,7 @@ namespace GUI.Form_Sach
             }catch (Exception ex)
             {
                 XtraMessageBox.Show("Export Success", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Trace.TraceError(ex.Message);
             }
             return false;
         }

@@ -43,8 +43,6 @@ namespace DAL.Services.TacGias
                     }
                 }
             }
-            _db.TacGias.Add(entity);
-             _db.SaveChanges();
             return entity.ID;
         }
 

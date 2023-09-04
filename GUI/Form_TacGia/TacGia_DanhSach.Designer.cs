@@ -153,7 +153,6 @@
             this.DiaChi});
             this.dtgTacGia.GridControl = this.gridTacGia;
             this.dtgTacGia.Name = "dtgTacGia";
-            this.dtgTacGia.OptionsView.ShowGroupPanel = false;
             // 
             // ID
             // 

@@ -22,7 +22,7 @@ namespace GUI.Form_TacGia
     {
 
         public int ID_CapNhat = 0;
-        ITacGiaService _iTacGiaService = new TacGiaService();
+        ITacGiaService tacGiaService = new TacGiaService();
         public TacGiaCreateOrUpdate()
         {
             InitializeComponent();
@@ -47,32 +47,34 @@ namespace GUI.Form_TacGia
                     tacGiaCreateInput.TenTacGia = txtTenTacGia.Text;
                     tacGiaCreateInput.DiaChi = txtDiaChi.Text;
                     tacGiaCreateInput.SoDienThoai = txtSoDienThoai.Text;
-                    if (checkNgaySinh.Checked)
-                    {
-                        tacGiaCreateInput.NamSinh = null;
-                    }
-                    else
-                    {
-                        tacGiaCreateInput.NamSinh = dtpNgaySinh.Text != string.Empty ? (DateTime?)dtpNgaySinh.DateTime : null;
-                    }
-                    if (checkNgayMat.Checked)
-                    {
-                        tacGiaCreateInput.NamMat = null;
-                    }
-                    else
-                    {
-                        tacGiaCreateInput.NamMat = dtpNgayMat.Text != string.Empty ? (DateTime?)dtpNgayMat.DateTime : null;
-                    }
+                    //if (checkNgaySinh.Checked)
+                    //{
+                    //    tacGiaCreateInput.NamSinh = null;
+                    //}
+                    //else
+                    //{
+                    //    tacGiaCreateInput.NamSinh = dtpNgaySinh.Text != string.Empty ? (DateTime?)dtpNgaySinh.DateTime : null;
+                    //}
+                    //if (checkNgayMat.Checked)
+                    //{
+                    //    tacGiaCreateInput.NamMat = null;
+                    //}
+                    //else
+                    //{
+                    //    tacGiaCreateInput.NamMat = dtpNgayMat.Text != string.Empty ? (DateTime?)dtpNgayMat.DateTime : null;
+                    //}
+                    tacGiaCreateInput.NamSinh = dtpNgaySinh.Text != string.Empty ? (DateTime?)dtpNgaySinh.DateTime : null;
+                    tacGiaCreateInput.NamMat = dtpNgayMat.Text != string.Empty ? (DateTime?)dtpNgayMat.DateTime : null;
                     tacGiaCreateInput.AnhTacGia = XuLyAnh.ImageToByteArray(ptbAnhTacGia.Image);
                     tacGiaCreateInput.MoTa = txtMoTa.Text;
                     if (ID_CapNhat != 0)
                     {
-                        await _iTacGiaService.UpdateTacGia(ID_CapNhat, tacGiaCreateInput);
+                        await tacGiaService.UpdateTacGia(ID_CapNhat, tacGiaCreateInput);
                         MessageBox.Show("Update Thành Công Tác Giả");
                     }
                     else
                     {
-                        await _iTacGiaService.CreateTacGia(tacGiaCreateInput);
+                        await tacGiaService.CreateTacGia(tacGiaCreateInput);
                         MessageBox.Show("Thêm thành công Tác Giả");
                     }
                     this.Close();
@@ -98,34 +100,36 @@ namespace GUI.Form_TacGia
             if (ID_CapNhat != 0)
             {
 
-                var tacGiaCapNhat = await _iTacGiaService.QueryFilterDto().FirstOrDefaultAsync(x => x.TacGiaId == ID_CapNhat);
+                var tacGiaCapNhat = await tacGiaService.QueryFilterDto().FirstOrDefaultAsync(x => x.TacGiaId == ID_CapNhat);
                 txtTenTacGia.Text = tacGiaCapNhat.TenTacGia.ToString();
                 txtDiaChi.Text = tacGiaCapNhat.DiaChi.ToString() ?? string.Empty;
                 txtSoDienThoai.Text = tacGiaCapNhat.SoDienThoai.ToString() ?? string.Empty;
                 txtMoTa.Text = tacGiaCapNhat.MoTa?.ToString() ?? string.Empty;
                 ptbAnhTacGia.Image = XuLyAnh.ByteArrayToImage(tacGiaCapNhat.AnhTacGia);
-                var tgCN = await _iTacGiaService.QueryFilter().FirstOrDefaultAsync(x => x.ID == ID_CapNhat);
+                var tgCN = await tacGiaService.QueryFilter().FirstOrDefaultAsync(x => x.ID == ID_CapNhat);
                 txtSoLuongSachTG.Text = tgCN.Saches.Count().ToString();
-                if (tacGiaCapNhat.NamSinh != null)
-                {
-                    checkNgaySinh.Checked = false;
-                    dtpNgaySinh.DateTime = (DateTime)tacGiaCapNhat.NamSinh;
-                }
-                else
-                {
-                    checkNgaySinh.Checked = true;
-                    dtpNgaySinh.Text = string.Empty;
-                }
-                if (tacGiaCapNhat.NamMat != null)
-                {
-                    checkNgayMat.Checked = false;
-                    dtpNgayMat.DateTime = (DateTime)tacGiaCapNhat.NamMat;
-                }
-                else
-                {
-                    checkNgayMat.Checked = true;
-                    dtpNgayMat.Text = string.Empty;
-                }
+                dtpNgaySinh.Text = tacGiaCapNhat.NamSinh.ToString();
+                dtpNgayMat.Text = tacGiaCapNhat.NamMat.ToString();
+                //if (tacGiaCapNhat.NamSinh != null)
+                //{
+                //    checkNgaySinh.Checked = false;
+                //    dtpNgaySinh.DateTime = (DateTime)tacGiaCapNhat.NamSinh;
+                //}
+                //else
+                //{
+                //    checkNgaySinh.Checked = true;
+                //    dtpNgaySinh.Text = string.Empty;
+                //}
+                //if (tacGiaCapNhat.NamMat != null)
+                //{
+                //    checkNgayMat.Checked = false;
+                //    dtpNgayMat.DateTime = (DateTime)tacGiaCapNhat.NamMat;
+                //}
+                //else
+                //{
+                //    checkNgayMat.Checked = true;
+                //    dtpNgayMat.Text = string.Empty;
+                //}
             }
             else
             {

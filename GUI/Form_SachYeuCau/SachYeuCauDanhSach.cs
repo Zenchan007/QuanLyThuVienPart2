@@ -79,9 +79,10 @@ namespace GUI.Form_SachYeuCau
             if (dtgSachYeuCau.FocusedRowHandle >= 0)
             {
                 int selectedRowHandle = dtgSachYeuCau.FocusedRowHandle;
-                string ID_Xoa = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "SachYeuCauId");
+              
                 var tenSachNhap = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "TenSachYC");
-                var sachNhap = new SachCreateOrUpdate(tenSachNhap);
+                var tenTacGia = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "TenTacGiaYC");
+                var sachNhap = new SachCreateOrUpdate(tenSachNhap, tenTacGia);
                 sachNhap.Show(this);      
             }
         }

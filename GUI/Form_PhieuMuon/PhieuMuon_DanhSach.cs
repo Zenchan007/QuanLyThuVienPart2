@@ -182,6 +182,7 @@ namespace GUI.Form_PhieuMuon
             catch (Exception ex)
             {
                 XtraMessageBox.Show("Export Success", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Trace.TraceError(ex.Message);
             }
             return false;
         }
