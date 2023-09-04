@@ -147,5 +147,7 @@ namespace GUI.Form_BaoCao
 
 
         }
+
+    
     }
 }

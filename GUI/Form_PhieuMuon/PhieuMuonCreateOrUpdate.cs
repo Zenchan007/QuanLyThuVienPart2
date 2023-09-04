@@ -144,8 +144,8 @@ namespace GUI.Form_PhieuMuon
                     };
                     var sachMuon = sachService.QueryFilter().FirstOrDefault(x => x.ID == sachMuonDto.SachMuonId);
                     sachMuonDto.DonGiaMuon = sachMuonDto.SoLuongSachMuon * sachMuon.DonGia;
-                    sachMuonDto.TacGiaSachMuon = sachMuon.TacGia.TenTacGia;
-                    sachMuonDto.TenSachMuon = sachMuon.TenSach;
+                    sachMuonDto.TacGiaSachMuon = sachMuon?.TacGia?.TenTacGia ?? string.Empty;
+                    sachMuonDto.TenSachMuon = sachMuon?.TenSach ?? string.Empty;
                     phieuMuon_Sach_DTOs.Add(sachMuonDto);
                 }
             }

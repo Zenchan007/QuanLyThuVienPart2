@@ -53,16 +53,16 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.Top1 = new DevExpress.XtraEditors.LabelControl();
             this.Top2 = new DevExpress.XtraEditors.LabelControl();
             this.Top3 = new DevExpress.XtraEditors.LabelControl();
             this.Top4 = new DevExpress.XtraEditors.LabelControl();
             this.Top5 = new DevExpress.XtraEditors.LabelControl();
-            this.lblTenSachTop1 = new DevExpress.XtraEditors.LabelControl();
-            this.lbTenSachTop2 = new DevExpress.XtraEditors.LabelControl();
             this.lbTenSachTop3 = new DevExpress.XtraEditors.LabelControl();
             this.lbTenSachTop4 = new DevExpress.XtraEditors.LabelControl();
             this.lbTenSachTop5 = new DevExpress.XtraEditors.LabelControl();
+            this.Top1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblTenSachTop1 = new DevExpress.XtraEditors.LabelControl();
+            this.lbTenSachTop2 = new DevExpress.XtraEditors.LabelControl();
             this.pnHeader = new DevExpress.XtraEditors.PanelControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -191,19 +191,19 @@
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 3;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.90141F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.29578F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel7.Controls.Add(this.Top1, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.Top2, 0, 2);
             this.tableLayoutPanel7.Controls.Add(this.Top3, 0, 3);
             this.tableLayoutPanel7.Controls.Add(this.Top4, 0, 4);
             this.tableLayoutPanel7.Controls.Add(this.Top5, 0, 5);
-            this.tableLayoutPanel7.Controls.Add(this.lblTenSachTop1, 2, 1);
-            this.tableLayoutPanel7.Controls.Add(this.lbTenSachTop2, 2, 2);
-            this.tableLayoutPanel7.Controls.Add(this.lbTenSachTop3, 2, 3);
-            this.tableLayoutPanel7.Controls.Add(this.lbTenSachTop4, 2, 4);
-            this.tableLayoutPanel7.Controls.Add(this.lbTenSachTop5, 2, 5);
+            this.tableLayoutPanel7.Controls.Add(this.Top1, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.lblTenSachTop1, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.lbTenSachTop2, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.lbTenSachTop3, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.lbTenSachTop4, 1, 4);
+            this.tableLayoutPanel7.Controls.Add(this.lbTenSachTop5, 1, 5);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 28);
@@ -216,25 +216,14 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(284, 196);
             this.tableLayoutPanel7.TabIndex = 1;
-            // 
-            // Top1
-            // 
-            this.Top1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Top1.Appearance.Options.UseFont = true;
-            this.tableLayoutPanel7.SetColumnSpan(this.Top1, 2);
-            this.Top1.Location = new System.Drawing.Point(3, 35);
-            this.Top1.Name = "Top1";
-            this.Top1.Size = new System.Drawing.Size(46, 18);
-            this.Top1.TabIndex = 9;
-            this.Top1.Text = "Top1: ";
             // 
             // Top2
             // 
             this.Top2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Top2.Appearance.Options.UseFont = true;
-            this.tableLayoutPanel7.SetColumnSpan(this.Top2, 2);
             this.Top2.Location = new System.Drawing.Point(3, 67);
             this.Top2.Name = "Top2";
             this.Top2.Size = new System.Drawing.Size(46, 18);
@@ -245,7 +234,6 @@
             // 
             this.Top3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Top3.Appearance.Options.UseFont = true;
-            this.tableLayoutPanel7.SetColumnSpan(this.Top3, 2);
             this.Top3.Location = new System.Drawing.Point(3, 99);
             this.Top3.Name = "Top3";
             this.Top3.Size = new System.Drawing.Size(42, 18);
@@ -256,7 +244,6 @@
             // 
             this.Top4.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Top4.Appearance.Options.UseFont = true;
-            this.tableLayoutPanel7.SetColumnSpan(this.Top4, 2);
             this.Top4.Location = new System.Drawing.Point(3, 131);
             this.Top4.Name = "Top4";
             this.Top4.Size = new System.Drawing.Size(42, 18);
@@ -267,41 +254,18 @@
             // 
             this.Top5.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Top5.Appearance.Options.UseFont = true;
-            this.tableLayoutPanel7.SetColumnSpan(this.Top5, 2);
             this.Top5.Location = new System.Drawing.Point(3, 163);
             this.Top5.Name = "Top5";
             this.Top5.Size = new System.Drawing.Size(42, 18);
             this.Top5.TabIndex = 13;
             this.Top5.Text = "Top5:";
             // 
-            // lblTenSachTop1
-            // 
-            this.lblTenSachTop1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblTenSachTop1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblTenSachTop1.Appearance.Options.UseFont = true;
-            this.lblTenSachTop1.Location = new System.Drawing.Point(251, 39);
-            this.lblTenSachTop1.Name = "lblTenSachTop1";
-            this.lblTenSachTop1.Size = new System.Drawing.Size(30, 18);
-            this.lblTenSachTop1.TabIndex = 14;
-            this.lblTenSachTop1.Text = "100";
-            // 
-            // lbTenSachTop2
-            // 
-            this.lbTenSachTop2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbTenSachTop2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbTenSachTop2.Appearance.Options.UseFont = true;
-            this.lbTenSachTop2.Location = new System.Drawing.Point(251, 71);
-            this.lbTenSachTop2.Name = "lbTenSachTop2";
-            this.lbTenSachTop2.Size = new System.Drawing.Size(30, 18);
-            this.lbTenSachTop2.TabIndex = 15;
-            this.lbTenSachTop2.Text = "100";
-            // 
             // lbTenSachTop3
             // 
-            this.lbTenSachTop3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbTenSachTop3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbTenSachTop3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbTenSachTop3.Appearance.Options.UseFont = true;
-            this.lbTenSachTop3.Location = new System.Drawing.Point(251, 103);
+            this.lbTenSachTop3.Location = new System.Drawing.Point(51, 103);
             this.lbTenSachTop3.Name = "lbTenSachTop3";
             this.lbTenSachTop3.Size = new System.Drawing.Size(30, 18);
             this.lbTenSachTop3.TabIndex = 16;
@@ -309,10 +273,10 @@
             // 
             // lbTenSachTop4
             // 
-            this.lbTenSachTop4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbTenSachTop4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbTenSachTop4.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbTenSachTop4.Appearance.Options.UseFont = true;
-            this.lbTenSachTop4.Location = new System.Drawing.Point(251, 135);
+            this.lbTenSachTop4.Location = new System.Drawing.Point(51, 135);
             this.lbTenSachTop4.Name = "lbTenSachTop4";
             this.lbTenSachTop4.Size = new System.Drawing.Size(30, 18);
             this.lbTenSachTop4.TabIndex = 17;
@@ -320,14 +284,46 @@
             // 
             // lbTenSachTop5
             // 
-            this.lbTenSachTop5.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbTenSachTop5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbTenSachTop5.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbTenSachTop5.Appearance.Options.UseFont = true;
-            this.lbTenSachTop5.Location = new System.Drawing.Point(251, 169);
+            this.lbTenSachTop5.Location = new System.Drawing.Point(51, 169);
             this.lbTenSachTop5.Name = "lbTenSachTop5";
             this.lbTenSachTop5.Size = new System.Drawing.Size(30, 18);
             this.lbTenSachTop5.TabIndex = 18;
             this.lbTenSachTop5.Text = "100";
+            // 
+            // Top1
+            // 
+            this.Top1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Top1.Appearance.Options.UseFont = true;
+            this.Top1.Location = new System.Drawing.Point(3, 35);
+            this.Top1.Name = "Top1";
+            this.Top1.Size = new System.Drawing.Size(46, 18);
+            this.Top1.TabIndex = 9;
+            this.Top1.Text = "Top1: ";
+            // 
+            // lblTenSachTop1
+            // 
+            this.lblTenSachTop1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblTenSachTop1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblTenSachTop1.Appearance.Options.UseFont = true;
+            this.lblTenSachTop1.Location = new System.Drawing.Point(51, 39);
+            this.lblTenSachTop1.Name = "lblTenSachTop1";
+            this.lblTenSachTop1.Size = new System.Drawing.Size(30, 18);
+            this.lblTenSachTop1.TabIndex = 14;
+            this.lblTenSachTop1.Text = "100";
+            // 
+            // lbTenSachTop2
+            // 
+            this.lbTenSachTop2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbTenSachTop2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbTenSachTop2.Appearance.Options.UseFont = true;
+            this.lbTenSachTop2.Location = new System.Drawing.Point(51, 71);
+            this.lbTenSachTop2.Name = "lbTenSachTop2";
+            this.lbTenSachTop2.Size = new System.Drawing.Size(30, 18);
+            this.lbTenSachTop2.TabIndex = 15;
+            this.lbTenSachTop2.Text = "100";
             // 
             // pnHeader
             // 
