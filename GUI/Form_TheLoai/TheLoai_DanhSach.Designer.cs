@@ -305,7 +305,7 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // TheLoai_DanhSach2
+            // TheLoai_DanhSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -314,7 +314,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "TheLoai_DanhSach2";
+            this.Name = "TheLoai_DanhSach";
             this.Size = new System.Drawing.Size(947, 610);
             this.Load += new System.EventHandler(this.TheLoai_DanhSach2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgSach)).EndInit();

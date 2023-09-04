@@ -42,19 +42,34 @@ namespace GUI.Form_BaoCao
             lblSoLuongTacGia.Text = tacGiaService.QueryFilterDto().ToList().Count().ToString();
             lblSoLuongTheLoai.Text = theLoaiService.QueryFilterDto().ToList().Count().ToString();
             lblSoSachTraMuon.Text  = sachService.LaySoSachTraMuon().ToString();
-            lbTheLoaiYeuThich.Text = theLoaiService.TheLoaiMuonNhieuNhat();
-            lbTacGiaYeuThich.Text = tacGiaService.LayTacGiaYeuThich().ToString();
+            lbTheLoaiYeuThich.Text = theLoaiService.TheLoaiMuonNhieuNhat() ?? string.Empty;
+            lbTacGiaYeuThich.Text = tacGiaService.LayTacGiaYeuThich() ?? string.Empty;
             var danhSachTop5 = sachService.GetTop5Sach();
-            lblTenSachTop1.Text = danhSachTop5[0] ?? string.Empty;
-            //lblTenSachTop1.ForeColor = Color.Orange;
-            lbTenSachTop2.Text = danhSachTop5[1] ?? string.Empty;
-            //lbTenSachTop2.ForeColor = Color.Pink;
-            lbTenSachTop3.Text = danhSachTop5[2] ?? string.Empty;
-            //lbTenSachTop3.ForeColor = Color.LightBlue;
-            lbTenSachTop4.Text = danhSachTop5[3] ?? string.Empty;
-            //lbTenSachTop4.ForeColor = Color.Green;
-            lbTenSachTop5.Text = danhSachTop5[4] ?? string.Empty;
-            //lbTenSachTop5.ForeColor = Color.Gray;
+            for (int i = 0; i < 5; i++)
+            {
+                if (i < danhSachTop5.Count)
+                {
+                    // Nếu có phần tử trong danh sách, gán giá trị từ danh sách
+                    switch (i)
+                    {
+                        case 0:
+                            lblTenSachTop1.Text = danhSachTop5[i] ?? string.Empty;
+                            break;
+                        case 1:
+                            lbTenSachTop2.Text = danhSachTop5[i] ?? string.Empty;
+                            break;
+                        case 2:
+                            lbTenSachTop3.Text = danhSachTop5[i] ?? string.Empty;
+                            break;
+                        case 3:
+                            lbTenSachTop4.Text = danhSachTop5[i] ?? string.Empty;
+                            break;
+                        case 4:
+                            lbTenSachTop5.Text = danhSachTop5[i] ?? string.Empty;
+                            break;
+                    }
+                }
+            }
             FillChartLine();
             FillChart();
             FillChartPie();

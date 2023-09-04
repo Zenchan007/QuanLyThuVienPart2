@@ -1,15 +1,20 @@
 ﻿using DAL.Services.Sachs.DTO;
 using DevExpress.DashboardCommon.Viewer;
+using DevExpress.Export;
+using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraPrinting;
 using GUI.Form_PhieuMuon;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,6 +93,55 @@ namespace GUI.Form_Sach
         {
             var phieuMuonMoi = new PhieuMuonCreateOrUpdate();
             phieuMuonMoi.Show(this);
+        }
+
+        private void btnXuatExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XuatFileExcel("");
+        }
+
+        private bool XuatFileExcel(string filename)
+        {
+            try
+            {
+                if(dtgSach.FocusedRowHandle < 0)
+                {
+
+                }
+                else
+                {
+                    var dialog = new SaveFileDialog();
+                    dialog.Title = @"Export file Excel";
+                    dialog.Filter = @"Microsoft Excel | *.xlsx";
+                    dialog.FileName = filename;
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                       
+                        dtgSach.ColumnPanelRowHeight = 40;
+                        dtgSach.OptionsPrint.AutoWidth = AutoSize;
+                        dtgSach.OptionsPrint.ShowPrintExportProgress = true;
+                        dtgSach.OptionsPrint.AllowCancelPrintExport = true;
+                        XlsxExportOptions options = new XlsxExportOptions();
+                        options.TextExportMode = TextExportMode.Text;
+                        options.ExportMode = XlsxExportMode.SingleFile;
+                        options.SheetName = @"Sách ở trong kho";
+                        ExportSettings.DefaultExportType = ExportType.Default;
+                        dtgSach.ExportToXlsx(dialog.FileName, options);
+                        XtraMessageBox.Show("Export Success", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, DefaultBoolean.True);
+                        if (File.Exists(dialog.FileName))
+                        {
+                            if(XtraMessageBox.Show("File đã có trên máy tính của bạn. Bạn có muốn mở ra không?", "Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                            {
+                                Process.Start(dialog.FileName);
+                            }
+                        }
+                    } 
+                }             
+            }catch (Exception ex)
+            {
+                XtraMessageBox.Show("Export Success", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return false;
         }
     }
 }

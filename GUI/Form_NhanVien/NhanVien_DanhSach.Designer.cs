@@ -42,8 +42,8 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridNhanVien = new DevExpress.XtraGrid.GridControl();
             this.dtgNhanVien = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.TenNhanVien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenNhanVien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoDienThoai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CCCD = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -183,16 +183,6 @@
             this.dtgNhanVien.GridControl = this.gridNhanVien;
             this.dtgNhanVien.Name = "dtgNhanVien";
             // 
-            // TenNhanVien
-            // 
-            this.TenNhanVien.Caption = "Tên Nhân Viên";
-            this.TenNhanVien.FieldName = "TenNhanVien";
-            this.TenNhanVien.MinWidth = 25;
-            this.TenNhanVien.Name = "TenNhanVien";
-            this.TenNhanVien.Visible = true;
-            this.TenNhanVien.VisibleIndex = 0;
-            this.TenNhanVien.Width = 94;
-            // 
             // ID
             // 
             this.ID.Caption = "ID Nhân Viên";
@@ -202,6 +192,16 @@
             this.ID.Visible = true;
             this.ID.VisibleIndex = 0;
             this.ID.Width = 94;
+            // 
+            // TenNhanVien
+            // 
+            this.TenNhanVien.Caption = "Tên Nhân Viên";
+            this.TenNhanVien.FieldName = "TenNhanVien";
+            this.TenNhanVien.MinWidth = 25;
+            this.TenNhanVien.Name = "TenNhanVien";
+            this.TenNhanVien.Visible = true;
+            this.TenNhanVien.VisibleIndex = 1;
+            this.TenNhanVien.Width = 94;
             // 
             // DiaChi
             // 
@@ -282,7 +282,7 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // NhanVien_DanhSach2
+            // NhanVien_DanhSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -291,7 +291,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "NhanVien_DanhSach2";
+            this.Name = "NhanVien_DanhSach";
             this.Size = new System.Drawing.Size(874, 647);
             this.Load += new System.EventHandler(this.NhanVien_DanhSach2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

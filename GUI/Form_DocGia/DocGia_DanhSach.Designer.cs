@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocGia_DanhSach));
+            this.cardView1 = new DevExpress.XtraGrid.Views.Card.CardView();
+            this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tileViewColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tileViewColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tileViewColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tileViewColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridDocGia = new DevExpress.XtraGrid.GridControl();
             this.dtgDocGia = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,31 +53,87 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.winExplorerView1 = new DevExpress.XtraGrid.Views.WinExplorer.WinExplorerView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cardView1 = new DevExpress.XtraGrid.Views.Card.CardView();
-            this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tileViewColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tileViewColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tileViewColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tileViewColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDocGia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDocGia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.winExplorerView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.winExplorerView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // cardView1
+            // 
+            this.cardView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.tileViewColumn1,
+            this.tileViewColumn2,
+            this.tileViewColumn3,
+            this.tileViewColumn4,
+            this.tileViewColumn5});
+            this.cardView1.GridControl = this.gridDocGia;
+            this.cardView1.Name = "cardView1";
+            this.cardView1.ViewCaption = "Danh Sách Phiếu Mượn Của Độc Giả";
+            // 
+            // tileViewColumn1
+            // 
+            this.tileViewColumn1.Caption = "ID Phiếu Mượn";
+            this.tileViewColumn1.FieldName = "PhieuMuonId";
+            this.tileViewColumn1.MinWidth = 25;
+            this.tileViewColumn1.Name = "tileViewColumn1";
+            this.tileViewColumn1.Visible = true;
+            this.tileViewColumn1.VisibleIndex = 0;
+            this.tileViewColumn1.Width = 94;
+            // 
+            // tileViewColumn2
+            // 
+            this.tileViewColumn2.Caption = "Ngày Mượn";
+            this.tileViewColumn2.FieldName = "NgayMuon";
+            this.tileViewColumn2.MinWidth = 25;
+            this.tileViewColumn2.Name = "tileViewColumn2";
+            this.tileViewColumn2.Visible = true;
+            this.tileViewColumn2.VisibleIndex = 1;
+            this.tileViewColumn2.Width = 94;
+            // 
+            // tileViewColumn3
+            // 
+            this.tileViewColumn3.Caption = "Ngày Hẹn Trả";
+            this.tileViewColumn3.FieldName = "NgayHenTra";
+            this.tileViewColumn3.MinWidth = 25;
+            this.tileViewColumn3.Name = "tileViewColumn3";
+            this.tileViewColumn3.Visible = true;
+            this.tileViewColumn3.VisibleIndex = 2;
+            this.tileViewColumn3.Width = 94;
+            // 
+            // tileViewColumn4
+            // 
+            this.tileViewColumn4.Caption = "Ngày Trả";
+            this.tileViewColumn4.FieldName = "NgayTra";
+            this.tileViewColumn4.MinWidth = 25;
+            this.tileViewColumn4.Name = "tileViewColumn4";
+            this.tileViewColumn4.Visible = true;
+            this.tileViewColumn4.VisibleIndex = 3;
+            this.tileViewColumn4.Width = 94;
+            // 
+            // tileViewColumn5
+            // 
+            this.tileViewColumn5.Caption = "Trạng Thái";
+            this.tileViewColumn5.FieldName = "TenTrangThai";
+            this.tileViewColumn5.MinWidth = 25;
+            this.tileViewColumn5.Name = "tileViewColumn5";
+            this.tileViewColumn5.Visible = true;
+            this.tileViewColumn5.VisibleIndex = 4;
+            this.tileViewColumn5.Width = 94;
             // 
             // gridDocGia
             // 
@@ -242,36 +304,6 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 565);
             // 
-            // layoutControl1
-            // 
-            this.layoutControl1.Controls.Add(this.gridDocGia);
-            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 30);
-            this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(796, 565);
-            this.layoutControl1.TabIndex = 4;
-            this.layoutControl1.Text = "layoutControl1";
-            // 
-            // Root
-            // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(796, 565);
-            this.Root.TextVisible = false;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.gridDocGia;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(776, 545);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
             // winExplorerView1
             // 
             this.winExplorerView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -333,67 +365,35 @@
             this.gridColumn6.VisibleIndex = 4;
             this.gridColumn6.Width = 94;
             // 
-            // cardView1
+            // layoutControl1
             // 
-            this.cardView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.tileViewColumn1,
-            this.tileViewColumn2,
-            this.tileViewColumn3,
-            this.tileViewColumn4,
-            this.tileViewColumn5});
-            this.cardView1.GridControl = this.gridDocGia;
-            this.cardView1.Name = "cardView1";
-            this.cardView1.ViewCaption = "Danh Sách Phiếu Mượn Của Độc Giả";
+            this.layoutControl1.Controls.Add(this.gridDocGia);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 30);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.Root;
+            this.layoutControl1.Size = new System.Drawing.Size(796, 565);
+            this.layoutControl1.TabIndex = 4;
+            this.layoutControl1.Text = "layoutControl1";
             // 
-            // tileViewColumn1
+            // Root
             // 
-            this.tileViewColumn1.Caption = "ID Phiếu Mượn";
-            this.tileViewColumn1.FieldName = "PhieuMuonId";
-            this.tileViewColumn1.MinWidth = 25;
-            this.tileViewColumn1.Name = "tileViewColumn1";
-            this.tileViewColumn1.Visible = true;
-            this.tileViewColumn1.VisibleIndex = 0;
-            this.tileViewColumn1.Width = 94;
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(796, 565);
+            this.Root.TextVisible = false;
             // 
-            // tileViewColumn2
+            // layoutControlItem1
             // 
-            this.tileViewColumn2.Caption = "Ngày Mượn";
-            this.tileViewColumn2.FieldName = "NgayMuon";
-            this.tileViewColumn2.MinWidth = 25;
-            this.tileViewColumn2.Name = "tileViewColumn2";
-            this.tileViewColumn2.Visible = true;
-            this.tileViewColumn2.VisibleIndex = 1;
-            this.tileViewColumn2.Width = 94;
-            // 
-            // tileViewColumn3
-            // 
-            this.tileViewColumn3.Caption = "Ngày Hẹn Trả";
-            this.tileViewColumn3.FieldName = "NgayHenTra";
-            this.tileViewColumn3.MinWidth = 25;
-            this.tileViewColumn3.Name = "tileViewColumn3";
-            this.tileViewColumn3.Visible = true;
-            this.tileViewColumn3.VisibleIndex = 2;
-            this.tileViewColumn3.Width = 94;
-            // 
-            // tileViewColumn4
-            // 
-            this.tileViewColumn4.Caption = "Ngày Trả";
-            this.tileViewColumn4.FieldName = "NgayTra";
-            this.tileViewColumn4.MinWidth = 25;
-            this.tileViewColumn4.Name = "tileViewColumn4";
-            this.tileViewColumn4.Visible = true;
-            this.tileViewColumn4.VisibleIndex = 3;
-            this.tileViewColumn4.Width = 94;
-            // 
-            // tileViewColumn5
-            // 
-            this.tileViewColumn5.Caption = "Trạng Thái";
-            this.tileViewColumn5.FieldName = "TenTrangThai";
-            this.tileViewColumn5.MinWidth = 25;
-            this.tileViewColumn5.Name = "tileViewColumn5";
-            this.tileViewColumn5.Visible = true;
-            this.tileViewColumn5.VisibleIndex = 4;
-            this.tileViewColumn5.Width = 94;
+            this.layoutControlItem1.Control = this.gridDocGia;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(776, 545);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
             // 
             // DocGia_DanhSach
             // 
@@ -407,15 +407,15 @@
             this.Name = "DocGia_DanhSach";
             this.Size = new System.Drawing.Size(796, 595);
             this.Load += new System.EventHandler(this.DocGia_DanhSach2_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDocGia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDocGia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.winExplorerView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.winExplorerView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

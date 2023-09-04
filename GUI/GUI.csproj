@@ -422,6 +422,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="library-logo-design-precious-astonishing-13.ico" />
+    <None Include="Resources\exporttoxlsx1.svg" />
+    <None Include="Resources\exporttoxlsx.svg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">

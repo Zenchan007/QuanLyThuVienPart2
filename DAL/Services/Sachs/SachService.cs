@@ -4,6 +4,8 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 
 using System.Threading.Tasks;
@@ -22,7 +24,11 @@ namespace DAL.Services.Sachs.DTO
 
         public async Task<int> SachTrongKho()
         {
-            return await _db.Saches.SumAsync(x => x.SoLuong);
+            if (_db.Saches.ToList().Any())
+            {
+                return await _db.Saches.SumAsync(x => x.SoLuong);
+            }
+            return 0;
         }
         public Dictionary<string, int> GetTongSachTheoTheLoai(SachFilterInput input = null)
         {
@@ -67,13 +73,13 @@ namespace DAL.Services.Sachs.DTO
                             {
                                 SachId = q.ID,
                                 TenSach = q.TenSach,
-                                NhaPhanPhoiId = q.ID_NhaPhanPhoi,
+                                NhaPhanPhoiId = q.ID_NhaPhanPhoi ?? string.Empty,
                                 SoLuong = q.SoLuong,
                                 DonGia = (float)q.DonGia,
                                 NgayXb = q.NgayXB,
                                 AnhSach = q.AnhSach,
                                 MoTa = q.MoTa,
-                                TacGiaId = (int)q.ID_TacGia,
+                                TacGiaId = q.ID_TacGia ?? 0,
                                 TenTacGia = tgs != null ? tgs.TenTacGia : string.Empty,
                                 TenNhaPhanPhoi = npps != null ? npps.TenNhaPhanPhoi : string.Empty,
                                 TheLoais = q.TheLoais.Select(x => x.ID).ToList(),
@@ -118,8 +124,22 @@ namespace DAL.Services.Sachs.DTO
         public async Task<int> CreateSach(SachCreateInput input)
         {
             var entity = await MapperCreateInputToEntity(input, new Sach());
-            _db.Saches.Add(entity);
-            await _db.SaveChangesAsync();
+            try
+            {
+                _db.Saches.Add(entity);
+                await _db.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                // Xử lý lỗi kiểm tra hợp lệ ở đây
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceError($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                    }
+                }
+            }
             return entity.ID;
         }
 
@@ -159,9 +179,12 @@ namespace DAL.Services.Sachs.DTO
                         where p.NgayMuon.HasValue && tt.ID != 3 // Đảm bảo có ngày cho mượn và ID Trang Thai khác 3
                         select pm.SoLuong;
 
-            int totalSoLuong = query.Sum();
+            if (query.Any())
+            {
+                return query.Sum();
+            }
 
-            return totalSoLuong;
+            return 0;
         }
         public int LaySoSachTraMuon()
         {
@@ -170,8 +193,9 @@ namespace DAL.Services.Sachs.DTO
                         join tt in _db.TrangThai_PhieuMuon on p.ID_TrangThai equals tt.ID // Nối với TrangThai_PhieuMuon
                         where p.NgayMuon.HasValue && tt.ID ==2 // Đảm bảo có ngày cho mượn và ID Trang Thai khác 3
                         select pm.SoLuong;
-            int soLuongSachTraMuon = query.Sum();
-            return soLuongSachTraMuon;
+            if(query.Any())
+                return query.Sum();
+            return 0;
         }
 
         public  List<string> GetTop5Sach()
@@ -190,7 +214,6 @@ namespace DAL.Services.Sachs.DTO
             var bookNames = (from topBook in topBorrowedBooks
                              join sach in _db.Saches on topBook.ID_Sach equals sach.ID
                              select sach.TenSach).ToList();
-
             return bookNames;
         }
         public async Task<Sach> MapperCreateInputToEntity(SachCreateInput input, Sach entity)
@@ -202,7 +225,9 @@ namespace DAL.Services.Sachs.DTO
                 entity.MoTa = input.MoTa;
                 entity.DonGia = input.DonGia;
                 entity.SoLuong = input.SoLuong;
+                if(input.TacGiaId != 0)
                 entity.ID_TacGia = input.TacGiaId;
+                if(!string.IsNullOrEmpty(input.NhaPhanPhoiId))
                 entity.ID_NhaPhanPhoi = input.NhaPhanPhoiId;
                 entity.AnhSach = input.AnhSach;
                 entity.NgayXB = input.NgayXb;

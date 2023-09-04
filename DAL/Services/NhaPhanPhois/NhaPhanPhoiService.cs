@@ -4,6 +4,8 @@ using DAL.Services.NhaPhanPhois.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +22,25 @@ namespace DAL.Services.NhaPhanPhois
         }
         #endregion 
         #region Crud
-        public async Task<int> CreateNhaPhanPhoi(NhaPhanPhoiCreateInput input)
+        public async Task<string> CreateNhaPhanPhoi(NhaPhanPhoiCreateInput input)
         {
             var entity = await MapperCreateInputToEntity(input, new Model.NhaPhanPhoi());
-            _db.NhaPhanPhois.Add(entity);
-            return _db.SaveChanges();
+            try {
+                _db.NhaPhanPhois.Add(entity);
+                _db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                // Xử lý lỗi kiểm tra hợp lệ ở đây
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceError($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                    }
+                }
+            }
+            return entity.ID;
         }
 
         public async Task<bool> UpdateNhaPhanPhoi(string NhaPhanPhoiId, NhaPhanPhoiCreateInput input)

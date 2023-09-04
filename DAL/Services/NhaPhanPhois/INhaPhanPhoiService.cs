@@ -15,7 +15,7 @@ namespace DAL.Services.NhaPhanPhois
         Task<Model.NhaPhanPhoi> GetById(string id);
         Task<NhaPhanPhoi_DTO> GetByIdDto(string id);
         Task<PageResultDTO<NhaPhanPhoi_DTO>> Paging(PagingInput<NhaPhanPhoiFilterInput> input = null);
-        Task<int> CreateNhaPhanPhoi(NhaPhanPhoiCreateInput input);
+        Task<string> CreateNhaPhanPhoi(NhaPhanPhoiCreateInput input);
         Task<bool> UpdateNhaPhanPhoi(string NhaPhanPhoiid, NhaPhanPhoiCreateInput input);
         Task<bool> DeleteNhaPhanPhoiById(string NhaPhanPhoiId);
     }

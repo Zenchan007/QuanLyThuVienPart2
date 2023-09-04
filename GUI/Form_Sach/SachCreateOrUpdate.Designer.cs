@@ -215,7 +215,6 @@
             this.cbbTheLoai.StyleController = this.layoutControl1;
             this.cbbTheLoai.TabIndex = 6;
             this.cbbTheLoai.ToolTip = "Chọn Thể Loại Sách";
-            this.cbbTheLoai.Validating += new System.ComponentModel.CancelEventHandler(this.cbbTheLoai_Validating);
             // 
             // txtMaTacGia
             // 
@@ -228,27 +227,26 @@
             this.txtMaTacGia.Properties.AppearanceDisabled.Options.UseFont = true;
             this.txtMaTacGia.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaTacGia.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.txtMaTacGia.Properties.AppearanceFocused.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaTacGia.Properties.AppearanceFocused.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaTacGia.Properties.AppearanceFocused.Options.UseFont = true;
-            this.txtMaTacGia.Properties.AppearanceItemDisabled.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaTacGia.Properties.AppearanceItemDisabled.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaTacGia.Properties.AppearanceItemDisabled.Options.UseFont = true;
-            this.txtMaTacGia.Properties.AppearanceItemSelected.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaTacGia.Properties.AppearanceItemSelected.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaTacGia.Properties.AppearanceItemSelected.Options.UseFont = true;
             this.txtMaTacGia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtMaTacGia.Properties.DropDownItemHeight = 50;
             this.txtMaTacGia.Properties.DropDownRows = 5;
             this.txtMaTacGia.Properties.ItemAutoHeight = true;
+            this.txtMaTacGia.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txtMaTacGia.Size = new System.Drawing.Size(437, 22);
             this.txtMaTacGia.StyleController = this.layoutControl1;
             this.txtMaTacGia.TabIndex = 7;
             this.txtMaTacGia.ToolTip = "Vui lòng chọn đúng Mã Tác Giả của cuốn sách";
             this.txtMaTacGia.TextChanged += new System.EventHandler(this.txtMaTacGia_TextChanged);
-            this.txtMaTacGia.Validating += new System.ComponentModel.CancelEventHandler(this.txtMaTacGia_Validating);
             // 
             // txtTenTacGia
             // 
-            this.txtTenTacGia.Enabled = false;
             this.txtTenTacGia.Location = new System.Drawing.Point(408, 141);
             this.txtTenTacGia.Margin = new System.Windows.Forms.Padding(54, 57, 54, 57);
             this.txtTenTacGia.Name = "txtTenTacGia";
@@ -257,6 +255,7 @@
             this.txtTenTacGia.Size = new System.Drawing.Size(437, 22);
             this.txtTenTacGia.StyleController = this.layoutControl1;
             this.txtTenTacGia.TabIndex = 4;
+            this.txtTenTacGia.TextChanged += new System.EventHandler(this.txtTenTacGia_TextChanged);
             this.txtTenTacGia.Validating += new System.ComponentModel.CancelEventHandler(this.txtTenTacGia_Validating);
             // 
             // txtMaNhaPhanPhoi
@@ -279,16 +278,15 @@
             this.txtMaNhaPhanPhoi.Properties.DropDownItemHeight = 50;
             this.txtMaNhaPhanPhoi.Properties.DropDownRows = 5;
             this.txtMaNhaPhanPhoi.Properties.ItemAutoHeight = true;
+            this.txtMaNhaPhanPhoi.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txtMaNhaPhanPhoi.Size = new System.Drawing.Size(437, 22);
             this.txtMaNhaPhanPhoi.StyleController = this.layoutControl1;
             this.txtMaNhaPhanPhoi.TabIndex = 8;
             this.txtMaNhaPhanPhoi.ToolTip = "Vui lòng chọn đúng Mã Nhà Phân Phối";
             this.txtMaNhaPhanPhoi.TextChanged += new System.EventHandler(this.txtMaNhaPhanPhoi_TextChanged);
-            this.txtMaNhaPhanPhoi.Validating += new System.ComponentModel.CancelEventHandler(this.txtMaNhaPhanPhoi_Validating);
             // 
             // txtTenNhaPhanPhoi
             // 
-            this.txtTenNhaPhanPhoi.Enabled = false;
             this.txtTenNhaPhanPhoi.Location = new System.Drawing.Point(408, 199);
             this.txtTenNhaPhanPhoi.Margin = new System.Windows.Forms.Padding(62, 65, 62, 65);
             this.txtTenNhaPhanPhoi.Name = "txtTenNhaPhanPhoi";
@@ -297,6 +295,7 @@
             this.txtTenNhaPhanPhoi.Size = new System.Drawing.Size(437, 22);
             this.txtTenNhaPhanPhoi.StyleController = this.layoutControl1;
             this.txtTenNhaPhanPhoi.TabIndex = 4;
+            this.txtTenNhaPhanPhoi.TextChanged += new System.EventHandler(this.txtTenNhaPhanPhoi_TextChanged);
             // 
             // dtpNgayXB
             // 

@@ -5,6 +5,8 @@ using DAL.Services.TacGias.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -25,8 +27,25 @@ namespace DAL.Services.TacGias
         public async Task<int> CreateTacGia(TacGiaCreateInput input)
         {
             var entity = await MapperCreateInputToEntity(input, new Model.TacGia());
+            try
+            {
+                _db.TacGias.Add(entity);
+                _db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                // Xử lý lỗi kiểm tra hợp lệ ở đây
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceError($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                    }
+                }
+            }
             _db.TacGias.Add(entity);
-            return _db.SaveChanges();
+             _db.SaveChanges();
+            return entity.ID;
         }
 
         public async Task<bool> UpdateTacGia(int TacGiaId, TacGiaCreateInput input)

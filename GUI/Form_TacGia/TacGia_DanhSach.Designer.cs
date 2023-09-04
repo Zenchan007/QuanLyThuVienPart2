@@ -154,10 +154,6 @@
             this.dtgTacGia.GridControl = this.gridTacGia;
             this.dtgTacGia.Name = "dtgTacGia";
             this.dtgTacGia.OptionsView.ShowGroupPanel = false;
-            this.dtgTacGia.MasterRowEmpty += new DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventHandler(this.dtgTacGia_MasterRowEmpty);
-            this.dtgTacGia.MasterRowGetChildList += new DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventHandler(this.dtgTacGia_MasterRowGetChildList);
-            this.dtgTacGia.MasterRowGetRelationName += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.dtgTacGia_MasterRowGetRelationName);
-            this.dtgTacGia.MasterRowGetRelationCount += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventHandler(this.dtgTacGia_MasterRowGetRelationCount);
             // 
             // ID
             // 

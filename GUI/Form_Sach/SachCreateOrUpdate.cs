@@ -1,6 +1,8 @@
 ﻿using DAL.Services.NhaPhanPhois;
+using DAL.Services.NhaPhanPhois.DTO;
 using DAL.Services.Sachs.DTO;
 using DAL.Services.TacGias;
+using DAL.Services.TacGias.DTO;
 using DAL.Services.TheLoais;
 using DevExpress.XtraEditors.Controls;
 using System;
@@ -18,10 +20,10 @@ namespace GUI.Form_Sach
 {
     public partial class SachCreateOrUpdate : Form
     {
-        ISachService _iSachService = new SachService();
+        ISachService sachService = new SachService();
         ITheLoaiService _iTheLoaiService = new TheLoaiService();
-        ITacGiaService _iTacGiaService = new TacGiaService();
-        INhaPhanPhoiService _iNhaPhanPhoiService = new NhaPhanPhoiService();
+        ITacGiaService tacGiaService = new TacGiaService();
+        INhaPhanPhoiService nhaPhanPhoiService = new NhaPhanPhoiService();
         int ID_CapNhat = 0;
         public string TenSachYC { set; get; }
         public string TacGiaYC { set;get; }
@@ -51,7 +53,7 @@ namespace GUI.Form_Sach
 
             if (ID_CapNhat != 0)
             {
-                var sachCapNhat = await _iSachService.GetById(ID_CapNhat);
+                var sachCapNhat = await sachService.GetById(ID_CapNhat);
                 txtTenSach.Text = sachCapNhat.TenSach;
                 txtMaTacGia.Text = sachCapNhat.ID_TacGia != null ? sachCapNhat.TacGia.ID.ToString() : string.Empty;
                 txtMaNhaPhanPhoi.Text = sachCapNhat.ID_NhaPhanPhoi != null ? sachCapNhat.NhaPhanPhoi.ID.ToString() : string.Empty;
@@ -72,9 +74,9 @@ namespace GUI.Form_Sach
         {
             var listTheLoai = _iTheLoaiService.QueryFilterDto().Select(x => x.TenTheLoai).ToList();
             cbbTheLoai.Properties.DataSource = listTheLoai;
-            var listNhaPhanPhoi = _iNhaPhanPhoiService.QueryFilterDto().Select(x => x.NhaPhanPhoiId).ToList();
+            var listNhaPhanPhoi = nhaPhanPhoiService.QueryFilterDto().Select(x => x.NhaPhanPhoiId).ToList();
             txtMaNhaPhanPhoi.Properties.Items.AddRange(listNhaPhanPhoi);
-            var listTacGia = _iTacGiaService.QueryFilterDto().Select(x => x.TacGiaId).ToList();
+            var listTacGia = tacGiaService.QueryFilterDto().Select(x => x.TacGiaId).ToList();
             txtMaTacGia.Properties.Items.AddRange(listTacGia);
 
         }
@@ -85,7 +87,7 @@ namespace GUI.Form_Sach
         {
             if (!string.IsNullOrEmpty(txtMaNhaPhanPhoi.Text))
             {
-                var TenNhaPhanPhoi = _iNhaPhanPhoiService.QueryFilter().FirstOrDefault(x => x.ID == txtMaNhaPhanPhoi.Text);
+                var TenNhaPhanPhoi = nhaPhanPhoiService.QueryFilter().FirstOrDefault(x => x.ID == txtMaNhaPhanPhoi.Text);
                 if (TenNhaPhanPhoi != null)
                 {
                     txtTenNhaPhanPhoi.Text = TenNhaPhanPhoi.TenNhaPhanPhoi;
@@ -97,27 +99,29 @@ namespace GUI.Form_Sach
             }
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
+        private async void btnLuu_Click(object sender, EventArgs e)
         {
             try
             {
 
-                if (string.IsNullOrEmpty(txtTenSach.Text) && string.IsNullOrEmpty(cbbTheLoai.Text) && string.IsNullOrEmpty(txtMaNhaPhanPhoi.Text)
-                    && string.IsNullOrEmpty(txtMaTacGia.Text) && string.IsNullOrEmpty(dtpNgayXB.Text) && string.IsNullOrEmpty(txtDonGia.Text) &&
+                if (string.IsNullOrEmpty(txtTenSach.Text) 
+                     && string.IsNullOrEmpty(dtpNgayXB.Text) && string.IsNullOrEmpty(txtDonGia.Text) &&
                     string.IsNullOrEmpty(txtSoLuong.Text))
                 {
                     MessageBox.Show("Vui lòng điền đúng định dạng");
                 }
-                if (string.IsNullOrEmpty(errLoi.GetError(txtTenSach)) && string.IsNullOrEmpty(errLoi.GetError(cbbTheLoai)) && string.IsNullOrEmpty(errLoi.GetError(txtMaNhaPhanPhoi))
-                && string.IsNullOrEmpty(errLoi.GetError(txtMaTacGia)) && string.IsNullOrEmpty(errLoi.GetError(dtpNgayXB)) && string.IsNullOrEmpty(errLoi.GetError(txtDonGia)) &&
+                if (string.IsNullOrEmpty(errLoi.GetError(txtTenSach))  
+                 && string.IsNullOrEmpty(errLoi.GetError(dtpNgayXB)) && string.IsNullOrEmpty(errLoi.GetError(txtDonGia)) &&
                 string.IsNullOrEmpty(errLoi.GetError(txtSoLuong)))
 
                 {
+                    
+
+                    
                     var sachCRUD = new SachCreateInput
                     {
                         TenSach = txtTenSach.Text,
-                        TacGiaId = Int32.Parse(txtMaTacGia.Text),
-                        NhaPhanPhoiId = txtMaNhaPhanPhoi.Text,
+                        
                         NgayXb = dtpNgayXB.DateTime,
                         SoLuong = Int32.Parse(txtSoLuong.Text),
                         DonGia = float.Parse(txtDonGia.Text),
@@ -128,22 +132,37 @@ namespace GUI.Form_Sach
                         AnhSach = XuLyAnh.ImageToByteArray(ptbAnhSach.Image),
                         MoTa = txtMoTa.Text
                     };
+                    if (!string.IsNullOrEmpty(txtMaTacGia.Text))
+                    {
+                        sachCRUD.TacGiaId =await tacGiaService.CreateTacGia(new TacGiaCreateInput
+                        {
+                            TenTacGia = txtTenTacGia?.Text
+                        });
+                    }
+                    if (!string.IsNullOrEmpty(txtMaNhaPhanPhoi.Text))
+                    {
+                        sachCRUD.NhaPhanPhoiId = await nhaPhanPhoiService.CreateNhaPhanPhoi(new NhaPhanPhoiCreateInput
+                        {
+                            TenNhaPhanPhoi = txtTenNhaPhanPhoi?.Text
+                        }); ;
+                    }
                     if (ID_CapNhat != 0)
                     {
-                        var sachCapNhat = _iSachService.UpdateSach(ID_CapNhat, sachCRUD);
+                        var sachCapNhat = sachService.UpdateSach(ID_CapNhat, sachCRUD);
                         MessageBox.Show("Cập Nhật Thành Công Vào Trong CSDL");
                     }
                     else
                     {
-                        var sachCapNhat = _iSachService.CreateSach(sachCRUD);
+                        var sachCapNhat = sachService.CreateSach(sachCRUD);
                         MessageBox.Show("Thêm Thành Công Vào Trong CSDL");
                     }
                     this.Close();
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 MessageBox.Show("Vui lòng điền đúng định dạng");
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -158,7 +177,7 @@ namespace GUI.Form_Sach
             if (!string.IsNullOrEmpty(txtMaTacGia.Text))
             {
                 int maTacGia = Int32.Parse(txtMaTacGia.Text);
-                var TenTacGia = _iTacGiaService.QueryFilter().FirstOrDefault(x => x.ID == maTacGia);
+                var TenTacGia = tacGiaService.QueryFilter().FirstOrDefault(x => x.ID == maTacGia);
                 if (TenTacGia != null)
                 {
                     txtTenTacGia.Text = TenTacGia.TenTacGia;
@@ -177,32 +196,11 @@ namespace GUI.Form_Sach
             else errLoi.ClearErrors();
         }
 
-        private void cbbTheLoai_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(cbbTheLoai.Text))
-                errLoi.SetError(cbbTheLoai, "Thể Loại không được để trống");
-            else errLoi.ClearErrors();
-        }
-
-        private void txtMaTacGia_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtMaTacGia.Text))
-                errLoi.SetError(txtMaTacGia, "Mã Tác Giả không được để trống");
-            else
-                errLoi.ClearErrors();
-        }
+      
 
         private void txtTenTacGia_Validating(object sender, CancelEventArgs e)
         {
 
-        }
-
-        private void txtMaNhaPhanPhoi_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtMaNhaPhanPhoi.Text))
-                errLoi.SetError(txtMaNhaPhanPhoi, "Mã Nhà Phân Phối không được để trống");
-            else
-                errLoi.ClearErrors();
         }
 
         private void dtpNgayXB_Validating(object sender, CancelEventArgs e)
@@ -228,6 +226,25 @@ namespace GUI.Form_Sach
                 errLoi.ClearErrors();
         }
         #endregion
+
+        private void txtTenTacGia_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtTenTacGia.Text))
+            {
+                var maTacGia = tacGiaService.QueryFilter().FirstOrDefault(x => x.TenTacGia.ToLower().Equals(txtTenTacGia.Text.ToLower()));
+                txtMaTacGia.Text = maTacGia?.ID.ToString() ?? string.Empty;
+            }
+
+        }
+
+        private void txtTenNhaPhanPhoi_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtTenTacGia.Text))
+            {
+                var maNhaPhanPhoi = nhaPhanPhoiService.QueryFilter().FirstOrDefault(x => x.TenNhaPhanPhoi.ToLower().Equals(txtTenNhaPhanPhoi.Text.ToLower()));
+                txtMaNhaPhanPhoi.Text = maNhaPhanPhoi?.ID ?? string.Empty;
+            }
+        }
     }
     public class XuLyAnh
     {

@@ -19,6 +19,11 @@ using DevExpress.XtraGrid.Views.Grid;
 using DAL.Services.PhieuMuon_Sachs;
 using DAL.Services.PhieuMuon_PhieuMuon_Sachs;
 using DAL.Services.PhieuMuon_Sach_Sachs;
+using DevExpress.Export;
+using DevExpress.Utils;
+using DevExpress.XtraPrinting;
+using System.Diagnostics;
+using System.IO;
 
 namespace GUI.Form_PhieuMuon
 {
@@ -130,6 +135,55 @@ namespace GUI.Form_PhieuMuon
         private void dtgPhieuMuon_MasterRowGetRelationDisplayCaption(object sender, MasterRowGetRelationNameEventArgs e)
         {
             
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XuatFileExcel("");
+        }
+        private bool XuatFileExcel(string filename)
+        {
+            try
+            {
+                if (dtgPhieuMuon.FocusedRowHandle < 0)
+                {
+
+                }
+                else
+                {
+                    var dialog = new SaveFileDialog();
+                    dialog.Title = @"Export file Excel";
+                    dialog.Filter = @"Microsoft Excel | *.xlsx";
+                    dialog.FileName = filename;
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+
+                        dtgPhieuMuon.ColumnPanelRowHeight = 40;
+                        dtgPhieuMuon.OptionsPrint.AutoWidth = AutoSize;
+                        dtgPhieuMuon.OptionsPrint.ShowPrintExportProgress = true;
+                        dtgPhieuMuon.OptionsPrint.AllowCancelPrintExport = true;
+                        XlsxExportOptions options = new XlsxExportOptions();
+                        options.TextExportMode = TextExportMode.Text;
+                        options.ExportMode = XlsxExportMode.SingleFile;
+                        options.SheetName = @"Danh Sách Phiếu Mượn";
+                        ExportSettings.DefaultExportType = ExportType.Default;
+                        dtgPhieuMuon.ExportToXlsx(dialog.FileName, options);
+                        XtraMessageBox.Show("Export Success", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, DefaultBoolean.True);
+                        if (File.Exists(dialog.FileName))
+                        {
+                            if (XtraMessageBox.Show("File đã có trên máy tính của bạn. Bạn có muốn mở ra không?", "Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                            {
+                                Process.Start(dialog.FileName);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Export Success", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return false;
         }
     }
 }

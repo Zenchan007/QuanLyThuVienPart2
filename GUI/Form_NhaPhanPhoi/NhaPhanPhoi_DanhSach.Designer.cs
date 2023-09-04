@@ -32,6 +32,11 @@
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhaPhanPhoi_DanhSach));
             this.dtgSachNhaPhanPhoi = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.SachId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenSach = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenTacGia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NgayXb = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridNhaPhanPhoi = new DevExpress.XtraGrid.GridControl();
             this.dtgNhaPhanPhoi = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,11 +55,6 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.SachId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TenSach = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TenTacGia = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NgayXb = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSachNhaPhanPhoi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridNhaPhanPhoi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgNhaPhanPhoi)).BeginInit();
@@ -77,6 +77,56 @@
             this.dtgSachNhaPhanPhoi.Name = "dtgSachNhaPhanPhoi";
             this.dtgSachNhaPhanPhoi.OptionsView.ShowGroupPanel = false;
             this.dtgSachNhaPhanPhoi.ViewCaption = "Sách Thuộc Nhà Phân Phối ";
+            // 
+            // SachId
+            // 
+            this.SachId.Caption = "ID Sách";
+            this.SachId.FieldName = "SachId";
+            this.SachId.MinWidth = 25;
+            this.SachId.Name = "SachId";
+            this.SachId.Visible = true;
+            this.SachId.VisibleIndex = 0;
+            this.SachId.Width = 94;
+            // 
+            // TenSach
+            // 
+            this.TenSach.Caption = "Tên Sách";
+            this.TenSach.FieldName = "TenSach";
+            this.TenSach.MinWidth = 25;
+            this.TenSach.Name = "TenSach";
+            this.TenSach.Visible = true;
+            this.TenSach.VisibleIndex = 1;
+            this.TenSach.Width = 94;
+            // 
+            // TenTacGia
+            // 
+            this.TenTacGia.Caption = "Tên Tác Giả";
+            this.TenTacGia.FieldName = "TenTacGia";
+            this.TenTacGia.MinWidth = 25;
+            this.TenTacGia.Name = "TenTacGia";
+            this.TenTacGia.Visible = true;
+            this.TenTacGia.VisibleIndex = 2;
+            this.TenTacGia.Width = 94;
+            // 
+            // NgayXb
+            // 
+            this.NgayXb.Caption = "Ngày Xuất Bản";
+            this.NgayXb.FieldName = "NgayXb";
+            this.NgayXb.MinWidth = 25;
+            this.NgayXb.Name = "NgayXb";
+            this.NgayXb.Visible = true;
+            this.NgayXb.VisibleIndex = 3;
+            this.NgayXb.Width = 94;
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.Caption = "Số Lượng";
+            this.SoLuong.FieldName = "SoLuong";
+            this.SoLuong.MinWidth = 25;
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.Visible = true;
+            this.SoLuong.VisibleIndex = 4;
+            this.SoLuong.Width = 94;
             // 
             // gridNhaPhanPhoi
             // 
@@ -264,56 +314,6 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(792, 530);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // SachId
-            // 
-            this.SachId.Caption = "ID Sách";
-            this.SachId.FieldName = "SachId";
-            this.SachId.MinWidth = 25;
-            this.SachId.Name = "SachId";
-            this.SachId.Visible = true;
-            this.SachId.VisibleIndex = 0;
-            this.SachId.Width = 94;
-            // 
-            // TenSach
-            // 
-            this.TenSach.Caption = "Tên Sách";
-            this.TenSach.FieldName = "TenSach";
-            this.TenSach.MinWidth = 25;
-            this.TenSach.Name = "TenSach";
-            this.TenSach.Visible = true;
-            this.TenSach.VisibleIndex = 1;
-            this.TenSach.Width = 94;
-            // 
-            // TenTacGia
-            // 
-            this.TenTacGia.Caption = "Tên Tác Giả";
-            this.TenTacGia.FieldName = "TenTacGia";
-            this.TenTacGia.MinWidth = 25;
-            this.TenTacGia.Name = "TenTacGia";
-            this.TenTacGia.Visible = true;
-            this.TenTacGia.VisibleIndex = 2;
-            this.TenTacGia.Width = 94;
-            // 
-            // NgayXb
-            // 
-            this.NgayXb.Caption = "Ngày Xuất Bản";
-            this.NgayXb.FieldName = "NgayXb";
-            this.NgayXb.MinWidth = 25;
-            this.NgayXb.Name = "NgayXb";
-            this.NgayXb.Visible = true;
-            this.NgayXb.VisibleIndex = 3;
-            this.NgayXb.Width = 94;
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.Caption = "Số Lượng";
-            this.SoLuong.FieldName = "SoLuong";
-            this.SoLuong.MinWidth = 25;
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.Visible = true;
-            this.SoLuong.VisibleIndex = 4;
-            this.SoLuong.Width = 94;
             // 
             // NhaPhanPhoi_DanhSach
             // 

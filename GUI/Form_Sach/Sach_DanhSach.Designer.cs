@@ -47,6 +47,7 @@
             this.btnUpdate = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhiMuon = new DevExpress.XtraBars.BarButtonItem();
+            this.btnXuatExcel = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -195,8 +196,9 @@
             this.btnThem,
             this.btnUpdate,
             this.btnXoa,
-            this.btnGhiMuon});
-            this.barManager1.MaxItemId = 4;
+            this.btnGhiMuon,
+            this.btnXuatExcel});
+            this.barManager1.MaxItemId = 5;
             // 
             // barBtn
             // 
@@ -208,7 +210,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUpdate, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGhiMuon, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGhiMuon, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXuatExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.barBtn.Text = "Tools";
             // 
             // btnThem
@@ -247,6 +250,14 @@
             this.btnGhiMuon.Name = "btnGhiMuon";
             this.btnGhiMuon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGhiMuon_ItemClick);
             // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.Caption = "Xuất Bản Excel";
+            this.btnXuatExcel.Id = 4;
+            this.btnXuatExcel.ImageOptions.SvgImage = global::GUI.Properties.Resources.exporttoxlsx;
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXuatExcel_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -279,7 +290,7 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 689);
             // 
-            // Sach_DanhSach2
+            // Sach_DanhSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -288,7 +299,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "Sach_DanhSach2";
+            this.Name = "Sach_DanhSach";
             this.Size = new System.Drawing.Size(1350, 719);
             this.Load += new System.EventHandler(this.Sach_DanhSach2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -328,5 +339,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn DonGia;
         private DevExpress.XtraGrid.Columns.GridColumn SoLuong;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+        private DevExpress.XtraBars.BarButtonItem btnXuatExcel;
     }
 }
