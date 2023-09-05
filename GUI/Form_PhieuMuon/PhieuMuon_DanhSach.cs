@@ -24,6 +24,7 @@ using DevExpress.Utils;
 using DevExpress.XtraPrinting;
 using System.Diagnostics;
 using System.IO;
+using DAL.Services.NhaPhanPhois;
 
 namespace GUI.Form_PhieuMuon
 {
@@ -88,11 +89,13 @@ namespace GUI.Form_PhieuMuon
             {
                 int selectedRowHandle = dtgPhieuMuon.FocusedRowHandle;
                 var ID_Xoa = dtgPhieuMuon.GetRowCellDisplayText(selectedRowHandle, "PhieuMuonId");
-                
-                await phieuMuonService.DeletePhieuMuonById(Int32.Parse(ID_Xoa));
-                MessageBox.Show("Đã Xóa");
-                showDuLieuPhieuMuon();
-            }
+                if (XtraMessageBox.Show("Bạn có muốn xóa phiếu mượn này?", "Cảnh Báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    await phieuMuonService.DeletePhieuMuonById(Int32.Parse(ID_Xoa));
+                    MessageBox.Show("Đã Xóa");
+                    showDuLieuPhieuMuon();
+                }
+            } 
         }
 
         private void dtgPhieuMuon_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)

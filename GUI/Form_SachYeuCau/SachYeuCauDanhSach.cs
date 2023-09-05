@@ -88,10 +88,10 @@ namespace GUI.Form_SachYeuCau
                 if(!string.IsNullOrEmpty(tenSachNhap) && !string.IsNullOrEmpty(tenTacGia))
                 {
                      var z = sachService.QueryFilter().FirstOrDefault(x => x.TenSach.Equals(tenSachNhap) && x.TacGia.TenTacGia.Equals(tenTacGia));
-                    Id = z.ID;
+                    Id = z?.ID ?? 0;
                 }
                 
-                if(Id == 0 || Id == null)
+                if(Id == 0 )
                 {
                     sachNhap = new SachCreateOrUpdate(tenSachNhap, tenTacGia);
                     sachNhap.Show(this);

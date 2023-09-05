@@ -1,5 +1,6 @@
 ﻿using DAL.Services.PhieuMuons.DTO;
 using DAL.Services.Sachs.DTO;
+using DAL.Services.TacGias;
 using DAL.Services.TheLoais;
 using DAL.Services.TheLoais.DTO;
 using DevExpress.XtraEditors;
@@ -92,9 +93,12 @@ namespace GUI.Form_TheLoai
             {
                 int selectedRowHandle = dtgTheLoai.FocusedRowHandle;
                 string idXoa = dtgTheLoai.GetRowCellDisplayText(selectedRowHandle, "TheLoaiId");
-                await theLoaiService.DeleteTheLoaiById(idXoa);
-                MessageBox.Show("Đã Xóa");
-                await showDuLieuTheLoai();
+                if (XtraMessageBox.Show("Bạn có muốn xóa thể loại này", "Cảnh Báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    await theLoaiService.DeleteTheLoaiById(idXoa);
+                    MessageBox.Show("Đã Xóa");
+                    await showDuLieuTheLoai();
+                }
             }
         }
 

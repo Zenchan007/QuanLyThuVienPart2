@@ -49,7 +49,6 @@ namespace GUI.Form_BaoCao
             {
                 if (i < danhSachTop5.Count)
                 {
-                    // Nếu có phần tử trong danh sách, gán giá trị từ danh sách
                     switch (i)
                     {
                         case 0:
@@ -78,11 +77,6 @@ namespace GUI.Form_BaoCao
 
         public void FillChartLine()
         {
-            chartDocGiaTheoThang.Titles.Clear(); // Xóa các tiêu đề hiện có (nếu có)
-            var chartTitle = new ChartTitle();
-            chartTitle.Text = "Biểu Đồ Số Lương Thể Loại Cho Mượn"; // Đặt nội dung tiêu đề
-            chartDocGiaTheoThang.Titles.Add(chartTitle); // Thêm tiêu đề vào biểu đồ
-
             var tongSachTheoTheLoai = sachService.GetBookCategoryStatistics();
             chartDocGiaTheoThang.Series[0].Points.Clear();
 
@@ -96,11 +90,9 @@ namespace GUI.Form_BaoCao
         public void FillChart()
         {
             chartDanhSoTheoTheLoai.Titles.Clear(); // Xóa các tiêu đề hiện có (nếu có)
-
             var chartTitle = new ChartTitle();
             chartTitle.Text = "Biểu Đồ Số Sách Mượn Qua Các Tháng"; // Đặt nội dung tiêu đề
             chartDanhSoTheoTheLoai.Titles.Add(chartTitle); // Thêm tiêu đề vào biểu đồ
-
             var tongSachTheoTheLoai = phieuMuon_SachsService.GetNgayMuonVaSoLuong();
             chartDanhSoTheoTheLoai.Series[0].Points.Clear();
 
@@ -116,36 +108,18 @@ namespace GUI.Form_BaoCao
         }
         public void FillChartPie()
         {
-            chartTyLeTheLoai.Titles.Clear(); // Xóa các tiêu đề hiện có (nếu có)
-            var chartTitle = new ChartTitle();
-            chartTitle.Text = "Biểu Đồ Tỷ Lệ Thể Loại Các Loại Sách"; // Đặt nội dung tiêu đề
-            chartTyLeTheLoai.Titles.Add(chartTitle); // Thêm tiêu đề vào biểu đồ
-
             var tongSachTheoTheLoai = sachService.GetTongSachTheoTheLoai();
             chartTyLeTheLoai.Series[0].Points.Clear();
-
             foreach (var item in tongSachTheoTheLoai)
             {
                 var point = new SeriesPoint(item.Key, item.Value);
                 chartTyLeTheLoai.Series[0].Points.Add(point);
                 chartTyLeTheLoai.Series[0].Name = item.Key;
             }
-
-            // Đặt tên của trục x và y
-            chartTyLeTheLoai.Series[0].ArgumentDataMember = "Argument"; // Trục x (Thể loại)
-            chartTyLeTheLoai.Series[0].ValueDataMembers.AddRange("Value"); // Trục y (Số lượng)
-
-            // Đặt tên cho series (Legend)
-
-            // Hiển thị chú thích (Legend)
+            chartTyLeTheLoai.Series[0].ArgumentDataMember = "Argument"; 
+            chartTyLeTheLoai.Series[0].ValueDataMembers.AddRange("Value"); 
             chartTyLeTheLoai.Series[0].ShowInLegend = true;
-            chartTyLeTheLoai.Series[0].LegendTextPattern = "{A}"; // Hiển thị item.key trong chú thích
-
-            // Cập nhật dữ liệu biểu đồ
-
-
-
-
+            chartTyLeTheLoai.Series[0].LegendTextPattern = "{A}"; 
         }
 
     

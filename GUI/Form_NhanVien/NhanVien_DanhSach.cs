@@ -1,4 +1,5 @@
-﻿using DAL.Services.NhanVien;
+﻿using DAL.Services.DocGias;
+using DAL.Services.NhanVien;
 using DAL.Services.NhanVien.DTO;
 using DAL.Services.TheLoais.DTO;
 using DevExpress.XtraEditors;
@@ -86,9 +87,20 @@ namespace GUI.Form_NhanVien
                 int selectedRowHandle = dtgNhanVien.FocusedRowHandle;
                 string ID_Xoa = dtgNhanVien.GetRowCellDisplayText(selectedRowHandle, "NhanVienId");
                 int ID = Int32.Parse(ID_Xoa);
-                await nhanVienService.DeleteNhanVienById(ID);
-                MessageBox.Show("Đã Xóa");
-                await showDuLieuNhanVien();
+                string tenVaiTro = dtgNhanVien.GetRowCellDisplayText(selectedRowHandle, "TenVaiTro");
+                if (tenVaiTro.Equals("Admin"))
+                {
+                    MessageBox.Show("Không thể xóa tài khoản Admin");
+                }
+                else
+                {
+                    if (XtraMessageBox.Show("Bạn có muốn xóa nhân viên này?", "Cảnh Báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        await nhanVienService.DeleteNhanVienById(ID);
+                        MessageBox.Show("Đã Xóa");
+                        await showDuLieuNhanVien();
+                    }
+                }
             }
         }
     }

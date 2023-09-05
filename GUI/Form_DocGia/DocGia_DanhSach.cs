@@ -5,6 +5,7 @@ using DAL.Services.PhieuMuons;
 using DAL.Services.PhieuMuons.DTO;
 using DAL.Services.Sachs.DTO;
 using DAL.Services.TheLoais.DTO;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
@@ -70,8 +71,11 @@ namespace GUI.Form_DocGia
                     int selectedRowHandle = dtgDocGia.FocusedRowHandle;
                     string ID_Xoa = dtgDocGia.GetRowCellDisplayText(selectedRowHandle, "DocGiaId");
                     int ID = Int32.Parse(ID_Xoa);
-                    await docGiaService.DeleteDocGiaById(ID);
-                    MessageBox.Show("Đã Xóa");
+                    if (XtraMessageBox.Show("Bạn có muốn xóa độc giả này?", "Cảnh Báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        await docGiaService.DeleteDocGiaById(ID);
+                        MessageBox.Show("Đã Xóa");
+                    }
                 }
             }catch(Exception ex)
             {

@@ -49,7 +49,7 @@ namespace GUI.Form_NhanVien
                         AnhNhanVien = XuLyAnh.ImageToByteArray(ptbAnhNhanVien.Image),
                         GioiTinh = cbbGioiTinh.Text,
                         SoDienThoai = txtSoDienThoai.Text,
-                        VaiTroId = vaiTroService.QueryFilter().Where(x => x.TenRole == txtVaiTro.Text).Select(x => x.ID).FirstOrDefault(),
+                        VaiTroId = vaiTroService.QueryFilter().Where(x => x.TenRole.Equals(txtVaiTro.Text)).Select(x => x.ID).FirstOrDefault(),
                     };
                     if (!string.IsNullOrEmpty(dtpNgaySinh.Text))
                     {

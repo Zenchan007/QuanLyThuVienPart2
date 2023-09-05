@@ -21,6 +21,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace GUI.Form_Sach
 {
@@ -83,9 +84,12 @@ namespace GUI.Form_Sach
                 int selectedRowHandle = dtgSach.FocusedRowHandle;
                 string ID_Xoa = dtgSach.GetRowCellDisplayText(selectedRowHandle, "SachId");
                 int ID = Int32.Parse(ID_Xoa);
-                await _isachService.DeleteSachById(ID);
-                MessageBox.Show("Đã Xóa");
-                showDuLieuSach();
+                if (XtraMessageBox.Show("Bạn có muốn xóa cuốn sách?", "Cảnh Báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    await _isachService.DeleteSachById(ID);
+                    MessageBox.Show("Đã Xóa");
+                    showDuLieuSach();
+                }
             }
         }
 

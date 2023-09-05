@@ -32,10 +32,13 @@
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.ChartTitle chartTitle2 = new DevExpress.XtraCharts.ChartTitle();
             DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.PieSeriesView pieSeriesView1 = new DevExpress.XtraCharts.PieSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle3 = new DevExpress.XtraCharts.ChartTitle();
             DevExpress.XtraLayout.ColumnDefinition columnDefinition1 = new DevExpress.XtraLayout.ColumnDefinition();
             DevExpress.XtraLayout.ColumnDefinition columnDefinition2 = new DevExpress.XtraLayout.ColumnDefinition();
             DevExpress.XtraLayout.ColumnDefinition columnDefinition3 = new DevExpress.XtraLayout.ColumnDefinition();
@@ -57,12 +60,12 @@
             this.Top3 = new DevExpress.XtraEditors.LabelControl();
             this.Top4 = new DevExpress.XtraEditors.LabelControl();
             this.Top5 = new DevExpress.XtraEditors.LabelControl();
-            this.lbTenSachTop3 = new DevExpress.XtraEditors.LabelControl();
-            this.lbTenSachTop4 = new DevExpress.XtraEditors.LabelControl();
-            this.lbTenSachTop5 = new DevExpress.XtraEditors.LabelControl();
             this.Top1 = new DevExpress.XtraEditors.LabelControl();
             this.lblTenSachTop1 = new DevExpress.XtraEditors.LabelControl();
             this.lbTenSachTop2 = new DevExpress.XtraEditors.LabelControl();
+            this.lbTenSachTop3 = new DevExpress.XtraEditors.LabelControl();
+            this.lbTenSachTop4 = new DevExpress.XtraEditors.LabelControl();
+            this.lbTenSachTop5 = new DevExpress.XtraEditors.LabelControl();
             this.pnHeader = new DevExpress.XtraEditors.PanelControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -191,8 +194,8 @@
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 3;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.90141F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.29578F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.66197F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.53521F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel7.Controls.Add(this.Top2, 0, 2);
             this.tableLayoutPanel7.Controls.Add(this.Top3, 0, 3);
@@ -260,39 +263,6 @@
             this.Top5.TabIndex = 13;
             this.Top5.Text = "Top5:";
             // 
-            // lbTenSachTop3
-            // 
-            this.lbTenSachTop3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbTenSachTop3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbTenSachTop3.Appearance.Options.UseFont = true;
-            this.lbTenSachTop3.Location = new System.Drawing.Point(51, 103);
-            this.lbTenSachTop3.Name = "lbTenSachTop3";
-            this.lbTenSachTop3.Size = new System.Drawing.Size(30, 18);
-            this.lbTenSachTop3.TabIndex = 16;
-            this.lbTenSachTop3.Text = "100";
-            // 
-            // lbTenSachTop4
-            // 
-            this.lbTenSachTop4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbTenSachTop4.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbTenSachTop4.Appearance.Options.UseFont = true;
-            this.lbTenSachTop4.Location = new System.Drawing.Point(51, 135);
-            this.lbTenSachTop4.Name = "lbTenSachTop4";
-            this.lbTenSachTop4.Size = new System.Drawing.Size(30, 18);
-            this.lbTenSachTop4.TabIndex = 17;
-            this.lbTenSachTop4.Text = "100";
-            // 
-            // lbTenSachTop5
-            // 
-            this.lbTenSachTop5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbTenSachTop5.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbTenSachTop5.Appearance.Options.UseFont = true;
-            this.lbTenSachTop5.Location = new System.Drawing.Point(51, 169);
-            this.lbTenSachTop5.Name = "lbTenSachTop5";
-            this.lbTenSachTop5.Size = new System.Drawing.Size(30, 18);
-            this.lbTenSachTop5.TabIndex = 18;
-            this.lbTenSachTop5.Text = "100";
-            // 
             // Top1
             // 
             this.Top1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -305,25 +275,53 @@
             // 
             // lblTenSachTop1
             // 
-            this.lblTenSachTop1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblTenSachTop1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblTenSachTop1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblTenSachTop1.Appearance.Options.UseFont = true;
-            this.lblTenSachTop1.Location = new System.Drawing.Point(51, 39);
+            this.lblTenSachTop1.Location = new System.Drawing.Point(56, 35);
             this.lblTenSachTop1.Name = "lblTenSachTop1";
-            this.lblTenSachTop1.Size = new System.Drawing.Size(30, 18);
+            this.lblTenSachTop1.Size = new System.Drawing.Size(16, 16);
             this.lblTenSachTop1.TabIndex = 14;
-            this.lblTenSachTop1.Text = "100";
+            this.lblTenSachTop1.Text = "Na";
             // 
             // lbTenSachTop2
             // 
-            this.lbTenSachTop2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbTenSachTop2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbTenSachTop2.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbTenSachTop2.Appearance.Options.UseFont = true;
-            this.lbTenSachTop2.Location = new System.Drawing.Point(51, 71);
+            this.lbTenSachTop2.Location = new System.Drawing.Point(56, 67);
             this.lbTenSachTop2.Name = "lbTenSachTop2";
-            this.lbTenSachTop2.Size = new System.Drawing.Size(30, 18);
+            this.lbTenSachTop2.Size = new System.Drawing.Size(16, 16);
             this.lbTenSachTop2.TabIndex = 15;
-            this.lbTenSachTop2.Text = "100";
+            this.lbTenSachTop2.Text = "Na";
+            // 
+            // lbTenSachTop3
+            // 
+            this.lbTenSachTop3.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbTenSachTop3.Appearance.Options.UseFont = true;
+            this.lbTenSachTop3.Location = new System.Drawing.Point(56, 99);
+            this.lbTenSachTop3.Name = "lbTenSachTop3";
+            this.lbTenSachTop3.Size = new System.Drawing.Size(16, 16);
+            this.lbTenSachTop3.TabIndex = 16;
+            this.lbTenSachTop3.Text = "Na";
+            // 
+            // lbTenSachTop4
+            // 
+            this.lbTenSachTop4.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbTenSachTop4.Appearance.Options.UseFont = true;
+            this.lbTenSachTop4.Location = new System.Drawing.Point(56, 131);
+            this.lbTenSachTop4.Name = "lbTenSachTop4";
+            this.lbTenSachTop4.Size = new System.Drawing.Size(16, 16);
+            this.lbTenSachTop4.TabIndex = 17;
+            this.lbTenSachTop4.Text = "Na";
+            // 
+            // lbTenSachTop5
+            // 
+            this.lbTenSachTop5.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbTenSachTop5.Appearance.Options.UseFont = true;
+            this.lbTenSachTop5.Location = new System.Drawing.Point(56, 163);
+            this.lbTenSachTop5.Name = "lbTenSachTop5";
+            this.lbTenSachTop5.Size = new System.Drawing.Size(16, 16);
+            this.lbTenSachTop5.TabIndex = 18;
+            this.lbTenSachTop5.Text = "Na";
             // 
             // pnHeader
             // 
@@ -432,11 +430,11 @@
             this.lbTacGiaYeuThich.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbTacGiaYeuThich.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbTacGiaYeuThich.Appearance.Options.UseFont = true;
-            this.lbTacGiaYeuThich.Location = new System.Drawing.Point(27, 40);
+            this.lbTacGiaYeuThich.Location = new System.Drawing.Point(33, 40);
             this.lbTacGiaYeuThich.Name = "lbTacGiaYeuThich";
-            this.lbTacGiaYeuThich.Size = new System.Drawing.Size(39, 24);
+            this.lbTacGiaYeuThich.Size = new System.Drawing.Size(27, 24);
             this.lbTacGiaYeuThich.TabIndex = 4;
-            this.lbTacGiaYeuThich.Text = "500";
+            this.lbTacGiaYeuThich.Text = "Na";
             // 
             // panelControl2
             // 
@@ -480,11 +478,11 @@
             this.lbTheLoaiYeuThich.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbTheLoaiYeuThich.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbTheLoaiYeuThich.Appearance.Options.UseFont = true;
-            this.lbTheLoaiYeuThich.Location = new System.Drawing.Point(27, 40);
+            this.lbTheLoaiYeuThich.Location = new System.Drawing.Point(33, 40);
             this.lbTheLoaiYeuThich.Name = "lbTheLoaiYeuThich";
-            this.lbTheLoaiYeuThich.Size = new System.Drawing.Size(39, 24);
+            this.lbTheLoaiYeuThich.Size = new System.Drawing.Size(27, 24);
             this.lbTheLoaiYeuThich.TabIndex = 4;
-            this.lbTheLoaiYeuThich.Text = "500";
+            this.lbTheLoaiYeuThich.Text = "Na";
             // 
             // panelControl1
             // 
@@ -528,11 +526,11 @@
             this.lbTongSachKho.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbTongSachKho.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbTongSachKho.Appearance.Options.UseFont = true;
-            this.lbTongSachKho.Location = new System.Drawing.Point(27, 40);
+            this.lbTongSachKho.Location = new System.Drawing.Point(33, 40);
             this.lbTongSachKho.Name = "lbTongSachKho";
-            this.lbTongSachKho.Size = new System.Drawing.Size(39, 24);
+            this.lbTongSachKho.Size = new System.Drawing.Size(27, 24);
             this.lbTongSachKho.TabIndex = 4;
-            this.lbTongSachKho.Text = "500";
+            this.lbTongSachKho.Text = "Na";
             // 
             // chartDocGiaTheoThang
             // 
@@ -550,6 +548,10 @@
         series1};
             this.chartDocGiaTheoThang.Size = new System.Drawing.Size(871, 228);
             this.chartDocGiaTheoThang.TabIndex = 8;
+            chartTitle1.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle1.Text = "Thể Loại Mượn Trong Tháng";
+            this.chartDocGiaTheoThang.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
+            chartTitle1});
             // 
             // groupControl1
             // 
@@ -603,17 +605,18 @@
             this.lblSoSachTraMuon.Appearance.ForeColor = System.Drawing.Color.Red;
             this.lblSoSachTraMuon.Appearance.Options.UseFont = true;
             this.lblSoSachTraMuon.Appearance.Options.UseForeColor = true;
-            this.lblSoSachTraMuon.Location = new System.Drawing.Point(251, 40);
+            this.lblSoSachTraMuon.Location = new System.Drawing.Point(260, 40);
             this.lblSoSachTraMuon.Name = "lblSoSachTraMuon";
-            this.lblSoSachTraMuon.Size = new System.Drawing.Size(30, 18);
+            this.lblSoSachTraMuon.Size = new System.Drawing.Size(21, 18);
             this.lblSoSachTraMuon.TabIndex = 9;
-            this.lblSoSachTraMuon.Text = "100";
+            this.lblSoSachTraMuon.Text = "Na";
             // 
             // chartDanhSoTheoTheLoai
             // 
             xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
             xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
             this.chartDanhSoTheoTheLoai.Diagram = xyDiagram2;
+            this.chartDanhSoTheoTheLoai.Legend.Title.Text = "Số Lượng Sách Mượn";
             this.chartDanhSoTheoTheLoai.Location = new System.Drawing.Point(449, 242);
             this.chartDanhSoTheoTheLoai.Name = "chartDanhSoTheoTheLoai";
             series2.Name = "Series 1";
@@ -621,6 +624,11 @@
         series2};
             this.chartDanhSoTheoTheLoai.Size = new System.Drawing.Size(434, 226);
             this.chartDanhSoTheoTheLoai.TabIndex = 7;
+            chartTitle2.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle2.Text = "SÁCH CHO MƯỢN TRONG THÁNG";
+            chartTitle2.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            this.chartDanhSoTheoTheLoai.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
+            chartTitle2});
             // 
             // chartTyLeTheLoai
             // 
@@ -641,6 +649,10 @@
             this.chartTyLeTheLoai.SeriesTemplate.ShowInLegend = false;
             this.chartTyLeTheLoai.Size = new System.Drawing.Size(433, 226);
             this.chartTyLeTheLoai.TabIndex = 6;
+            chartTitle3.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle3.Text = "Thể Loại Trong Kho";
+            this.chartTyLeTheLoai.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
+            chartTitle3});
             // 
             // gcKho
             // 
@@ -721,33 +733,33 @@
             this.lblSachChoMuon.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblSachChoMuon.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblSachChoMuon.Appearance.Options.UseFont = true;
-            this.lblSachChoMuon.Location = new System.Drawing.Point(251, 71);
+            this.lblSachChoMuon.Location = new System.Drawing.Point(260, 71);
             this.lblSachChoMuon.Name = "lblSachChoMuon";
-            this.lblSachChoMuon.Size = new System.Drawing.Size(30, 18);
+            this.lblSachChoMuon.Size = new System.Drawing.Size(21, 18);
             this.lblSachChoMuon.TabIndex = 4;
-            this.lblSachChoMuon.Text = "100";
+            this.lblSachChoMuon.Text = "Na";
             // 
             // lbSachConLai
             // 
             this.lbSachConLai.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbSachConLai.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbSachConLai.Appearance.Options.UseFont = true;
-            this.lbSachConLai.Location = new System.Drawing.Point(251, 103);
+            this.lbSachConLai.Location = new System.Drawing.Point(260, 103);
             this.lbSachConLai.Name = "lbSachConLai";
-            this.lbSachConLai.Size = new System.Drawing.Size(30, 18);
+            this.lbSachConLai.Size = new System.Drawing.Size(21, 18);
             this.lbSachConLai.TabIndex = 5;
-            this.lbSachConLai.Text = "400";
+            this.lbSachConLai.Text = "Na";
             // 
             // lblSoLuongTheLoai
             // 
             this.lblSoLuongTheLoai.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblSoLuongTheLoai.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblSoLuongTheLoai.Appearance.Options.UseFont = true;
-            this.lblSoLuongTheLoai.Location = new System.Drawing.Point(261, 135);
+            this.lblSoLuongTheLoai.Location = new System.Drawing.Point(260, 135);
             this.lblSoLuongTheLoai.Name = "lblSoLuongTheLoai";
-            this.lblSoLuongTheLoai.Size = new System.Drawing.Size(20, 18);
+            this.lblSoLuongTheLoai.Size = new System.Drawing.Size(21, 18);
             this.lblSoLuongTheLoai.TabIndex = 6;
-            this.lblSoLuongTheLoai.Text = "12";
+            this.lblSoLuongTheLoai.Text = "Na";
             // 
             // lblTongSachKho2
             // 
@@ -777,11 +789,11 @@
             this.lblSoLuongTacGia.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblSoLuongTacGia.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblSoLuongTacGia.Appearance.Options.UseFont = true;
-            this.lblSoLuongTacGia.Location = new System.Drawing.Point(251, 169);
+            this.lblSoLuongTacGia.Location = new System.Drawing.Point(260, 169);
             this.lblSoLuongTacGia.Name = "lblSoLuongTacGia";
-            this.lblSoLuongTacGia.Size = new System.Drawing.Size(30, 18);
+            this.lblSoLuongTacGia.Size = new System.Drawing.Size(21, 18);
             this.lblSoLuongTacGia.TabIndex = 8;
-            this.lblSoLuongTacGia.Text = "200";
+            this.lblSoLuongTacGia.Text = "Na";
             // 
             // Root
             // 

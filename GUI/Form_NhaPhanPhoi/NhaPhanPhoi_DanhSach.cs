@@ -95,10 +95,12 @@ namespace GUI.Form_NhaPhanPhoi
             {
                 int selectedRowHandle = dtgNhaPhanPhoi.FocusedRowHandle;
                 string ID_Xoa = dtgNhaPhanPhoi.GetRowCellDisplayText(selectedRowHandle, "NhaPhanPhoiId");
-               
-                await nhaPhanPhoiService.DeleteNhaPhanPhoiById(ID_Xoa);
-                MessageBox.Show("Đã Xóa");
-                await showDuLieuNhaPhanPhoi();
+                if (XtraMessageBox.Show("Bạn có muốn xóa nhà phân phối này?", "Cảnh Báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    await nhaPhanPhoiService.DeleteNhaPhanPhoiById(ID_Xoa);
+                    MessageBox.Show("Đã Xóa");
+                    await showDuLieuNhaPhanPhoi();
+                }
             }
         }
         #endregion

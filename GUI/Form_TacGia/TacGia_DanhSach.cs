@@ -85,9 +85,12 @@ namespace GUI.Form_TacGia
                 int selectedRowHandle = dtgTacGia.FocusedRowHandle;
                 string ID_Xoa = dtgTacGia.GetRowCellDisplayText(selectedRowHandle, "TacGiaId");
                 var ID = Int32.Parse(ID_Xoa);
-                await tacGiaService.DeleteTacGiaById(ID);
-                MessageBox.Show("Đã Xóa");
-                await showDuLieuTacGia();
+                if (XtraMessageBox.Show("Bạn có muốn xóa tác giả này?", "Cảnh Báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    await tacGiaService.DeleteTacGiaById(ID);
+                    MessageBox.Show("Đã Xóa");
+                    await showDuLieuTacGia();
+                }
             }
         }
         private async Task showDuLieuTacGia()
