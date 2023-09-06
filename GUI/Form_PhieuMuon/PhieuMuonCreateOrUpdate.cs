@@ -9,6 +9,7 @@ using DAL.Services.PhieuMuons;
 using DAL.Services.PhieuMuons.DTO;
 using DAL.Services.Sachs.DTO;
 using DevExpress.Data.TreeList;
+using DevExpress.LookAndFeel;
 using DevExpress.Office.Drawing;
 using DevExpress.XtraEditors;
 using DevExpress.XtraExport.Helpers;
@@ -64,7 +65,7 @@ namespace GUI.Form_PhieuMuon
 
         private async void PhieuMuonCreateOrUpdate2_Load(object sender, EventArgs e)
         {
-            var listMaDocGia =  docGiaService.QueryFilter().Select(x => x.ID).ToList();
+            var listMaDocGia = docGiaService.QueryFilter().Select(x => x.ID).ToList();
             txtMaDocGia.Properties.Items.AddRange(listMaDocGia);
             bsPhieuMuon_Dto = new BindingSource();
             phieuMuon_Sach_DTOs = new BindingList<PhieuMuon_Sach_DTO>();
@@ -202,11 +203,15 @@ namespace GUI.Form_PhieuMuon
         {
             this.Close();
         }
-        private  void btnInPhieuMuon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnInPhieuMuon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+
             PhieuMuon_XuatPhieuMuon xuat = new PhieuMuon_XuatPhieuMuon(ID_CapNhat);
-            ReportPrintTool tool = new ReportPrintTool(xuat);
-            tool.ShowPreview();
+            ReportPrintTool tool = new ReportPrintTool(xuat, true);
+         //   tool.PreviewForm.MdiParent = this;
+            tool.ShowPreview(UserLookAndFeel.Default);
+
+           
         }
 
         private async void btnTraSach_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -243,7 +248,7 @@ namespace GUI.Form_PhieuMuon
                 else
                 {
                     bool daCoSach = false;
-                    foreach (var rowHandle in dtgPhieuMuon_Sach.GetSelectedRows())
+                    for (var rowHandle = 0; rowHandle < dtgPhieuMuon_Sach.RowCount;rowHandle++)
                     {
                         var existingSachId = (int)dtgPhieuMuon_Sach.GetRowCellValue(rowHandle, "SachMuonId");
                         if (existingSachId == sachId)

@@ -603,7 +603,6 @@
             this.DonGia});
             this.dtgSach.GridControl = this.gridSach;
             this.dtgSach.Name = "dtgSach";
-            this.dtgSach.OptionsView.ShowGroupPanel = false;
             // 
             // ID
             // 
@@ -950,7 +949,7 @@
             // 
             this.errLoi.ContainerControl = this;
             // 
-            // PhieuMuonCreateOrUpdate2
+            // PhieuMuonCreateOrUpdate
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1233, 760);
@@ -960,7 +959,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.MinimumSize = new System.Drawing.Size(1235, 800);
-            this.Name = "PhieuMuonCreateOrUpdate2";
+            this.Name = "PhieuMuonCreateOrUpdate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thông Tin Phiếu Mượn";
             this.Load += new System.EventHandler(this.PhieuMuonCreateOrUpdate2_Load);

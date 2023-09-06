@@ -600,12 +600,12 @@
             // 
             // lblSoSachTraMuon
             // 
-            this.lblSoSachTraMuon.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblSoSachTraMuon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSoSachTraMuon.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblSoSachTraMuon.Appearance.ForeColor = System.Drawing.Color.Red;
             this.lblSoSachTraMuon.Appearance.Options.UseFont = true;
             this.lblSoSachTraMuon.Appearance.Options.UseForeColor = true;
-            this.lblSoSachTraMuon.Location = new System.Drawing.Point(260, 40);
+            this.lblSoSachTraMuon.Location = new System.Drawing.Point(260, 36);
             this.lblSoSachTraMuon.Name = "lblSoSachTraMuon";
             this.lblSoSachTraMuon.Size = new System.Drawing.Size(21, 18);
             this.lblSoSachTraMuon.TabIndex = 9;
@@ -667,6 +667,7 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
@@ -680,7 +681,6 @@
             this.tableLayoutPanel2.Controls.Add(this.lblTongSachKho2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelControl2, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.lblSoLuongTacGia, 2, 5);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 28);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -730,34 +730,34 @@
             // 
             // lblSachChoMuon
             // 
-            this.lblSachChoMuon.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblSachChoMuon.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblSachChoMuon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSachChoMuon.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblSachChoMuon.Appearance.Options.UseFont = true;
-            this.lblSachChoMuon.Location = new System.Drawing.Point(260, 71);
+            this.lblSachChoMuon.Location = new System.Drawing.Point(258, 67);
             this.lblSachChoMuon.Name = "lblSachChoMuon";
-            this.lblSachChoMuon.Size = new System.Drawing.Size(21, 18);
+            this.lblSachChoMuon.Size = new System.Drawing.Size(23, 21);
             this.lblSachChoMuon.TabIndex = 4;
             this.lblSachChoMuon.Text = "Na";
             // 
             // lbSachConLai
             // 
-            this.lbSachConLai.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbSachConLai.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbSachConLai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSachConLai.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbSachConLai.Appearance.Options.UseFont = true;
-            this.lbSachConLai.Location = new System.Drawing.Point(260, 103);
+            this.lbSachConLai.Location = new System.Drawing.Point(258, 99);
             this.lbSachConLai.Name = "lbSachConLai";
-            this.lbSachConLai.Size = new System.Drawing.Size(21, 18);
+            this.lbSachConLai.Size = new System.Drawing.Size(23, 21);
             this.lbSachConLai.TabIndex = 5;
             this.lbSachConLai.Text = "Na";
             // 
             // lblSoLuongTheLoai
             // 
-            this.lblSoLuongTheLoai.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblSoLuongTheLoai.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblSoLuongTheLoai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSoLuongTheLoai.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblSoLuongTheLoai.Appearance.Options.UseFont = true;
-            this.lblSoLuongTheLoai.Location = new System.Drawing.Point(260, 135);
+            this.lblSoLuongTheLoai.Location = new System.Drawing.Point(258, 131);
             this.lblSoLuongTheLoai.Name = "lblSoLuongTheLoai";
-            this.lblSoLuongTheLoai.Size = new System.Drawing.Size(21, 18);
+            this.lblSoLuongTheLoai.Size = new System.Drawing.Size(23, 21);
             this.lblSoLuongTheLoai.TabIndex = 6;
             this.lblSoLuongTheLoai.Text = "Na";
             // 
@@ -786,12 +786,12 @@
             // 
             // lblSoLuongTacGia
             // 
-            this.lblSoLuongTacGia.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblSoLuongTacGia.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblSoLuongTacGia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSoLuongTacGia.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblSoLuongTacGia.Appearance.Options.UseFont = true;
-            this.lblSoLuongTacGia.Location = new System.Drawing.Point(260, 169);
+            this.lblSoLuongTacGia.Location = new System.Drawing.Point(258, 163);
             this.lblSoLuongTacGia.Name = "lblSoLuongTacGia";
-            this.lblSoLuongTacGia.Size = new System.Drawing.Size(21, 18);
+            this.lblSoLuongTacGia.Size = new System.Drawing.Size(23, 21);
             this.lblSoLuongTacGia.TabIndex = 8;
             this.lblSoLuongTacGia.Text = "Na";
             // 
@@ -981,8 +981,7 @@
             // 
             // BaoCaoBieuDo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.layoutControl1);
             this.Name = "BaoCaoBieuDo";
             this.Size = new System.Drawing.Size(1187, 712);

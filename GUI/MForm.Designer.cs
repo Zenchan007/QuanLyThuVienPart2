@@ -555,6 +555,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.IconOptions.Image = global::GUI.Properties.Resources.library_logo_design_precious_astonishing_131;
+            this.IsMdiContainer = true;
             this.Name = "MForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Màn Hình Chính";

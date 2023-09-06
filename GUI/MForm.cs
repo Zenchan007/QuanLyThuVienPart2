@@ -180,6 +180,9 @@ namespace GUI
             this.Close();
         }
 
-
+        private void MForm_DpiChanged(object sender, DpiChangedEventArgs e)
+        {
+            MessageBox.Show("Tự dộng thay đổi kích thước");
+        }
     }
 }
