@@ -1,4 +1,5 @@
 ﻿using DAL.Common;
+using DAL.Model;
 using DAL.Services.TheLoais.DTO;
 using System;
 using System.Collections.Generic;
@@ -19,5 +20,10 @@ namespace DAL.Services.TheLoais
         Task<bool> UpdateTheLoai(string TheLoaiid, TheLoaiCreateInput input);
         Task<bool> DeleteTheLoaiById(string TheLoaiId);
         string TheLoaiMuonNhieuNhat();
+        Task<bool> CheckTonTaiIdTheLoai(string id);
+        Task<bool> CheckTonTaiTenTheLoai(string id);
+        Task<List<TheLoai>> GetListTheLoai();
+
+        Task<List<TheLoai_DTO>> GetListTheLoaiDto();
     }
 }

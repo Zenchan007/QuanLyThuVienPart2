@@ -122,6 +122,13 @@ namespace DAL.Services.PhieuMuons
         {
             return await QueryFilterDto().FirstOrDefaultAsync(p => p.PhieuMuonId == id) ?? throw new Exception($"Không tìm thấy sách id {id}.");
         }
+        public async Task<List<PhieuMuon>> GetListPhieuMuon()
+        {
+            return await QueryFilter().ToListAsync();
+        }public async Task<List<PhieuMuon_DTO>> GetListPhieuMuonDto()
+        {
+            return await QueryFilterDto().ToListAsync();
+        }
         public async Task<int> CreatePhieuMuon(PhieuMuonCreateInput input)
         {
             var entity = await MapperCreateInputToEntity(input, new PhieuMuon());

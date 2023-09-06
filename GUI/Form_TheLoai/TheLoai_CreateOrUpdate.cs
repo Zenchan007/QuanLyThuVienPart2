@@ -31,13 +31,13 @@ namespace GUI.Form_TheLoai
             this.Close();
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
+        private async void btnLuu_Click(object sender, EventArgs e)
         {
             try
             {
                 if (string.IsNullOrEmpty(txtMaTheLoai.Text) && string.IsNullOrEmpty(txtTenTheLoai.Text))
                     throw new Exception("Vui Lòng Điền Đầy Đủ Thông Tin Theo Đúng Định Dạng");
-                    if (!string.IsNullOrEmpty(errLoi.GetError(txtMaTheLoai)) && !string.IsNullOrEmpty(errLoi.GetError(txtTenTheLoai)))
+                if (!string.IsNullOrEmpty(errLoi.GetError(txtMaTheLoai)) && !string.IsNullOrEmpty(errLoi.GetError(txtTenTheLoai)))
                 {
                     throw new Exception("Vui Lòng Điền Đầy Đủ Thông Tin Theo Đúng Định Dạng");
                 }
@@ -52,14 +52,15 @@ namespace GUI.Form_TheLoai
                     };
                     if (string.IsNullOrEmpty(ID_CapNhat))
                     {
-                        
-                        if (loaiService.QueryFilter().Any(x => x.ID == theLoai.TheLoaiId))
+                        var tonTaiIdTheLoai = await loaiService.CheckTonTaiIdTheLoai(txtMaTheLoai.Text);
+
+                        if (tonTaiIdTheLoai)
                         {
                             MessageBox.Show("Mã Thể Loại Đã Được Dùng. Vui Lòng Chọn Mã Khác");
                         }
                         else
                         {
-                            loaiService.CreateTheLoai(theLoai);
+                            await loaiService.CreateTheLoai(theLoai);
                             MessageBox.Show("Thêm Mới Thành Công Thể Loại Vào Trong CSDL");
                             this.Close();
                         }
@@ -80,48 +81,48 @@ namespace GUI.Form_TheLoai
             }
             finally
             {
-                
+
             }
         }
 
-        private void TheLoai_CreateOrUpdate_Load(object sender, EventArgs e)
+        private async void TheLoai_CreateOrUpdate_Load(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(ID_CapNhat))
             {
                 txtMaTheLoai.Enabled = false;
-                var theLoaiCapNhat = loaiService.QueryFilter().FirstOrDefault(x => x.ID == ID_CapNhat);
+                var theLoaiCapNhat = await loaiService.GetById(txtMaTheLoai.Text);
                 txtMaTheLoai.Text = ID_CapNhat;
                 txtTenTheLoai.Text = theLoaiCapNhat.TenTheLoai;
                 txtMoTa.Text = theLoaiCapNhat.MoTaThem;
             }
         }
 
-        private void txtMaTheLoai_Validating(object sender, CancelEventArgs e)
+        private async void txtMaTheLoai_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaTheLoai.Text))
             {
                 errLoi.SetError(txtMaTheLoai, "Vui lòng điền Mã Thể Loại");
-                
+
             }
             else
             {
-                var checkDB = loaiService.QueryFilter().Any(x => x.ID == txtMaTheLoai.Text);
-                if (checkDB) errLoi.SetError(txtMaTheLoai, "Mã Thể Loại Đã Được Sử Dụng");
+                var tonTaiIdTheLoai =await loaiService.CheckTonTaiIdTheLoai(txtMaTheLoai.Text);
+                if (tonTaiIdTheLoai) errLoi.SetError(txtMaTheLoai, "Mã Thể Loại Đã Được Sử Dụng");
                 else errLoi.ClearErrors();
             }
         }
 
-        private void txtTenTheLoai_Validating(object sender, CancelEventArgs e)
+        private async void txtTenTheLoai_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtTenTheLoai.Text))
             {
                 errLoi.SetError(txtMaTheLoai, "Vui lòng điền Tên Thể Loại");
-                
+
             }
             else
             {
-                var checkDB = loaiService.QueryFilter().Any(x => x.TenTheLoai == txtTenTheLoai.Text);
-                if (checkDB) errLoi.SetError(txtMaTheLoai, "Tên Thể Loại Đã Được Sử Dụng");
+                var tonTaiTenTheLoai = await loaiService.CheckTonTaiTenTheLoai(txtTenTheLoai.Text);
+                if (tonTaiTenTheLoai) errLoi.SetError(txtMaTheLoai, "Tên Thể Loại Đã Được Sử Dụng");
                 else errLoi.ClearErrors();
             }
         }

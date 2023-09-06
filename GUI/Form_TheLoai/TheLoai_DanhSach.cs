@@ -44,8 +44,8 @@ namespace GUI.Form_TheLoai
 
         private async Task showDuLieuTheLoai()
         {
-            var danhSach = await theLoaiService.QueryFilterDto().ToListAsync();
-            ListSach = sachService.QueryFilterDto().ToList();
+            var danhSach = await theLoaiService.GetListTheLoaiDto();
+            ListSach = await sachService.GetListSachDto();
             BindingList<TheLoai_DTO> listTheLoai = new BindingList<TheLoai_DTO>(danhSach);
             gridTheLoai.DataSource = listTheLoai;
             dtgTheLoai.OptionsBehavior.Editable = false;

@@ -76,7 +76,13 @@ namespace DAL.Services.NhaPhanPhois
         {
             return await QueryFilterDto().FirstOrDefaultAsync(p => p.NhaPhanPhoiId == id) ?? throw new Exception($"Không tìm thấy nhà phân phối có id {id}.");
         }
-
+        public async Task<List<NhaPhanPhoi>> GetListNhaPhanPhoi()
+        {
+            return await QueryFilter().ToListAsync();
+        }public async Task<List<NhaPhanPhoi_DTO>> GetListNhaPhanPhoiDto()
+        {
+            return await QueryFilterDto().ToListAsync();
+        }
         #endregion
         #region query and paging
         public async Task<PageResultDTO<NhaPhanPhoi_DTO>> Paging(PagingInput<NhaPhanPhoiFilterInput> input = null)

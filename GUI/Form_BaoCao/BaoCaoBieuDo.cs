@@ -36,11 +36,14 @@ namespace GUI.Form_BaoCao
             var nhanVien = await nhanVienService.GetById(NhanVienId);
             lblAdmin.Text = nhanVien.TenNhanVien + ", ";
             lbTongSachKho.Text = ((await sachService.SachTrongKho()) + sachService.LayTongSoLuongChoMuon()).ToString();
-            lblTongSachKho2.Text = lbTongSachKho.Text;
+            lblTongSachKho2.Text = "Tổng Sách: " + lbTongSachKho.Text;
             lblSachChoMuon.Text = sachService.LayTongSoLuongChoMuon().ToString();
             lbSachConLai.Text = (await sachService.SachTrongKho()).ToString();
-            lblSoLuongTacGia.Text = tacGiaService.QueryFilterDto().ToList().Count().ToString();
-            lblSoLuongTheLoai.Text = theLoaiService.QueryFilterDto().ToList().Count().ToString();
+            
+            var x1 =  await tacGiaService.GetListTacGia();
+            lblSoLuongTacGia.Text = x1.Count().ToString();
+            var x2 = await theLoaiService.GetListTheLoai();
+            lblSoLuongTheLoai.Text = x2.Count().ToString();
             lblSoSachTraMuon.Text  = sachService.LaySoSachTraMuon().ToString();
             lbTheLoaiYeuThich.Text = theLoaiService.TheLoaiMuonNhieuNhat() ?? string.Empty;
             lbTacGiaYeuThich.Text = tacGiaService.LayTacGiaYeuThich() ?? string.Empty;

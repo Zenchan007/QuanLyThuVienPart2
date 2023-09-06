@@ -21,5 +21,7 @@ namespace DAL.Services.NhanVien
         Task<int> CreateNhanVien(NhanVienCreateInput input);
         Task<bool> UpdateNhanVien(int NhanVienid, NhanVienCreateInput input);
         Task<bool> DeleteNhanVienById(int NhanVienId);
+        Task<Model.NhanVien> GetByTenDangNhap(string tendangnhap);
+        Task<bool> CheckTonTaiTenDangNhap(string tendangnhap);
     }
 }

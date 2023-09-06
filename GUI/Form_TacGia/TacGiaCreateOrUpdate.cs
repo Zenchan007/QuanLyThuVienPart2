@@ -83,13 +83,13 @@ namespace GUI.Form_TacGia
         {
             if (ID_CapNhat != 0)
             {
-                var tacGiaCapNhat = await tacGiaService.QueryFilterDto().FirstOrDefaultAsync(x => x.TacGiaId == ID_CapNhat);
+                var tacGiaCapNhat = await tacGiaService.GetByIdDto(ID_CapNhat);
                 txtTenTacGia.Text = tacGiaCapNhat.TenTacGia.ToString();
                 txtDiaChi.Text = tacGiaCapNhat?.DiaChi?.ToString() ?? string.Empty;
                 txtSoDienThoai.Text = tacGiaCapNhat?.SoDienThoai?.ToString() ?? string.Empty;
                 txtMoTa.Text = tacGiaCapNhat.MoTa?.ToString() ?? string.Empty;
                 ptbAnhTacGia.Image = XuLyAnh.ByteArrayToImage(tacGiaCapNhat.AnhTacGia);
-                var tgCN = await tacGiaService.QueryFilter().FirstOrDefaultAsync(x => x.ID == ID_CapNhat);
+                var tgCN = await tacGiaService.GetById(ID_CapNhat);
                 txtSoLuongSachTG.Text = tgCN.Saches.Count().ToString();
                 dtpNgaySinh.Text = tacGiaCapNhat.NamSinh.ToString();
                 dtpNgayMat.Text = tacGiaCapNhat.NamMat.ToString();

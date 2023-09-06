@@ -20,6 +20,7 @@ namespace DAL.Services.SachYeuCaus
         Task<int> CreateSachYeuCau(SachYeuCauCreateInput input);
         Task<bool> UpdateSachYeuCau(int SachYeuCauId, SachYeuCauCreateInput input);
         Task<bool> DeleteSachYeuCauById(int SachYeuCauId);
-
+        Task<List<SachYeuCau_DTO>> GetListSachYeuCauDto();
+        Task<List<SachYeuCau>> GetListSachYeuCau();
     }
 }

@@ -46,8 +46,8 @@ namespace GUI.Form_PhieuMuon
 
         private async void showDuLieuPhieuMuon()
         {
-            var danhSach = await phieuMuonService.QueryFilterDto().ToListAsync();
-            listSachMuon = await muon_SachsService.QueryFilterDto().ToListAsync();
+            var danhSach = await phieuMuonService.GetListPhieuMuonDto();
+            listSachMuon = await muon_SachsService.GetListPhieuMuon_SachDto();
             BindingList<PhieuMuon_DTO> listTacGia = new BindingList<PhieuMuon_DTO>(danhSach);
             gridPhieuMuon.DataSource = listTacGia;
             dtgPhieuMuon.OptionsBehavior.Editable = false;
@@ -160,7 +160,6 @@ namespace GUI.Form_PhieuMuon
                     dialog.FileName = filename;
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
-
                         dtgPhieuMuon.ColumnPanelRowHeight = 40;
                         dtgPhieuMuon.OptionsPrint.AutoWidth = AutoSize;
                         dtgPhieuMuon.OptionsPrint.ShowPrintExportProgress = true;

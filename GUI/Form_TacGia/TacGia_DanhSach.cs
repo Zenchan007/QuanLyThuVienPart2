@@ -95,7 +95,7 @@ namespace GUI.Form_TacGia
         }
         private async Task showDuLieuTacGia()
         {
-            var danhSach = await tacGiaService.QueryFilterDto().ToListAsync();
+            var danhSach = await tacGiaService.GetListTacGiaDto();
             BindingList<TacGia_DTO> listTacGia = new BindingList<TacGia_DTO>(danhSach);
             gridTacGia.DataSource = listTacGia;
             dtgTacGia.OptionsBehavior.Editable = false;

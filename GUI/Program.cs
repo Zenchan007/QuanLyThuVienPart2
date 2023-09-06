@@ -1,4 +1,5 @@
-﻿using GUI.Form_BaoCao;
+﻿using DevExpress.XtraEditors;
+using GUI.Form_BaoCao;
 using GUI.Form_DocGia;
 using GUI.Form_NhanVien;
 using GUI.Form_NhaPhanPhoi;
@@ -23,6 +24,8 @@ namespace GUI
         [STAThread]
         static void Main()
         {
+            WindowsFormsSettings.SetDPIAware();
+            WindowsFormsSettings.SetPerMonitorDpiAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login_form());

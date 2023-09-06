@@ -59,6 +59,14 @@ namespace DAL.Services.NhanVien
         {
             return await QueryFilterDto().FirstOrDefaultAsync(p => p.NhanVienId == id) ?? throw new Exception($"Không tìm thấy nhân viên có id {id}.");
         }
+        public async Task<Model.NhanVien> GetByTenDangNhap(string tendangnhap)
+        {
+            return await QueryFilter().FirstOrDefaultAsync(x => x.TaiKhoan.Equals(tendangnhap));
+        }
+        public async Task<bool> CheckTonTaiTenDangNhap(string tendangnhap)
+        {
+            return await QueryFilter().AnyAsync(x => x.TaiKhoan.Equals(tendangnhap));
+        }
         #endregion
         #region Query and Paging
         public async Task<PageResultDTO<NhanVien_DTO>> Paging(PagingInput<NhanVienFilterInput> input = null)

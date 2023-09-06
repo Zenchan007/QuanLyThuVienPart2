@@ -49,7 +49,7 @@ namespace GUI.Form_NhanVien
                         AnhNhanVien = XuLyAnh.ImageToByteArray(ptbAnhNhanVien.Image),
                         GioiTinh = cbbGioiTinh.Text,
                         SoDienThoai = txtSoDienThoai.Text,
-                        VaiTroId = vaiTroService.QueryFilter().Where(x => x.TenRole.Equals(txtVaiTro.Text)).Select(x => x.ID).FirstOrDefault(),
+                        VaiTroId = await vaiTroService.GetIdVaiTroTheoTen(txtVaiTro.Text),
                     };
                     if (!string.IsNullOrEmpty(dtpNgaySinh.Text))
                     {
@@ -59,7 +59,7 @@ namespace GUI.Form_NhanVien
                     {
                         nhanVien.NgayVaoLam = dtpNgayVaoLam.DateTime;
                     }
-                    var checkTonTaiTenDangNhap = nhanVienSerVice.QueryFilter().Any(x => x.TaiKhoan == txtTenDangNhap.Text);
+                    var checkTonTaiTenDangNhap = await nhanVienSerVice.CheckTonTaiTenDangNhap(txtTenDangNhap.Text);
                     if (checkTonTaiTenDangNhap && ID_CapNhat == 0)
                     {
                         MessageBox.Show("Tên đăng nhập này đã tồn tại, vui lòng chọn một tên đăng nhập mới");

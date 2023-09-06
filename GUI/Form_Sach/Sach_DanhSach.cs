@@ -38,9 +38,9 @@ namespace GUI.Form_Sach
             showDuLieuSach();
         }
 
-        private void showDuLieuSach()
+        private async void showDuLieuSach()
         {
-            var danhSach = _isachService.QueryFilterDto().ToList();
+            var danhSach =await _isachService.GetListSachDto();
             BindingList<Sach_DTO> listSach = new BindingList<Sach_DTO>(danhSach);
             gridSach.DataSource = listSach;
             dtgSach.OptionsBehavior.Editable = false;

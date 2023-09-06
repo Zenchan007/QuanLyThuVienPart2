@@ -285,6 +285,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_PhieuMuon\PhieuMuonCreateOrUpdate.resx">
       <DependentUpon>PhieuMuonCreateOrUpdate.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_PhieuMuon\PhieuMuon_DanhSach.resx">
       <DependentUpon>PhieuMuon_DanhSach.cs</DependentUpon>

@@ -46,7 +46,7 @@ namespace GUI.Form_NhaPhanPhoi
 
         private async Task showDuLieuNhaPhanPhoi()
         {
-            var danhSach = await nhaPhanPhoiService.QueryFilterDto().ToListAsync();
+            var danhSach = await nhaPhanPhoiService.GetListNhaPhanPhoiDto();
             BindingList<NhaPhanPhoi_DTO> listNhaPhanPhoi = new BindingList<NhaPhanPhoi_DTO>(danhSach);
             gridNhaPhanPhoi.DataSource = listNhaPhanPhoi;
             dtgNhaPhanPhoi.OptionsBehavior.Editable = false;
@@ -107,14 +107,14 @@ namespace GUI.Form_NhaPhanPhoi
         #region CusTom DetailView
         private void dtgNhaPhanPhoi_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
         {
-            var listSachNhaPhanPhoi =  sachService.QueryFilterDto().ToList();
+            var listSachNhaPhanPhoi = sachService.QueryFilterDto().ToList();
             GridView view = sender as GridView;
             NhaPhanPhoi_DTO sachNhaPhanPhoi = view.GetRow(e.RowHandle) as NhaPhanPhoi_DTO;
             if (sachNhaPhanPhoi != null)
                 e.IsEmpty = !listSachNhaPhanPhoi.Any(x => x.NhaPhanPhoiId == sachNhaPhanPhoi.NhaPhanPhoiId);
         }
 
-        private  void dtgNhaPhanPhoi_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
+        private void dtgNhaPhanPhoi_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
         {
             var listPhieuMuonDocGia =  sachService.QueryFilterDto().ToList();
             GridView view = sender as GridView;

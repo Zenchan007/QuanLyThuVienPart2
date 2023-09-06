@@ -55,7 +55,13 @@ namespace DAL.Services.SachYeuCaus
         {
             return await QueryFilterDto().FirstOrDefaultAsync(p => p.SachYeuCauId == id) ?? throw new Exception($"Không tìm thấy sách yêu cầu có id {id}.");
         }
-
+        public async Task<List<SachYeuCau_DTO>> GetListSachYeuCauDto()
+        {
+            return await QueryFilterDto().ToListAsync();
+        }public async Task<List<SachYeuCau>> GetListSachYeuCau()
+        {
+            return await QueryFilter().ToListAsync();
+        }
         #endregion
 
         #region Query and Paging

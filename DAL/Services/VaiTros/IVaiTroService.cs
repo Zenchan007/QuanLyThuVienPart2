@@ -11,5 +11,6 @@ namespace DAL.Services.VaiTros
     public interface IVaiTroService
     {
          IQueryable<VaiTro> QueryFilter(VaiTroFilterInput input = null);
+        Task<int> GetIdVaiTroTheoTen(string tenvaitro);
     }
 }

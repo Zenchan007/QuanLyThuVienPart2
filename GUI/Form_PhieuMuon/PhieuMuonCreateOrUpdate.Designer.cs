@@ -379,9 +379,9 @@
             // 
             this.btnThemSachPhieuMuon.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success;
             this.btnThemSachPhieuMuon.Appearance.Options.UseBackColor = true;
-            this.btnThemSachPhieuMuon.Location = new System.Drawing.Point(1028, 242);
+            this.btnThemSachPhieuMuon.Location = new System.Drawing.Point(1003, 242);
             this.btnThemSachPhieuMuon.Name = "btnThemSachPhieuMuon";
-            this.btnThemSachPhieuMuon.Size = new System.Drawing.Size(169, 27);
+            this.btnThemSachPhieuMuon.Size = new System.Drawing.Size(194, 27);
             this.btnThemSachPhieuMuon.StyleController = this.layoutControl2;
             this.btnThemSachPhieuMuon.TabIndex = 18;
             this.btnThemSachPhieuMuon.Text = "Thêm Sách Vào Phiếu Mượn";
@@ -845,10 +845,10 @@
             // layoutThemSach
             // 
             this.layoutThemSach.Control = this.btnThemSachPhieuMuon;
-            this.layoutThemSach.Location = new System.Drawing.Point(1016, 230);
+            this.layoutThemSach.Location = new System.Drawing.Point(991, 230);
             this.layoutThemSach.MinSize = new System.Drawing.Size(173, 31);
             this.layoutThemSach.Name = "layoutThemSach";
-            this.layoutThemSach.Size = new System.Drawing.Size(173, 31);
+            this.layoutThemSach.Size = new System.Drawing.Size(198, 31);
             this.layoutThemSach.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutThemSach.TextSize = new System.Drawing.Size(0, 0);
             this.layoutThemSach.TextVisible = false;
@@ -885,7 +885,7 @@
             this.emp1.Location = new System.Drawing.Point(416, 230);
             this.emp1.MinSize = new System.Drawing.Size(104, 24);
             this.emp1.Name = "emptySpaceItem1";
-            this.emp1.Size = new System.Drawing.Size(600, 31);
+            this.emp1.Size = new System.Drawing.Size(575, 31);
             this.emp1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emp1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -951,7 +951,8 @@
             // 
             // PhieuMuonCreateOrUpdate
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1233, 760);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);

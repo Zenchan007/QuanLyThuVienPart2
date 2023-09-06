@@ -236,5 +236,17 @@ namespace DAL.Services.Sachs.DTO
             });
             return entity;
         }
+        public async Task<List<Sach_DTO>> GetListSachDto()
+        {
+            return await QueryFilterDto().ToListAsync();
+        }
+        public async Task<List<Sach>> GetListSach()
+        {
+            return await QueryFilter().ToListAsync();
+        }
+        public async Task<Sach> GetSachByTenVaTacGia(string tensach, string tentacgia)
+        {
+            return await QueryFilter().FirstOrDefaultAsync(x => x.TenSach.Equals(tensach) && x.TacGia.TenTacGia.Equals(tentacgia));
+        }
     }
 }

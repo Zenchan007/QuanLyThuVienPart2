@@ -24,14 +24,14 @@ namespace GUI.Login
             InitializeComponent();
         }
 
-        private void btnDangNhap_Click(object sender, EventArgs e)
+        private async void btnDangNhap_Click(object sender, EventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, true);
             SplashScreenManager.Default.SetWaitFormCaption("Đang đăng nhập...");
             SplashScreenManager.Default.SetWaitFormDescription("Vui Lòng Chờ!");
             if (!errMatKhau.HasErrors && !errMatKhau.HasErrors)
             {
-                var TaiKhoan = _service.QueryFilter().FirstOrDefault(x => x.TaiKhoan == txtTenDangNhap.Text);
+                var TaiKhoan = await _service.GetByTenDangNhap(txtTenDangNhap.Text);
                 if (TaiKhoan != null)
                 {
                     if (TaiKhoan.MatKhau == txtMatKhau.Text)

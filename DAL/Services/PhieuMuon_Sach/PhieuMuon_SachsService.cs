@@ -69,7 +69,14 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
         }
         #endregion
 
-
+        public async Task<List<Model.PhieuMuon_Sachs>> GetListPhieuMuon_Sach()
+        {
+            return await QueryFilter().ToListAsync();
+        }
+        public async Task<List<PhieuMuon_Sach_DTO>> GetListPhieuMuon_SachDto()
+        {
+            return await QueryFilterDto().ToListAsync();
+        }
         private async Task<Model.PhieuMuon_Sachs> MapperCreateInputToEntity(PhieuMuon_SachCreateInput input, Model.PhieuMuon_Sachs entity)
         {
             await Task.Run(() =>
@@ -126,19 +133,22 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
             return await _db.SaveChangesAsync();
         }
 
-
         public async Task<int> UpdatePhieuMuon_Sach(PhieuMuon_SachFilterInput filter, PhieuMuon_SachCreateInput input)
         {
-           
+
             return await _db.SaveChangesAsync();
         }
 
-        async Task<int> IPhieuMuon_SachsService.DeletePhieuMuon_SachById(PhieuMuon_SachFilterInput filter)
+        public async Task<int> DeletePhieuMuon_SachById(PhieuMuon_SachFilterInput filter)
         {
             return await _db.SaveChangesAsync();
         }
+
+
+
         #endregion
 
 
+        
     }
 }

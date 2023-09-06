@@ -121,6 +121,7 @@ namespace GUI.Form_PhieuMuon
                 }
                 else if (IdTrangThai == 3)
                 {
+                    txtTienCoc.ReadOnly = true;
                     btnTraSach.Enabled = false;
                     layoutDocGiaMoi.HideToCustomization();
                     txtMaDocGia.ReadOnly = true;
@@ -216,6 +217,7 @@ namespace GUI.Form_PhieuMuon
 
         private async void btnTraSach_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            txtTienCoc.ReadOnly = true;
             dtpNgayMuon.ReadOnly = false;
             dtpNgayHenTra.ReadOnly = false;
             txtThoiGianMuon.ReadOnly = false;

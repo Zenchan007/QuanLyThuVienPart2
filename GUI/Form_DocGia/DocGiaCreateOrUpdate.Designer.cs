@@ -228,9 +228,13 @@
             // 
             this.layoutControlItem2.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem2.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem2.AppearanceItemCaptionDisabled.Options.UseFont = true;
             this.layoutControlItem2.Control = this.txtCCCD;
             this.layoutControlItem2.Location = new System.Drawing.Point(205, 147);
             this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.OptionsPrint.AppearanceItem.Options.UseFont = true;
+            this.layoutControlItem2.OptionsPrint.AppearanceItemControl.Options.UseFont = true;
+            this.layoutControlItem2.OptionsPrint.AppearanceItemText.Options.UseFont = true;
             this.layoutControlItem2.Size = new System.Drawing.Size(333, 133);
             this.layoutControlItem2.Text = "Mã Sinh Viên/CCCD";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
@@ -240,9 +244,13 @@
             // 
             this.layoutControlItem5.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem5.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem5.AppearanceItemCaptionDisabled.Options.UseFont = true;
             this.layoutControlItem5.Control = this.txtTenDocGia;
             this.layoutControlItem5.Location = new System.Drawing.Point(205, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.OptionsPrint.AppearanceItem.Options.UseFont = true;
+            this.layoutControlItem5.OptionsPrint.AppearanceItemControl.Options.UseFont = true;
+            this.layoutControlItem5.OptionsPrint.AppearanceItemText.Options.UseFont = true;
             this.layoutControlItem5.Size = new System.Drawing.Size(333, 49);
             this.layoutControlItem5.Text = "Tên Độc Giả";
             this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
@@ -252,9 +260,13 @@
             // 
             this.layoutControlItem6.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem6.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem6.AppearanceItemCaptionDisabled.Options.UseFont = true;
             this.layoutControlItem6.Control = this.txtDiaChi;
             this.layoutControlItem6.Location = new System.Drawing.Point(205, 49);
             this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.OptionsPrint.AppearanceItem.Options.UseFont = true;
+            this.layoutControlItem6.OptionsPrint.AppearanceItemControl.Options.UseFont = true;
+            this.layoutControlItem6.OptionsPrint.AppearanceItemText.Options.UseFont = true;
             this.layoutControlItem6.Size = new System.Drawing.Size(333, 49);
             this.layoutControlItem6.Text = "Địa Chỉ";
             this.layoutControlItem6.TextLocation = DevExpress.Utils.Locations.Top;
@@ -264,9 +276,13 @@
             // 
             this.layoutControlItem7.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem7.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem7.AppearanceItemCaptionDisabled.Options.UseFont = true;
             this.layoutControlItem7.Control = this.txtSoDienThoai;
             this.layoutControlItem7.Location = new System.Drawing.Point(205, 98);
             this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.OptionsPrint.AppearanceItem.Options.UseFont = true;
+            this.layoutControlItem7.OptionsPrint.AppearanceItemControl.Options.UseFont = true;
+            this.layoutControlItem7.OptionsPrint.AppearanceItemText.Options.UseFont = true;
             this.layoutControlItem7.Size = new System.Drawing.Size(333, 49);
             this.layoutControlItem7.Text = "Số Điện Thoại";
             this.layoutControlItem7.TextLocation = DevExpress.Utils.Locations.Top;
@@ -312,7 +328,8 @@
             // 
             // DocGiaCreateOrUpdate
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 453);
             this.Controls.Add(this.layoutControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

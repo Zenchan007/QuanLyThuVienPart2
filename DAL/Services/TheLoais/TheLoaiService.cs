@@ -59,7 +59,22 @@ namespace DAL.Services.TheLoais
         {
             return await QueryFilterDto().FirstOrDefaultAsync(p => p.TheLoaiId == id) ?? throw new Exception($"Không tìm thấy nhà phân phối có mã {id}.");
         }
-
+        public async Task<bool> CheckTonTaiIdTheLoai(string id)
+        {
+            return await QueryFilter().AnyAsync(x => x.ID.Equals(id));
+        }
+        public async Task<bool> CheckTonTaiTenTheLoai(string tenTheLoai)
+        {
+            return await QueryFilter().AnyAsync(x => x.ID.Equals(tenTheLoai));
+        }
+        public async Task<List<TheLoai>> GetListTheLoai()
+        {
+            return await QueryFilter().ToListAsync();
+        }
+        public async Task<List<TheLoai_DTO>> GetListTheLoaiDto()
+        {
+            return await QueryFilterDto().ToListAsync();
+        }
         #endregion
         #region query and paging
         public async Task<PageResultDTO<TheLoai_DTO>> Paging(PagingInput<TheLoaiFilterInput> input = null)

@@ -79,6 +79,13 @@ namespace DAL.Services.TacGias
         {
             return await QueryFilterDto().FirstOrDefaultAsync(p => p.TacGiaId == id) ?? throw new Exception($"Không tìm thấy tác giả có id {id}.");
         }
+        public async Task<List<TacGia>> GetListTacGia()
+        {
+            return await QueryFilter().ToListAsync();
+        }public async Task<List<TacGia_DTO>> GetListTacGiaDto()
+        {
+            return await QueryFilterDto().ToListAsync();
+        }
 
         #endregion
 

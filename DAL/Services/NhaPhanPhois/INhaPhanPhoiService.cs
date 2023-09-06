@@ -1,4 +1,5 @@
 ﻿using DAL.Common;
+using DAL.Model;
 using DAL.Services.NhaPhanPhois.DTO;
 using System;
 using System.Collections.Generic;
@@ -18,5 +19,7 @@ namespace DAL.Services.NhaPhanPhois
         Task<string> CreateNhaPhanPhoi(NhaPhanPhoiCreateInput input);
         Task<bool> UpdateNhaPhanPhoi(string NhaPhanPhoiid, NhaPhanPhoiCreateInput input);
         Task<bool> DeleteNhaPhanPhoiById(string NhaPhanPhoiId);
+         Task<List<NhaPhanPhoi>> GetListNhaPhanPhoi();
+         Task<List<NhaPhanPhoi_DTO>> GetListNhaPhanPhoiDto();
     }
 }

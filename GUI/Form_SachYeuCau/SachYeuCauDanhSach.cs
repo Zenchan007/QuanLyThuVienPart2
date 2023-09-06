@@ -30,7 +30,7 @@ namespace GUI.Form_SachYeuCau
 
         private async Task showDuLieuSachYeuCau()
         {
-            var danhSach = await _sachYeuCauService.QueryFilterDto().ToListAsync();
+            var danhSach = await _sachYeuCauService.GetListSachYeuCauDto();
             BindingList<SachYeuCau_DTO> listTacGia = new BindingList<SachYeuCau_DTO>(danhSach);
             gridSachYeuCau.DataSource = listTacGia;
             dtgSachYeuCau.OptionsBehavior.Editable = false;
@@ -76,33 +76,28 @@ namespace GUI.Form_SachYeuCau
             }
         }
 
-        private void btnNhapSach_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private async void btnNhapSach_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SachCreateOrUpdate sachNhap;
             if (dtgSachYeuCau.FocusedRowHandle >= 0)
             {
                 int selectedRowHandle = dtgSachYeuCau.FocusedRowHandle;
                 var tenSachNhap = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "TenSachYC") ?? string.Empty;
-                var tenTacGia = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "TacGiaYC") ?? string.Empty ;
-                int Id = 0;
-                if(!string.IsNullOrEmpty(tenSachNhap) && !string.IsNullOrEmpty(tenTacGia))
+                var tenTacGia = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "TacGiaYC") ?? string.Empty;
+                if (!string.IsNullOrEmpty(tenSachNhap) && !string.IsNullOrEmpty(tenTacGia))
                 {
-                     var z = sachService.QueryFilter().FirstOrDefault(x => x.TenSach.Equals(tenSachNhap) && x.TacGia.TenTacGia.Equals(tenTacGia));
-                    Id = z?.ID ?? 0;
-                }
-                
-                if(Id == 0 )
-                {
-                    sachNhap = new SachCreateOrUpdate(tenSachNhap, tenTacGia);
+                    var matchingSach = await sachService.GetSachByTenVaTacGia(txtTenSachYC.Text, txtTacGiaYC.Text);
+                    if (matchingSach == null)
+                    {
+                        sachNhap = new SachCreateOrUpdate(tenSachNhap, tenTacGia);
+                    }
+                    else
+                    {
+                        sachNhap = new SachCreateOrUpdate(matchingSach.ID);
+                    }
+
                     sachNhap.Show(this);
                 }
-                else
-                {
-                    sachNhap = new SachCreateOrUpdate(Id);
-                    sachNhap.Show(this);
-                }
-               
-                      
             }
         }
     }
