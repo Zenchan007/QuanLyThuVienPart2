@@ -24,8 +24,10 @@ namespace DAL.Services.Sachs.DTO
         int LayTongSoLuongChoMuon();
         int LaySoSachTraMuon();
         List<string> GetTop5Sach();
-        Task<List<Sach_DTO>> GetListSachDto();
-        Task<List<Sach>> GetListSach();
+        Task<List<Sach_DTO>> GetListSachDtoAsync();
+        Task<List<Sach>> GetListSachAsync();
+        List<Sach> GetListSach();
+        List<Sach_DTO> GetListSachDto();
         Task<Sach> GetSachByTenVaTacGia(string tensach, string tentacgia);
     }
 }

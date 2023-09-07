@@ -40,7 +40,7 @@ namespace GUI.Form_Sach
 
         private async void showDuLieuSach()
         {
-            var danhSach =await _isachService.GetListSachDto();
+            var danhSach =await _isachService.GetListSachDtoAsync();
             BindingList<Sach_DTO> listSach = new BindingList<Sach_DTO>(danhSach);
             gridSach.DataSource = listSach;
             dtgSach.OptionsBehavior.Editable = false;

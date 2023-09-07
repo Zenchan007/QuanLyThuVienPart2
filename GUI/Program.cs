@@ -24,6 +24,9 @@ namespace GUI
         [STAThread]
         static void Main()
         {
+            WindowsFormsSettings.LoadApplicationSettings();
+            WindowsFormsSettings.DefaultFont = new System.Drawing.Font("Tahoma", 8);
+
             WindowsFormsSettings.SetDPIAware();
             WindowsFormsSettings.SetPerMonitorDpiAware();
             Application.EnableVisualStyles();

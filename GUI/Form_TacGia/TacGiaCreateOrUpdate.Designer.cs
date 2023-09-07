@@ -108,11 +108,11 @@
             // txtSoLuongSachTG
             // 
             this.txtSoLuongSachTG.Enabled = false;
-            this.txtSoLuongSachTG.Location = new System.Drawing.Point(396, 190);
+            this.txtSoLuongSachTG.Location = new System.Drawing.Point(416, 190);
             this.txtSoLuongSachTG.Name = "txtSoLuongSachTG";
             this.txtSoLuongSachTG.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoLuongSachTG.Properties.Appearance.Options.UseFont = true;
-            this.txtSoLuongSachTG.Size = new System.Drawing.Size(403, 22);
+            this.txtSoLuongSachTG.Size = new System.Drawing.Size(383, 22);
             this.txtSoLuongSachTG.StyleController = this.layOutThongTinTacGia;
             this.txtSoLuongSachTG.TabIndex = 13;
             this.txtSoLuongSachTG.ToolTip = "Số lượng sách của tác giả này có trong thư viện";
@@ -147,13 +147,13 @@
             // 
             // txtSoDienThoai
             // 
-            this.txtSoDienThoai.Location = new System.Drawing.Point(396, 108);
+            this.txtSoDienThoai.Location = new System.Drawing.Point(416, 108);
             this.txtSoDienThoai.Margin = new System.Windows.Forms.Padding(48);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Properties.AccessibleName = "txtSoDienThoai";
             this.txtSoDienThoai.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoDienThoai.Properties.Appearance.Options.UseFont = true;
-            this.txtSoDienThoai.Size = new System.Drawing.Size(403, 22);
+            this.txtSoDienThoai.Size = new System.Drawing.Size(383, 22);
             this.txtSoDienThoai.StyleController = this.layOutThongTinTacGia;
             this.txtSoDienThoai.TabIndex = 4;
             this.txtSoDienThoai.ToolTip = "Nhập Số Điện Thoại ";
@@ -161,7 +161,7 @@
             // dtpNgaySinh
             // 
             this.dtpNgaySinh.EditValue = "";
-            this.dtpNgaySinh.Location = new System.Drawing.Point(396, 136);
+            this.dtpNgaySinh.Location = new System.Drawing.Point(416, 136);
             this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(30, 38, 30, 38);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -174,7 +174,7 @@
             this.dtpNgaySinh.Properties.CalendarTimeProperties.UseMaskAsDisplayFormat = true;
             this.dtpNgaySinh.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
             this.dtpNgaySinh.Properties.UseMaskAsDisplayFormat = true;
-            this.dtpNgaySinh.Size = new System.Drawing.Size(403, 22);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(383, 22);
             this.dtpNgaySinh.StyleController = this.layOutThongTinTacGia;
             this.dtpNgaySinh.TabIndex = 5;
             this.dtpNgaySinh.ToolTip = "Chọn Ngày Sinh";
@@ -182,24 +182,24 @@
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(396, 80);
+            this.txtDiaChi.Location = new System.Drawing.Point(416, 80);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(55);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
-            this.txtDiaChi.Size = new System.Drawing.Size(403, 22);
+            this.txtDiaChi.Size = new System.Drawing.Size(383, 22);
             this.txtDiaChi.StyleController = this.layOutThongTinTacGia;
             this.txtDiaChi.TabIndex = 4;
             this.txtDiaChi.ToolTip = "Nhập Địa Chỉ Của Tác Giả";
             // 
             // txtMoTa
             // 
-            this.txtMoTa.Location = new System.Drawing.Point(12, 247);
+            this.txtMoTa.Location = new System.Drawing.Point(12, 249);
             this.txtMoTa.Margin = new System.Windows.Forms.Padding(30, 38, 30, 38);
             this.txtMoTa.Name = "txtMoTa";
             this.txtMoTa.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMoTa.Properties.Appearance.Options.UseFont = true;
-            this.txtMoTa.Size = new System.Drawing.Size(799, 268);
+            this.txtMoTa.Size = new System.Drawing.Size(799, 266);
             this.txtMoTa.StyleController = this.layOutThongTinTacGia;
             this.txtMoTa.TabIndex = 4;
             // 
@@ -216,12 +216,12 @@
             // 
             // txtTenTacGia
             // 
-            this.txtTenTacGia.Location = new System.Drawing.Point(396, 52);
+            this.txtTenTacGia.Location = new System.Drawing.Point(416, 52);
             this.txtTenTacGia.Margin = new System.Windows.Forms.Padding(55);
             this.txtTenTacGia.Name = "txtTenTacGia";
             this.txtTenTacGia.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenTacGia.Properties.Appearance.Options.UseFont = true;
-            this.txtTenTacGia.Size = new System.Drawing.Size(403, 22);
+            this.txtTenTacGia.Size = new System.Drawing.Size(383, 22);
             this.txtTenTacGia.StyleController = this.layOutThongTinTacGia;
             this.txtTenTacGia.TabIndex = 4;
             this.txtTenTacGia.ToolTip = "Nhập Tên Tác Giả";
@@ -230,7 +230,7 @@
             // dtpNgayMat
             // 
             this.dtpNgayMat.EditValue = "";
-            this.dtpNgayMat.Location = new System.Drawing.Point(396, 164);
+            this.dtpNgayMat.Location = new System.Drawing.Point(416, 164);
             this.dtpNgayMat.Margin = new System.Windows.Forms.Padding(30, 38, 30, 38);
             this.dtpNgayMat.Name = "dtpNgayMat";
             this.dtpNgayMat.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -243,7 +243,7 @@
             this.dtpNgayMat.Properties.CalendarTimeProperties.UseMaskAsDisplayFormat = true;
             this.dtpNgayMat.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
             this.dtpNgayMat.Properties.UseMaskAsDisplayFormat = true;
-            this.dtpNgayMat.Size = new System.Drawing.Size(403, 22);
+            this.dtpNgayMat.Size = new System.Drawing.Size(383, 22);
             this.dtpNgayMat.StyleController = this.layOutThongTinTacGia;
             this.dtpNgayMat.TabIndex = 5;
             this.dtpNgayMat.ToolTip = "Chọn Ngày Mất";
@@ -266,7 +266,7 @@
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutControlItem1.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem1.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem1.Control = this.txtMoTa;
             this.layoutControlItem1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -276,7 +276,7 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(803, 291);
             this.layoutControlItem1.Text = "Mô Tả";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(117, 16);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(137, 18);
             // 
             // GrpThongTinSach
             // 
@@ -298,7 +298,7 @@
             // 
             // d
             // 
-            this.d.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.d.AppearanceItemCaption.Options.UseFont = true;
             this.d.AppearanceItemCaptionDisabled.Font = new System.Drawing.Font("Times New Roman", 10.2F);
             this.d.AppearanceItemCaptionDisabled.Options.UseFont = true;
@@ -316,11 +316,11 @@
             this.d.Size = new System.Drawing.Size(536, 28);
             this.d.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 2, 0);
             this.d.Text = "Ngày Sinh";
-            this.d.TextSize = new System.Drawing.Size(117, 16);
+            this.d.TextSize = new System.Drawing.Size(137, 18);
             // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem4.AppearanceItemCaptionDisabled.Font = new System.Drawing.Font("Times New Roman", 10.2F);
             this.layoutControlItem4.AppearanceItemCaptionDisabled.Options.UseFont = true;
@@ -338,11 +338,11 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(536, 28);
             this.layoutControlItem4.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 2, 0);
             this.layoutControlItem4.Text = "Số Điện Thoại";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(117, 16);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(137, 18);
             // 
             // layoutControlItem9
             // 
-            this.layoutControlItem9.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutControlItem9.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem9.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem9.AppearanceItemCaptionDisabled.Font = new System.Drawing.Font("Times New Roman", 10.2F);
             this.layoutControlItem9.AppearanceItemCaptionDisabled.Options.UseFont = true;
@@ -360,11 +360,11 @@
             this.layoutControlItem9.Size = new System.Drawing.Size(536, 28);
             this.layoutControlItem9.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 2, 0);
             this.layoutControlItem9.Text = "Địa Chỉ";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(117, 16);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(137, 18);
             // 
             // txt
             // 
-            this.txt.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt.AppearanceItemCaption.Options.UseFont = true;
             this.txt.AppearanceItemCaptionDisabled.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt.AppearanceItemCaptionDisabled.Options.UseFont = true;
@@ -382,11 +382,11 @@
             this.txt.Size = new System.Drawing.Size(536, 28);
             this.txt.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 2, 0);
             this.txt.Text = "Tên Tác Giả";
-            this.txt.TextSize = new System.Drawing.Size(117, 16);
+            this.txt.TextSize = new System.Drawing.Size(137, 18);
             // 
             // dtpNga
             // 
-            this.dtpNga.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpNga.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNga.AppearanceItemCaption.Options.UseFont = true;
             this.dtpNga.AppearanceItemCaptionDisabled.Font = new System.Drawing.Font("Times New Roman", 10.2F);
             this.dtpNga.AppearanceItemCaptionDisabled.Options.UseFont = true;
@@ -404,18 +404,18 @@
             this.dtpNga.Size = new System.Drawing.Size(536, 28);
             this.dtpNga.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 2, 0);
             this.dtpNga.Text = "Ngày Mất";
-            this.dtpNga.TextSize = new System.Drawing.Size(117, 16);
+            this.dtpNga.TextSize = new System.Drawing.Size(137, 18);
             // 
             // layoutControlItem7
             // 
-            this.layoutControlItem7.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutControlItem7.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem7.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem7.Control = this.txtSoLuongSachTG;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 140);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(536, 26);
             this.layoutControlItem7.Text = "SL Sách Của TG Này";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(117, 16);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(137, 18);
             // 
             // layoutControlItem3
             // 

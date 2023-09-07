@@ -177,12 +177,17 @@ namespace GUI
             });
             SplashScreenManager.CloseForm();
             this.Dispose();
-            this.Close();
         }
 
         private void MForm_DpiChanged(object sender, DpiChangedEventArgs e)
         {
             MessageBox.Show("Tự dộng thay đổi kích thước");
+        }
+
+        private void MForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+            Application.Exit();
         }
     }
 }

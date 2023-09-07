@@ -16,7 +16,7 @@ namespace GUI.Login
 {
     public partial class Login_form : DevExpress.XtraEditors.XtraForm
     {
-        INhanVienService _service = new NhanVienService();
+        INhanVienService _service;
         public static int Role_Id { get; set; }
         public static int User_Id { get; set; }
         public Login_form()
@@ -26,6 +26,7 @@ namespace GUI.Login
 
         private async void btnDangNhap_Click(object sender, EventArgs e)
         {
+            _service = new NhanVienService();
             SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, true);
             SplashScreenManager.Default.SetWaitFormCaption("Đang đăng nhập...");
             SplashScreenManager.Default.SetWaitFormDescription("Vui Lòng Chờ!");

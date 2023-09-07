@@ -91,9 +91,6 @@ namespace DAL.Services.Sachs.DTO
                 throw new Exception("Lỗi ở chỗ queryDTO\n" + ex.Message);
             }
         }
-
-
-
         public async Task<PageResultDTO<Sach_DTO>> Paging(PagingInput<SachFilterInput> input = null)
         {
             var filtered = QueryFilterDto(input.Filter);
@@ -236,13 +233,20 @@ namespace DAL.Services.Sachs.DTO
             });
             return entity;
         }
-        public async Task<List<Sach_DTO>> GetListSachDto()
+        public async Task<List<Sach_DTO>> GetListSachDtoAsync()
         {
             return await QueryFilterDto().ToListAsync();
         }
-        public async Task<List<Sach>> GetListSach()
+        public async Task<List<Sach>> GetListSachAsync()
         {
             return await QueryFilter().ToListAsync();
+        }
+        public List<Sach> GetListSach()
+        {
+            return  QueryFilter().ToList();
+        } public List<Sach_DTO> GetListSachDto()
+        {
+            return  QueryFilterDto().ToList();
         }
         public async Task<Sach> GetSachByTenVaTacGia(string tensach, string tentacgia)
         {

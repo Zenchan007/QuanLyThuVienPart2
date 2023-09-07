@@ -107,7 +107,7 @@ namespace GUI.Form_NhaPhanPhoi
         #region CusTom DetailView
         private void dtgNhaPhanPhoi_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
         {
-            var listSachNhaPhanPhoi = sachService.QueryFilterDto().ToList();
+            var listSachNhaPhanPhoi = sachService.GetListSachDto();
             GridView view = sender as GridView;
             NhaPhanPhoi_DTO sachNhaPhanPhoi = view.GetRow(e.RowHandle) as NhaPhanPhoi_DTO;
             if (sachNhaPhanPhoi != null)
@@ -116,7 +116,7 @@ namespace GUI.Form_NhaPhanPhoi
 
         private void dtgNhaPhanPhoi_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
         {
-            var listPhieuMuonDocGia =  sachService.QueryFilterDto().ToList();
+            var listPhieuMuonDocGia = sachService.GetListSachDto();
             GridView view = sender as GridView;
             NhaPhanPhoi_DTO sachNhaPhanPhoi = view.GetRow(e.RowHandle) as NhaPhanPhoi_DTO;
             if (sachNhaPhanPhoi != null)
