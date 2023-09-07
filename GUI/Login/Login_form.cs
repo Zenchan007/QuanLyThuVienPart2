@@ -27,9 +27,9 @@ namespace GUI.Login
         private async void btnDangNhap_Click(object sender, EventArgs e)
         {
             _service = new NhanVienService();
-            SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, true);
+            SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, false);
             SplashScreenManager.Default.SetWaitFormCaption("Đang đăng nhập...");
-            SplashScreenManager.Default.SetWaitFormDescription("Vui Lòng Chờ!");
+            SplashScreenManager.Default.SetWaitFormDescription("Vui lòng chờ!");
             if (!errMatKhau.HasErrors && !errMatKhau.HasErrors)
             {
                 var TaiKhoan = await _service.GetByTenDangNhap(txtTenDangNhap.Text);

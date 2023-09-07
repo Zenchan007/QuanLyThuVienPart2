@@ -310,7 +310,7 @@
             // 
             // txtTrangThai
             // 
-            this.txtTrangThai.Location = new System.Drawing.Point(563, 632);
+            this.txtTrangThai.Location = new System.Drawing.Point(563, 639);
             this.txtTrangThai.MenuManager = this.barBtn;
             this.txtTrangThai.Name = "txtTrangThai";
             this.txtTrangThai.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
@@ -347,9 +347,10 @@
             // 
             // txtTienCoc
             // 
-            this.txtTienCoc.Location = new System.Drawing.Point(1056, 631);
+            this.txtTienCoc.Location = new System.Drawing.Point(991, 638);
             this.txtTienCoc.Name = "txtTienCoc";
-            this.txtTienCoc.Size = new System.Drawing.Size(141, 22);
+            this.txtTienCoc.Properties.ReadOnly = true;
+            this.txtTienCoc.Size = new System.Drawing.Size(206, 22);
             this.txtTienCoc.StyleController = this.layoutControl2;
             this.txtTienCoc.TabIndex = 23;
             // 
@@ -482,7 +483,7 @@
             this.gridPhieuMuon_Sach.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.spSoLuong,
             this.btnXoa});
-            this.gridPhieuMuon_Sach.Size = new System.Drawing.Size(769, 345);
+            this.gridPhieuMuon_Sach.Size = new System.Drawing.Size(769, 359);
             this.gridPhieuMuon_Sach.TabIndex = 6;
             this.gridPhieuMuon_Sach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgPhieuMuon_Sach});
@@ -501,8 +502,7 @@
             this.dtgPhieuMuon_Sach.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
             this.dtgPhieuMuon_Sach.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.dtgPhieuMuon_Sach.OptionsView.ShowGroupPanel = false;
-            this.dtgPhieuMuon_Sach.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.dtgPhieuMuon_Sach_CellValueChanged);
-            // 
+        
             // ID_SachMuon
             // 
             this.ID_SachMuon.Caption = "ID Sách Mượn";
@@ -705,7 +705,7 @@
             this.layoutSachMuon.Control = this.gridPhieuMuon_Sach;
             this.layoutSachMuon.Location = new System.Drawing.Point(416, 261);
             this.layoutSachMuon.Name = "layoutSachMuon";
-            this.layoutSachMuon.Size = new System.Drawing.Size(773, 349);
+            this.layoutSachMuon.Size = new System.Drawing.Size(773, 363);
             this.layoutSachMuon.TextSize = new System.Drawing.Size(0, 0);
             this.layoutSachMuon.TextVisible = false;
             // 
@@ -917,10 +917,10 @@
             // 
             this.layoutControlItem14.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
             this.layoutControlItem14.Control = this.txtTienCoc;
-            this.layoutControlItem14.Location = new System.Drawing.Point(909, 610);
+            this.layoutControlItem14.Location = new System.Drawing.Point(844, 624);
             this.layoutControlItem14.MinSize = new System.Drawing.Size(193, 26);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(280, 45);
+            this.layoutControlItem14.Size = new System.Drawing.Size(345, 31);
             this.layoutControlItem14.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem14.Text = "Tiền Cọc Tạm Tính";
             this.layoutControlItem14.TextLocation = DevExpress.Utils.Locations.Left;
@@ -929,10 +929,10 @@
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(706, 610);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(706, 624);
             this.emptySpaceItem3.MinSize = new System.Drawing.Size(104, 24);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(203, 45);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(138, 31);
             this.emptySpaceItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -941,11 +941,11 @@
             this.layoutTrangThai.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
             this.layoutTrangThai.Control = this.txtTrangThai;
             this.layoutTrangThai.Enabled = false;
-            this.layoutTrangThai.Location = new System.Drawing.Point(416, 610);
+            this.layoutTrangThai.Location = new System.Drawing.Point(416, 624);
             this.layoutTrangThai.MinSize = new System.Drawing.Size(187, 24);
             this.layoutTrangThai.Name = "layoutTrangThai";
             this.layoutTrangThai.OptionsPrint.TextToControlDistance = 5;
-            this.layoutTrangThai.Size = new System.Drawing.Size(290, 45);
+            this.layoutTrangThai.Size = new System.Drawing.Size(290, 31);
             this.layoutTrangThai.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutTrangThai.Text = "Trạng Thái";
             this.layoutTrangThai.TextSize = new System.Drawing.Size(123, 16);

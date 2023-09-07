@@ -31,24 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MForm));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer(this.components);
-            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.btnThongTinTaiKhoan = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDangXuat = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.pcAvatar = new DevExpress.XtraEditors.PictureEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.pcAvatar = new DevExpress.XtraEditors.PictureEdit();
-            this.btnXinChao = new DevExpress.XtraEditors.DropDownButton();
             this.Container = new DevExpress.XtraEditors.PanelControl();
-            this.picMain = new DevExpress.XtraEditors.PictureEdit();
             this.navBarControl = new DevExpress.XtraNavBar.NavBarControl();
             this.navSach = new DevExpress.XtraNavBar.NavBarGroup();
             this.btnKhoSach = new DevExpress.XtraNavBar.NavBarItem();
@@ -68,161 +57,69 @@
             this.navNhanVien = new DevExpress.XtraNavBar.NavBarGroup();
             this.btnNhanVien = new DevExpress.XtraNavBar.NavBarItem();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.simpleSeparator1 = new DevExpress.XtraLayout.SimpleSeparator();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.simpleSeparator2 = new DevExpress.XtraLayout.SimpleSeparator();
             this.timerDoiAnh = new System.Windows.Forms.Timer(this.components);
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnDangXuat = new DevExpress.XtraEditors.SimpleButton();
+            this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).BeginInit();
-            this.popupControlContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
-            this.layoutControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcAvatar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Container)).BeginInit();
-            this.Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMain.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.popupControlContainer1);
+            this.layoutControl1.Controls.Add(this.dropDownButton1);
+            this.layoutControl1.Controls.Add(this.btnDangXuat);
             this.layoutControl1.Controls.Add(this.pcAvatar);
-            this.layoutControl1.Controls.Add(this.btnXinChao);
             this.layoutControl1.Controls.Add(this.Container);
             this.layoutControl1.Controls.Add(this.navBarControl);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Margin = new System.Windows.Forms.Padding(4);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(300, 364, 812, 500);
+            this.layoutControl1.OptionsPrint.AppearanceGroupCaption.Options.UseBorderColor = true;
             this.layoutControl1.Root = this.Root;
             this.layoutControl1.Size = new System.Drawing.Size(1308, 781);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // popupControlContainer1
+            // pcAvatar
             // 
-            this.popupControlContainer1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.popupControlContainer1.Controls.Add(this.layoutControl2);
-            this.popupControlContainer1.Location = new System.Drawing.Point(881, 33);
-            this.popupControlContainer1.Manager = this.barManager1;
-            this.popupControlContainer1.Margin = new System.Windows.Forms.Padding(4);
-            this.popupControlContainer1.Name = "popupControlContainer1";
-            this.popupControlContainer1.Size = new System.Drawing.Size(210, 136);
-            this.popupControlContainer1.TabIndex = 0;
-            this.popupControlContainer1.Visible = false;
-            // 
-            // layoutControl2
-            // 
-            this.layoutControl2.Controls.Add(this.simpleButton4);
-            this.layoutControl2.Controls.Add(this.btnThongTinTaiKhoan);
-            this.layoutControl2.Controls.Add(this.btnDangXuat);
-            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl2.Margin = new System.Windows.Forms.Padding(4);
-            this.layoutControl2.Name = "layoutControl2";
-            this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1099, 0, 812, 500);
-            this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(210, 136);
-            this.layoutControl2.TabIndex = 0;
-            this.layoutControl2.Text = "layoutControl2";
-            // 
-            // simpleButton4
-            // 
-            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.ImageOptions.Image = global::GUI.Properties.Resources.cancel_32x321;
-            this.simpleButton4.Location = new System.Drawing.Point(12, 92);
-            this.simpleButton4.Margin = new System.Windows.Forms.Padding(4);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(180, 36);
-            this.simpleButton4.StyleController = this.layoutControl2;
-            this.simpleButton4.TabIndex = 7;
-            this.simpleButton4.Text = "Thoát Chương Trình";
-            this.simpleButton4.Click += new System.EventHandler(this.ButtonExit_Click);
-            // 
-            // btnThongTinTaiKhoan
-            // 
-            this.btnThongTinTaiKhoan.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinTaiKhoan.Appearance.Options.UseFont = true;
-            this.btnThongTinTaiKhoan.ImageOptions.Image = global::GUI.Properties.Resources.bouser_32x321;
-            this.btnThongTinTaiKhoan.Location = new System.Drawing.Point(12, 12);
-            this.btnThongTinTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
-            this.btnThongTinTaiKhoan.Name = "btnThongTinTaiKhoan";
-            this.btnThongTinTaiKhoan.Size = new System.Drawing.Size(180, 36);
-            this.btnThongTinTaiKhoan.StyleController = this.layoutControl2;
-            this.btnThongTinTaiKhoan.TabIndex = 6;
-            this.btnThongTinTaiKhoan.Text = "Thông Tin Tài Khoản";
-            this.btnThongTinTaiKhoan.Click += new System.EventHandler(this.btnThongTinTaiKhoan_Click);
-            // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangXuat.Appearance.Options.UseFont = true;
-            this.btnDangXuat.ImageOptions.Image = global::GUI.Properties.Resources.redo_32x32;
-            this.btnDangXuat.Location = new System.Drawing.Point(12, 52);
-            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(180, 36);
-            this.btnDangXuat.StyleController = this.layoutControl2;
-            this.btnDangXuat.TabIndex = 5;
-            this.btnDangXuat.Text = "Đăng Xuất";
-            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
-            // 
-            // layoutControlGroup1
-            // 
-            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup1.GroupBordersVisible = false;
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem5,
-            this.layoutControlItem6,
-            this.layoutControlItem7});
-            this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(204, 140);
-            this.layoutControlGroup1.TextVisible = false;
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.btnDangXuat;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 40);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(184, 40);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.btnThongTinTaiKhoan;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(184, 40);
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.simpleButton4;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 80);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(184, 40);
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem7.TextVisible = false;
+            this.pcAvatar.Location = new System.Drawing.Point(264, 2);
+            this.pcAvatar.Margin = new System.Windows.Forms.Padding(4);
+            this.pcAvatar.MenuManager = this.barManager1;
+            this.pcAvatar.Name = "pcAvatar";
+            this.pcAvatar.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pcAvatar.Properties.Appearance.Options.UseBackColor = true;
+            this.pcAvatar.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pcAvatar.Properties.ReadOnly = true;
+            this.pcAvatar.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pcAvatar.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pcAvatar.Size = new System.Drawing.Size(43, 36);
+            this.pcAvatar.StyleController = this.layoutControl1;
+            this.pcAvatar.TabIndex = 7;
             // 
             // barManager1
             // 
@@ -268,74 +165,29 @@
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 781);
             // 
-            // pcAvatar
-            // 
-            this.pcAvatar.Location = new System.Drawing.Point(1158, 12);
-            this.pcAvatar.Margin = new System.Windows.Forms.Padding(4);
-            this.pcAvatar.MenuManager = this.barManager1;
-            this.pcAvatar.Name = "pcAvatar";
-            this.pcAvatar.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pcAvatar.Properties.Appearance.Options.UseBackColor = true;
-            this.pcAvatar.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pcAvatar.Properties.ReadOnly = true;
-            this.pcAvatar.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pcAvatar.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pcAvatar.Size = new System.Drawing.Size(69, 81);
-            this.pcAvatar.StyleController = this.layoutControl1;
-            this.pcAvatar.TabIndex = 7;
-            // 
-            // btnXinChao
-            // 
-            this.btnXinChao.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show;
-            this.btnXinChao.DropDownControl = this.popupControlContainer1;
-            this.btnXinChao.Location = new System.Drawing.Point(1022, 66);
-            this.btnXinChao.Margin = new System.Windows.Forms.Padding(4);
-            this.btnXinChao.MenuManager = this.barManager1;
-            this.btnXinChao.Name = "btnXinChao";
-            this.btnXinChao.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.btnXinChao.Size = new System.Drawing.Size(132, 27);
-            this.btnXinChao.StyleController = this.layoutControl1;
-            this.btnXinChao.TabIndex = 6;
-            this.btnXinChao.Text = "Xin Chào,";
-            // 
             // Container
             // 
+            this.Container.Appearance.BackColor = System.Drawing.Color.White;
+            this.Container.Appearance.Options.UseBackColor = true;
             this.Container.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.Container.Controls.Add(this.picMain);
-            this.Container.Location = new System.Drawing.Point(231, 97);
+            this.Container.Location = new System.Drawing.Point(264, 43);
             this.Container.Margin = new System.Windows.Forms.Padding(5);
             this.Container.Name = "Container";
-            this.Container.Size = new System.Drawing.Size(1065, 672);
+            this.Container.Size = new System.Drawing.Size(1042, 736);
             this.Container.TabIndex = 5;
-            // 
-            // picMain
-            // 
-            this.picMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picMain.EditValue = ((object)(resources.GetObject("picMain.EditValue")));
-            this.picMain.Location = new System.Drawing.Point(0, 0);
-            this.picMain.Margin = new System.Windows.Forms.Padding(8);
-            this.picMain.MenuManager = this.barManager1;
-            this.picMain.Name = "picMain";
-            this.picMain.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.picMain.Properties.Appearance.Options.UseBackColor = true;
-            this.picMain.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.picMain.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.picMain.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.picMain.Size = new System.Drawing.Size(1065, 672);
-            this.picMain.TabIndex = 3;
             // 
             // navBarControl
             // 
-            this.navBarControl.ActiveGroup = this.navSach;
+            this.navBarControl.ActiveGroup = this.navBaoCao;
             this.navBarControl.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.navBarControl.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
+            this.navBaoCao,
             this.navSach,
             this.navTheLoai,
             this.navTacGia,
             this.navNhaPhanPhoi,
             this.navPhieuMuon,
             this.navDocGia,
-            this.navBaoCao,
             this.navNhanVien});
             this.navBarControl.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.btnKhoSach,
@@ -347,12 +199,12 @@
             this.btnNhanVien,
             this.btnBaoCao,
             this.btnSachYeuCau});
-            this.navBarControl.Location = new System.Drawing.Point(12, 97);
+            this.navBarControl.Location = new System.Drawing.Point(2, 2);
             this.navBarControl.Margin = new System.Windows.Forms.Padding(4);
             this.navBarControl.Name = "navBarControl";
-            this.navBarControl.OptionsNavPane.ExpandedWidth = 215;
+            this.navBarControl.OptionsNavPane.ExpandedWidth = 257;
             this.navBarControl.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl.Size = new System.Drawing.Size(215, 672);
+            this.navBarControl.Size = new System.Drawing.Size(257, 777);
             this.navBarControl.TabIndex = 4;
             this.navBarControl.Text = "navBarControl1";
             // 
@@ -382,6 +234,8 @@
             // 
             // btnSachYeuCau
             // 
+            this.btnSachYeuCau.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSachYeuCau.Appearance.Options.UseFont = true;
             this.btnSachYeuCau.Caption = "Sách Yêu Cầu";
             this.btnSachYeuCau.Name = "btnSachYeuCau";
             this.btnSachYeuCau.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnSachYeuCau_LinkClicked);
@@ -516,7 +370,8 @@
             this.navBaoCao.AppearanceHotTracked.Options.UseFont = true;
             this.navBaoCao.AppearancePressed.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.navBaoCao.AppearancePressed.Options.UseFont = true;
-            this.navBaoCao.Caption = "Báo Cáo";
+            this.navBaoCao.Caption = "Tổng Quan";
+            this.navBaoCao.Expanded = true;
             this.navBaoCao.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
             this.navBaoCao.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBaoCao.ImageOptions.LargeImage")));
             this.navBaoCao.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBaoCao.ImageOptions.SmallImage")));
@@ -558,82 +413,142 @@
             // 
             // Root
             // 
+            this.Root.AppearanceGroup.Options.UseBorderColor = true;
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
             this.layoutControlItem2,
-            this.emptySpaceItem1,
-            this.layoutControlItem3,
-            this.emptySpaceItem3,
-            this.layoutControlItem8});
+            this.layoutControlItem1,
+            this.layoutControlGroup1,
+            this.simpleSeparator2});
             this.Root.Name = "Root";
+            this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.Root.Size = new System.Drawing.Size(1308, 781);
             this.Root.TextVisible = false;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.navBarControl;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 85);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(219, 676);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.Container;
-            this.layoutControlItem2.Location = new System.Drawing.Point(219, 85);
+            this.layoutControlItem2.Location = new System.Drawing.Point(262, 41);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1069, 676);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1046, 740);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.navBarControl;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(261, 781);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.emptySpaceItem1,
+            this.layoutControlItem5,
+            this.simpleSeparator1,
+            this.layoutControlItem8,
+            this.layoutControlItem3});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(262, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(20, 20, 20, 20);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1046, 41);
+            this.layoutControlGroup1.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 0);
-            this.emptySpaceItem1.MaxSize = new System.Drawing.Size(0, 85);
-            this.emptySpaceItem1.MinSize = new System.Drawing.Size(134, 85);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(178, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(1010, 85);
-            this.emptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.emptySpaceItem1.Size = new System.Drawing.Size(765, 40);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // layoutControlItem3
+            // simpleSeparator1
             // 
-            this.layoutControlItem3.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom;
-            this.layoutControlItem3.Control = this.btnXinChao;
-            this.layoutControlItem3.Location = new System.Drawing.Point(1010, 0);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(136, 85);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
-            // emptySpaceItem3
-            // 
-            this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(1219, 0);
-            this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(69, 85);
-            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.simpleSeparator1.AllowHotTrack = false;
+            this.simpleSeparator1.Location = new System.Drawing.Point(0, 40);
+            this.simpleSeparator1.Name = "simpleSeparator1";
+            this.simpleSeparator1.Size = new System.Drawing.Size(1046, 1);
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.pcAvatar;
-            this.layoutControlItem8.Location = new System.Drawing.Point(1146, 0);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem8.MaxSize = new System.Drawing.Size(47, 40);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(47, 40);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(73, 85);
+            this.layoutControlItem8.Size = new System.Drawing.Size(47, 40);
+            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
+            // 
+            // simpleSeparator2
+            // 
+            this.simpleSeparator2.AllowHotTrack = false;
+            this.simpleSeparator2.Location = new System.Drawing.Point(261, 0);
+            this.simpleSeparator2.Name = "simpleSeparator2";
+            this.simpleSeparator2.Size = new System.Drawing.Size(1, 781);
             // 
             // timerDoiAnh
             // 
             this.timerDoiAnh.Interval = 1000;
             this.timerDoiAnh.Tick += new System.EventHandler(this.timerDoiAnh_Tick);
             // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.btnDangXuat;
+            this.layoutControlItem5.Location = new System.Drawing.Point(943, 0);
+            this.layoutControlItem5.MinSize = new System.Drawing.Size(50, 25);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(103, 40);
+            this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
+            // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Danger;
+            this.btnDangXuat.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangXuat.Appearance.Options.UseBackColor = true;
+            this.btnDangXuat.Appearance.Options.UseFont = true;
+            this.btnDangXuat.ImageOptions.Image = global::GUI.Properties.Resources.redo_32x32;
+            this.btnDangXuat.Location = new System.Drawing.Point(1207, 2);
+            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(99, 36);
+            this.btnDangXuat.StyleController = this.layoutControl1;
+            this.btnDangXuat.TabIndex = 5;
+            this.btnDangXuat.Text = "Đăng Xuất";
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
+            // dropDownButton1
+            // 
+            this.dropDownButton1.Location = new System.Drawing.Point(311, 2);
+            this.dropDownButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dropDownButton1.MenuManager = this.barManager1;
+            this.dropDownButton1.Name = "dropDownButton1";
+            this.dropDownButton1.Size = new System.Drawing.Size(127, 27);
+            this.dropDownButton1.StyleController = this.layoutControl1;
+            this.dropDownButton1.TabIndex = 8;
+            this.dropDownButton1.Text = "dropDownButton1";
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.dropDownButton1;
+            this.layoutControlItem3.Location = new System.Drawing.Point(47, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(131, 40);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
             // MForm
             // 
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.Appearance.Options.UseBackColor = true;
             this.Appearance.Options.UseFont = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1308, 781);
@@ -654,27 +569,20 @@
             this.Load += new System.EventHandler(this.MForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).EndInit();
-            this.popupControlContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
-            this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcAvatar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Container)).EndInit();
-            this.Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picMain.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,30 +610,24 @@
         private DevExpress.XtraNavBar.NavBarItem btnPhieuMuon;
         private DevExpress.XtraNavBar.NavBarItem btnNhaPhanPhoi;
         private DevExpress.XtraNavBar.NavBarItem btnNhanVien;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
-        private DevExpress.XtraEditors.DropDownButton btnXinChao;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
         private DevExpress.XtraEditors.PictureEdit pcAvatar;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private System.Windows.Forms.Timer timerDoiAnh;
-        private DevExpress.XtraBars.PopupControlContainer popupControlContainer1;
-        private DevExpress.XtraLayout.LayoutControl layoutControl2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
-        private DevExpress.XtraEditors.SimpleButton btnThongTinTaiKhoan;
-        private DevExpress.XtraEditors.SimpleButton btnDangXuat;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraEditors.PanelControl Container;
-        private DevExpress.XtraEditors.PictureEdit picMain;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraNavBar.NavBarItem btnSachYeuCau;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.SimpleSeparator simpleSeparator2;
+        private DevExpress.XtraLayout.SimpleSeparator simpleSeparator1;
+        private DevExpress.XtraEditors.DropDownButton dropDownButton1;
+        private DevExpress.XtraEditors.SimpleButton btnDangXuat;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }

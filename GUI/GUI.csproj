@@ -424,6 +424,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="library-logo-design-precious-astonishing-13.ico" />
+    <None Include="Resources\bo_address2.svg" />
     <None Include="Resources\exporttoxlsx1.svg" />
     <None Include="Resources\exporttoxlsx.svg" />
   </ItemGroup>

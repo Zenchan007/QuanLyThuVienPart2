@@ -35,24 +35,17 @@ namespace GUI
 
         public void showUserControl(UserControl control)
         {
-            if (currentControl == null)
+            if (currentControl != null)
             {
-                currentControl = control;
-                control.Dock = DockStyle.Fill;
-                Container.Controls.Add(control);
-                control.BringToFront();
-            }
-            else if (currentControl != control)
-            {
-                currentControl.Hide(); // Ẩn user control hiện tại
                 Container.Controls.Remove(currentControl); // Loại bỏ user control hiện tại khỏi Container
                 currentControl.Dispose(); // Giải phóng tài nguyên của user control hiện tại
-
-                currentControl = control;
-                control.Dock = DockStyle.Fill;
-                Container.Controls.Add(control);
-                control.BringToFront();
+               
             }
+
+            currentControl = control;
+            control.Dock = DockStyle.Fill;
+            Container.Controls.Add(control);
+            
         }
         public MForm()
         {
@@ -112,39 +105,32 @@ namespace GUI
         private int currentImageIndex = 0;
         private void MForm_Load(object sender, EventArgs e)
         {
+           
             nhanVienService = new NhanVienService();
             if (RoleId != 1)
             {
                 navNhanVien.Visible = false;
             }
             var nhanVien = nhanVienService.QueryFilterDto().FirstOrDefault(x => x.NhanVienId == ID_Login);
-            btnXinChao.Text = "Xin chào " + nhanVien?.TenNhanVien.ToString() ?? string.Empty;
-            pcAvatar.Image = XuLyAnh.ByteArrayToImage(nhanVien?.AnhNhanVien);
-            string imageDirectory = @"F:\ChuyenDe\QuanLyThuVien\GUI\Resources\AnhLoad";
-            imageFiles = Directory.GetFiles(imageDirectory, "*.jpg", SearchOption.TopDirectoryOnly)
-                        .Concat(Directory.GetFiles(imageDirectory, "*.png", SearchOption.TopDirectoryOnly))
-                        .ToArray();
-            timerDoiAnh.Interval = 3000;
-            timerDoiAnh.Start();
+           
+            
+            showUserControl(new BaoCaoBieuDo());
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void timerDoiAnh_Tick(object sender, EventArgs e)
         {
             if (currentImageIndex < imageFiles.Length)
             {
-                picMain.Image = new System.Drawing.Bitmap(imageFiles[currentImageIndex]);
-                picMain.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+                //picMain.Image = new System.Drawing.Bitmap(imageFiles[currentImageIndex]);
+                //picMain.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
                 currentImageIndex++;
             }
             else
             {
-
                 currentImageIndex = 0;
             }
         }
-
-
-
         private void ButtonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -189,5 +175,7 @@ namespace GUI
             this.Dispose();
             Application.Exit();
         }
+
+        
     }
 }

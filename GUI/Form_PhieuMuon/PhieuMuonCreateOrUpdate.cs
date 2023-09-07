@@ -17,6 +17,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraRichEdit.Model;
 using GUI.Form_Sach;
 using GUI.Login;
 using System;
@@ -24,6 +25,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
@@ -42,7 +44,7 @@ namespace GUI.Form_PhieuMuon
         BindingSource bsPhieuMuon_Dto;
         BindingList<PhieuMuon_Sach_DTO> phieuMuon_Sach_DTOs;
         public int ID_CapNhat;
-        public int ID_NhanVien = 1007;// Login_form.User_Id;
+        public int ID_NhanVien = Login_form.User_Id;
         private ISachService sachService = new SachService();
         private IPhieuMuon_SachsService phieuMuon_SachsService = new PhieuMuon_SachsService();
         private IPhieuMuonService phieuMuonService = new PhieuMuonService();
@@ -60,9 +62,6 @@ namespace GUI.Form_PhieuMuon
             ID_CapNhat = ID;
         }
 
-
-
-
         private async void PhieuMuonCreateOrUpdate2_Load(object sender, EventArgs e)
         {
             var listMaDocGia = docGiaService.QueryFilter().Select(x => x.ID).ToList();
@@ -77,7 +76,7 @@ namespace GUI.Form_PhieuMuon
                 btnTraSach.Enabled = false;
                 txtTenNhanVien.Text = nhanVienService.QueryFilter().FirstOrDefault(x => x.ID == ID_NhanVien).TenNhanVien;
                 txtTenDocGia.ReadOnly = true;
-                // Trong Trường Hợp Thêm Mới Phiếu Mượn 
+
                 txtMaNhanVien.Text = ID_NhanVien.ToString(); // Nhân Viên Ghi Sẽ là Nhân viên hiện tại
                 layoutTrangThai.HideToCustomization();// Ẩn một số chức năng và một số lay out
                 btnTaoHoaDon.Enabled = false;// Một số chức năng sẽ không hoạt động
@@ -151,8 +150,7 @@ namespace GUI.Form_PhieuMuon
                     phieuMuon_Sach_DTOs.Add(sachMuonDto);
                 }
             }
-            bsPhieuMuon_Dto.DataSource = phieuMuon_Sach_DTOs;
-            gridPhieuMuon_Sach.DataSource = bsPhieuMuon_Dto;
+            gridPhieuMuon_Sach.DataSource = phieuMuon_Sach_DTOs;
             await showDuLieuSach();
         }
 
@@ -186,19 +184,6 @@ namespace GUI.Form_PhieuMuon
             return list;
         }
 
-
-
-        private void dtgPhieuMuon_Sach_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            double TienCoc = 0;
-            foreach (var item in phieuMuon_Sach_DTOs)
-            {
-                TienCoc += item.DonGiaMuon;
-            }
-            txtTienCoc.Text = TienCoc.ToString();
-        }
-
-
         #region Event Button 
         private void btnDong_Click(object sender, EventArgs e)
         {
@@ -206,13 +191,9 @@ namespace GUI.Form_PhieuMuon
         }
         private void btnInPhieuMuon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
             PhieuMuon_XuatPhieuMuon xuat = new PhieuMuon_XuatPhieuMuon(ID_CapNhat);
             ReportPrintTool tool = new ReportPrintTool(xuat, true);
-         //   tool.PreviewForm.MdiParent = this;
             tool.ShowPreview(UserLookAndFeel.Default);
-
-           
         }
 
         private async void btnTraSach_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -238,8 +219,10 @@ namespace GUI.Form_PhieuMuon
         }
         private void btnThemSachPhieuMuon_Click(object sender, EventArgs e)
         {
+
             try
             {
+                var listSachMuon = dtgPhieuMuon_Sach.DataSource as BindingList<PhieuMuon_Sach_DTO>;
                 int sachChon = dtgSach.FocusedRowHandle;
                 int sachId = dtgSach.GetRowCellValue(sachChon, "SachId") == null ? throw new Exception("Không có sách trong kho") : (int)dtgSach.GetRowCellValue(sachChon, "SachId");
                 int soLuongSachGoc = (int)dtgSach.GetRowCellValue(sachChon, "SoLuong");
@@ -249,43 +232,37 @@ namespace GUI.Form_PhieuMuon
                 }
                 else
                 {
-                    bool daCoSach = false;
-                    for (var rowHandle = 0; rowHandle < dtgPhieuMuon_Sach.RowCount;rowHandle++)
+                    var input = new PhieuMuon_Sach_DTO
                     {
-                        var existingSachId = (int)dtgPhieuMuon_Sach.GetRowCellValue(rowHandle, "SachMuonId");
-                        if (existingSachId == sachId)
+                        SachMuonId = sachId,
+                        TenSachMuon = dtgSach.GetRowCellValue(sachChon, "TenSach").ToString(),
+                        TacGiaSachMuon = dtgSach?.GetRowCellValue(sachChon, "TenTacGia")?.ToString() ?? string.Empty,
+                        DonGiaMuon = (double)dtgSach.GetRowCellValue(sachChon, "DonGia"),
+                        SoLuongSachMuon = 1,
+                    };
+                    bool found = false; // Biến này để kiểm tra xem đã tìm thấy sách có cùng ID trong danh sách chưa
+                    foreach (var item in listSachMuon)
+                    {
+                        if (sachId == item.SachMuonId)
                         {
-                            int soLuong = (int)dtgPhieuMuon_Sach.GetRowCellValue(rowHandle, "SoLuongSachMuon");
-                            int ID = (int)dtgPhieuMuon_Sach.GetRowCellValue(rowHandle, "SachMuonId");
-                            var DonGia = sachService.QueryFilter().FirstOrDefault(x => x.ID == ID).DonGia;
                             int soLuongTrongSach = (int)dtgSach.GetRowCellValue(sachChon, "SoLuong");
-                            if (soLuong + 1 > soLuongTrongSach)
+                            double donGiaSach = (double)dtgSach.GetRowCellValue(sachChon, "DonGia");
+                            if (item.SoLuongSachMuon + 1 > soLuongTrongSach)
                             {
                                 MessageBox.Show("Không thể thêm sách, số lượng sách đã hết!");
                                 return;
                             }
-                            dtgPhieuMuon_Sach.SetRowCellValue(rowHandle, "SoLuongSachMuon", soLuong += 1);
-                            dtgPhieuMuon_Sach.SetRowCellValue(rowHandle, "DonGiaMuon", soLuong * DonGia);
-                            daCoSach = true;
+                            item.SoLuongSachMuon++;
+                            item.DonGiaMuon = item.SoLuongSachMuon * donGiaSach;
+                            found = true; // Đã tìm thấy sách trong danh sách
                             break;
                         }
                     }
-                    if (!daCoSach)
-                    {
-                        var input = new PhieuMuon_SachCreateInput
-                        {
-                            SachId = sachId,
-                        };
 
-                        var TenSachMuon = dtgSach.GetRowCellValue(sachChon, "TenSach");
-                        var TacGiaSachMuon = dtgSach.GetRowCellValue(sachChon, "TenTacGia");
-                        var DonGia = dtgSach.GetRowCellValue(sachChon, "DonGia");
-                        dtgPhieuMuon_Sach.AddNewRow();
-                        dtgPhieuMuon_Sach.SetRowCellValue(GridControl.NewItemRowHandle, "SachMuonId", input.SachId);
-                        dtgPhieuMuon_Sach.SetRowCellValue(GridControl.NewItemRowHandle, "TenSachMuon", TenSachMuon);
-                        dtgPhieuMuon_Sach.SetRowCellValue(GridControl.NewItemRowHandle, "TacGiaSachMuon", TacGiaSachMuon);
-                        dtgPhieuMuon_Sach.SetRowCellValue(GridControl.NewItemRowHandle, "SoLuongSachMuon", 1);
-                        dtgPhieuMuon_Sach.SetRowCellValue(GridControl.NewItemRowHandle, "DonGiaMuon", DonGia);
+                    if (!found)
+                    {
+                        // Nếu không tìm thấy sách trong danh sách, thêm đối tượng mới vào danh sách
+                        listSachMuon.Add(input);
                     }
                 }
             }
@@ -293,13 +270,26 @@ namespace GUI.Form_PhieuMuon
             {
                 MessageBox.Show(ex.Message);
             }
-
-
+            finally
+            {
+                dtgPhieuMuon_Sach.RefreshData();
+                TinhTienCoc();
+            }
+        }
+        public void TinhTienCoc()
+        {
+            double TienCoc = 0;
+            foreach (var item in phieuMuon_Sach_DTOs)
+            {
+                TienCoc += item.DonGiaMuon;
+            }
+            txtTienCoc.Text = TienCoc.ToString();
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
             int focusedRowHandle = dtgPhieuMuon_Sach.FocusedRowHandle;
             dtgPhieuMuon_Sach.DeleteRow(focusedRowHandle);
+            TinhTienCoc();
         }
         private async void btnLuu_Click(object sender, EventArgs e)
         {
@@ -448,5 +438,6 @@ namespace GUI.Form_PhieuMuon
         {
             dtpNgayHenTra.DateTime = dtpNgayMuon.DateTime.AddDays((int)dtpThoiHan.Value);
         }
+
     }
 }

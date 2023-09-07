@@ -81,13 +81,11 @@ namespace GUI.Form_BaoCao
         public void FillChartLine()
         {
             var tongSachTheoTheLoai = sachService.GetBookCategoryStatistics();
-            chartDocGiaTheoThang.Series[0].Points.Clear();
-
+            //chartDocGiaTheoThang.Series[0].Points.Clear();
             foreach (var item in tongSachTheoTheLoai)
             {
                 var point = new SeriesPoint(item.Key, item.Value);
-                chartDocGiaTheoThang.Series[0].Points.Add(point);
-
+                //chartDocGiaTheoThang.Series[0].Points.Add(point);
             }
         }
         public void FillChart()
@@ -97,32 +95,32 @@ namespace GUI.Form_BaoCao
             chartTitle.Text = "Biểu Đồ Số Sách Mượn Qua Các Tháng"; // Đặt nội dung tiêu đề
             chartDanhSoTheoTheLoai.Titles.Add(chartTitle); // Thêm tiêu đề vào biểu đồ
             var tongSachTheoTheLoai = phieuMuon_SachsService.GetNgayMuonVaSoLuong();
-            chartDanhSoTheoTheLoai.Series[0].Points.Clear();
+            //chartDanhSoTheoTheLoai.Series[0].Points.Clear();
 
             foreach (var item in tongSachTheoTheLoai)
             {
                 var point = new SeriesPoint(item.Key, item.Value);
-                chartDanhSoTheoTheLoai.Series[0].Points.Add(point);
-                chartDanhSoTheoTheLoai.Series[0].Name = "Số Lượng Sách Mượn Trong Một Tháng";
+                //chartDanhSoTheoTheLoai.Series[0].Points.Add(point);
+                //chartDanhSoTheoTheLoai.Series[0].Name = "Số Lượng Sách Mượn Trong Một Tháng";
             }
-            ((XYDiagram)chartDanhSoTheoTheLoai.Diagram).AxisX.NumericScaleOptions.AutoGrid = false;
-            ((XYDiagram)chartDanhSoTheoTheLoai.Diagram).AxisX.NumericScaleOptions.GridSpacing = 1;
+            //((XYDiagram)chartDanhSoTheoTheLoai.Diagram).AxisX.NumericScaleOptions.AutoGrid = false;
+            //((XYDiagram)chartDanhSoTheoTheLoai.Diagram).AxisX.NumericScaleOptions.GridSpacing = 1;
 
         }
         public void FillChartPie()
         {
             var tongSachTheoTheLoai = sachService.GetTongSachTheoTheLoai();
-            chartTyLeTheLoai.Series[0].Points.Clear();
+            //chartTyLeTheLoai.Series[0].Points.Clear();
             foreach (var item in tongSachTheoTheLoai)
             {
                 var point = new SeriesPoint(item.Key, item.Value);
-                chartTyLeTheLoai.Series[0].Points.Add(point);
-                chartTyLeTheLoai.Series[0].Name = item.Key;
+                //chartTyLeTheLoai.Series[0].Points.Add(point);
+                //chartTyLeTheLoai.Series[0].Name = item.Key;
             }
-            chartTyLeTheLoai.Series[0].ArgumentDataMember = "Argument"; 
-            chartTyLeTheLoai.Series[0].ValueDataMembers.AddRange("Value"); 
-            chartTyLeTheLoai.Series[0].ShowInLegend = true;
-            chartTyLeTheLoai.Series[0].LegendTextPattern = "{A}"; 
+            //chartTyLeTheLoai.Series[0].ArgumentDataMember = "Argument"; 
+            //chartTyLeTheLoai.Series[0].ValueDataMembers.AddRange("Value"); 
+            //chartTyLeTheLoai.Series[0].ShowInLegend = true;
+            //chartTyLeTheLoai.Series[0].LegendTextPattern = "{A}"; 
         }
 
     
