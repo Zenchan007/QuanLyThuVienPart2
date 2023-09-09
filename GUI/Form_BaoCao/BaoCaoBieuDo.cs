@@ -72,57 +72,89 @@ namespace GUI.Form_BaoCao
                     }
                 }
             }
-            FillChartLine();
-            FillChart();
-            FillChartPie();
+            await FillChartLine();
+            await FillChart();
+            await FillChartPie();
         }
 
 
-        public void FillChartLine()
+        public async Task FillChartLine()
         {
-            var tongSachTheoTheLoai = sachService.GetBookCategoryStatistics();
-            //chartDocGiaTheoThang.Series[0].Points.Clear();
-            foreach (var item in tongSachTheoTheLoai)
+            var tongSachTheoTheLoai = await sachService.GetBookCategoryStatistics();
+            int seriesIndex = 0; // Chỉ số của Series bạn muốn thao tác
+
+            // Kiểm tra xem có ít nhất một Series trong danh sách
+            if (chartDocGiaTheoThang.Series.Count > seriesIndex)
             {
-                var point = new SeriesPoint(item.Key, item.Value);
-                //chartDocGiaTheoThang.Series[0].Points.Add(point);
+                var series = chartDocGiaTheoThang.Series[seriesIndex];
+
+                // Kiểm tra xem Series đó đã được khởi tạo chưa
+                if (series.Points != null)
+                {
+                    // Xóa dữ liệu cũ
+                    series.Points.Clear();
+
+                    // Thêm dữ liệu mới vào Series
+                    foreach (var item in tongSachTheoTheLoai)
+                    {
+                        var point = new SeriesPoint(item.Key, item.Value);
+                        series.Points.Add(point);
+                    }
+                }
             }
         }
-        public void FillChart()
+        public async Task FillChart()
         {
             chartDanhSoTheoTheLoai.Titles.Clear(); // Xóa các tiêu đề hiện có (nếu có)
             var chartTitle = new ChartTitle();
             chartTitle.Text = "Biểu Đồ Số Sách Mượn Qua Các Tháng"; // Đặt nội dung tiêu đề
             chartDanhSoTheoTheLoai.Titles.Add(chartTitle); // Thêm tiêu đề vào biểu đồ
-            var tongSachTheoTheLoai = phieuMuon_SachsService.GetNgayMuonVaSoLuong();
-            //chartDanhSoTheoTheLoai.Series[0].Points.Clear();
-
-            foreach (var item in tongSachTheoTheLoai)
+            var tongSachTheoTheLoai = await phieuMuon_SachsService.GetNgayMuonVaSoLuong();
+            if (chartDanhSoTheoTheLoai.Series.Count > 0)
             {
-                var point = new SeriesPoint(item.Key, item.Value);
-                //chartDanhSoTheoTheLoai.Series[0].Points.Add(point);
-                //chartDanhSoTheoTheLoai.Series[0].Name = "Số Lượng Sách Mượn Trong Một Tháng";
+                var series = chartDanhSoTheoTheLoai.Series[0];
+                if (series.Points != null)
+                {
+                    series.Points.Clear();
+                    foreach (var item in tongSachTheoTheLoai)
+                    {
+                        var point = new SeriesPoint(item.Key, item.Value);
+                        series.Points.Add(point);
+                    }
+                }
             }
-            //((XYDiagram)chartDanhSoTheoTheLoai.Diagram).AxisX.NumericScaleOptions.AutoGrid = false;
-            //((XYDiagram)chartDanhSoTheoTheLoai.Diagram).AxisX.NumericScaleOptions.GridSpacing = 1;
-
+            if (chartDanhSoTheoTheLoai.Diagram != null && chartDanhSoTheoTheLoai.Diagram is XYDiagram)
+            {
+                var diagram = (XYDiagram)chartDanhSoTheoTheLoai.Diagram;
+                diagram.AxisX.NumericScaleOptions.AutoGrid = false;
+                diagram.AxisX.NumericScaleOptions.GridSpacing = 1;
+            }
         }
-        public void FillChartPie()
+        public async Task FillChartPie()
         {
-            var tongSachTheoTheLoai = sachService.GetTongSachTheoTheLoai();
-            //chartTyLeTheLoai.Series[0].Points.Clear();
-            foreach (var item in tongSachTheoTheLoai)
+            var tongSachTheoTheLoai = await sachService.GetTongSachTheoTheLoai();
+
+            // Kiểm tra xem có ít nhất một Series trong danh sách
+            if (chartTyLeTheLoai.Series.Count > 0)
             {
-                var point = new SeriesPoint(item.Key, item.Value);
-                //chartTyLeTheLoai.Series[0].Points.Add(point);
-                //chartTyLeTheLoai.Series[0].Name = item.Key;
+                chartTyLeTheLoai.Series[0].Points.Clear();
+
+                foreach (var item in tongSachTheoTheLoai)
+                {
+                    var point = new SeriesPoint(item.Key, item.Value);
+                    chartTyLeTheLoai.Series[0].Points.Add(point);
+                    chartTyLeTheLoai.Series[0].Name = item.Key;
+                }
+
+                chartTyLeTheLoai.Series[0].ArgumentDataMember = "Argument";
+                chartTyLeTheLoai.Series[0].ValueDataMembers.AddRange("Value");
+                chartTyLeTheLoai.Series[0].ShowInLegend = true;
+                chartTyLeTheLoai.Series[0].LegendTextPattern = "{A}";
             }
-            //chartTyLeTheLoai.Series[0].ArgumentDataMember = "Argument"; 
-            //chartTyLeTheLoai.Series[0].ValueDataMembers.AddRange("Value"); 
-            //chartTyLeTheLoai.Series[0].ShowInLegend = true;
-            //chartTyLeTheLoai.Series[0].LegendTextPattern = "{A}"; 
+
+
         }
 
-    
+
     }
 }

@@ -424,6 +424,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="library-logo-design-precious-astonishing-13.ico" />
+    <None Include="Resources\removepivotfield_32x32.png" />
+    <None Include="Resources\bouser_32x322.png" />
     <None Include="Resources\bo_address2.svg" />
     <None Include="Resources\exporttoxlsx1.svg" />
     <None Include="Resources\exporttoxlsx.svg" />

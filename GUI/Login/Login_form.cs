@@ -1,6 +1,7 @@
 ﻿using DAL.Services.NhanVien;
 using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
+using DevExpress.XtraWaitForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,7 @@ namespace GUI.Login
             InitializeComponent();
         }
 
-        private async void btnDangNhap_Click(object sender, EventArgs e)
+        private void btnDangNhap_Click(object sender, EventArgs e)
         {
             _service = new NhanVienService();
             SplashScreenManager.ShowForm(this, typeof(WaitFormLogin), true, true, false);
@@ -32,32 +33,55 @@ namespace GUI.Login
             SplashScreenManager.Default.SetWaitFormDescription("Vui lòng chờ!");
             if (!errMatKhau.HasErrors && !errMatKhau.HasErrors)
             {
-                var TaiKhoan = await _service.GetByTenDangNhap(txtTenDangNhap.Text);
-                if (TaiKhoan != null)
+                var TaiKhoan =  _service.GetByTenDangNhap(txtTenDangNhap.Text).ContinueWith(taikhoan =>
                 {
-                    if (TaiKhoan.MatKhau == txtMatKhau.Text)
+                    if (taikhoan.IsFaulted || taikhoan.IsCanceled) {
+                        MessageBox.Show("Không lấy được tên đăng nhập");
+                    }else if (taikhoan.IsCompleted)
                     {
-                        Properties.Settings.Default.TenDangNhap = txtTenDangNhap.Text;
-                        Properties.Settings.Default.MatKhau = txtMatKhau.Text;
-                        Properties.Settings.Default.Remember = checkRemember.Checked;
-                        Properties.Settings.Default.Save();
-                        Role_Id = TaiKhoan.ID_Role ?? 0;
-                        User_Id = TaiKhoan.ID;
-                        var MainForm = new MForm();
-                        MainForm.Show(this);
-                        this.Hide();
+                        if (taikhoan.Result != null)
+                        {
+                            if (taikhoan.Result.MatKhau == txtMatKhau.Text)
+                            {
+                                Properties.Settings.Default.TenDangNhap = txtTenDangNhap.Text;
+                                Properties.Settings.Default.MatKhau = txtMatKhau.Text;
+                                Properties.Settings.Default.Remember = checkRemember.Checked;
+                                Properties.Settings.Default.Save();
+                                Role_Id = taikhoan.Result.ID_Role ?? 0;
+                                User_Id = taikhoan.Result.ID;
+                                MForm MainForm = null;
+
+                                // Sử dụng Invoke để đảm bảo MainForm được hiển thị trên luồng UI chính
+                                this.Invoke((Action)(() =>
+                                {
+                                    MainForm = new MForm();
+                                    MainForm.Show(this);
+                                    this.Hide();
+                                }));
+                               
+                            }
+                            else
+                            {
+                                errMatKhau.SetError(txtMatKhau, "Sai mật khẩu");
+                            }
+                        }
+                        else
+                        {
+                            errTenDangNhap.SetError(txtTenDangNhap, "Tên Đăng Nhập Không Đúng. Vui lòng kiểm tra lại");
+                        }
                     }
-                    else
-                    {
-                        errMatKhau.SetError(txtMatKhau, "Sai mật khẩu");
-                    }
-                }
-                else
+
+                });
+               
+            }
+            if(SplashScreenManager.Default != null)
+            {
+                if (SplashScreenManager.Default.IsSplashFormVisible)
                 {
-                    errTenDangNhap.SetError(txtTenDangNhap, "Tên Đăng Nhập Không Đúng. Vui lòng kiểm tra lại");
+                    SplashScreenManager.CloseForm();
                 }
             }
-            SplashScreenManager.CloseForm();
+            
         }
         private void txtTenDangNhap_Validating(object sender, CancelEventArgs e)
         {

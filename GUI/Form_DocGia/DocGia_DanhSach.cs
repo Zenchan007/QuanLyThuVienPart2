@@ -34,6 +34,8 @@ namespace GUI.Form_DocGia
             var docGiaMoi = new DocGiaCreateOrUpdate();
             docGiaMoi.FormClosed += childFormClose;
             docGiaMoi.Show(this);
+            this.Enabled = false;
+            
         }
 
         private void childFormClose(object sender, FormClosedEventArgs e)
@@ -43,6 +45,7 @@ namespace GUI.Form_DocGia
 
         private void DocGia_DanhSach2_Load(object sender, EventArgs e)
         {
+            this.Enabled =true;
             showDuLieuDocGia().ContinueWith(x =>
            {
                if (x.IsFaulted)
@@ -93,9 +96,11 @@ namespace GUI.Form_DocGia
             {
                 int selectedRowHandle = dtgDocGia.FocusedRowHandle;
                 string ID_DocGiaCapNhat = dtgDocGia.GetRowCellDisplayText(selectedRowHandle, "DocGiaId");
-                var nhanVienCapNhat = new DocGiaCreateOrUpdate(Int32.Parse(ID_DocGiaCapNhat));
-                nhanVienCapNhat.FormClosed += childFormClose;
-                nhanVienCapNhat.Show(this);
+                var docGiaCapNhat = new DocGiaCreateOrUpdate(Int32.Parse(ID_DocGiaCapNhat));
+                docGiaCapNhat.FormClosed += childFormClose;
+                this.Enabled = false;
+                docGiaCapNhat.Show(this);
+                
             }
             else
             {

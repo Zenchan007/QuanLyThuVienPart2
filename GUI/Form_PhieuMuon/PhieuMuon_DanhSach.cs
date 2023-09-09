@@ -41,6 +41,7 @@ namespace GUI.Form_PhieuMuon
 
         private void PhieuMuon_DanhSach2_Load(object sender, EventArgs e)
         {
+            this.Enabled = true;
             showDuLieuPhieuMuon();
         }
 
@@ -60,6 +61,7 @@ namespace GUI.Form_PhieuMuon
             var phieuMuonMoi = new PhieuMuonCreateOrUpdate();
             phieuMuonMoi.FormClosed += childFormClose;
             phieuMuonMoi.Show(this);
+            this.Enabled = false;
         }
 
         private void childFormClose(object sender, FormClosedEventArgs e)
@@ -76,6 +78,7 @@ namespace GUI.Form_PhieuMuon
                 var phieuMuonCapNhat = new PhieuMuonCreateOrUpdate(Int32.Parse(ID_PhieuMuonCapNhat));
                 phieuMuonCapNhat.FormClosed += childFormClose;
                 phieuMuonCapNhat.Show(this);
+                this.Enabled = false;
             }
             else
             {

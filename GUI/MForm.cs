@@ -39,7 +39,6 @@ namespace GUI
             {
                 Container.Controls.Remove(currentControl); // Loại bỏ user control hiện tại khỏi Container
                 currentControl.Dispose(); // Giải phóng tài nguyên của user control hiện tại
-               
             }
 
             currentControl = control;
@@ -101,46 +100,29 @@ namespace GUI
             showUserControl(new BaoCaoBieuDo());
             this.WindowState = FormWindowState.Maximized;
         }
-        private string[] imageFiles;
-        private int currentImageIndex = 0;
-        private void MForm_Load(object sender, EventArgs e)
+        
+        private async void MForm_Load(object sender, EventArgs e)
         {
-           
+            this.Enabled = true;
+              
             nhanVienService = new NhanVienService();
             if (RoleId != 1)
             {
                 navNhanVien.Visible = false;
             }
-            var nhanVien = nhanVienService.QueryFilterDto().FirstOrDefault(x => x.NhanVienId == ID_Login);
-           
-            
+            var nhanVien = await nhanVienService.GetByIdDto(ID_Login);
+            pcAvatar.Image = XuLyAnh.ByteArrayToImage(nhanVien.AnhNhanVien);
+            btnDropDown.Text = "Xin chào, " + nhanVien.TenNhanVien; 
             showUserControl(new BaoCaoBieuDo());
+            
             this.WindowState = FormWindowState.Maximized;
         }
 
         private void timerDoiAnh_Tick(object sender, EventArgs e)
         {
-            if (currentImageIndex < imageFiles.Length)
-            {
-                //picMain.Image = new System.Drawing.Bitmap(imageFiles[currentImageIndex]);
-                //picMain.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-                currentImageIndex++;
-            }
-            else
-            {
-                currentImageIndex = 0;
-            }
+            
         }
-        private void ButtonExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-        private void btnThongTinTaiKhoan_Click(object sender, EventArgs e)
-        {
-            var thongTinCaNhan = new NhanVien_ThongTinTaiKhoan(ID_Login);
-            thongTinCaNhan.Show(this);
-            thongTinCaNhan.FormClosed += childFormClose;
-        }
+       
 
         private void childFormClose(object sender, FormClosedEventArgs e)
         {
@@ -161,7 +143,10 @@ namespace GUI
                     }));
                 }
             });
-            SplashScreenManager.CloseForm();
+            if (SplashScreenManager.Default.IsSplashFormVisible)
+            {
+                SplashScreenManager.CloseForm();
+            }
             this.Dispose();
         }
 
@@ -176,6 +161,17 @@ namespace GUI
             Application.Exit();
         }
 
-        
+        private void btnThoatChuongTrinh_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnThongTinNhanVien_Click(object sender, EventArgs e)
+        {
+            var thongTinCaNhan = new NhanVien_ThongTinTaiKhoan(ID_Login);
+            thongTinCaNhan.Show(this);
+            thongTinCaNhan.FormClosed += childFormClose;
+            this.Enabled = false;
+        }
     }
 }

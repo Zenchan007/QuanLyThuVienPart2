@@ -19,8 +19,8 @@ namespace DAL.Services.Sachs.DTO
         Task<bool> UpdateSach(int SachId, SachCreateInput input);
         Task<bool> DeleteSachById(int SachId);
         Task<int> SachTrongKho();
-        Dictionary<string, int> GetTongSachTheoTheLoai(SachFilterInput input = null);
-        Dictionary<string, int> GetBookCategoryStatistics();
+        Task<Dictionary<string, int>> GetTongSachTheoTheLoai(SachFilterInput input = null);
+        Task<Dictionary<string, int>> GetBookCategoryStatistics();
         int LayTongSoLuongChoMuon();
         int LaySoSachTraMuon();
         List<string> GetTop5Sach();

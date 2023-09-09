@@ -18,7 +18,7 @@ namespace DAL.Services.PhieuMuon_PhieuMuon_Sachs
         Task<int> UpdatePhieuMuon_Sach(PhieuMuon_SachFilterInput filter, PhieuMuon_SachCreateInput input);
         Task<int> DeletePhieuMuon_SachById(PhieuMuon_SachFilterInput filter);
         Task<PhieuMuon_Sach_DTO> MapperModelToDTO(Model.PhieuMuon_Sachs input, PhieuMuon_Sach_DTO output);
-        Dictionary<int, int> GetNgayMuonVaSoLuong();
+        Task<Dictionary<int, int>> GetNgayMuonVaSoLuong();
         Task<List<PhieuMuon_Sach_DTO>> GetListPhieuMuon_SachDto();
         Task<List<Model.PhieuMuon_Sachs>> GetListPhieuMuon_Sach();
     }

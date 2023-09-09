@@ -30,7 +30,7 @@ namespace DAL.Services.Sachs.DTO
             }
             return 0;
         }
-        public Dictionary<string, int> GetTongSachTheoTheLoai(SachFilterInput input = null)
+        public async Task<Dictionary<string, int>> GetTongSachTheoTheLoai(SachFilterInput input = null)
         {
             var query = QueryFilter(input);
 
@@ -38,11 +38,11 @@ namespace DAL.Services.Sachs.DTO
                 .Include(s => s.TheLoais)
                 .SelectMany(s => s.TheLoais, (s, tl) => new { Sach = s, TheLoai = tl })
                 .GroupBy(x => x.TheLoai.TenTheLoai)
-                .ToDictionary(g => g.Key, g => g.Sum(x => 1));
+                .ToDictionaryAsync(g => g.Key, g => g.Sum(x => 1));
 
-            return result;
+            return await result;
         }
-        public Dictionary<string, int> GetBookCategoryStatistics()
+        public async Task<Dictionary<string, int>> GetBookCategoryStatistics()
         {
             var query = from s in _db.Saches
                         from tl in s.TheLoais
@@ -50,8 +50,8 @@ namespace DAL.Services.Sachs.DTO
                         group pms by tl.TenTheLoai into g
                         select new { TenTheLoai = g.Key, TotalSoLuong = g.Sum(p => p.SoLuong) };
 
-            var resultDict = query.ToDictionary(item => item.TenTheLoai, item => item.TotalSoLuong);
-            return resultDict;
+            var resultDict = query.ToDictionaryAsync(item => item.TenTheLoai, item => item.TotalSoLuong);
+            return await resultDict;
         }
         #endregion
         #region Query and paging

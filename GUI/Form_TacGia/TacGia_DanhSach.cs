@@ -34,6 +34,7 @@ namespace GUI.Form_TacGia
 
         private void TacGia_DanhSach2_Load(object sender, EventArgs e)
         {
+            this.Enabled = true;
             showDuLieuTacGia().ContinueWith(x =>
             {
                 if (x.IsFaulted || x.IsCanceled)
@@ -49,6 +50,7 @@ namespace GUI.Form_TacGia
             var tacGiaMoi = new TacGiaCreateOrUpdate();
             tacGiaMoi.FormClosed += childFormClose;
             tacGiaMoi.Show(this);
+            this.Enabled = false;
         }
 
         private void btnUpdate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -60,6 +62,7 @@ namespace GUI.Form_TacGia
                 var tacGiaCapNhat = new TacGiaCreateOrUpdate(Int32.Parse(ID_TacGiaCapNhat));
                 tacGiaCapNhat.FormClosed += childFormClose;
                 tacGiaCapNhat.Show(this);
+                this.Enabled = false;
             }
             else
             {

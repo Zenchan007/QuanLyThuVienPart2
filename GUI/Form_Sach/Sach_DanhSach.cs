@@ -35,11 +35,13 @@ namespace GUI.Form_Sach
 
         private void Sach_DanhSach2_Load(object sender, EventArgs e)
         {
+            this.Enabled = true;
             showDuLieuSach();
         }
 
         private async void showDuLieuSach()
         {
+            
             var danhSach =await _isachService.GetListSachDtoAsync();
             BindingList<Sach_DTO> listSach = new BindingList<Sach_DTO>(danhSach);
             gridSach.DataSource = listSach;
@@ -54,6 +56,7 @@ namespace GUI.Form_Sach
             var sachMoi = new SachCreateOrUpdate();
             sachMoi.FormClosed += childFormClose;
             sachMoi.Show(this);
+            this.Enabled = false;
         }
 
         private void childFormClose(object sender, FormClosedEventArgs e)
@@ -70,6 +73,7 @@ namespace GUI.Form_Sach
                 var sachCapNhat = new SachCreateOrUpdate(Int32.Parse(ID_SachCapNhat));
                 sachCapNhat.FormClosed += childFormClose;
                 sachCapNhat.Show(this);
+                this.Enabled = false;
             }
             else
             {

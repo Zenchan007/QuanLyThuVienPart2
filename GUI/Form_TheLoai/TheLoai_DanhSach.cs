@@ -33,6 +33,7 @@ namespace GUI.Form_TheLoai
 
         private void TheLoai_DanhSach2_Load(object sender, EventArgs e)
         {
+            this.Enabled = true;
             showDuLieuTheLoai().ContinueWith(x =>
             {
                 if (x.IsFaulted || x.IsCanceled)
@@ -58,6 +59,7 @@ namespace GUI.Form_TheLoai
             var theLoaiMoi = new TheLoai_CreateOrUpdate();
             theLoaiMoi.FormClosed += childFormClose;
             theLoaiMoi.Show(this);
+            this.Enabled = false;
         }
 
         private void childFormClose(object sender, FormClosedEventArgs e)
@@ -74,6 +76,7 @@ namespace GUI.Form_TheLoai
                 var theLoaiCapNhat = new TheLoai_CreateOrUpdate(ID_NhaPhanPhoiCapNhat);
                 theLoaiCapNhat.FormClosed += childFormClose;
                 theLoaiCapNhat.Show(this);
+                this.Enabled = false;
             }
             else
             {

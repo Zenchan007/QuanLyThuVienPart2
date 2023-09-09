@@ -35,6 +35,7 @@ namespace GUI.Form_NhaPhanPhoi
 
         private void NhaPhanPhoi_DanhSach2_Load(object sender, EventArgs e)
         {
+            this.Enabled = true;
             showDuLieuNhaPhanPhoi().ContinueWith(x =>
             {
                 if(x.IsFaulted || x.IsCanceled)
@@ -57,9 +58,10 @@ namespace GUI.Form_NhaPhanPhoi
         #region Event 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var nhanVienMoi = new NhaPhanPhoiCreateOrUpdate();
-            nhanVienMoi.FormClosed += childFormClose;
-            nhanVienMoi.Show(this);
+            var nhaPhanPhoiMoi = new NhaPhanPhoiCreateOrUpdate();
+            nhaPhanPhoiMoi.FormClosed += childFormClose;
+            nhaPhanPhoiMoi.Show(this);
+            this.Enabled = false;
         }
 
         private void btnUpdate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -68,9 +70,10 @@ namespace GUI.Form_NhaPhanPhoi
             {
                 int selectedRowHandle = dtgNhaPhanPhoi.FocusedRowHandle;
                 string ID_NhaPhanPhoiCapNhat = dtgNhaPhanPhoi.GetRowCellDisplayText(selectedRowHandle, "NhaPhanPhoiId");
-                var nhanVienCapNhat = new NhaPhanPhoiCreateOrUpdate(ID_NhaPhanPhoiCapNhat);
-                nhanVienCapNhat.FormClosed += childFormClose;
-                nhanVienCapNhat.Show(this);
+                var nhaPhanPhoiCapNhat = new NhaPhanPhoiCreateOrUpdate(ID_NhaPhanPhoiCapNhat);
+                nhaPhanPhoiCapNhat.FormClosed += childFormClose;
+                nhaPhanPhoiCapNhat.Show(this);
+                this.Enabled = false;
             }
             else
             {

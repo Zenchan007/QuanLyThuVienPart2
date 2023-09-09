@@ -27,6 +27,7 @@ namespace GUI.Form_NhanVien
 
         private void NhanVien_DanhSach2_Load(object sender, EventArgs e)
         {
+            this.Enabled = true;
             showDuLieuNhanVien().ContinueWith(x =>
             {
                 if(x.IsFaulted)
@@ -51,6 +52,7 @@ namespace GUI.Form_NhanVien
             var nhanVienMoi = new NhanVien_ThongTinTaiKhoan();
             nhanVienMoi.FormClosed += childFormClose;
             nhanVienMoi.Show(this);
+            this.Enabled = false;
         }
 
         private void childFormClose(object sender, FormClosedEventArgs e)
@@ -67,6 +69,7 @@ namespace GUI.Form_NhanVien
                 var nhanVienCapNhat = new NhanVien_ThongTinTaiKhoan(Int32.Parse(ID_NhanVienCapNhat));
                 nhanVienCapNhat.FormClosed += childFormClose;
                 nhanVienCapNhat.Show(this);
+                this.Enabled = false;
             }
             else
             {
