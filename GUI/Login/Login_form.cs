@@ -62,12 +62,20 @@ namespace GUI.Login
                             }
                             else
                             {
-                                errMatKhau.SetError(txtMatKhau, "Sai mật khẩu");
+                                this.Invoke((Action)(() =>
+                                {
+                                    errMatKhau.SetError(txtMatKhau, "Sai mật khẩu");
+                                }));
+                               
                             }
                         }
                         else
                         {
-                            errTenDangNhap.SetError(txtTenDangNhap, "Tên Đăng Nhập Không Đúng. Vui lòng kiểm tra lại");
+                            this.Invoke((Action)(() =>
+                            {
+                                errTenDangNhap.SetError(txtTenDangNhap, "Tên Đăng Nhập Không Đúng. Vui lòng kiểm tra lại");
+                            }));
+                            
                         }
                     }
 

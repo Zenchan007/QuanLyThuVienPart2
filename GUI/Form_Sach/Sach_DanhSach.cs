@@ -134,7 +134,7 @@ namespace GUI.Form_Sach
                         options.ExportMode = XlsxExportMode.SingleFile;
                         options.SheetName = @"Sách ở trong kho";
                         ExportSettings.DefaultExportType = ExportType.Default;
-                        dtgSach.ExportToXlsx(dialog.FileName, options);
+                        dtgSach.ExportToXlsx(dialog.FileName, options); // Sử dụng hàm này để export
                         XtraMessageBox.Show("Export Success", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, DefaultBoolean.True);
                         if (File.Exists(dialog.FileName))
                         {

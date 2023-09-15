@@ -1,6 +1,6 @@
 ﻿namespace GUI.Form_BaoCao
 {
-    partial class BaoCaoBieuDo
+    partial class BaoCaoBieuDoTongQuan
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaoCaoBieuDo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaoCaoBieuDoTongQuan));
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
@@ -696,7 +696,7 @@
             this.chartDocGiaTheoThang.Size = new System.Drawing.Size(871, 228);
             this.chartDocGiaTheoThang.TabIndex = 8;
             chartTitle1.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartTitle1.Text = "Thể Loại Mượn Trong Tháng";
+            chartTitle1.Text = "Thể Loại Hay Mượn";
             this.chartDocGiaTheoThang.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
             chartTitle1});
             // 
@@ -766,7 +766,7 @@
             this.chartDanhSoTheoTheLoai.Legend.Title.Text = "Số Lượng Sách Mượn";
             this.chartDanhSoTheoTheLoai.Location = new System.Drawing.Point(449, 242);
             this.chartDanhSoTheoTheLoai.Name = "chartDanhSoTheoTheLoai";
-            series2.Name = "Series 1";
+            series2.Name = "Số Lượng Sách Mượn";
             this.chartDanhSoTheoTheLoai.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series2};
             this.chartDanhSoTheoTheLoai.Size = new System.Drawing.Size(434, 226);
@@ -985,12 +985,12 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // BaoCaoBieuDo
+            // BaoCaoBieuDoTongQuan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.layoutControl1);
-            this.Name = "BaoCaoBieuDo";
+            this.Name = "BaoCaoBieuDoTongQuan";
             this.Size = new System.Drawing.Size(1187, 712);
             this.Load += new System.EventHandler(this.BaoCaoBieuDo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();

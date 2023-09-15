@@ -21,6 +21,7 @@ namespace DAL.Services.Sachs.DTO
         Task<int> SachTrongKho();
         Task<Dictionary<string, int>> GetTongSachTheoTheLoai(SachFilterInput input = null);
         Task<Dictionary<string, int>> GetBookCategoryStatistics();
+
         int LayTongSoLuongChoMuon();
         int LaySoSachTraMuon();
         List<string> GetTop5Sach();
@@ -29,5 +30,7 @@ namespace DAL.Services.Sachs.DTO
         List<Sach> GetListSach();
         List<Sach_DTO> GetListSachDto();
         Task<Sach> GetSachByTenVaTacGia(string tensach, string tentacgia);
+        Dictionary<string, int> GetBookCategoryStatistics(int? month, int? year);
+        List<string> GetTop5SachByMonth(int? month, int? year);
     }
 }

@@ -90,7 +90,7 @@ namespace GUI.Form_TheLoai
             if (!string.IsNullOrEmpty(ID_CapNhat))
             {
                 txtMaTheLoai.Enabled = false;
-                var theLoaiCapNhat = await loaiService.GetById(txtMaTheLoai.Text);
+                var theLoaiCapNhat = await loaiService.GetById(ID_CapNhat);
                 txtMaTheLoai.Text = ID_CapNhat;
                 txtTenTheLoai.Text = theLoaiCapNhat.TenTheLoai;
                 txtMoTa.Text = theLoaiCapNhat.MoTaThem;

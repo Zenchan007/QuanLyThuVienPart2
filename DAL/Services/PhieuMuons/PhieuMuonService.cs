@@ -228,5 +228,29 @@ namespace DAL.Services.PhieuMuons
             });
             return entity;
         }
+
+        public List<int> GetNamTrongPhieuMuon()
+        {
+            var query = from p in _db.PhieuMuons
+                        where p.NgayMuon.HasValue // Đảm bảo có ngày cho mượn
+                        select p.NgayMuon.Value.Year;
+
+            var years = query.Distinct().ToList();
+            years.Sort(); // Sắp xếp theo thứ tự tăng dần
+
+            return years;
+        }
+
+        public List<int> GetThangTrongPhieuMuon()
+        {
+            var query = from p in _db.PhieuMuons
+                        where p.NgayMuon.HasValue // Đảm bảo có ngày cho mượn
+                        select p.NgayMuon.Value.Month;
+
+            var month = query.Distinct().ToList();
+            month.Sort(); // Sắp xếp theo thứ tự tăng dần
+
+            return month;
+        }
     }
 }

@@ -162,7 +162,6 @@
             this.SoDienThoai});
             this.dtgDocGia.GridControl = this.gridDocGia;
             this.dtgDocGia.Name = "dtgDocGia";
-            this.dtgDocGia.OptionsView.ShowGroupPanel = false;
             this.dtgDocGia.MasterRowEmpty += new DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventHandler(this.dtgDocGia_MasterRowEmpty);
             this.dtgDocGia.MasterRowGetChildList += new DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventHandler(this.dtgDocGia_MasterRowGetChildList);
             this.dtgDocGia.MasterRowGetRelationName += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.dtgDocGia_MasterRowGetRelationName);

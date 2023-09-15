@@ -2,6 +2,7 @@
 using DevExpress.XtraEditors;
 using DevExpress.XtraNavBar;
 using DevExpress.XtraSplashScreen;
+using GUI.BaoCao;
 using GUI.Form_BaoCao;
 using GUI.Form_DocGia;
 using GUI.Form_NhanVien;
@@ -97,7 +98,7 @@ namespace GUI
 
         private void btnBaoCao_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            showUserControl(new BaoCaoBieuDo());
+            showUserControl(new BaoCaoBieuDoTongQuan());
             this.WindowState = FormWindowState.Maximized;
         }
         
@@ -113,16 +114,10 @@ namespace GUI
             var nhanVien = await nhanVienService.GetByIdDto(ID_Login);
             pcAvatar.Image = XuLyAnh.ByteArrayToImage(nhanVien.AnhNhanVien);
             btnDropDown.Text = "Xin chào, " + nhanVien.TenNhanVien; 
-            showUserControl(new BaoCaoBieuDo());
+            showUserControl(new BaoCaoBieuDoTongQuan());
             
             this.WindowState = FormWindowState.Maximized;
         }
-
-        private void timerDoiAnh_Tick(object sender, EventArgs e)
-        {
-            
-        }
-       
 
         private void childFormClose(object sender, FormClosedEventArgs e)
         {
@@ -172,6 +167,11 @@ namespace GUI
             thongTinCaNhan.Show(this);
             thongTinCaNhan.FormClosed += childFormClose;
             this.Enabled = false;
+        }
+
+        private void btnBaoCaoThang_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            showUserControl(new BaoCaoThang());
         }
     }
 }

@@ -103,8 +103,8 @@ namespace GUI.Form_PhieuMuon
                 txtMaDocGia.ReadOnly = true;
                 txtTenDocGia.ReadOnly = true;
                 var IdTrangThai = phieuMuon.TrangThaiId;
-                var maNhanVienGhi = Int32.Parse(txtMaNhanVien.Text);
-                txtTenNhanVien.Text = nhanVienService.QueryFilter().FirstOrDefault(x => x.ID == maNhanVienGhi).TenNhanVien;
+                var maNhanVienGhi = Int32.Parse(string.IsNullOrEmpty(txtMaNhanVien.Text) ? "0" : txtMaNhanVien.Text );
+                txtTenNhanVien.Text = nhanVienService.QueryFilter().FirstOrDefault(x => x.ID == maNhanVienGhi)?.TenNhanVien ?? string.Empty;
                 dtpThoiHan.Text = (dtpNgayHenTra.DateTime - dtpNgayMuon.DateTime).Days.ToString();
                 if (IdTrangThai == 1)
                 {

@@ -52,7 +52,7 @@ namespace DAL.Services.TheLoais
         }
         public async Task<Model.TheLoai> GetById(string id)
         {
-            return await QueryFilter().FirstOrDefaultAsync(p => p.ID == id) ?? throw new Exception($"Không tìm thấy nhà phân phối có mã {id}.");
+            return await QueryFilter().FirstOrDefaultAsync(p => p.ID == id) ?? throw new Exception($"Không tìm thấy thể loại có mã {id}.");
         }
 
         public async Task<TheLoai_DTO> GetByIdDto(string id)

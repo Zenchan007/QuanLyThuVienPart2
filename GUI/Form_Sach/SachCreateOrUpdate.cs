@@ -105,7 +105,7 @@ namespace GUI.Form_Sach
             {
                 if (string.IsNullOrEmpty(txtTenSach.Text))
                 {
-                    MessageBox.Show("Vui lòng điền tên tác giả");
+                    MessageBox.Show("Vui lòng điền tên sách!");
                 }
                 if (string.IsNullOrEmpty(errLoi.GetError(txtTenSach)))
                 {

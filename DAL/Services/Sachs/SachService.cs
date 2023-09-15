@@ -252,5 +252,42 @@ namespace DAL.Services.Sachs.DTO
         {
             return await QueryFilter().FirstOrDefaultAsync(x => x.TenSach.Equals(tensach) && x.TacGia.TenTacGia.Equals(tentacgia));
         }
+        public Dictionary<string, int> GetBookCategoryStatistics(int? month = null, int? year = null)
+        {
+
+            var query = from s in _db.Saches
+                        from tl in s.TheLoais
+                        join pms in _db.PhieuMuon_Sachs on s.ID equals pms.ID_Sach
+                        join pm in _db.PhieuMuons on pms.ID_PhieuMuon equals pm.ID
+                        where pm.NgayMuon.HasValue && pm.NgayMuon.Value.Month == month && pm.NgayMuon.Value.Year == year
+                        group pms by tl.TenTheLoai into g
+                        select new { TenTheLoai = g.Key, TotalSoLuong = g.Sum(p => p.SoLuong) };
+
+            var resultDict = query.ToDictionary(item => item.TenTheLoai, item => item.TotalSoLuong);
+            return resultDict;
+        }
+        public List<string> GetTop5SachByMonth(int? month, int? year)
+        {
+
+            var topBorrowedBooks = (from pms in _db.PhieuMuon_Sachs
+                                    join pm in _db.PhieuMuons on pms.ID_PhieuMuon equals pm.ID
+                                    where pm.NgayMuon.HasValue && pm.NgayMuon.Value.Month == month && pm.NgayMuon.Value.Year == year
+                                    group pms by pms.ID_Sach into g
+
+                                    orderby g.Sum(pms => pms.SoLuong) descending
+
+                                    select new
+                                    {
+                                        ID_Sach = g.Key,
+                                        SoLuongMuon = g.Sum(pms => pms.SoLuong)
+                                    })
+                                   .Take(5)
+                                   .ToList();
+
+            var bookNames = (from topBook in topBorrowedBooks
+                             join sach in _db.Saches on topBook.ID_Sach equals sach.ID
+                             select sach.TenSach).ToList();
+            return bookNames;
+        }
     }
 }

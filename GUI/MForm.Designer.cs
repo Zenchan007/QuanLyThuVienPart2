@@ -72,11 +72,11 @@
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.simpleSeparator1 = new DevExpress.XtraLayout.SimpleSeparator();
-            this.layoutDropDown = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleSeparator2 = new DevExpress.XtraLayout.SimpleSeparator();
-            this.timerDoiAnh = new System.Windows.Forms.Timer(this.components);
+            this.layoutDropDown = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.simpleSeparator2 = new DevExpress.XtraLayout.SimpleSeparator();
+            this.btnBaoCaoThang = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).BeginInit();
@@ -97,10 +97,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutDropDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutDropDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -341,7 +341,8 @@
             this.btnNhaPhanPhoi,
             this.btnNhanVien,
             this.btnBaoCao,
-            this.btnSachYeuCau});
+            this.btnSachYeuCau,
+            this.btnBaoCaoThang});
             this.navBarControl.Location = new System.Drawing.Point(2, 2);
             this.navBarControl.Margin = new System.Windows.Forms.Padding(4);
             this.navBarControl.Name = "navBarControl";
@@ -367,7 +368,8 @@
             this.navBaoCao.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBaoCao.ImageOptions.LargeImage")));
             this.navBaoCao.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBaoCao.ImageOptions.SmallImage")));
             this.navBaoCao.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnBaoCao)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnBaoCao),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnBaoCaoThang)});
             this.navBaoCao.Name = "navBaoCao";
             // 
             // btnBaoCao
@@ -628,17 +630,6 @@
             this.simpleSeparator1.Name = "simpleSeparator1";
             this.simpleSeparator1.Size = new System.Drawing.Size(1054, 1);
             // 
-            // layoutDropDown
-            // 
-            this.layoutDropDown.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom;
-            this.layoutDropDown.Control = this.btnDropDown;
-            this.layoutDropDown.Location = new System.Drawing.Point(826, 0);
-            this.layoutDropDown.Name = "layoutDropDown";
-            this.layoutDropDown.Size = new System.Drawing.Size(99, 40);
-            this.layoutDropDown.Text = "Xin chào, ";
-            this.layoutDropDown.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutDropDown.TextVisible = false;
-            // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.pcAvatar;
@@ -651,17 +642,16 @@
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
-            // simpleSeparator2
+            // layoutDropDown
             // 
-            this.simpleSeparator2.AllowHotTrack = false;
-            this.simpleSeparator2.Location = new System.Drawing.Point(253, 0);
-            this.simpleSeparator2.Name = "simpleSeparator2";
-            this.simpleSeparator2.Size = new System.Drawing.Size(1, 781);
-            // 
-            // timerDoiAnh
-            // 
-            this.timerDoiAnh.Interval = 1000;
-            this.timerDoiAnh.Tick += new System.EventHandler(this.timerDoiAnh_Tick);
+            this.layoutDropDown.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom;
+            this.layoutDropDown.Control = this.btnDropDown;
+            this.layoutDropDown.Location = new System.Drawing.Point(826, 0);
+            this.layoutDropDown.Name = "layoutDropDown";
+            this.layoutDropDown.Size = new System.Drawing.Size(99, 40);
+            this.layoutDropDown.Text = "Xin chào, ";
+            this.layoutDropDown.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutDropDown.TextVisible = false;
             // 
             // emptySpaceItem2
             // 
@@ -670,6 +660,21 @@
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(74, 40);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // simpleSeparator2
+            // 
+            this.simpleSeparator2.AllowHotTrack = false;
+            this.simpleSeparator2.Location = new System.Drawing.Point(253, 0);
+            this.simpleSeparator2.Name = "simpleSeparator2";
+            this.simpleSeparator2.Size = new System.Drawing.Size(1, 781);
+            // 
+            // btnBaoCaoThang
+            // 
+            this.btnBaoCaoThang.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnBaoCaoThang.Appearance.Options.UseFont = true;
+            this.btnBaoCaoThang.Caption = "Xem Báo Cáo Tháng";
+            this.btnBaoCaoThang.Name = "btnBaoCaoThang";
+            this.btnBaoCaoThang.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnBaoCaoThang_LinkClicked);
             // 
             // MForm
             // 
@@ -714,10 +719,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutDropDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutDropDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -752,7 +757,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraEditors.PictureEdit pcAvatar;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-        private System.Windows.Forms.Timer timerDoiAnh;
         private DevExpress.XtraEditors.PanelControl Container;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraNavBar.NavBarItem btnSachYeuCau;
@@ -772,5 +776,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraNavBar.NavBarItem btnBaoCaoThang;
     }
 }

@@ -41,6 +41,8 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridNhanVien = new DevExpress.XtraGrid.GridControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.dtgNhanVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenNhanVien = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,15 +52,13 @@
             this.TaiKhoan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MatKhau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.VaiTro = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridNhanVien)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgNhanVien)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -169,6 +169,25 @@
             this.gridNhanVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dtgNhanVien});
             // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(874, 617);
+            this.Root.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.gridNhanVien;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(854, 597);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
             // dtgNhanVien
             // 
             this.dtgNhanVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -230,7 +249,7 @@
             this.CCCD.MinWidth = 25;
             this.CCCD.Name = "CCCD";
             this.CCCD.Visible = true;
-            this.CCCD.VisibleIndex = 6;
+            this.CCCD.VisibleIndex = 4;
             this.CCCD.Width = 94;
             // 
             // TaiKhoan
@@ -240,7 +259,7 @@
             this.TaiKhoan.MinWidth = 25;
             this.TaiKhoan.Name = "TaiKhoan";
             this.TaiKhoan.Visible = true;
-            this.TaiKhoan.VisibleIndex = 4;
+            this.TaiKhoan.VisibleIndex = 5;
             this.TaiKhoan.Width = 94;
             // 
             // MatKhau
@@ -250,7 +269,7 @@
             this.MatKhau.MinWidth = 25;
             this.MatKhau.Name = "MatKhau";
             this.MatKhau.Visible = true;
-            this.MatKhau.VisibleIndex = 5;
+            this.MatKhau.VisibleIndex = 6;
             this.MatKhau.Width = 94;
             // 
             // VaiTro
@@ -262,25 +281,6 @@
             this.VaiTro.Visible = true;
             this.VaiTro.VisibleIndex = 7;
             this.VaiTro.Width = 94;
-            // 
-            // Root
-            // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(874, 617);
-            this.Root.TextVisible = false;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.gridNhanVien;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(854, 597);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
             // 
             // NhanVien_DanhSach
             // 
@@ -298,9 +298,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridNhanVien)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgNhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgNhanVien)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,16 +319,16 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraGrid.GridControl gridNhanVien;
-        private DevExpress.XtraGrid.Views.Grid.GridView dtgNhanVien;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraGrid.Columns.GridColumn TenNhanVien;
+        private DevExpress.XtraGrid.Views.Grid.GridView dtgNhanVien;
         private DevExpress.XtraGrid.Columns.GridColumn ID;
+        private DevExpress.XtraGrid.Columns.GridColumn TenNhanVien;
         private DevExpress.XtraGrid.Columns.GridColumn DiaChi;
         private DevExpress.XtraGrid.Columns.GridColumn SoDienThoai;
+        private DevExpress.XtraGrid.Columns.GridColumn CCCD;
         private DevExpress.XtraGrid.Columns.GridColumn TaiKhoan;
         private DevExpress.XtraGrid.Columns.GridColumn MatKhau;
-        private DevExpress.XtraGrid.Columns.GridColumn CCCD;
         private DevExpress.XtraGrid.Columns.GridColumn VaiTro;
     }
 }

@@ -59,8 +59,11 @@ namespace GUI.Form_SachYeuCau
                     TacGiaYC = txtTacGiaYC.Text,
                 };
                 await _sachYeuCauService.CreateSachYeuCau(sachYCMoi);
+                txtTenSachYC.Text = string.Empty;
+                txtTacGiaYC.Text = string.Empty;
             }
             await showDuLieuSachYeuCau();
+            
         }
 
         private async void btnXoaSachYC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -86,7 +89,7 @@ namespace GUI.Form_SachYeuCau
                 var tenTacGia = dtgSachYeuCau.GetRowCellDisplayText(selectedRowHandle, "TacGiaYC") ?? string.Empty;
                 if (!string.IsNullOrEmpty(tenSachNhap) && !string.IsNullOrEmpty(tenTacGia))
                 {
-                    var matchingSach = await sachService.GetSachByTenVaTacGia(txtTenSachYC.Text, txtTacGiaYC.Text);
+                    var matchingSach = await sachService.GetSachByTenVaTacGia(tenSachNhap, tenTacGia);
                     if (matchingSach == null)
                     {
                         sachNhap = new SachCreateOrUpdate(tenSachNhap, tenTacGia);
@@ -95,7 +98,6 @@ namespace GUI.Form_SachYeuCau
                     {
                         sachNhap = new SachCreateOrUpdate(matchingSach.ID);
                     }
-
                     sachNhap.Show(this);
                 }
             }

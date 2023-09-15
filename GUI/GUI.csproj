@@ -141,11 +141,17 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form_BaoCao\BaoCaoBieuDo.cs">
+    <Compile Include="Form_BaoCao\BaoCaoThang.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Form_BaoCao\BaoCaoBieuDo.Designer.cs">
-      <DependentUpon>BaoCaoBieuDo.cs</DependentUpon>
+    <Compile Include="Form_BaoCao\BaoCaoThang.designer.cs">
+      <DependentUpon>BaoCaoThang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_BaoCao\BaoCaoBieuDoTongQuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form_BaoCao\BaoCaoBieuDoTongQuan.Designer.cs">
+      <DependentUpon>BaoCaoBieuDoTongQuan.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_DocGia\DocGiaCreateOrUpdate.cs">
       <SubType>Form</SubType>
@@ -263,8 +269,11 @@
     <Compile Include="WaitFormLogin.Designer.cs">
       <DependentUpon>WaitFormLogin.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form_BaoCao\BaoCaoBieuDo.resx">
-      <DependentUpon>BaoCaoBieuDo.cs</DependentUpon>
+    <EmbeddedResource Include="Form_BaoCao\BaoCaoThang.resx">
+      <DependentUpon>BaoCaoThang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_BaoCao\BaoCaoBieuDoTongQuan.resx">
+      <DependentUpon>BaoCaoBieuDoTongQuan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_DocGia\DocGiaCreateOrUpdate.resx">
       <DependentUpon>DocGiaCreateOrUpdate.cs</DependentUpon>

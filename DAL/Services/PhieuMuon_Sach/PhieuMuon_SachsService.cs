@@ -98,7 +98,7 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
             });
             return output;
         }
-        public async Task<Dictionary<int, int>> GetNgayMuonVaSoLuong()
+        public async Task<Dictionary<int, int>> GetSoLuongThang()
         {
             var query = from p in _db.PhieuMuons
                         join pm in _db.PhieuMuon_Sachs on p.ID equals pm.ID_PhieuMuon
@@ -108,7 +108,6 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
                             NgayMuon = p.NgayMuon.Value,
                             SoLuong = pm.SoLuong
                         };
-
             var monthlyData =  query.GroupBy(
                 item => new { Month = item.NgayMuon.Month, Year = item.NgayMuon.Year },
                 (key, group) => new
@@ -117,7 +116,6 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
                     TotalSoLuong = group.Sum(item => item.SoLuong)
                 })
                 .ToDictionaryAsync(item => item.Thang, item => item.TotalSoLuong);
-
             return await monthlyData;
         }
         #region crud
@@ -145,10 +143,52 @@ namespace DAL.Services.PhieuMuon_Sach_Sachs
         }
 
 
+        public Dictionary<string, int> GetSoLuongSachTrongThang(int? month, int? year)
+        {
+            var topBorrowedBooks = (from pms in _db.PhieuMuon_Sachs
+                                    join pm in _db.PhieuMuons on pms.ID_PhieuMuon equals pm.ID
+                                    where pm.NgayMuon.HasValue && pm.NgayMuon.Value.Month == month && pm.NgayMuon.Value.Year == year
+                                    group pms by pms.ID_Sach into g
+                                    select new
+                                    {
+                                        ID_Sach = g.Key,
+                                        SoLuongMuon = g.Sum(pms => pms.SoLuong)
+                                    })
+                                   .ToList();
 
+            var bookData = (from topBook in topBorrowedBooks
+                            join sach in _db.Saches on topBook.ID_Sach equals sach.ID
+                            select new { TenSach = sach.TenSach, SoLuong = topBook.SoLuongMuon })
+                            .ToDictionary(item => item.TenSach, item => item.SoLuong);
+
+            return bookData;
+        }
+
+        public Dictionary<int, int> GetNgayMuonVaSoLuong(int? month, int? year)
+        {
+            var query = from p in _db.PhieuMuons
+                        join pm in _db.PhieuMuon_Sachs on p.ID equals pm.ID_PhieuMuon
+                        where p.NgayMuon.HasValue && p.NgayMuon.Value.Month == month && p.NgayMuon.Value.Year == year
+                        select new
+                        {
+                            NgayMuon = p.NgayMuon.Value,
+                            SoLuong = pm.SoLuong
+                        };
+
+            var dailyData = query.GroupBy(
+                item => item.NgayMuon.Day,
+                (key, group) => new
+                {
+                    Ngay = key,
+                    TotalSoLuong = group.Sum(item => item.SoLuong)
+                })
+                .ToDictionary(item => item.Ngay, item => item.TotalSoLuong);
+
+            return dailyData;
+        }
         #endregion
 
 
-        
+
     }
 }

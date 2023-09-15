@@ -25,6 +25,7 @@ namespace DAL.Services.PhieuMuons
         Task<int> TongSachMuon(); 
         Task<List<PhieuMuon>> GetListPhieuMuon();
         Task<List<PhieuMuon_DTO>> GetListPhieuMuonDto();
-
+        List<int> GetNamTrongPhieuMuon();
+        List<int> GetThangTrongPhieuMuon();
     }
 }
