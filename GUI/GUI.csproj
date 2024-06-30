@@ -72,9 +72,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="CheckBoxComboBox">
-      <HintPath>C:\Users\tuann\Downloads\CheckBoxComboBox\CheckBoxComboBox\bin\Debug\CheckBoxComboBox.dll</HintPath>
-    </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.151\lib\net461\Dapper.dll</HintPath>
     </Reference>
@@ -344,7 +341,6 @@
     <EmbeddedResource Include="WaitFormLogin.resx">
       <DependentUpon>WaitFormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="GUI_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
